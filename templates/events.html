@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    {% for event in events %}
+        {{ event.name }}<br>
+        {{ event.description }}<br>
+        {{ event.date }}<br>
+        {{ event.time }}<br>
+        {{ event.who }}<br>
+        {{ event.challenge }}<br><br>
+
+        {% for location in locations%}
+            {% if event.location_id == location._id%}
+                {{ location.name }}<br>
+                {{ location.lat }}<br>
+                {{ location.long }}<br>
+                <img src="{{ location.image_url }}" width=500 alt=""><br>
+                {{ location.description }}<br>
+                {{ location.parking }}<br>
+                {{ location.facilities }}<br>
+            {% endif %}
+        {% endfor %}
+
+
+
+        
+        <br><br>
+
+    {% endfor %}
+    
+</body>
+</html>
