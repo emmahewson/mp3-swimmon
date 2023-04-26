@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Lato:wght@400;700;900&display=swap');
 
 /* General Styles */
+/* Colours */
 :root {
     --white: #ffffff;
     --light-grey: #F4F4F4;
@@ -13,8 +14,9 @@
     --high-blue: #45E4EE;
     --form-blue: #B6E3E9;
     --high-pink: #F45C68;
+    --high-pink-hov:#ffaab1;
     --chal-low: #FFE3A5;
-    --chal-mid: #FFC751;
+    --chal-med: #FFC751;
     --chal-high: #FF7A00;
     --who-women: #A94ED4;
     --who-men: #826B95;
@@ -35,6 +37,30 @@
     background-color: var(--high-pink);
 }
 
+.swim-bg-chal-low {
+    background-color: var(--chal-low);
+}
+
+.swim-bg-chal-med {
+    background-color: var(--chal-med);
+}
+
+.swim-bg-chal-high {
+    background-color: var(--chal-high);
+}
+
+.swim-bg-who-women {
+    background-color: var(--who-women);
+}
+
+.swim-bg-who-men {
+    background-color: var(--who-men);
+}
+
+.swim-bg-who-all {
+    background-color: var(--who-all);
+}
+
 .swim-txt-white {
     color: var(--white);
 }
@@ -46,11 +72,9 @@
 html {
     background-color: #475967;
 }
-body, nav {
-    max-width: 1750px;
-    margin: 0 auto;
-    background-color: white;
-}
+
+
+/* Text */
 
 .font-title {
     font-family: "Jost", sans-serif
@@ -88,13 +112,25 @@ body, nav {
     font-weight: 900;
 }
 
+/* Whole Page Layout */
+body, nav {
+    max-width: 1750px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+main, footer {
+    position: relative;
+    top: 15px;
+}
+
 .div-shadow {
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.5);
 }
 
-
-
+/* base.html */
 /* Nav Bar */
+
 nav {
     background-color: var(--pale-blue);
     box-shadow: 0px 4px 18px -1px rgba(0, 0, 0, 0.25);
@@ -161,6 +197,7 @@ i.right {
 
 
 /* Footer */
+
 .page-footer {
     background-color: var(--dark-blue);
     color: var(--white);
@@ -221,12 +258,60 @@ footer h4 {
 }
 
 
-/* Common Elements */
-
-main, footer {
-    position: relative;
-    top: 15px;
+/* All Pages - Repeating Elements */
+/* Buttons */
+.swim-btn-large,
+.swim-btn-flexi {
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
 }
+
+.swim-btn-large {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.swim-btn-flexi {
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.btn-hpink {
+    background-color: var(--high-pink);
+    color: var(--white);
+}
+
+.btn-dblue {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+.btn-hpink:hover {
+    background-color: var(--high-pink-hov);
+    color: var(--dark-blue);
+}
+
+.btn-dblue:hover {
+    background-color: var(--mid-blue)
+}
+
+.swim-btn-shadow {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Intro Div */
 
 .intro-div {
     text-align: center;
@@ -243,27 +328,9 @@ main, footer {
     margin-bottom: 5px;
 }
 
-.swim-btn-large {
-    width: 200px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
-    margin: 0 auto;
-    color: var(--white);
-    margin-top: 20px;
-    font-size: 16px;
-}
 
-.swim-btn-flexi {
-    padding: 6px 10px;
-    border-radius: 4px;
-}
-
-.swim-btn-shadow {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-}
+/* events.html */
+/* Events Search Bar */
 
 .search-wrapper {
     padding: 30px 50px;
@@ -303,6 +370,40 @@ main, footer {
 
 .search-div {
     margin-bottom: 5px;
+}
+
+.swim-collapsible {
+    margin: 0;
+    font-size: 16px;
+    transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+}
+
+.swim-collapsible i {
+    margin-right: 10px;
+}
+
+.swim-collapsible:hover {
+    color: var(--high-pink);
+    cursor: pointer;
+}
+
+.swim-collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+/* Events Cards */
+
+
+
+/* JavaScript Classes */
+
+.collapse-margin {
+    margin-bottom: 20px;
 }
 
 
