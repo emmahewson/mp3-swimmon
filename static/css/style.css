@@ -10,9 +10,9 @@
     --black: #000000;
     --pale-blue: #E9FBFF;
     --mid-blue: #136985;
-    --dark-blue: #05414E;
+    --dark-blue: #05414e;
     --high-blue: #45E4EE;
-    --form-blue: #B6E3E9;
+    --form-blue: #b6e3e9;
     --high-pink: #F45C68;
     --high-pink-hov:#ffaab1;
     --chal-low: #FFE3A5;
@@ -21,8 +21,18 @@
     --who-women: #A94ED4;
     --who-men: #826B95;
     --who-all: #58019D;
-    --button-edit: #088659;
-    --button-del: #A95050;
+    --button-edit: #1a8862;
+    --button-edit-hov: #00a86d;
+    --button-del: #ce4a4a;
+    --button-del-hov: #f54a4a;
+}
+
+.swim-bg-white {
+    background-color: var(--white);
+}
+
+.swim-bg-lgrey {
+    background-color: var(--light-grey);
 }
 
 .swim-bg-grey {
@@ -37,27 +47,27 @@
     background-color: var(--high-pink);
 }
 
-.swim-bg-chal-low {
+.swim-bg-fun {
     background-color: var(--chal-low);
 }
 
-.swim-bg-chal-med {
+.swim-bg-intermediate {
     background-color: var(--chal-med);
 }
 
-.swim-bg-chal-high {
+.swim-bg-challenging {
     background-color: var(--chal-high);
 }
 
-.swim-bg-who-women {
+.swim-bg-women-only {
     background-color: var(--who-women);
 }
 
-.swim-bg-who-men {
+.swim-bg-men-only {
     background-color: var(--who-men);
 }
 
-.swim-bg-who-all {
+.swim-bg-all-welcome {
     background-color: var(--who-all);
 }
 
@@ -67,6 +77,10 @@
 
 .swim-txt-dblue {
     color: var(--dark-blue);
+}
+
+.swim-txt-black {
+    color: var(--black);
 }
 
 html {
@@ -82,10 +96,6 @@ html {
 
 .font-body {
     font-family: "Lato", sans-serif
-}
-
-.text-size-body {
-    font-size: 16px;
 }
 
 .weight-400 {
@@ -112,6 +122,7 @@ html {
     font-weight: 900;
 }
 
+
 /* Whole Page Layout */
 body, nav {
     max-width: 1750px;
@@ -127,6 +138,7 @@ main, footer {
 .div-shadow {
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.5);
 }
+
 
 /* base.html */
 /* Nav Bar */
@@ -221,6 +233,7 @@ footer h4 {
 
 footer h4 {
     margin-bottom: 0.5em;
+    font-size: 16px;
 }
 
 #copyright-div {
@@ -261,6 +274,7 @@ footer h4 {
 /* All Pages - Repeating Elements */
 /* Buttons */
 .swim-btn-large,
+.swim-btn-small,
 .swim-btn-flexi {
     border-radius: 4px;
     cursor: pointer;
@@ -279,6 +293,15 @@ footer h4 {
     margin: 0 auto;
     margin-top: 20px;
     font-size: 16px;
+}
+
+.swim-btn-small {
+    width: 85px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
 }
 
 .swim-btn-flexi {
@@ -304,6 +327,22 @@ footer h4 {
 
 .btn-dblue:hover {
     background-color: var(--mid-blue)
+}
+
+.btn-edit {
+    background-color: var(--button-edit);
+}
+
+.btn-edit:hover {
+    background-color: var(--button-edit-hov);
+}
+
+.btn-delete {
+    background-color: var(--button-del);
+}
+
+.btn-delete:hover {
+    background-color: var(--button-del-hov);
 }
 
 .swim-btn-shadow {
@@ -398,11 +437,102 @@ footer h4 {
 
 /* Events Cards */
 
+.events-div {
+    padding: 50px 80px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.event-card * {
+    margin: 0;
+}
+
+.event-card {
+    width: 280px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.35);
+    text-transform: uppercase;
+    overflow: hidden;
+    align-self: start;
+}
+
+.event-card-clickable {
+    position: relative;
+    padding-bottom: 10px;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.event-card-clickable:hover {
+    background-color: #dae0e2;
+}
+
+.card-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.event-card img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    background-color: var(--white);
+}
+
+.event-name-div {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.event-name-div h2 {
+    margin: 0;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+.event-name-div h2 a {
+    color: var(--dark-blue);
+}
+
+.event-card-row {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    padding: 0 10px 10px 10px;
+}
+
+.event-marker {
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-size: 14px;
+}
+
+.card-edit-div {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-edit-div> :first-child {
+    margin-right: 40px;
+}
 
 
 /* JavaScript Classes */
 
-.collapse-margin {
+.collapse-open {
     margin-bottom: 20px;
 }
 
@@ -470,6 +600,10 @@ footer h4 {
     .intro-div,
     .search-wrapper {
         padding: 30px 20px
+    }
+
+    .events-div {
+        padding: 30px 15px
     }
 
     .search-div-section {

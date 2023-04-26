@@ -9,7 +9,7 @@ function collapse() {
     let coll = document.getElementsByClassName("swim-collapsible");
     for (i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function() {
-          this.classList.toggle("collapse-margin");
+          this.classList.toggle("collapse-open");
           var content = this.nextElementSibling;
           if (content.style.maxHeight){
             content.style.maxHeight = null;
