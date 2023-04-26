@@ -22,7 +22,9 @@ mongo = PyMongo(app)
 def new_events():
     events = mongo.db.events.find()
     locations = list(mongo.db.locations.find())
-    return render_template("events.html", events=events, locations=locations)
+    whos = list(mongo.db.who_for.find())
+    challenges = list(mongo.db.challenge.find())
+    return render_template("events.html", events=events, locations=locations, whos=whos, challenges=challenges)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css')}}"
+      type="text/css"
+    />
+
+    <!-- REMOVE IF NOT USING!! -->
+    {% block styles %} {% endblock %}
+
+    <title>SWIMMON Events</title>
+  </head>
+  <body>
+    <header class="font-title">
+      <!-- Dropdown Structure -->
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">JOIN</a></li>
+        <li><a href="#!">SIGN IN</a></li>
+        <li><a href="#!">PROFILE</a></li>
+        <li><a href="#!">SIGN OUT</a></li>
+      </ul>
+      <!-- main nav-bar -->
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper div-shadow valign-center">
+            <a href="#!" class="brand-logo-swim"><img src="{{ url_for('static', filename='images/sm-logo.png') }}" alt="SWIMMÔN Logo"></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger right"
+              ><i class="fas fa-bars"></i
+            ></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="#">HOME</a></li>
+              <li><a href="#">EVENTS</a></li>
+              <li><a href="#">ADD EVENT</a></li>
+              <li><a href="#">ADMIN</a></li>
+              <!-- Dropdown Trigger -->
+              <li>
+                <a
+                  href="#"
+                  class="dropdown-trigger"
+                  data-target="dropdown1"
+                  >ACCOUNT<i class="fa-solid fa-caret-down right"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <!-- mobile nav-bar -->
+      <ul class="sidenav right" id="mobile-demo">
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">EVENTS</a></li>
+        <li><a href="#">ADD EVENT</a></li>
+        <li><a href="#">ADMIN</a></li>
+        <li><a href="#">JOIN</a></li>
+        <li><a href="#">SIGN IN</a></li>
+        <li><a href="#">PROFILE</a></li>
+        <li><a href="#">SIGN OUT</a></li>
+      </ul>
+    </header>
+
+    <section>
+      <!-- Flash messages -->
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages%}
+      <div class="row flashes">
+        <h4 class="center-align">{{ message }}</h4>
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
+    </section>
+
+    <main>{% block content%} {% endblock %}</main>
+
+    <footer class="page-footer font-body">
+      <div class="row">
+        <div class="footer-div" id="copyright-div">
+            <p class="weight-500 text-size-body">© EMMA HEWSON 2023</p>
+            <div class="" id="social-links">
+                <a href="https://www.linkedin.com/in/emmajmhewson/" target="_blank">
+                    <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                    <span class="sr-only">LinkedIn</span>
+                </a>
+                <a href="https://github.com/emmahewson" target="_blank">
+                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                    <span class="sr-only">GitHub</span>
+                </a>
+            </div>
+        </div>
+        <div class="footer-div" id="disclaimer-div">
+          <h4 class="weight-900 text-size-body">DISCLAIMER</h4>
+          <p class="weight-500 text-size-body">This website was created for educational purposes only
+            SWIMMÔN is not a real organisation, do not use this website as a source for wild swimming information.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <!-- REMOVE IF NOT USING!! -->
+    {% block scripts %} {% endblock %}
+  </body>
+</html>

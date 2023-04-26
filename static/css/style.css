@@ -1,0 +1,382 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Lato:wght@400;700;900&display=swap');
+
+/* General Styles */
+:root {
+    --white: #ffffff;
+    --light-grey: #F4F4F4;
+    --grey: #D8D8D8;
+    --black: #000000;
+    --pale-blue: #E9FBFF;
+    --mid-blue: #136985;
+    --dark-blue: #05414E;
+    --high-blue: #45E4EE;
+    --form-blue: #B6E3E9;
+    --high-pink: #F45C68;
+    --chal-low: #FFE3A5;
+    --chal-mid: #FFC751;
+    --chal-high: #FF7A00;
+    --who-women: #A94ED4;
+    --who-men: #826B95;
+    --who-all: #58019D;
+    --button-edit: #088659;
+    --button-del: #A95050;
+}
+
+.swim-bg-grey {
+    background-color: var(--grey);
+}
+
+.swim-bg-dblue {
+    background-color: var(--dark-blue);
+}
+
+.swim-bg-hpink {
+    background-color: var(--high-pink);
+}
+
+.swim-txt-white {
+    color: var(--white);
+}
+
+.swim-txt-dblue {
+    color: var(--dark-blue);
+}
+
+html {
+    background-color: #475967;
+}
+body, nav {
+    max-width: 1750px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.font-title {
+    font-family: "Jost", sans-serif
+}
+
+.font-body {
+    font-family: "Lato", sans-serif
+}
+
+.text-size-body {
+    font-size: 16px;
+}
+
+.weight-400 {
+    font-weight: 400;
+}
+
+.weight-500 {
+    font-weight: 500;
+}
+
+.weight-600 {
+    font-weight: 600;
+}
+
+.weight-700 {
+    font-weight: 700;
+}
+
+.weight-800 {
+    font-weight: 800;
+}
+
+.weight-900 {
+    font-weight: 900;
+}
+
+.div-shadow {
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* Nav Bar */
+nav {
+    background-color: var(--pale-blue);
+    box-shadow: 0px 4px 18px -1px rgba(0, 0, 0, 0.25);
+    height: 80px;
+}
+
+nav,
+nav .nav-wrapper i,
+nav a.sidenav-trigger,
+nav a.sidenav-trigger i {
+    line-height: 80px;
+}
+
+.nav-wrapper {
+    padding: 0px 50px;
+}
+
+.nav-wrapper a {
+    max-height: 100%;
+}
+
+nav .brand-logo-swim,
+nav ul a,
+nav a,
+header ul a,
+.dropdown-content li > a,
+.sidenav li > a {
+    color: var(--dark-blue);
+}
+
+header,
+.sidenav li > a {
+    font-weight: 600;
+}
+
+.brand-logo-swim img {
+    width: auto;
+    height: 40px;
+    margin: 18px 0px 22px 0px;
+}
+
+nav ul a {
+    transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+nav ul a:hover {
+    background-color: var(--form-blue);
+}
+
+i.right {
+    margin-left: 10px;
+}
+
+.dropdown-content {
+    min-width: 120px;
+}
+
+.dropdown-content li > a {
+    font-size: 1rem;
+}
+
+
+/* Footer */
+.page-footer {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 30px 50px;
+}
+
+footer > .row {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-div {
+    width: 50%;
+}
+
+footer p,
+footer h4 {
+    margin: 0;
+}
+
+footer h4 {
+    margin-bottom: 0.5em;
+}
+
+#copyright-div {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#copyright-div {
+    height: fit-content;
+}
+
+#copyright-div p,
+#social-links> :first-child {
+    margin-right: 20px;
+}
+
+#social-links a {
+    text-decoration: none;
+    font-size: 32px;
+    color: var(--white);
+    transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+}
+
+#social-links a:hover {
+    color: var(--high-pink);
+}
+
+#disclaimer-div {
+    text-align: right;
+}
+
+
+/* Common Elements */
+
+main, footer {
+    position: relative;
+    top: 15px;
+}
+
+.intro-div {
+    text-align: center;
+    padding: 50px;
+}
+
+.intro-div p,
+.intro-div h1 {
+    margin: 0;
+}
+
+.intro-div h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.swim-btn-large {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    margin: 0 auto;
+    color: var(--white);
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.swim-btn-flexi {
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.swim-btn-shadow {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.search-wrapper {
+    padding: 30px 50px;
+}
+
+.search-div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-div h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.search-div h3 i {
+    margin-left: 10px;
+    font-size: 22px;
+    vertical-align: middle;
+}
+
+.search-buttons-div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-buttons-div p {
+    margin: 10px 10px 10px 0;
+    text-transform: uppercase;
+}
+
+.search-div-section {
+    padding-bottom: 20px;
+    padding-right: 50px;
+}
+
+.search-div {
+    margin-bottom: 5px;
+}
+
+
+
+
+
+@media only screen and (max-width: 992px) {
+
+    .nav-wrapper {
+        padding: 0px 25px;
+    }
+
+    .footer-div {
+        width: 100%;
+    }
+
+    #copyright-div {
+        justify-content: center;
+        order: 2;
+    }
+
+    #disclaimer-div {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    main, footer {
+        top: 0;
+    }
+
+    .brand-logo-swim img {
+        height: 24px;
+        margin: 14px 0px 12px 0px;
+    }
+
+    nav {
+        height: 50px;
+    }
+    
+    nav,
+    nav .nav-wrapper i,
+    nav a.sidenav-trigger,
+    nav a.sidenav-trigger i {
+        line-height: 50px;
+    }
+
+    .navbar-fixed {
+        height: 50px;
+    }
+    
+    .nav-wrapper {
+        padding: 0px 20px;
+    }
+
+    .page-footer {
+        padding: 20px;
+    }
+
+    .intro-div,
+    .search-wrapper {
+        padding: 30px 20px
+    }
+
+    .search-div-section {
+        padding-right: 0px;
+    }
+
+    .intro-div h1 {
+        font-size: 32px;
+    }
+
+}

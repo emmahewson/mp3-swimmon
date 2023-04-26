@@ -1,13 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events</title>
-</head>
-<body>
-    {% for event in events %}
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="intro-div swim-bg-dblue swim-txt-white">
+        <h1 class="font-title weight-600 intro-div-title">EVENTS</h1>
+        <p class="font-body weight-500 intro-div-body">Explore member events. Click on an event to see more details. Or why not add your own event?</p>
+        <a href="#" class="swim-btn-large swim-bg-hpink font-title weight-600 swim-btn-shadow">ADD EVENT</a>
+    </div>
+
+    <div class="search-wrapper div-shadow">
+    <div class="search-div swim-bg-white swim-txt-dblue font-title">
+        <div class="search-div-section">
+            <h3 class="weight-700">Location<i class="fa fa-question-circle" aria-hidden="true"></i></h3>
+            <div class="search-buttons-div weight-500">
+                {% for location in locations %}
+                    <p class="swim-btn-flexi swim-bg-grey">{{ location.name }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="search-div-section">
+            <h3 class="weight-700">Who For?<i class="fa fa-question-circle" aria-hidden="true"></i></h3>
+            <div class="search-buttons-div weight-500">
+                {% for who in whos %}
+                    <p class="swim-btn-flexi swim-bg-grey">{{ who.name }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="search-div-section">
+            <h3 class="weight-700">Challenge Level<i class="fa fa-question-circle" aria-hidden="true"></i></h3>
+            <div class="search-buttons-div weight-500">
+                {% for challenge in challenges %}
+                    <p class="swim-btn-flexi swim-bg-grey">{{ challenge.name }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <a href="#" class="swim-btn-flexi swim-bg-dblue swim-txt-white font-title weight-500 swim-btn-shadow">RESET ALL</a>
+</div>
+
+
+    <!-- {% for event in events %}
         {{ event.name }}<br>
         {{ event.description }}<br>
         {{ event.date }}<br>
@@ -20,19 +51,14 @@
                 {{ location.name }}<br>
                 {{ location.lat }}<br>
                 {{ location.long }}<br>
-                <img src="{{ location.image_url }}" width=500 alt=""><br>
+                <img src="{{ location.image_url }}" width=200 alt=""><br>
                 {{ location.description }}<br>
                 {{ location.parking }}<br>
                 {{ location.facilities }}<br>
             {% endif %}
         {% endfor %}
-
-
-
-        
         <br><br>
 
-    {% endfor %}
-    
-</body>
-</html>
+    {% endfor %} -->
+
+{% endblock %}
