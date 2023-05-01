@@ -1,50 +1,32 @@
 # SWIMMÔN Wild Swimming Events Website
 
+THIS PROJECT IS A WORK IN PROGRESS
+
 SWIMMÔN is a website for swimmers on The Isle of Anglesey / Ynys Môn to find and set up wild swimming meet ups around the island. The live Website can be found [here](https://swim-mon.herokuapp.com/).
 
 ![Mockup]()
 ****
 ## Table of Contents
 
-* [User Experience Design (UX)](#User-Experience-Design)
-    * [The Strategy Plane](#The-Strategy-Plane)
-        * [Site Goals](#Site-Goals)
-        * [User stories](#User-Stories)
-    * [The Scope Plane](#The-Scope-Plane)
-    * [The Structure Plane](#The-Structure-Plane)
-    * [The Skeleton Plane](#The-Skeleton-Plane)
-        * [Wireframes](#Wireframes)
-        * [Database Design](#Database-Design)
-        * [Security](#Security)
-    * [The Surface Plane](#The-Surface-Plane)
-        * [Design](#Design)
-            * [Colour Scheme](#Colour-Scheme)
-            * [Typography](#Typography)
-            * [Imagery](#Imagery)
-    * [Differences to Design](#Differences-to-Design)
+* [User Experience (UX)](#user-experience-design)
+    * [Strategy Plane](#strategy-plane)
+    * [Scope Plane](#scope-plane)
+    * [Structure Plane](#structure-plane)
+    * [Skeleton Plane](#skeleton-plane)
+    * [Surface Plane](#surface-plane)
 - [Features](#Features)
     * [Current Features](#Current-Features)
-    * [Future Features](#Features-Left-to-Implement)
+    * [Future Features](#future-features)
 * [Technologies](#Technologies)
 * [Testing](#Testing)
-    * [Test Strategy](#Test-Strategy)
-    * [Test Results](#Test-Results)
-    * [Isses and Resolutions](#Issues-and-Resolutions-to-issues-found-during-testing)
 * [Deployment](#Deployment)
-    * [Project Creation](#Project-Creation)
-    * [GitHub Pages](#Deployment-To-Heroku)
-    * [Run Locally](#Run-Locally)
-    * [Fork Project](#Fork-Project)
 * [Credits](#Credits)
-  * [Content](#Content)
-  * [Acknowledgements](#Acknowledgements)
 
 
 ****
 
 ## User Experience Design
-### **The Strategy Plane**
-
+### **Strategy Plane**
 
 
 #### Site Goals
@@ -74,7 +56,7 @@ SWIMMÔN is a website for swimmers on The Isle of Anglesey / Ynys Môn to find a
 
 
 ****
-### **The Scope Plane**
+### **Scope Plane**
 
 **Features planned:**
 * General
@@ -125,7 +107,7 @@ The table shows the importance and difficulty of these features - I will priorit
 | Admin Only | Edit / Delete other users' events | 3 | 3 |
 
 ****
-### **The Structure Plane**
+### **Structure Plane**
 Based on the features and the user stories I developed a flow chart for the site
 
 ![Site Flow Chart](readme-images/planning/planning_flow_diagram.jpg)
@@ -278,7 +260,7 @@ Implementation
 * The admin will be able to edit or delete events created by any user both in the event summary boxes and on the event page.
 
 ****
-### **The Skeleton Plane**
+### **Skeleton Plane**
 [For wireframes see Surface Plane](#wireframes)
 
 #### Database Design
@@ -334,7 +316,7 @@ security reasons this is not uploaded to GitHub so that database and connection 
 users. In production these are stored in Heroku. 
 
 ****
-### **The Surface Plane**
+### **Surface Plane**
 #### Wireframes
 
 I created fully designed wireframes in [Figma](https://www.figma.com/). This allows me to make all major design decisions including colours, fonts, layout, spacing and the visual user experience before commencing coding.
@@ -362,8 +344,6 @@ I created fully designed wireframes in [Figma](https://www.figma.com/). This all
 
 #### Typography
 
-****
-## Differences to Design
 
 ****
 ## Features
@@ -375,57 +355,61 @@ I created fully designed wireframes in [Figma](https://www.figma.com/). This all
 
 ****
 ## Technologies
-* [HTML](https://en.wikipedia.org/wiki/HTML)
-	* This project uses HTML as the main language used to complete the structure of the Website.
-* [CSS](https://en.wikipedia.org/wiki/CSS)
-	* This project uses custom written CSS to style the Website.
-* [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
-    * JavaScript is used along with [emailjs](https://www.emailjs.com/) for the contact form. This sends an email to the owner
-    on form submit.
-    * [jQuery](https://jquery.com/) is used for the following: 
-        * Mobile side nav
-        * Displaying Success/Fail message verifying contact form status.
-        * Collapsible Materialize elements.
-        * Materialize modal.
-        * Datepicker functionality on forms.
-        * To populate downdrops on select elements.
-* [Python](https://www.python.org/)
-    * This projects core was created using Python, the back-end logic and the means to run/view the Website.
-    * Python Modules used (These can be found in the requirements.txt project file):
-        * dnspython==2.0.0
-        * Flask==1.1.2
+## Technologies Used
+
+### Languages
+* [HTML](https://en.wikipedia.org/wiki/HTML5)
+    * Used to build the main structure of the site
+* [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+    * Used to style the website
+* [JavaScript] is used for:
+    * Events search bar collapsible
+    * 
+* [JQuery](https://jquery.com/) is used for the following:
+    * Mobile Side Nav
+    * 
+* [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+    * Used to build the core of the backend of the project as well as the running/viewing of the website
+    * Python Modules Used:
+        * click==8.1.3
+        * dnspython==2.3.0
+        * Flask==2.2.3
         * Flask-PyMongo==2.3.0
-        * Flask-WTF==0.14.3
-        * itsdangerous==1.1.0
-        * pymongo==3.11.2
-        * Werkzeug==1.0.1
-        * WTForms==2.3.3
-* [MongoDB](https://www.mongodb.com/1)
-    * MongoDB was used to create the document based databases(collections) used as data storage for this project.
-* [Materialize](https://materializecss.com/)
-    * The Materialize framework was used through the website for layout and responsiveness.
-* [Google Fonts](https://fonts.google.com/)
-	* Google fonts are used throughout the project to import the *Inter* and *Bevan* fonts.
-* [GitHub](https://github.com/)
-	* GithHub is the hosting site used to store the source code for the Website.
+        * itsdangerous==2.1.2
+        * pymongo==4.3.3
+        * Werkzeug==2.2.3
+
+### Tools
 * [Git](https://git-scm.com/)
-	* Git is used as version control software to commit and push code to the GitHub repository where the source code is stored.
+    * Used for version control via Code Anywhere by using the terminal to Git and Push to GitHub
+* [GitHub](https://github.com/)
+    * Used to store the project code
+* [Code Anywhere](https://codeanywhere.com/)
+    * Used to create, edit & preview the project's code
 * [Heroku](https://dashboard.heroku.com/apps)
-    * Heroku was used to deploy the live website.
-* [TinyJPG](https://tinyjpg.com/)
-	* TinyJPG/TinyPNG is used to reduce the file sizes of images before being deployed to reduce storage and bandwith.
-* [Google Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools)
-	* Google chromes built in developer tools are used to inspect page elements and help debug issues with the site layout and test different CSS styles.
-* [balsamiq Wireframes](https://balsamiq.com/wireframes/)
-	* This was used to create wireframes for 'The Skeleton Plane' stage of UX design.
-* [Canva](https://www.canva.com/)
-    * Canva design was used in order to create the website logo.
+    * Used to deploy the live site
+* [Figma](https://www.figma.com/)
+    * Used to develop the wireframes in to a full mockup including colours, fonts, proportions etc
+* [Materialize](https://getbootstrap.com/)
+    * Used to help with the responsiveness of the site in much of the structural layout
+    * Used date and time picker for the add event form
+* [Google Fonts](https://fonts.google.com/)
+    * Used to select & import the fonts to the project (Jost & Lato)
 * [Font Awesome](https://fontawesome.com/)
-    * All the Icons displayed throughout the website are Font Awesome icons.
-* [Favicon](https://favicon.io/)
-    * Favicon.io was used to make the site favicon 
+    * Used to add icons to the site to help with UX and to add more character
+* [Adobe Illustrator](https://www.adobe.com/uk/products/illustrator.html)
+    * Used to create the site logo
+* [Adobe Photoshop](https://www.adobe.com/uk/products/photoshop.html)
+    * Used to crop, adjust and resize the photos to optimise them for the site
+* [Tiny PNG](https://tinypng.com/)
+    * Used to further optimise the images for the site and reduce file size
+* [Favicon.io](https://favicon.io/favicon-converter/)
+    * Used to create and add the favicon to the browser tab
+* [Google Chrome Dev Tools](https://developers.google.com/web/tools/chrome-devtools)
+    * Used to inspect page elements, debug issues with the site & test responsiveness on different mockup devices
 * [Techsini](http://techsini.com/multi-mockup/index.php)
-    * Multi Device Website Mockup Generator was used to create the Mock up image in this README
+    * Website mockup image generator for images in this README.
+
 
 ****
 ## Testing
@@ -433,64 +417,6 @@ I created fully designed wireframes in [Figma](https://www.figma.com/). This all
 ****
 ## Deployment
 
-
-### Deployment to Heroku
-
-**Create application:**
-1. Navigate to Heroku.com and login.
-1. Click on the new button.
-1. Select create new app.
-1. Enter the app name.
-1. Select region.
-
-**Set up connection to Github Repository:**
-
-1. Click the deploy tab and select GitHub - Connect to GitHub.
-1. A prompt to find a github repository to connect to will then be displayed.
-1. Enter the repository name for the project and click search.
-1. Once the repo has been found, click the connect button.
-
-**Set environment variables:**
-
-Click the settings tab and then click the Reveal Config Vars button and add the following:
-
-1. key: IP, value: 0.0.0.0
-2. key: PORT, value: 5000
-3. key: MONGO_DBNAME, value: (database name you want to connect to)
-4. key: MONGO_URI, value: (mongo uri - This can be found in MongoDB by going to clusters > connect > connect to your application and substituting the password and 
-    dbname that you set up in the link).
-5. key: SECRET_KEY, value: (This is a custom secret key set up for configuration to keep client-side sessions secure).
-
-**Enable automatic deployment:**
-1. Click the Deploy tab
-1. In the Automatic deploys section, choose the branch you want to deploy from then click Enable Automation Deploys.
-
-### Run Locally
-
-**Note: The project will not run locally with database connections unless the user sets up an [env.py](https://pypi.org/project/env.py/) file configuring IP, PORT, 
-MONGO_URI, MONGO_DBNAME and SECRET_KEY. You must have the connection details in order to do this. These details are private and not disclosed in this repository 
-for security purposes.**
-
-1. Navigate to the GitHub [Repository](https://github.com/Daisy-McG/Motorbike-Event-Finder).
-1. Click the Code drop down menu.
-1. Either Download the ZIP file, unpackage locally and open with IDE (This route ends here) OR Copy Git URL from the HTTPS dialogue box.
-1. Open your developement editor of choice and open a terminal window in a directory of your choice.
-1. Use the 'git clone' command in terminal followed by the copied git URL.
-1. A clone of the project will be created locally on your machine.
-
-Once the project has been loaded into an IDE of choice, run the following command in the shell to install all the required packages:
-> pip install -r requirements.txt
-
-### Fork Project 
-
-Most commonly, forks are used to either propose changes to someone else's project or to use someone else's project as a starting point 
-for your own idea. - Definition from [Github Docs](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo).
-
-1. Navigate to the GitHub Repository you want to fork.
-1. On the top right of the page under the header, click the fork button.
-    
-    ![Fork](readme_images/fork.JPG)
-1. This will create a duplicate of the full project in your GitHub Repository.
 
 ****
 ## Credits

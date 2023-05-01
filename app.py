@@ -20,11 +20,11 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/events")
 def new_events():
-    events = mongo.db.events.find()
+    events = mongo.db.events.find().sort("date", 1)
     locations = list(mongo.db.locations.find())
     whos = list(mongo.db.who_for.find())
     challenges = list(mongo.db.challenge.find())
-    return render_template("events.html", events=events, locations=locations, whos=whos, challenges=challenges)
+    return render_template("events.html", events=events, locations=locations)
 
 
 if __name__ == "__main__":
