@@ -24,7 +24,12 @@ def new_events():
     locations = list(mongo.db.locations.find())
     whos = list(mongo.db.who_for.find())
     challenges = list(mongo.db.challenge.find())
-    return render_template("events.html", events=events, locations=locations)
+    return render_template(
+        "events.html",
+        events=events,
+        locations=locations,
+        whos=whos,
+        challenges=challenges)
 
 
 if __name__ == "__main__":

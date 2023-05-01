@@ -19,6 +19,7 @@ SWIMMÔN is a website for swimmers on The Isle of Anglesey / Ynys Môn to find a
     * [Future Features](#future-features)
 * [Technologies](#Technologies)
 * [Testing](#Testing)
+    * [Bugs]()
 * [Deployment](#Deployment)
 * [Credits](#Credits)
 
@@ -413,6 +414,25 @@ I created fully designed wireframes in [Figma](https://www.figma.com/). This all
 
 ****
 ## Testing
+
+### Bugs & Fixes
+
+During development and testing I encountered the following bugs:
+- - -
+#### **1: Dropdown Search Bar `<a>` link not displaying properly**
+
+The 'reset all' button at the bottom of the events searchbar (within the dropdown menu) was not displaying properly and getting cut off by the div padding. This appeared to be caused by the way the dropdown menu worked, not recognising the `<a>`'s full height. I fixed this by wrapping the `<a>` inside a `<p>` element, which solved the problem.
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+<img src="">
+
+*Before & After*
+
+</details>
+
 
 ****
 ## Deployment
