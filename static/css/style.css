@@ -222,6 +222,13 @@ footer > .row {
     flex-wrap: wrap;
 }
 
+#footer-contact {
+    justify-content: center;
+    text-decoration: underline;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
 .footer-div {
     width: 50%;
 }
@@ -239,16 +246,14 @@ footer h4 {
 #copyright-div {
     display: flex;
     justify-content: left;
-    align-items: center;
+    align-items: baseline;
     flex-wrap: wrap;
+    align-self: flex-end;
+    position: relative;
+    bottom: -8px;
 }
 
-#copyright-div {
-    height: fit-content;
-}
-
-#copyright-div p,
-#social-links> :first-child {
+#social-links a {
     margin-right: 20px;
 }
 
@@ -553,11 +558,12 @@ footer h4 {
     #copyright-div {
         justify-content: center;
         order: 2;
+        bottom: 0;
     }
 
     #disclaimer-div {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
 
 }
@@ -594,7 +600,7 @@ footer h4 {
     }
 
     .page-footer {
-        padding: 20px;
+        padding: 30px 20px;
     }
 
     .intro-div,
