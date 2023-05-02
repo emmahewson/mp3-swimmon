@@ -134,6 +134,15 @@ html {
     text-transform: uppercase;
 }
 
+.link-text {
+    color: var(--dark-blue);
+    text-decoration: underline;
+}
+
+p {
+    font-size: 16px;
+}
+
 
 /* Whole Page Layout */
 body, nav {
@@ -397,15 +406,28 @@ footer h4 {
 
 /* Forms */
 
+.form-page-wrapper {
+    position: relative;
+    background-color: var(--light-grey);
+    padding-bottom: 100px;
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
 .swim-form {
     background-color: var(--grey);
+    width: 80%;
+    max-width: 800px;
     padding: 50px;
-    margin-top: 50px;
     border-radius: 5px;
 }
 
 .form-button-row {
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .swim-form > row {
@@ -431,6 +453,10 @@ input[type=password]:not(.browser-default) {
     border-radius: 5px;
     border: 1px solid var(--dark-blue);
     margin: 5px 0 0 0;
+}
+
+.below-form-text-div {
+    margin-top: 50px;
 }
 
 
@@ -700,6 +726,23 @@ input[type=password]:not(.browser-default) {
 
     .intro-div h1 {
         font-size: 32px;
+    }
+
+    .form-page-wrapper {
+        padding-bottom: 60px;
+    }
+
+    .form-wrapper {
+        margin-top: 30px;
+    }
+
+    .swim-form {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .form-button-row {
+        margin-top: 30px;
     }
 
 }
