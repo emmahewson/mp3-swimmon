@@ -761,6 +761,11 @@ input.invalid[type=password]:not(.browser-default) {
         padding: 0px 20px;
     }
 
+    .flashes {
+        padding: 15px;
+        top: 0;
+    }
+
     .page-footer {
         padding: 30px 20px;
     }
