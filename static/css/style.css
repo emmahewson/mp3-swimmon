@@ -43,6 +43,10 @@
     background-color: var(--dark-blue);
 }
 
+.swim-bg-hblue {
+    background-color: var(--high-blue);
+}
+
 .swim-bg-hpink {
     background-color: var(--high-pink);
 }
@@ -290,6 +294,7 @@ footer h4 {
 .swim-btn-small,
 .swim-btn-flexi {
     border-radius: 4px;
+    border: none;
     cursor: pointer;
     transition: all 0.25s ease-in-out;
     -moz-transition: all 0.25s ease-in-out;
@@ -326,6 +331,11 @@ footer h4 {
 .btn-hpink {
     background-color: var(--high-pink);
     color: var(--white);
+}
+
+.btn-hblue {
+    background-color: var(--high-blue);
+    color: var(--dark-blue);
 }
 
 .btn-dblue {
@@ -378,6 +388,49 @@ footer h4 {
 .intro-div h1 {
     font-size: 36px;
     margin-bottom: 5px;
+}
+
+.intro-div-p-group {
+    margin-top: 10px;
+}
+
+
+/* Forms */
+
+.swim-form {
+    background-color: var(--grey);
+    padding: 50px;
+    margin-top: 50px;
+    border-radius: 5px;
+}
+
+.form-button-row {
+    margin-top: 30px;
+}
+
+.swim-form > row {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    margin: 0;
+}
+
+.input-field > label {
+    position: relative;
+    color: var(--dark-blue);
+}
+
+.input-field.col label {
+    left: 0;
+}
+
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default) {
+    background-color: var(--white);
+    border-radius: 5px;
+    border: 1px solid var(--dark-blue);
+    margin: 5px 0 0 0;
 }
 
 

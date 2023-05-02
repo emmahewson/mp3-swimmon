@@ -32,24 +32,24 @@
     <header class="font-title">
       <!-- Dropdown Structure -->
       <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#!">JOIN</a></li>
-        <li><a href="#!">SIGN IN</a></li>
-        <li><a href="#!">PROFILE</a></li>
+        <li><a href="{{ url_for('join')}}">JOIN</a></li>
+        <li><a href="{{ url_for('sign_in')}}">SIGN IN</a></li>
+        <li><a href="{{ url_for('profile')}}">PROFILE</a></li>
         <li><a href="#!">SIGN OUT</a></li>
       </ul>
       <!-- main nav-bar -->
       <div class="navbar-fixed">
         <nav>
           <div class="nav-wrapper div-shadow valign-center">
-            <a href="#!" class="brand-logo-swim"><img src="{{ url_for('static', filename='images/sm-logo.png') }}" alt="SWIMMÔN Logo"></a>
+            <a href="{{ url_for('home')}}" class="brand-logo-swim"><img src="{{ url_for('static', filename='images/sm-logo.png') }}" alt="SWIMMÔN Logo"></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger right"
               ><i class="fas fa-bars"></i
             ></a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="#">HOME</a></li>
-              <li><a href="#">EVENTS</a></li>
-              <li><a href="#">ADD EVENT</a></li>
-              <li><a href="#">ADMIN</a></li>
+              <li><a href="{{ url_for('home')}}">HOME</a></li>
+              <li><a href="{{ url_for('events')}}">EVENTS</a></li>
+              <li><a href="{{ url_for('add_event')}}">ADD EVENT</a></li>
+              <li><a href="{{ url_for('manage_locations')}}">MANAGE LOCATIONS</a></li>
               <!-- Dropdown Trigger -->
               <li>
                 <a
@@ -66,13 +66,13 @@
 
       <!-- mobile nav-bar -->
       <ul class="sidenav right" id="mobile-demo">
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">EVENTS</a></li>
-        <li><a href="#">ADD EVENT</a></li>
-        <li><a href="#">ADMIN</a></li>
-        <li><a href="#">JOIN</a></li>
-        <li><a href="#">SIGN IN</a></li>
-        <li><a href="#">PROFILE</a></li>
+        <li><a href="{{ url_for('home')}}">HOME</a></li>
+        <li><a href="{{ url_for('events')}}">EVENTS</a></li>
+        <li><a href="{{ url_for('add_event')}}">ADD EVENT</a></li>
+        <li><a href="{{ url_for('manage_locations')}}">MANAGE LOCATIONS</a></li>
+        <li><a href="{{ url_for('join')}}">JOIN</a></li>
+        <li><a href="{{ url_for('sign_in')}}">SIGN IN</a></li>
+        <li><a href="{{ url_for('profile')}}">PROFILE</a></li>
         <li><a href="#">SIGN OUT</a></li>
       </ul>
     </header>
@@ -127,3 +127,4 @@
     {% block scripts %} {% endblock %}
   </body>
 </html>
+
