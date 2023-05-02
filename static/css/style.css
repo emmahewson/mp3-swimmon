@@ -1,6 +1,10 @@
 /* Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Lato:wght@300;400;700;900&display=swap');
 
+html {
+    scroll-behavior: smooth;
+  }
+
 /* General Styles */
 /* Colours */
 :root {
@@ -357,7 +361,8 @@ footer h4 {
     color: var(--white);
 }
 
-.btn-hpink:hover {
+.btn-hpink:hover,
+.btn-hpink:focus {
     background-color: var(--high-pink-hov);
 }
 
@@ -366,7 +371,8 @@ footer h4 {
     color: var(--dark-blue);
 }
 
-.btn-hblue:hover {
+.btn-hblue:hover,
+.btn-hblue:focus {
     background-color: var(--high-blue-hov);
 }
 
@@ -375,7 +381,8 @@ footer h4 {
     color: var(--white);
 }
 
-.btn-dblue:hover {
+.btn-dblue:hover,
+.btn-dblue:focus {
     background-color: var(--mid-blue)
 }
 
@@ -383,7 +390,8 @@ footer h4 {
     background-color: var(--button-edit);
 }
 
-.btn-edit:hover {
+.btn-edit:hover,
+.btn-edit:focus {
     background-color: var(--button-edit-hov);
 }
 
@@ -391,7 +399,8 @@ footer h4 {
     background-color: var(--button-del);
 }
 
-.btn-delete:hover {
+.btn-delete:hover,
+.btn-delete:focus {
     background-color: var(--button-del-hov);
 }
 
@@ -679,6 +688,12 @@ input.invalid[type=password]:not(.browser-default) {
 
 .card-edit-div> :first-child {
     margin-right: 40px;
+}
+
+.btt-btn-div {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
 }
 
 

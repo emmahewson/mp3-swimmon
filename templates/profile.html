@@ -12,7 +12,7 @@
         </div>
 
         <!-- Event Summary Cards -->
-        <div class="events-div">
+        <div class="events-div" id="events-div">
             {% for event in events %}
                 {% if session.user|lower == event.created_by|lower %}
                     <div class="event-card">
@@ -51,6 +51,9 @@
                     </div>
                 {% endif %}
             {% endfor %}
+        </div>
+        <div class="btt-btn-div">
+            <button class="swim-btn-flexi btn-hpink font-title weight-500 swim-btn-shadow center-align" id="btt-btn">BACK TO TOP</button>
         </div>
     </div>
 

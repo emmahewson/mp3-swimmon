@@ -2,6 +2,7 @@ $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
     $(".dropdown-trigger").dropdown();
     collapse();
+    scrollToTop();
   });
 
 // collapsible content - taken from https://www.w3schools.com/howto/howto_js_collapsible.asp
@@ -20,3 +21,10 @@ function collapse() {
       }
 }
 
+// scroll to top button
+function scrollToTop() {
+    let button = document.getElementById("btt-btn");
+    button.addEventListener("click", function() {
+        window.scrollTo({top: 0, behaviour: 'smooth'});
+    });
+}
