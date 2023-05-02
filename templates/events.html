@@ -5,7 +5,7 @@
     <div class="intro-div swim-bg-dblue swim-txt-white">
         <h1 class="font-title weight-600">EVENTS</h1>
         <p class="font-body weight-500">Explore member events. Click on an event to see more details. Or why not add your own event?</p>
-        <a href="#" class="swim-btn-large btn-hpink font-title weight-600 swim-btn-shadow">ADD EVENT</a>
+        <a href="{{ url_for('add_event')}}" class="swim-btn-large btn-hpink font-title weight-600 swim-btn-shadow">ADD EVENT</a>
     </div>
 
     <!-- Search Bar -->
@@ -67,18 +67,17 @@
                                     <p class="font-body weight-500 swim-txt-white event-marker swim-bg-{{event.who|lower}}">{{ event.who }}</p>
                                     <p class="font-body weight-500 swim-txt-black event-marker swim-bg-{{event.challenge|lower}}">{{ event.challenge }}</p>
                                 </div>
+                            </div>
                         {% endif %}
                     {% endfor %}   
+                            
 
-                            </div>
-
-                    <!-- UPDATE ONCE LOG IN FUNCTIONALITY IS CREATED -->
                     <!-- Add CRUD control buttons if user event -->
-                    {% if event.created_by|lower == "user3" %}
-                    <div class="card-edit-div swim-bg-dblue">
-                        <a href="#" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
-                        <a href="#" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
-                    </div>
+                    {% if session.user|lower == event.created_by|lower or session.user|lower == "admin"|lower %}
+                        <div class="card-edit-div swim-bg-dblue">
+                            <a href="#" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
+                            <a href="#" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
+                        </div>
                     {% endif %}
                 </div>
             {% endfor %}

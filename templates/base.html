@@ -32,10 +32,13 @@
     <header class="font-title">
       <!-- Dropdown Structure -->
       <ul id="dropdown1" class="dropdown-content">
-        <li><a href="{{ url_for('join')}}">JOIN</a></li>
-        <li><a href="{{ url_for('sign_in')}}">SIGN IN</a></li>
-        <li><a href="{{ url_for('profile')}}">PROFILE</a></li>
-        <li><a href="#!">SIGN OUT</a></li>
+        {% if session.user %}
+            <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
+            <li><a href="{{ url_for('sign_out')}}">SIGN OUT</a></li>
+        {% else %}
+            <li><a href="{{ url_for('join')}}">JOIN</a></li>
+            <li><a href="{{ url_for('sign_in')}}">SIGN IN</a></li>
+        {% endif %}
       </ul>
       <!-- main nav-bar -->
       <div class="navbar-fixed">
@@ -46,10 +49,14 @@
               ><i class="fas fa-bars"></i
             ></a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="{{ url_for('home')}}">HOME</a></li>
-              <li><a href="{{ url_for('events')}}">EVENTS</a></li>
-              <li><a href="{{ url_for('add_event')}}">ADD EVENT</a></li>
-              <li><a href="{{ url_for('manage_locations')}}">MANAGE LOCATIONS</a></li>
+                <li><a href="{{ url_for('home')}}">HOME</a></li>
+                {% if session.user %}
+                    <li><a href="{{ url_for('events')}}">EVENTS</a></li>
+                    <li><a href="{{ url_for('add_event')}}">ADD EVENT</a></li>
+                    {% if session.user|lower == "admin"|lower %}
+                        <li><a href="{{ url_for('manage_locations')}}">MANAGE LOCATIONS</a></li>
+                    {% endif %}
+                {% endif %}
               <!-- Dropdown Trigger -->
               <li>
                 <a
@@ -63,29 +70,39 @@
           </div>
         </nav>
       </div>
+    </header>
+
+    <section>
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages%}
+                    <div class="flashes">
+                        <p class="center-align font-title weight-500 uppercase">{{ message }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
 
       <!-- mobile nav-bar -->
       <ul class="sidenav right" id="mobile-demo">
         <li><a href="{{ url_for('home')}}">HOME</a></li>
-        <li><a href="{{ url_for('events')}}">EVENTS</a></li>
-        <li><a href="{{ url_for('add_event')}}">ADD EVENT</a></li>
-        <li><a href="{{ url_for('manage_locations')}}">MANAGE LOCATIONS</a></li>
-        <li><a href="{{ url_for('join')}}">JOIN</a></li>
-        <li><a href="{{ url_for('sign_in')}}">SIGN IN</a></li>
-        <li><a href="{{ url_for('profile')}}">PROFILE</a></li>
-        <li><a href="#">SIGN OUT</a></li>
+        {% if session.user %}
+            <li><a href="{{ url_for('events')}}">EVENTS</a></li>
+            <li><a href="{{ url_for('add_event')}}">ADD EVENT</a></li>
+            {% if session.user|lower == "admin"|lower %}
+                <li><a href="{{ url_for('manage_locations')}}">MANAGE LOCATIONS</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
+            <li><a href="{{ url_for('sign_out')}}">SIGN OUT</a></li>
+        {% else %}
+            <li><a href="{{ url_for('join')}}">JOIN</a></li>
+            <li><a href="{{ url_for('sign_in')}}">SIGN IN</a></li>
+        {% endif %}
       </ul>
     </header>
 
-    <section>
-      <!-- Flash messages -->
-      {% with messages = get_flashed_messages() %} {% if messages %} {% for
-      message in messages%}
-      <div class="row flashes">
-        <h4 class="center-align">{{ message }}</h4>
-      </div>
-      {% endfor %} {% endif %} {% endwith %}
-    </section>
 
     <main>{% block content%} {% endblock %}</main>
 

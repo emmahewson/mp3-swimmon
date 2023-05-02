@@ -1,6 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
 
- <h1>SIGN IN</h1>
+    <div class="form-page-wrapper">
+        <!-- Intro Section -->
+        <div class="intro-div swim-bg-hblue swim-txt-dblue div-shadow">
+            <h1 class="font-title weight-600">SIGN IN</h1>
+            <div class="font-body weight-500 intro-div-p-group">
+                <p>Sign in to find a wild swimming event to join, browse, edit, add & delete events and get out in to the water today!</p>
+            </div>
+        </div>
+
+        <div class="form-wrapper">
+            <form class="swim-form div-shadow" method="POST" action="">
+                <!-- username -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="username" class="font-title weight-600">USERNAME <em class="weight-300"> 5-15 letters/numbers</em></label>
+                        <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate"/>
+                    </div>
+                </div>
+                <!-- password -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="password" class="font-title weight-600">PASSWORD <em class="weight-300"> 5-15 letters/numbers</em></label>
+                        <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate"/>
+                    </div>
+                </div>
+                <!-- submit button -->
+                <div class="form-button-row">
+                    <button type="submit" class="swim-btn-large btn-hblue font-title weight-600 swim-btn-shadow">SIGN IN</button>
+                </div>
+        </form>
+        </div>
+        
+        <div class="below-form-text-div">
+            <p class="center-align font-body weight-700"><a href="{{ url_for('join')}}" class="link-text">Not a member yet? Join here!</a></p>
+        </div>
+    </div>
 
 {% endblock %}

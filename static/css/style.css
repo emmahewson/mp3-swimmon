@@ -15,7 +15,7 @@
     --high-blue-hov: #97f8ff;
     --form-blue: #b6e3e9;
     --high-pink: #F45C68;
-    --high-pink-hov:#ffaab1;
+    --high-pink-hov:#d9414e;
     --chal-low: #FFE3A5;
     --chal-med: #FFC751;
     --chal-high: #FF7A00;
@@ -230,6 +230,20 @@ i.right {
 }
 
 
+/* Flashes */
+
+.flashes {
+    background-color: var(--chal-low);
+    padding: 15px;
+    position: relative;
+    top: 15px;
+}
+
+.flashes p {
+    margin: 0;
+}
+
+
 /* Footer */
 
 .page-footer {
@@ -345,7 +359,6 @@ footer h4 {
 
 .btn-hpink:hover {
     background-color: var(--high-pink-hov);
-    color: var(--dark-blue);
 }
 
 .btn-hblue {
