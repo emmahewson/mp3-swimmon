@@ -12,6 +12,7 @@
     --mid-blue: #136985;
     --dark-blue: #05414e;
     --high-blue: #45E4EE;
+    --high-blue-hov: #97f8ff;
     --form-blue: #b6e3e9;
     --high-pink: #F45C68;
     --high-pink-hov:#ffaab1;
@@ -342,19 +343,23 @@ footer h4 {
     color: var(--white);
 }
 
+.btn-hpink:hover {
+    background-color: var(--high-pink-hov);
+    color: var(--dark-blue);
+}
+
 .btn-hblue {
     background-color: var(--high-blue);
     color: var(--dark-blue);
 }
 
+.btn-hblue:hover {
+    background-color: var(--high-blue-hov);
+}
+
 .btn-dblue {
     background-color: var(--dark-blue);
     color: var(--white);
-}
-
-.btn-hpink:hover {
-    background-color: var(--high-pink-hov);
-    color: var(--dark-blue);
 }
 
 .btn-dblue:hover {
@@ -453,10 +458,31 @@ input[type=password]:not(.browser-default) {
     border-radius: 5px;
     border: 1px solid var(--dark-blue);
     margin: 5px 0 0 0;
+    padding: 0px 10px;
+    width: 95%;
+    font-family: "Lato", sans-serif
 }
 
 .below-form-text-div {
     margin-top: 50px;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]) {
+    border: 1px solid var(--dark-blue);
+    box-shadow: 0 1px 2px 0 var(--black);
+}
+
+input.valid[type=text]:not(.browser-default),
+input.valid[type=password]:not(.browser-default) {
+    border-bottom: none;
+    border: 2px solid var(--button-edit-hov);
+}
+
+input.invalid[type=text]:not(.browser-default),
+input.invalid[type=password]:not(.browser-default) {
+    border-bottom: none;
+    border: 2px solid var(--high-pink);
 }
 
 
