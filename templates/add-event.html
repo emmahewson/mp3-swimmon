@@ -1,6 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
 
- <h1>ADD EVENT</h1>
+<div class="form-page-wrapper">
+    <!-- Intro Section -->
+    <div class="intro-div swim-bg-hpink swim-txt-white div-shadow">
+        <h1 class="font-title weight-600">ADD EVENT</h1>
+        <div class="font-body weight-500 intro-div-p-group">
+            <p>Fill in the form to share your wild swimming event or meetup with other members.</p>
+        </div>
+    </div>
+
+    <div class="form-wrapper">
+        <form class="swim-form div-shadow" method="POST" action="">
+            <!-- event name -->
+            <div class="input-field col s12">
+                <label for="event_name" class="font-title weight-600">EVENT NAME <em class="weight-300"> 5-50 characters</em></label>
+                <input id="event_name" name="event_name" type="text" minlength="5" maxlength="50" class="validate" required/>
+            </div>
+            <!-- event description -->
+            <div class="input-field col s12">
+                <label for="event_description" class="font-title weight-600">EVENT DESCRIPTION</label>
+                <textarea id="event_description" name="event_description" minlength="5" maxlength="300" class="weight-500 font-title" placeholder="What to expect, where to meet etc." required></textarea>
+            </div>
+            <!-- submit button -->
+            <div class="form-button-row">
+                <button type="submit" class="swim-btn-large btn-hblue font-title weight-600 swim-btn-shadow">SIGN IN</button>
+            </div>
+    </form>
+    </div>
+    
+    <div class="below-form-text-div">
+        <p class="center-align font-body weight-700"><a href="{{ url_for('join')}}" class="link-text">Not a member yet? Join here!</a></p>
+    </div>
+</div>
 
 {% endblock %}

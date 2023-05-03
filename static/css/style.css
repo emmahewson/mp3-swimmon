@@ -453,16 +453,9 @@ footer h4 {
     border-radius: 5px;
 }
 
-.form-button-row {
-    margin-top: 50px;
-}
-
-.swim-form > row {
-    margin-bottom: 20px;
-}
-
 .input-field {
     margin: 0;
+    margin-bottom: 20px;
 }
 
 .input-field > label {
@@ -475,18 +468,25 @@ footer h4 {
 }
 
 input[type=text]:not(.browser-default),
-input[type=password]:not(.browser-default) {
+input[type=password]:not(.browser-default),
+textarea {
     background-color: var(--white);
     border-radius: 5px;
     border: 1px solid var(--dark-blue);
     margin: 5px 0 0 0;
     padding: 0px 10px;
-    width: 95%;
-    font-family: "Lato", sans-serif
+    font-family: "Lato", sans-serif;
 }
 
-.below-form-text-div {
-    margin-top: 50px;
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default) {
+    padding: 0px 10px;
+    width: calc(100% - 20px);
+}
+
+textarea {
+    padding: 10px;
+    height: 120px;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]),
@@ -505,6 +505,19 @@ input.invalid[type=text]:not(.browser-default),
 input.invalid[type=password]:not(.browser-default) {
     border-bottom: none;
     border: 2px solid var(--high-pink);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--dark-blue);
+}
+
+.form-button-row {
+    margin-top: 50px;
+}
+
+.below-form-text-div {
+    margin-top: 50px;
 }
 
 
