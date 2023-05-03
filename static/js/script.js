@@ -2,6 +2,18 @@ $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
     $(".dropdown-trigger").dropdown();
     $('select').formSelect();
+
+    let currentDate = new Date()
+    $('.datepicker').datepicker({
+        format: "dd/mm/yyyy",
+        showClearBtn: true,
+        autoclose: true,
+        yearRange: [2023, 2026],
+        minDate: currentDate,
+    });
+
+    $('.timepicker').timepicker();
+
     infoBox();
     collapse();
     scrollToTop();

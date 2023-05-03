@@ -35,6 +35,42 @@
                 <label for="event_description" class="font-title weight-600">EVENT DESCRIPTION</label>
                 <textarea id="event_description" name="event_description" minlength="5" maxlength="300" placeholder="e.g. What to expect, where to meet..." required></textarea>
             </div>
+            <!-- Date -->
+            <div class="input-field">
+                <label for="event_date" class="font-title weight-600">DATE</label>
+                <input id="event_date" name="event_date" type="text" class="datepicker validate" required>
+            </div>
+            <!-- Time -->
+            <div class="input-field">
+                <label for="event_time" class="font-title weight-600">TIME</label>
+                <input id="event_time" name="event_time" type="text" class="timepicker validate" required>
+            </div>
+            <!-- Who For? -->
+            <div class="input-field">
+                <label for="event-who" class="font-title weight-600">WHO FOR?</i></label>
+                <div class="input-info-div-wrapper">
+                    <select id="event_who" name="event_who" class="" required>
+                        <option value="" disabled selected>CHOOSE FROM LIST</option>
+                        {% for who in whos %}
+                            <option value="{{who.name|upper}}">{{who.name|upper}}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="question-circle swim-txt-white swim-bg-mblue" id="who-trigger">?</div>
+                </div>
+            </div>
+            <!-- Challenge Level -->
+            <div class="input-field">
+                <label for="event-challenge" class="font-title weight-600">CHALLENGE LEVEL</i></label>
+                <div class="input-info-div-wrapper">
+                    <select id="event_challenge" name="event_challenge" class="" required>
+                        <option value="" disabled selected>CHOOSE FROM LIST</option>
+                        {% for challenge in challenges %}
+                            <option value="{{challenge.name|upper}}">{{challenge.name|upper}}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="question-circle swim-txt-white swim-bg-mblue" id="challenge-trigger">?</div>
+                </div>
+            </div>
             <!-- submit button -->
             <div class="form-button-row">
                 <button type="submit" class="swim-btn-large btn-hblue font-title weight-600 swim-btn-shadow">SIGN IN</button>
@@ -44,13 +80,39 @@
 </div>
 
 <!-- Modals -->
-<div class="info-modal-wrapper" id="location-modal">
+<!-- Location Modal  -->
+<div class="info-modal-wrapper hidden" id="location-modal">
     <div class="info-modal">
         <div class="modal-header swim-txt-white">
             <h2 class="font-title weight-500">LOCATION</h2>
             <span class="font-title weight-500 close">&times;</span>
         </div>
         <p class="font-body swim-txt-dblue weight-500">We limit our locations to a number of safe tried and tested sites on the island. This allows members to wild swim as safely as possible. If you know of a site that you think should be on the list email us: <a href="mailto:test@swimmon.test">test@swimmon.test</a>.</p>
+    </div>
+</div>
+<!-- Who Modal  -->
+<div class="info-modal-wrapper hidden" id="who-modal">
+    <div class="info-modal">
+        <div class="modal-header swim-txt-white">
+            <h2 class="font-title weight-500">WHO FOR?</h2>
+            <span class="font-title weight-500 close">&times;</span>
+        </div>
+        <p class="font-body swim-txt-dblue weight-500">Groups can be female or male only, or open to anyone.</p>
+    </div>
+</div>
+<!-- Challenge Modal  -->
+<div class="info-modal-wrapper hidden" id="challenge-modal">
+    <div class="info-modal">
+        <div class="modal-header swim-txt-white">
+            <h2 class="font-title weight-500">CHALLENGE LEVEL</h2>
+            <span class="font-title weight-500 close">&times;</span>
+        </div>
+        <p class="font-body swim-txt-dblue weight-500">
+            <span class="weight-700">FUN: </span>A quick dip, only within depth, no known strong currents or dangers. Appropriate for beginners and weaker swimmers.<br><br>
+            <span class="weight-700">INTERMEDIATE: </span>Some swimming, close to shore but can be out of depth, no known strong currents or dangers.<br><br>
+            <span class="weight-700">CHALLENGING: </span>Strong swimmers only, may include areas with stronger currents, going out of depth, some coasteering or jumps.
+        
+        </p>
     </div>
 </div>
 
