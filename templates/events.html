@@ -89,3 +89,8 @@
     </div>
 
 {% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/collapsible.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scroll-top.js') }}"></script>
+{% endblock %}
