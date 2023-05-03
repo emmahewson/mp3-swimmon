@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
@@ -33,7 +34,8 @@ def join():
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("join"))
-        
+
+        # checks if the passwords match
         password_one = request.form.get("password")
         password_two = request.form.get("password-confirm")
 
@@ -62,11 +64,12 @@ def sign_in():
         # check if username exists
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-            
+
         if existing_user:
             # ensure hased password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+                existing_user["password"], request.form.get(
+                    "password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
@@ -93,7 +96,7 @@ def sign_out():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # grab the session user's username from the database
+    # gets the user's username from the database
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
@@ -116,10 +119,15 @@ def profile(username):
 
 @app.route("/events")
 def events():
+
+    # sorts events by date
     events = mongo.db.events.find().sort("date", 1)
+
+    # gets collections as lists for search filters
     locations = list(mongo.db.locations.find())
     whos = list(mongo.db.who_for.find())
     challenges = list(mongo.db.challenge.find())
+
     return render_template(
         "events.html",
         events=events,
@@ -128,8 +136,39 @@ def events():
         challenges=challenges)
 
 
-@app.route("/add-event")
+@app.route("/add-event", methods=["GET", "POST"])
 def add_event():
+    if request.method == "POST":
+
+        # sets the event location as the location's id
+        event_location = request.form.get("event_location")
+        location_id = ObjectId(mongo.db.locations.find_one(
+            {'name': event_location.lower()})["_id"])
+
+        # converts the date & time to UTC format (for sorting)
+        dtstring = request.form.get(
+            "event_date") + request.form.get("event_time")
+        format_data = "%d/%m/%Y%I:%M %p"
+        event_date = datetime.strptime(dtstring, format_data)
+
+        # defines new event dictionary
+        event = {
+            "name": request.form.get("event_name"),
+            "location_id": location_id,
+            "description": request.form.get("event_description"),
+            "who": request.form.get("event_who"),
+            "challenge": request.form.get("event_challenge"),
+            "created_by": session["user"],
+            "date": event_date,
+        }
+
+        # adds event to collection & redirects to events.html
+        mongo.db.events.insert_one(event)
+        flash("Event Successfully Added")
+        print(dtstring)
+        return redirect(url_for("events"))
+
+    # gets collections for use in form dropdowns
     locations = list(mongo.db.locations.find())
     whos = list(mongo.db.who_for.find())
     challenges = list(mongo.db.challenge.find())
