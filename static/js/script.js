@@ -30,3 +30,12 @@ function scrollToTop() {
         window.scrollTo({top: 0, behaviour: 'smooth'});
     });
 }
+
+// info box modal trigger
+function infoBox() {
+    let locationTrigger = document.getElementById("location-trigger");
+    locationTrigger.addEventListener("click", function() {
+        let locationModal = document.getElementById("location-modal");
+        locationModal.classList.remove("hidden")
+    })
+}

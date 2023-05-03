@@ -27,10 +27,9 @@
                             <option value="{{location.name|upper}}">{{location.name|upper}}</option>
                         {% endfor %}
                     </select>
-                    <div class="question-circle swim-txt-white swim-bg-mblue" id="modal-location">?</div>
+                    <div class="question-circle swim-txt-white swim-bg-mblue" id="location-trigger">?</div>
                 </div>
             </div>
-            <!-- Modal Structure -->
             <!-- event description -->
             <div class="input-field">
                 <label for="event_description" class="font-title weight-600">EVENT DESCRIPTION</label>
@@ -41,6 +40,17 @@
                 <button type="submit" class="swim-btn-large btn-hblue font-title weight-600 swim-btn-shadow">SIGN IN</button>
             </div>
         </form>
+    </div>
+</div>
+
+<!-- Modals -->
+<div class="info-modal-wrapper">
+    <div class="info-modal" id="location-modal">
+        <div class="modal-header swim-txt-white">
+            <h2 class="font-title weight-500">LOCATION</h2>
+            <span class="font-title weight-500 close">&times;</span>
+        </div>
+        <p class="font-body swim-txt-dblue weight-500">We limit our locations to a number of safe tried and tested sites on the island. This allows members to wild swim as safely as possible. If you know of a site that you think should be on the list email us: <a href="mailto:test@swimmon.test">test@swimmon.test</a>.</p>
     </div>
 </div>
 
