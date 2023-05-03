@@ -14,7 +14,7 @@ $(document).ready(function(){
 
     $('.timepicker').timepicker();
 
-    infoBox();
+    modalControl();
     collapse();
     scrollToTop();
   });
@@ -38,36 +38,42 @@ function collapse() {
 // scroll to top button
 function scrollToTop() {
     let button = document.getElementById("btt-btn");
-    button.addEventListener("click", function() {
+    button.onclick = function() {
         window.scrollTo({top: 0, behaviour: 'smooth'});
-    });
+    };
 }
 
-// info box modal trigger
-function infoBox() {
-    // Get the modal
-    var modal = document.getElementById("location-modal");
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("location-trigger");
+// Modal (infobox) functionality (multiple on a page)
+// Adapted from https://stackoverflow.com/questions/40645032/creating-multiple-modals-on-a-single-page
+function modalControl() {
+    let triggers = document.querySelectorAll(".swim-modal-trigger");
+    let modals = document.querySelectorAll('.swim-modal');
+    let closers = document.getElementsByClassName("close");
 
-    // Get the <span> element that closes the modal
-    var close = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal
-    btn.onclick = function() {
-        modal.classList.remove("hidden");
+    // When the user clicks the button, open the correct modal
+    for (let i = 0; i < triggers.length; i++) {
+        triggers[i].onclick = function(e) {
+            modal = document.querySelector(e.target.getAttribute("href"));
+            modal.style.display = "block";
+        }
     }
 
-    // When the user clicks on <span> (x), close the modal
-    close.onclick = function() {
-        modal.classList.add("hidden");
+    // When the user clicks on (x), close the modal
+    for (let i = 0; i < closers.length; i++) {
+        closers[i].onclick = function() {
+            for (let index in modals) {
+                if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+            }
+        }
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.classList.add("hidden");
-    }
+        if (event.target.classList.contains('swim-modal')) {
+            for (let index in modals) {
+                if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";
+            }
+        }
     }
 }

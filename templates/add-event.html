@@ -27,7 +27,7 @@
                             <option value="{{location.name|upper}}">{{location.name|upper}}</option>
                         {% endfor %}
                     </select>
-                    <div class="question-circle swim-txt-white swim-bg-mblue" id="location-trigger">?</div>
+                    <div class="question-circle swim-txt-white swim-bg-mblue swim-modal-trigger" href="#location-modal">?</div>
                 </div>
             </div>
             <!-- event description -->
@@ -55,7 +55,7 @@
                             <option value="{{who.name|upper}}">{{who.name|upper}}</option>
                         {% endfor %}
                     </select>
-                    <div class="question-circle swim-txt-white swim-bg-mblue" id="who-trigger">?</div>
+                    <div class="question-circle swim-txt-white swim-bg-mblue swim-modal-trigger" href="#who-modal">?</div>
                 </div>
             </div>
             <!-- Challenge Level -->
@@ -68,7 +68,7 @@
                             <option value="{{challenge.name|upper}}">{{challenge.name|upper}}</option>
                         {% endfor %}
                     </select>
-                    <div class="question-circle swim-txt-white swim-bg-mblue" id="challenge-trigger">?</div>
+                    <div class="question-circle swim-txt-white swim-bg-mblue swim-modal-trigger" href="#challenge-modal">?</div>
                 </div>
             </div>
             <!-- submit button -->
@@ -81,8 +81,8 @@
 
 <!-- Modals -->
 <!-- Location Modal  -->
-<div class="info-modal-wrapper hidden" id="location-modal">
-    <div class="info-modal">
+<div class="swim-modal" id="location-modal">
+    <div class="swim-modal-contents">
         <div class="modal-header swim-txt-white">
             <h2 class="font-title weight-500">LOCATION</h2>
             <span class="font-title weight-500 close">&times;</span>
@@ -91,8 +91,8 @@
     </div>
 </div>
 <!-- Who Modal  -->
-<div class="info-modal-wrapper hidden" id="who-modal">
-    <div class="info-modal">
+<div class="swim-modal" id="who-modal">
+    <div class="swim-modal-contents">
         <div class="modal-header swim-txt-white">
             <h2 class="font-title weight-500">WHO FOR?</h2>
             <span class="font-title weight-500 close">&times;</span>
@@ -101,8 +101,8 @@
     </div>
 </div>
 <!-- Challenge Modal  -->
-<div class="info-modal-wrapper hidden" id="challenge-modal">
-    <div class="info-modal">
+<div class="swim-modal" id="challenge-modal">
+    <div class="swim-modal-contents">
         <div class="modal-header swim-txt-white">
             <h2 class="font-title weight-500">CHALLENGE LEVEL</h2>
             <span class="font-title weight-500 close">&times;</span>

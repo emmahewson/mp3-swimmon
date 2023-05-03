@@ -583,7 +583,8 @@ textarea::placeholder {
     cursor: pointer;
 }
 
-.info-modal-wrapper {
+.swim-modal {
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -593,16 +594,16 @@ textarea::placeholder {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.info-modal {
+.swim-modal-contents {
     background-color: var(--white);
-    margin: 30% auto;
+    margin: 20% auto;
     border: 3px solid var(--mid-blue);
     width: 50%;
     border-radius: 4px;
     overflow: auto;
 }
 
-.info-modal * {
+.swim-modal-contents * {
     margin: 0;
 }
 
@@ -613,7 +614,7 @@ textarea::placeholder {
     background-color: var(--mid-blue);
 }
 
-.info-modal h2 {
+.swim-modal-contents h2 {
     font-size: 20px;
 }
 
@@ -633,11 +634,11 @@ textarea::placeholder {
   cursor: pointer;
 }
 
-.info-modal p {
+.swim-modal-contents p {
     padding: 10px 20px 20px 20px;
 }
 
-.info-modal p a {
+.swim-modal-contents p a {
     font-weight: 700;
     color: var(--dark-blue);
     text-decoration: underline;
@@ -840,13 +841,6 @@ textarea::placeholder {
     margin-bottom: 20px;
 }
 
-.hidden {
-    display: none;
-}
-
-
-
-
 
 @media only screen and (max-width: 992px) {
 
@@ -869,7 +863,7 @@ textarea::placeholder {
         margin-bottom: 20px;
     }
 
-    .info-modal {
+    .swim-modal-contents {
         width: 70%;
     }
 
@@ -949,7 +943,7 @@ textarea::placeholder {
         margin-top: 30px;
     }
 
-    .info-modal {
+    .swim-modal-contents {
         width: 80%;
     }
 
@@ -957,7 +951,7 @@ textarea::placeholder {
         width: 160px;
     }
 
-    .info-modal {
+    .swim-modal-contents {
         max-height: 500px;
     }
 }
