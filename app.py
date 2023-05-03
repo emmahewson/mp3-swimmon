@@ -130,7 +130,14 @@ def events():
 
 @app.route("/add-event")
 def add_event():
-    return render_template("add-event.html")
+    locations = list(mongo.db.locations.find())
+    whos = list(mongo.db.who_for.find())
+    challenges = list(mongo.db.challenge.find())
+    return render_template(
+        "add-event.html",
+        locations=locations,
+        whos=whos,
+        challenges=challenges)
 
 
 @app.route("/manage-locations")

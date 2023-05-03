@@ -1,5 +1,5 @@
 /* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Lato:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Lato:wght@300;400;700;900&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -11,6 +11,7 @@ html {
     --white: #ffffff;
     --light-grey: #F4F4F4;
     --grey: #D8D8D8;
+    --dark-grey: #626262;
     --black: #000000;
     --pale-blue: #E9FBFF;
     --mid-blue: #136985;
@@ -46,6 +47,10 @@ html {
 
 .swim-bg-dblue {
     background-color: var(--dark-blue);
+}
+
+.swim-bg-mblue {
+    background-color: var(--mid-blue);
 }
 
 .swim-bg-hblue {
@@ -476,6 +481,7 @@ textarea {
     margin: 5px 0 0 0;
     padding: 0px 10px;
     font-family: "Lato", sans-serif;
+    font-size: 14px;
 }
 
 input[type=text]:not(.browser-default),
@@ -484,13 +490,23 @@ input[type=password]:not(.browser-default) {
     width: calc(100% - 20px);
 }
 
+.dropdown-content {
+    border-radius: 5px;
+}
+
 textarea {
     padding: 10px;
     height: 120px;
 }
 
+:focus-visible {
+    outline: none;
+}
+
 input[type=text]:not(.browser-default):focus:not([readonly]),
-input[type=password]:not(.browser-default):focus:not([readonly]) {
+input[type=password]:not(.browser-default):focus:not([readonly]),
+textarea:focus,
+.select-wrapper input.select-dropdown:focus {
     border: 1px solid var(--dark-blue);
     box-shadow: 0 1px 2px 0 var(--black);
 }
@@ -507,9 +523,22 @@ input.invalid[type=password]:not(.browser-default) {
     border: 2px solid var(--high-pink);
 }
 
+.select-dropdown,
+.select-dropdown li.disabled>span,
 input::placeholder,
 textarea::placeholder {
-    color: var(--dark-blue);
+    color: var(--dark-grey);
+}
+
+.dropdown-content li>span {
+    color: var(--mid-blue);
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    font-weight: 400;
 }
 
 .form-button-row {
@@ -519,6 +548,40 @@ textarea::placeholder {
 .below-form-text-div {
     margin-top: 50px;
 }
+
+
+/* Info buttons on form - modal triggers */
+
+.input-info-div-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.input-info-div-wrapper .select-wrapper .select-dropdown {
+    margin-top: 0;
+    width: 250px;
+}
+
+.question-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 22px;
+    margin-left: 10px;
+    -moz-transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+}
+
+.question-circle:hover {
+    background-color: var(--high-pink);
+    cursor: pointer;
+}
+
 
 
 /* events.html */
