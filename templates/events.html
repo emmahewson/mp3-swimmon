@@ -77,9 +77,9 @@
                         <div class="card-edit-div swim-bg-dblue">
                             <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
                             <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</a>
-                        </div>  
+                        </div>
+                    {% endif %}
                 </div>
-
                 <!-- Confirm Delete Modal -->
                 <div id="{{ event._id }}" class="modal">
                     <div class="modal-contents swim-bg-lgrey center-align">
@@ -93,14 +93,13 @@
                         </div>
                     </div>
                 </div> 
-                {% endif %}
             {% endfor %}
         </div>
-
-        <!-- Back to Top Button -->
         <div class="btt-btn-div">
             <button class="swim-btn-flexi btn-hpink font-title weight-500 swim-btn-shadow center-align" id="btt-btn">BACK TO TOP</button>
         </div>
+
+        
         
     </div>
 
