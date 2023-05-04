@@ -45,13 +45,30 @@
                         {% if session.user|lower == event.created_by|lower or session.user|lower == "admin"|lower %}
                             <div class="card-edit-div swim-bg-dblue">
                                 <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
-                                <a href="#" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
+                                <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</a>
                             </div>
-                        {% endif %}
                     </div>
+                    
+                    <!-- Confirm Delete Modal -->
+                    <div id="{{ event._id }}" class="modal">
+                        <div class="modal-contents swim-bg-lgrey center-align">
+                            <div class="swim-txt-dblue">
+                                <h2 class="font-title weight-500 font-body">Are you sure you want to delete this event?</h2>
+                                <p class="font-title font-title">THIS ACTION CAN'T BE UNDONE</p>
+                            </div>
+                            <div class="modal-footer swim-bg-lgrey">
+                                <a href="{{ url_for('delete_event', event_id=event._id) }}" data-target="{{ event._id }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
+                                <a href="#!" class="modal-close swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow" data-target="{{ event._id }}">CANCEL</a>
+                            </div>
+                        </div>
+                    </div>
+
+                        {% endif %}
                 {% endif %}
             {% endfor %}
         </div>
+
+        <!-- Back to Top Button -->
         <div class="btt-btn-div">
             <button class="swim-btn-flexi btn-hpink font-title weight-500 swim-btn-shadow center-align" id="btt-btn">BACK TO TOP</button>
         </div>
