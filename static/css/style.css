@@ -969,6 +969,24 @@ textarea::placeholder {
     margin-top: 10px;
 }
 
+.event-edit-div {
+    padding: 20px 15px 30px 15px;
+}
+
+.event-edit-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.event-edit-buttons> :first-child {
+    margin-right: 40px;
+}
+
+.event-edit-div p {
+    font-size: 20px;
+}
+
 
 
 /* JavaScript Classes */

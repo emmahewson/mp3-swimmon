@@ -45,9 +45,12 @@
 
                 <!-- Add CRUD control buttons if user event -->
                 {% if session.user|lower == event.created_by|lower or session.user|lower == "admin"|lower %}
-                    <div class="card-edit-div swim-bg-dblue">
-                        <a href="#" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
-                        <a href="#" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
+                    <div class="event-edit-div swim-bg-grey">
+                        <p class="swim-txt-dblue weight-500 font-body center-align">MANAGE YOUR EVENT</p>
+                        <div class="event-edit-buttons">
+                            <a href="#" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
+                            <a href="#" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
+                        </div>
                     </div>
                 {% endif %}
 
