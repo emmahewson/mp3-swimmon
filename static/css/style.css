@@ -903,6 +903,7 @@ textarea::placeholder {
 .event-page-markers {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .when-where-row {
@@ -1105,7 +1106,7 @@ textarea::placeholder {
     }
 
     .event-page-text {
-        padding: 20px 20px 20px 30px;
+        padding: 20px 20px 30px 20px;
     }
 
     .event-image-div,
