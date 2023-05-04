@@ -799,6 +799,7 @@ textarea::placeholder {
 
 .event-card-text {
     padding: 10px;
+    color: var(--dark-blue);
 }
 
 .event-card-text h2 {
@@ -809,11 +810,6 @@ textarea::placeholder {
 
 .event-card-text p {
     font-size: 14px;
-}
-
-.event-card-text,
-.event-name-div h2 a {
-    color: var(--dark-blue);
 }
 
 .event-card-text em p {
@@ -863,6 +859,77 @@ textarea::placeholder {
     justify-content: center;
     padding-bottom: 50px;
 }
+
+
+
+/* Event Info Page */
+
+.event-page-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--white);
+}
+
+.event-image-div {
+    height: 300px;
+}
+
+.event-image-div img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    background-color: var(--white);
+}
+
+.event-page-text {
+    padding: 20px 200px 50px 200px;
+    color: var(--dark-blue);
+}
+
+.event-page-text * {
+    margin: 0;
+}
+
+.event-page-text h2 {
+    font-size: 36px;
+}
+
+.created-by,
+.when-where-row,
+.event-page-markers {
+    margin-top: 10px;
+}
+
+.when-where-row,
+.event-page-markers {
+    display: flex;
+    justify-content: center;
+}
+
+.when-where-row {
+    flex-wrap: wrap;
+    font-size: 20px;
+    gap: 20px;
+}
+
+.event-page-text p i {
+    margin-right: 5px;
+}
+
+.event-page-markers,
+.event-description {
+    font-size: 16px;
+}
+
+.event-page-markers {
+    gap: 10px;
+}
+
+.event-description {
+    margin-top: 20px;
+}
+
+
 
 
 /* JavaScript Classes */
