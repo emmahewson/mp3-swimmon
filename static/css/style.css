@@ -1,5 +1,5 @@
 /* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Lato:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Lato:wght@300;400;500;600;700;800;900&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -512,13 +512,15 @@ textarea:focus,
 }
 
 input.valid[type=text]:not(.browser-default),
-input.valid[type=password]:not(.browser-default) {
+input.valid[type=password]:not(.browser-default),
+textarea.valid {
     border-bottom: none;
     border: 2px solid var(--button-edit-hov);
 }
 
 input.invalid[type=text]:not(.browser-default),
-input.invalid[type=password]:not(.browser-default) {
+input.invalid[type=password]:not(.browser-default),
+textarea.invalid {
     border-bottom: none;
     border: 2px solid var(--high-pink);
 }
@@ -541,12 +543,40 @@ textarea::placeholder {
     font-weight: 400;
 }
 
+.datepicker-date-display,
+.timepicker-digital-display {
+    background-color: var(--mid-blue);
+}
+
+.datepicker-date-display,
+.datepicker-day-button,
+.confirmation-btns button,
+.timepicker-digital-display {
+    font-family: "Lato", sans-serif;
+}
+
+.datepicker-cancel,
+.datepicker-done,
+.timepicker-close {
+    color: var(--dark-blue);
+    font-weight: 600;
+}
+
 .form-button-row {
     margin-top: 50px;
 }
 
 .below-form-text-div {
     margin-top: 50px;
+}
+
+.timepicker-canvas line {
+    stroke: var(--high-pink);
+}
+
+.timepicker-canvas-bg,
+.timepicker-canvas-bearing {
+    fill: var(--high-pink);
 }
 
 

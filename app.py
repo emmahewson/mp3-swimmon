@@ -19,11 +19,13 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# HOME PAGE
 @app.route("/")
 def home():
     return render_template("index.html")
 
 
+# JOIN (REGISTER) PAGE
 @app.route("/join", methods=["GET", "POST"])
 def join():
     if request.method == "POST":
@@ -58,6 +60,7 @@ def join():
     return render_template("join.html")
 
 
+# SIGN IN PAGE
 @app.route("/sign-in", methods=["GET", "POST"])
 def sign_in():
     if request.method == "POST":
@@ -86,6 +89,7 @@ def sign_in():
     return render_template("sign-in.html")
 
 
+# SIGN OUT
 @app.route("/sign-out")
 def sign_out():
     # remove user from session cookies
@@ -94,6 +98,7 @@ def sign_out():
     return redirect(url_for("sign_in"))
 
 
+# USER PROFILE
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # gets the user's username from the database
@@ -117,6 +122,7 @@ def profile(username):
     return redirect(url_for("signin"))
 
 
+# EVENTS PAGE (ALL)
 @app.route("/events")
 def events():
 
@@ -136,6 +142,7 @@ def events():
         challenges=challenges)
 
 
+# ADD EVENT FORM PAGE
 @app.route("/add-event", methods=["GET", "POST"])
 def add_event():
     if request.method == "POST":
@@ -179,6 +186,7 @@ def add_event():
         challenges=challenges)
 
 
+# MANAGER LOCATIONS PAGE
 @app.route("/manage-locations")
 def manage_locations():
     return render_template("manage-locations.html")
