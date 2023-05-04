@@ -44,7 +44,7 @@
                         <!-- Add CRUD control buttons if user event -->
                         {% if session.user|lower == event.created_by|lower or session.user|lower == "admin"|lower %}
                             <div class="card-edit-div swim-bg-dblue">
-                                <a href="#" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
+                                <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
                                 <a href="#" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
                             </div>
                         {% endif %}

@@ -150,7 +150,7 @@ def event(event_id):
     return render_template("event.html", event=event, locations=locations)
 
 
-# ADD EVENT FORM PAGE
+# ADD EVENT PAGE
 @app.route("/add-event", methods=["GET", "POST"])
 def add_event():
     if request.method == "POST":
@@ -194,7 +194,59 @@ def add_event():
         challenges=challenges)
 
 
-# MANAGER LOCATIONS PAGE
+# EDIT EVENT PAGE
+@app.route("/edit-event/<event_id>", methods=["GET", "POST"])
+def edit_event(event_id):
+    if request.method == "POST":
+
+        # sets the event location as the location's id
+        event_location = request.form.get("event_location")
+        location_id = ObjectId(mongo.db.locations.find_one(
+            {'name': event_location.lower()})["_id"])
+
+        # converts the date & time to UTC format (for sorting)
+        dtstring = request.form.get(
+            "event_date") + request.form.get("event_time")
+        format_data = "%d/%m/%Y%I:%M %p"
+        event_date = datetime.strptime(dtstring, format_data)
+
+        # defines new dictionary with fields to update
+        submit = {
+            "name": request.form.get("event_name"),
+            "location_id": location_id,
+            "description": request.form.get("event_description"),
+            "who": request.form.get("event_who"),
+            "challenge": request.form.get("event_challenge"),
+            "date": event_date,
+        }
+
+        # updates event in database & redirects to events.html
+        mongo.db.events.update_one(
+            {"_id": ObjectId(event_id)}, {"$set": submit})
+        flash("Event Successfully Updated")
+        return redirect(url_for("events"))
+
+    # gets collections for use in form dropdowns
+    event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
+    locations = list(mongo.db.locations.find())
+    whos = list(mongo.db.who_for.find())
+    challenges = list(mongo.db.challenge.find())
+    return render_template(
+        "edit-event.html",
+        event=event,
+        locations=locations,
+        whos=whos,
+        challenges=challenges)
+
+
+@app.route("/delete-event/<event_id>")
+def delete_event(event_id):
+    mongo.db.events.delete_one({"_id": ObjectId(event_id)})
+    flash("Event successfully deleted")
+    return redirect(url_for("events"))
+
+
+# MANAGE LOCATIONS PAGE
 @app.route("/manage-locations")
 def manage_locations():
     return render_template("manage-locations.html")

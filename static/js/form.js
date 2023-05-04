@@ -27,6 +27,7 @@ $(document).ready(function(){
         autoClose: true,
         yearRange: [2023, 2026],
         minDate: currentDate,
+        setDefaultDate: true
     });
 
     // form timepicker

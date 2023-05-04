@@ -4,27 +4,31 @@
 <div class="form-page-wrapper">
     <!-- Intro Section -->
     <div class="intro-div swim-bg-hpink swim-txt-white div-shadow">
-        <h1 class="font-title weight-600">ADD EVENT</h1>
+        <h1 class="font-title weight-600">EDIT EVENT</h1>
         <div class="font-body weight-500 intro-div-p-group">
-            <p>Fill in the form to share your wild swimming event or meetup with other members.</p>
+            <p>Make changes to your event using the form below.</p>
         </div>
     </div>
 
     <div class="form-wrapper">
-        <form class="swim-form div-shadow" method="POST" action="{{ url_for('add_event') }}">
+        <form class="swim-form div-shadow" method="POST" action="{{ url_for('edit_event', event_id=event._id) }}">
             <!-- event name -->
             <div class="input-field">
                 <label for="event_name" class="font-title weight-600">EVENT NAME <em class="weight-300"> 5-50 characters</em></label>
-                <input id="event_name" name="event_name" type="text" minlength="5" maxlength="50" class="validate" placeholder="e.g. Ladies Sunrise Swim" required/>
+                <input id="event_name" name="event_name" type="text" minlength="5" maxlength="50" class="validate" placeholder="e.g. Ladies Sunrise Swim" value="{{ event.name }}" required/>
             </div>
             <!-- event location -->
             <div class="input-field">
                 <label for="event-location" class="font-title weight-600">LOCATION</i></label>
                 <div class="input-info-div-wrapper">
                     <select id="event_location" name="event_location" class="" required>
-                        <option value="" disabled selected>CHOOSE A LOCATION</option>
+                        <option value="" disabled>CHOOSE A LOCATION</option>
                         {% for location in locations %}
-                            <option value="{{location.name|upper}}">{{location.name|upper}}</option>
+                            {% if location._id == event.location_id %}
+                                <option value="{{location.name|upper}}" selected>{{location.name|upper}}</option>
+                            {% else %}
+                                <option value="{{location.name|upper}}">{{location.name|upper}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <div class="question-circle swim-txt-white swim-bg-mblue swim-modal-trigger" href="#location-modal">?</div>
@@ -33,26 +37,30 @@
             <!-- event description -->
             <div class="input-field">
                 <label for="event_description" class="font-title weight-600">EVENT DESCRIPTION</label>
-                <textarea id="event_description" name="event_description" class="validate" minlength="5" maxlength="300" placeholder="e.g. What to expect, where to meet..." required></textarea>
+                <textarea id="event_description" name="event_description" class="validate" minlength="5" maxlength="300" placeholder="e.g. What to expect, where to meet..." required>{{ event.description }}</textarea>
             </div>
             <!-- Date -->
             <div class="input-field">
                 <label for="event_date" class="font-title weight-600">DATE</label>
-                <input id="event_date" name="event_date" type="text" class="datepicker validate" required>
+                <input id="event_date" name="event_date" type="text" class="datepicker validate" value="{{ event.date.strftime('%d/%m/%Y') }}" required>
             </div>
             <!-- Time -->
             <div class="input-field">
                 <label for="event_time" class="font-title weight-600">TIME</label>
-                <input id="event_time" name="event_time" type="text" class="timepicker validate" required>
+                <input id="event_time" name="event_time" type="text" class="timepicker validate" value="{{ event.date.strftime('%I:%M %p') }}" required>
             </div>
             <!-- Who For? -->
             <div class="input-field">
                 <label for="event-who" class="font-title weight-600">WHO FOR?</i></label>
                 <div class="input-info-div-wrapper">
                     <select id="event_who" name="event_who" class="" required>
-                        <option value="" disabled selected>CHOOSE FROM LIST</option>
+                        <option value="" disabled>CHOOSE FROM LIST</option>
                         {% for who in whos %}
-                            <option value="{{who.name|upper}}">{{who.name|upper}}</option>
+                            {% if who.name|upper == event.who|upper %}
+                                <option value="{{who.name|upper}}" selected>{{who.name|upper}}</option>
+                            {% else %}
+                                <option value="{{who.name|upper}}">{{who.name|upper}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <div class="question-circle swim-txt-white swim-bg-mblue swim-modal-trigger" href="#who-modal">?</div>
@@ -65,7 +73,11 @@
                     <select id="event_challenge" name="event_challenge" class="" required>
                         <option value="" disabled selected>CHOOSE FROM LIST</option>
                         {% for challenge in challenges %}
-                            <option value="{{challenge.name|upper}}">{{challenge.name|upper}}</option>
+                            {% if challenge.name|upper == event.challenge|upper %}
+                                <option value="{{challenge.name|upper}}" selected>{{challenge.name|upper}}</option>
+                            {% else %}
+                                <option value="{{challenge.name|upper}}">{{challenge.name|upper}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <div class="question-circle swim-txt-white swim-bg-mblue swim-modal-trigger" href="#challenge-modal">?</div>
@@ -73,7 +85,7 @@
             </div>
             <!-- submit button -->
             <div class="form-button-row">
-                <button type="submit" class="swim-btn-large btn-hpink font-title weight-600 swim-btn-shadow">ADD EVENT</button>
+                <button type="submit" class="swim-btn-large btn-hpink font-title weight-600 swim-btn-shadow">UPDATE EVENT</button>
             </div>
         </form>
     </div>

@@ -674,6 +674,46 @@ textarea::placeholder {
     text-decoration: underline;
 }
 
+/* modal styling for confirm modals - Materialize overrides*/
+
+.modal * {
+    margin: 0;
+}
+
+.modal {
+    margin-top: 5%;
+}
+
+.modal-contents {
+    padding: 20px;
+}
+
+.modal-contents h2 {
+    font-size: 24px;
+}
+
+.modal-contents p {
+    font-size: 16px;
+}
+
+.modal-contents p,
+.modal-contents h2 {
+    margin-bottom: 10px;
+}
+
+.modal .modal-footer {
+    background-color: var(--light-grey);
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.modal .modal-footer> :first-child {
+    margin-right: 30px;
+}
+
+
+
 
 
 /* events.html */
