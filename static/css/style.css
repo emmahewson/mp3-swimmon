@@ -909,7 +909,7 @@ textarea::placeholder {
 .when-where-row {
     flex-wrap: wrap;
     font-size: 20px;
-    gap: 20px;
+    column-gap: 20px;
 }
 
 .event-page-text p i {
@@ -939,6 +939,8 @@ textarea::placeholder {
 }
 
 
+/* Media Queries */
+
 @media only screen and (max-width: 992px) {
 
     .nav-wrapper {
@@ -960,6 +962,10 @@ textarea::placeholder {
         margin-bottom: 20px;
     }
 
+    .event-page-text {
+        padding: 20px 50px 50px 50px;
+    }
+
     .swim-modal-contents {
         width: 70%;
     }
@@ -969,6 +975,7 @@ textarea::placeholder {
 
 @media only screen and (max-width: 600px) {
 
+    /* General / All Pages */
     main, footer {
         top: 0;
     }
@@ -1011,6 +1018,12 @@ textarea::placeholder {
         padding: 30px 20px
     }
 
+    .intro-div h1 {
+        font-size: 32px;
+    }
+
+
+    /* Events Page */
     .events-div {
         padding: 30px 15px
     }
@@ -1019,10 +1032,32 @@ textarea::placeholder {
         padding-right: 0px;
     }
 
-    .intro-div h1 {
-        font-size: 32px;
+
+    /* Event Info Page */
+    .event-page-text h2 {
+        font-size: 24px;
     }
 
+    .event-page-text {
+        padding: 20px 20px 20px 30px;
+    }
+
+    .event-image-div,
+    .event-image-div img {
+        height: 150px;
+    }
+
+    .created-by,
+    .when-where-row {
+        margin-top: 5px;
+    }
+
+    .event-description {
+        margin-top: 10px;
+    }
+
+
+    /* Forms */
     .form-page-wrapper {
         padding-bottom: 60px;
     }
@@ -1040,6 +1075,8 @@ textarea::placeholder {
         margin-top: 30px;
     }
 
+
+    /* Modals / Info Boxes */
     .swim-modal-contents {
         width: 80%;
     }
