@@ -50,7 +50,7 @@
                     {% for location in locations %}
                         {% if event.location_id == location._id %}
                             <div class="event-card-clickable swim-bg-white swim-txt-dblue">
-                                <a href="#"><span class="card-link"></span></a>
+                                <a href="{{ url_for('event', event_id=event._id) }}"><span class="card-link"></span></a>
                                 <div class="event-image">
                                     <img src="{{ location.image_url }}" alt="Image of {{ location.name }}">
                                 </div>

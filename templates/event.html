@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for location in locations %}
+        {% if event.location_id == location._id %}
+            <img src="{{ location.image_url }}" alt="Image of {{ location.name }}">
+            <h2 class="font-title center-align weight-600 uppercase">{{ event.name }}</h2>
+            <em><p class="font-body center-align weight-200 created-by">Created by: {{ event.created_by }}</p></em>
+            <p class="font-body weight-700 uppercase"><i class="fa-solid fa-location-dot"></i></i>{{ location.name }}</p>
+            <p class="font-body weight-500 uppercase"><i class="fa-regular fa-calendar"></i>{{ event.date.strftime('%d/%m/%y') }}</p>
+            <p class="font-body weight-500 uppercase"><i class="fa-regular fa-clock"></i>{{ event.date.strftime('%H:%M') }}</p>
+            <p class="font-body weight-500 swim-txt-white event-marker swim-bg-{{event.who|lower}}">{{ event.who }}</p>
+            <p class="font-body weight-500 swim-txt-black event-marker swim-bg-{{event.challenge|lower}}">{{ event.challenge }}</p>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

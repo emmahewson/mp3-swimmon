@@ -142,6 +142,14 @@ def events():
         challenges=challenges)
 
 
+# EVENT INFO PAGE
+@app.route("/event/<event_id>")
+def event(event_id):
+    event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
+    locations = list(mongo.db.locations.find())
+    return render_template("event.html", event=event, locations=locations)
+
+
 # ADD EVENT FORM PAGE
 @app.route("/add-event", methods=["GET", "POST"])
 def add_event():

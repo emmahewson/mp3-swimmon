@@ -272,7 +272,7 @@ MongoDB Object format examples:
 &nbsp;&nbsp;&nbsp;&nbsp;_id : unique-value,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;name : "Sunday Swim",<br>
 &nbsp;&nbsp;&nbsp;&nbsp;description : "A relaxed dip with friendly people to get our Sundays off to a good start.",<br>
-&nbsp;&nbsp;&nbsp;&nbsp;date-time : "2023-06-13T10:00:00.000+00:00",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;date : "2023-06-13T10:00:00.000+00:00",<br>
 &nbsp;&nbsp;&nbsp;&nbsp;location_id : (location-id),<br>
 &nbsp;&nbsp;&nbsp;&nbsp;challenge : "fun",<br>
 &nbsp;&nbsp;&nbsp;&nbsp;who : "All-Welcome",<br>
