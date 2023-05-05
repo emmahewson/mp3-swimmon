@@ -39,20 +39,6 @@ $(document).ready(function(){
     // scroll popover info boxes in to view on small screen devices
     // avoids losing the hover effect on larger screens as cursor scrolls off trigger
     if (window.innerWidth <= 600) {
-        // const popTriggers = Array.from(document.getElementsByClassName("popover-trigger"));
-
-        // popTriggers.forEach(trigger => {
-        //     trigger.addEventListener('click', () => {
-        //         trigger.nextElementSibling.scrollIntoView({block: 'center'});
-        //     })
-        // });
-
-        // function addClickListener(item) {
-        //     item.addEventListener('click', function() {
-        //         item.nextElementSibling.scrollIntoView({block: 'center'});
-        //     });
-        // }
-
         let locationTrigger = document.getElementById('pop-trigger-location');
         locationTrigger.addEventListener("click", function() {
             document.getElementById('pop-location').scrollIntoView({block: 'center'});
