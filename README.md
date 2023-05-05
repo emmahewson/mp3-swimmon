@@ -434,6 +434,25 @@ The 'reset all' button at the bottom of the events searchbar (within the dropdow
 </details>
 
 
+#### **2: Popover (hover info box) on mobile not scrolling**
+
+When creating the info boxes on the form I that would appear on hover I set up a `scrollIntoView()` function on clicking the '?' circle for smaller screens to make sure that the popover was visible. This worked fine on both the development and deployed site (including in Dev Tool's mobile mockups) but during testing on an iPhone SE 2020 I found that on one of the elements the scroll didn't work on any of the installed browsers on the first click, but did on the 2nd. However it worked perfectly on other identical popover trigger elements. 
+
+I troubleshooted this issue for a long time, removing the screen-size if statement, trying to refactor the code, adding `setTimeout()` to allow the box to appear first and attempting to scroll using an `<a>` with an href that pointed to the correct ID but all of these caused further issues or didn't solve the problem. I was unable to find a solution to this and the bug remains.
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+*Working on Dev Tools' Mobile Mockup*
+
+<img src="">
+*Before & After*
+
+
+</details>
+
+
 ****
 ## Deployment
 
