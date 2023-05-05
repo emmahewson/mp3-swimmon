@@ -628,7 +628,7 @@ textarea::placeholder {
     margin-left: 10%;
     margin-right: 10%;
     transform: translate(0, 10px);
-    box-shadow: 0 2px 30px 5px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     border: 3px solid var(--mid-blue);
     border-radius: 4px;
     overflow: auto;
@@ -653,7 +653,8 @@ textarea::placeholder {
     text-decoration: underline;
 }
 
-.popover-wrapper:hover .popover-content {
+.popover-wrapper:hover .popover-content,
+.popover-wrapper:focus .popover-content {
     z-index: 10;
     opacity: 1;
     visibility: visible;

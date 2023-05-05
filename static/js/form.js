@@ -34,6 +34,26 @@ $(document).ready(function(){
     $('.timepicker').timepicker({
         autoClose: true
     });
+    
 
+    if (window.innerWidth <= 600) {
+        let locationTrigger = document.getElementById('pop-trigger-location');
+        locationTrigger.addEventListener("click", function() {
+            let pop = document.getElementById('pop-location');
+            setTimeout(pop.scrollIntoView({block: 'center'}), 600);
+        });
+
+        let whoTrigger = document.getElementById('pop-trigger-who');
+        whoTrigger.addEventListener("click", function() {
+            let pop = document.getElementById('pop-who');
+            setTimeout(pop.scrollIntoView({block: 'center'}), 600);
+        });
+
+        let challengeTrigger = document.getElementById('pop-trigger-challenge');
+        challengeTrigger.addEventListener("click", function() {
+            let pop = document.getElementById('pop-challenge');
+            setTimeout(pop.scrollIntoView({block: 'center'}), 600);
+        });
+    }
 
   });
