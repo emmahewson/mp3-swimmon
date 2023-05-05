@@ -38,14 +38,8 @@ $(document).ready(function(){
 
     // scroll popover info boxes in to view on small screen devices
     // avoids losing the hover effect on larger screens as cursor scrolls off trigger
-    // if (window.innerWidth <= 600) {
-        const popTriggers = Array.from(document.getElementsByClassName("popover-trigger"));
-
-        for (let i = 0; i < popTriggers.length; i++) {
-            popTriggers[i].addEventListener('click', () => {
-                popTriggers[i].nextElementSibling.scrollIntoView(false);
-            })
-        }
+    if (window.innerWidth <= 600) {
+        // const popTriggers = Array.from(document.getElementsByClassName("popover-trigger"));
 
         // popTriggers.forEach(trigger => {
         //     trigger.addEventListener('click', () => {
@@ -59,20 +53,20 @@ $(document).ready(function(){
         //     });
         // }
 
-        // let locationTrigger = document.getElementById('pop-trigger-location');
-        // locationTrigger.addEventListener("click", function() {
-        //     document.getElementById('pop-location').scrollIntoView({block: 'center'});
-        // });
+        let locationTrigger = document.getElementById('pop-trigger-location');
+        locationTrigger.addEventListener("click", function() {
+            document.getElementById('pop-location').scrollIntoView({block: 'center'});
+        });
 
-        // let whoTrigger = document.getElementById('pop-trigger-who');
-        // whoTrigger.addEventListener("click", function() {
-        //     document.getElementById('pop-who').scrollIntoView({block: 'center'});
-        // });
+        let whoTrigger = document.getElementById('pop-trigger-who');
+        whoTrigger.addEventListener("click", function() {
+            document.getElementById('pop-who').scrollIntoView({block: 'center'});
+        });
 
-        // let challengeTrigger = document.getElementById('pop-trigger-challenge');
-        // challengeTrigger.addEventListener("click", function() {
-        //     document.getElementById('pop-challenge').scrollIntoView({block: 'center'});  
-        // });
-    // }
+        let challengeTrigger = document.getElementById('pop-trigger-challenge');
+        challengeTrigger.addEventListener("click", function() {
+            document.getElementById('pop-challenge').scrollIntoView({block: 'center'});  
+        });
+    }
 
   });
