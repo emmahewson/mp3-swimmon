@@ -43,7 +43,7 @@ $(document).ready(function(){
 
         for (let i = 0; i < popTriggers.length; i++) {
             popTriggers[i].addEventListener('click', () => {
-                popTriggers[i].nextElementSibling.scrollIntoView({block: 'center'});
+                popTriggers[i].nextElementSibling.scrollIntoView(false);
             })
         }
 
