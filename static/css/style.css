@@ -591,7 +591,7 @@ textarea::placeholder {
     width: 250px;
 }
 
-.question-circle {
+.popover-trigger {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -606,108 +606,60 @@ textarea::placeholder {
     -o-transition: all 0.25s ease-in-out;
 }
 
-.question-circle:hover {
+.popover-trigger:hover {
     background-color: var(--high-pink);
     cursor: pointer;
 }
 
-.swim-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+/* Popover styling - Question Mark Info Boxes */
+/* Adapted from https://codepen.io/chocochip/pen/zYxMgRG */
+
+.popover-wrapper {
+    padding: 7px 0;
 }
 
-.swim-modal-contents {
-    margin: 20% auto;
+.popover-content {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    transform: translate(0, 10px);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     border: 3px solid var(--mid-blue);
-    width: 50%;
     border-radius: 4px;
     overflow: auto;
+  }
+  
+.popover-content * {
+      margin: 0;
+}
+  
+.modal-header,
+.popover-content p  {
+    padding: 10px;
 }
 
-.swim-modal-contents * {
-    margin: 0;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-}
-
-.swim-modal-contents h2 {
+.modal-header h2 {
     font-size: 20px;
 }
 
-.close {
-    font-size: 30px;
-    line-height: 55%;
-    transition: all 0.25s ease-in-out;
-    -moz-transition: all 0.25s ease-in-out;
-    -webkit-transition: all 0.25s ease-in-out;
-    -o-transition: all 0.25s ease-in-out;
-}
-
-.close:hover,
-.close:focus {
-  color: var(--dark-blue);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.swim-modal-contents p {
-    padding: 10px 20px 20px 20px;
-}
-
-.swim-modal-contents p a {
+.popover-content p a {
     font-weight: 700;
     color: var(--dark-blue);
     text-decoration: underline;
 }
 
-/* modal styling for confirm modals - Materialize overrides*/
-
-.modal * {
-    margin: 0;
+.popover-wrapper:hover .popover-content {
+    z-index: 10;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -20px);
+    transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
 }
-
-.modal {
-    margin-top: 5%;
-}
-
-.modal-contents {
-    padding: 20px;
-}
-
-.modal-contents h2 {
-    font-size: 24px;
-}
-
-.modal-contents p {
-    font-size: 16px;
-}
-
-.modal-contents p,
-.modal-contents h2 {
-    margin-bottom: 10px;
-}
-
-.modal .modal-footer {
-    background-color: var(--light-grey);
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-}
-
-.modal .modal-footer> :first-child {
-    margin-right: 30px;
-}
-
 
 
 
@@ -1018,6 +970,45 @@ textarea::placeholder {
 }
 
 
+/* Modal - delete confirm */
+
+.modal * {
+    margin: 0;
+}
+
+.modal {
+    margin-top: 5%;
+}
+
+.modal-contents {
+    padding: 20px;
+}
+
+.modal-contents h2 {
+    font-size: 24px;
+}
+
+.modal-contents p {
+    font-size: 16px;
+}
+
+.modal-contents p,
+.modal-contents h2 {
+    margin-bottom: 10px;
+}
+
+.modal .modal-footer {
+    background-color: var(--light-grey);
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.modal .modal-footer> :first-child {
+    margin-right: 30px;
+}
+
+
 
 /* JavaScript Classes */
 
@@ -1185,15 +1176,14 @@ textarea::placeholder {
 
 
     /* Modals / Info Boxes */
-    .swim-modal-contents {
-        width: 80%;
-    }
+
+    .popover-content {
+        width: 94%;
+        margin: 0 3% 0 3%;
+      }
 
     .input-info-div-wrapper .select-wrapper .select-dropdown {
         width: 160px;
     }
 
-    .swim-modal-contents {
-        max-height: 500px;
-    }
 }
