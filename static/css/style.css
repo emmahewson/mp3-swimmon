@@ -591,7 +591,7 @@ textarea::placeholder {
     width: 250px;
 }
 
-.popover-trigger {
+.question-circle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -606,16 +606,13 @@ textarea::placeholder {
     -o-transition: all 0.25s ease-in-out;
 }
 
-.popover-trigger:hover {
-    background-color: var(--high-pink);
-    cursor: pointer;
-}
 
 /* Popover styling - Question Mark Info Boxes */
 /* Adapted from https://codepen.io/chocochip/pen/zYxMgRG */
 
 .popover-wrapper {
     padding: 7px 0;
+    cursor: pointer;
 }
 
 .popover-content {
@@ -653,12 +650,18 @@ textarea::placeholder {
     text-decoration: underline;
 }
 
-.popover-wrapper:hover .popover-content {
+.popover-wrapper:hover .popover-content,
+.popover-wrapper:focus .popover-content {
     z-index: 10;
     opacity: 1;
     visibility: visible;
     transform: translate(0, -20px);
     transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+
+.popover-wrapper:hover .question-circle {
+    background-color: var(--high-pink);
+    cursor: pointer;
 }
 
 
