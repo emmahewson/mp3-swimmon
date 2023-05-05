@@ -36,23 +36,16 @@ $(document).ready(function(){
     });
     
 
+    // scroll popover info boxes in to view on small screen devices
+    // avoids losing the hover effect on larger screens as cursor scrolls off trigger
     if (window.innerWidth <= 600) {
-        let locationTrigger = document.getElementById('pop-trigger-location');
-        locationTrigger.addEventListener("click", function() {
-            let pop = document.getElementById('pop-location');
-            setTimeout(pop.scrollIntoView({block: 'center'}), 600);
-        });
+        
+        const popTriggers = Array.from(document.getElementsByClassName("popover-trigger"));
 
-        let whoTrigger = document.getElementById('pop-trigger-who');
-        whoTrigger.addEventListener("click", function() {
-            let pop = document.getElementById('pop-who');
-            setTimeout(pop.scrollIntoView({block: 'center'}), 600);
-        });
-
-        let challengeTrigger = document.getElementById('pop-trigger-challenge');
-        challengeTrigger.addEventListener("click", function() {
-            let pop = document.getElementById('pop-challenge');
-            setTimeout(pop.scrollIntoView({block: 'center'}), 600);
+        popTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                trigger.nextElementSibling.scrollIntoView({block: 'center'});
+            })
         });
     }
 
