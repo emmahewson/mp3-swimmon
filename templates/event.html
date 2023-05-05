@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="event-page-wrapper div-shadow">
+    <div class="event-page-wrapper swim-bg-white div-shadow">
         {% for location in locations %}
             {% if event.location_id == location._id %}
                 <div class="event-image-div">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
 
-                <div class="event-page-location row">
+                <div class="event-page-location swim-bg-mblue row">
                     <div class="event-page-location-text swim-txt-white col m12 l6 push-l6">
                         <h3 class="font-title weight-600 uppercase">{{ location.name }}</h3>
                         <p class="font-body weight-400 coordinates">{{ location.lat|truncate(9, False, "") }}, {{ location.long|truncate(9, False, "") }}</p>

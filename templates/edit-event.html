@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="form-page-wrapper">
+<div class="form-page-wrapper swim-bg-lgrey">
     <!-- Intro Section -->
     <div class="intro-div swim-bg-hpink swim-txt-white div-shadow">
         <h1 class="font-title weight-600">EDIT EVENT</h1>
@@ -11,7 +11,7 @@
     </div>
 
     <div class="form-wrapper">
-        <form class="swim-form div-shadow" method="POST" action="{{ url_for('edit_event', event_id=event._id) }}">
+        <form class="swim-form swim-bg-grey div-shadow" method="POST" action="{{ url_for('edit_event', event_id=event._id) }}">
             <!-- event name -->
             <div class="input-field">
                 <label for="event_name" class="font-title weight-600">EVENT NAME <em class="weight-300"> 5-50 characters</em></label>
