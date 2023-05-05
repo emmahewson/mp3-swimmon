@@ -38,7 +38,7 @@ $(document).ready(function(){
 
     // scroll popover info boxes in to view on small screen devices
     // avoids losing the hover effect on larger screens as cursor scrolls off trigger
-    if (window.innerWidth <= 600) {
+    // if (window.innerWidth <= 600) {
         const popTriggers = Array.from(document.getElementsByClassName("popover-trigger"));
 
         for (let i = 0; i < popTriggers.length; i++) {
@@ -73,6 +73,6 @@ $(document).ready(function(){
         // challengeTrigger.addEventListener("click", function() {
         //     document.getElementById('pop-challenge').scrollIntoView({block: 'center'});  
         // });
-    }
+    // }
 
   });
