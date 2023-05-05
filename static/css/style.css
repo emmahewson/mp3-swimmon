@@ -653,8 +653,7 @@ textarea::placeholder {
     text-decoration: underline;
 }
 
-.popover-wrapper:hover .popover-content,
-.popover-wrapper:focus .popover-content {
+.popover-wrapper:hover .popover-content {
     z-index: 10;
     opacity: 1;
     visibility: visible;
