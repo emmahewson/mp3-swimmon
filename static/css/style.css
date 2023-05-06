@@ -16,6 +16,7 @@ html {
     --pale-blue: #E9FBFF;
     --mid-blue: #136985;
     --dark-blue: #05414e;
+    --dark-blue-hov: #022f39;
     --high-blue: #45E4EE;
     --high-blue-hov: #97f8ff;
     --form-blue: #b6e3e9;
@@ -491,7 +492,6 @@ footer h4 {
 #home-map {
     position: relative;
     height: 700px;
-    width: 100%;
     background-image: url(../images/map-placeholder-2.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -499,7 +499,78 @@ footer h4 {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    /* remove this later when setting up map */
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
+
+.location-popup * {
+    margin: 0;
+}
+
+.location-popup {
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+    /* opacity: 1;
+    visibility: auto; */
+    /* position: absolute;
+    left: 10px;
+    top: 10px; */
+    /* transform: translate(0, 10px); */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    /* overflow: auto; */
+}
+
+.location-popup-header,
+.location-popup-text {
+    padding: 15px;
+}
+
+.location-popup-header h2 {
+    font-size: 24px;
+    text-decoration: underline;
+}
+
+.location-popup-image-wrapper {
+    height: 200px;
+    overflow: hidden;
+}
+
+.location-popup-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: var(--black);
+}
+
+.location-popup,
+.location-popup-header,
+.location-popup-image {
+    transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+}
+
+.location-popup:hover {
+    background-color: #dae0e2;
+}
+
+.location-popup:hover .location-popup-header {
+    background-color: var(--dark-blue-hov);
+}
+
+.location-popup:hover .location-popup-image {
+    -ms-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
 
 /* Forms */
 
@@ -822,14 +893,6 @@ textarea::placeholder {
 .event-card-clickable {
     position: relative;
     padding-bottom: 10px;
-    transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-}
-
-.event-card-clickable:hover {
-    background-color: #dae0e2;
 }
 
 .card-link {
@@ -843,6 +906,7 @@ textarea::placeholder {
 
 .event-image {
     height: 130px;
+    overflow: hidden;
 }
 
 .event-card img {
@@ -907,6 +971,32 @@ textarea::placeholder {
 .card-edit-div> :first-child {
     margin-right: 40px;
 }
+
+
+/* Events Cards Hover Effect */
+
+.event-card-clickable,
+.event-image img {
+    transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+}
+
+.event-card-clickable:hover .event-image img {
+    -ms-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.event-card-clickable:hover {
+    background-color: #dae0e2;
+}
+
+
+/* Events - Back to Top Button */
 
 .btt-btn-div {
     display: flex;
@@ -1217,6 +1307,19 @@ textarea::placeholder {
 
     #home-map {
         height: 400px;
+    }
+
+    .location-popup-header,
+    .location-popup-text {
+        padding: 10px;
+    }
+
+    .location-popup-header h2 {
+        font-size: 20px;
+    }
+
+    .location-popup-image-wrapper {
+        height: 150px;
     }
 
     .intro-div,
