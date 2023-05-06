@@ -36,23 +36,37 @@ $(document).ready(function(){
     });
     
 
+    
+
     // scroll popover info boxes in to view on small screen devices
     // avoids losing the hover effect on larger screens as cursor scrolls off trigger
     if (window.innerWidth <= 600) {
-        let locationTrigger = document.getElementById('pop-trigger-location');
-        locationTrigger.addEventListener("click", function() {
-            document.getElementById('pop-location').scrollIntoView({block: 'center'});
-        });
 
-        let whoTrigger = document.getElementById('pop-trigger-who');
-        whoTrigger.addEventListener("click", function() {
-            document.getElementById('pop-who').scrollIntoView({block: 'center'});
-        });
+        const popTriggers = Array.from(document.querySelectorAll(".popover-wrapper"));
 
-        let challengeTrigger = document.getElementById('pop-trigger-challenge');
-        challengeTrigger.addEventListener("click", function() {
-            document.getElementById('pop-challenge').scrollIntoView({block: 'center'});  
-        });
+        for (let i = 0; i < popTriggers.length; i++) {
+            popTriggers[i].addEventListener('click', () => {
+                let popUp = popTriggers[i].querySelector('.popover-content');
+                popUp.scrollIntoView({block: 'center'});
+                console.log("clicked!");
+            })
+        }
+
+
+        // let locationTrigger = document.getElementById('pop-trigger-location');
+        // locationTrigger.addEventListener("click", function() {
+        //     document.getElementById('pop-location').scrollIntoView({block: 'center'});
+        // });
+
+        // let whoTrigger = document.getElementById('pop-trigger-who');
+        // whoTrigger.addEventListener("click", function() {
+        //     document.getElementById('pop-who').scrollIntoView({block: 'center'});
+        // });
+
+        // let challengeTrigger = document.getElementById('pop-trigger-challenge');
+        // challengeTrigger.addEventListener("click", function() {
+        //     document.getElementById('pop-challenge').scrollIntoView({block: 'center'});  
+        // });
     }
 
   });
