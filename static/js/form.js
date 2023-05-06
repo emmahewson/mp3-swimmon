@@ -35,38 +35,15 @@ $(document).ready(function(){
         autoClose: true
     });
     
-
-    
-
-    // scroll popover info boxes in to view on small screen devices
-    // avoids losing the hover effect on larger screens as cursor scrolls off trigger
+    // scroll to popover info boxes on small screen devices
+    // limited to small screens as on large screens the scroll moves hover trigger away from the cursor & the box disappears
     if (window.innerWidth <= 600) {
-
         const popTriggers = Array.from(document.querySelectorAll(".popover-wrapper"));
-
         for (let i = 0; i < popTriggers.length; i++) {
             popTriggers[i].addEventListener('click', () => {
                 let popUp = popTriggers[i].querySelector('.popover-content');
                 popUp.scrollIntoView({block: 'center'});
-                console.log("clicked!");
             })
         }
-
-
-        // let locationTrigger = document.getElementById('pop-trigger-location');
-        // locationTrigger.addEventListener("click", function() {
-        //     document.getElementById('pop-location').scrollIntoView({block: 'center'});
-        // });
-
-        // let whoTrigger = document.getElementById('pop-trigger-who');
-        // whoTrigger.addEventListener("click", function() {
-        //     document.getElementById('pop-who').scrollIntoView({block: 'center'});
-        // });
-
-        // let challengeTrigger = document.getElementById('pop-trigger-challenge');
-        // challengeTrigger.addEventListener("click", function() {
-        //     document.getElementById('pop-challenge').scrollIntoView({block: 'center'});  
-        // });
     }
-
   });
