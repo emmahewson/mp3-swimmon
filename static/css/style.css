@@ -158,6 +158,7 @@ p {
 }
 
 
+
 /* Whole Page Layout */
 body, nav {
     max-width: 1750px;
@@ -321,7 +322,6 @@ footer h4 {
 }
 
 
-/* All Pages - Repeating Elements */
 /* Buttons */
 .swim-btn-large,
 .swim-btn-small,
@@ -419,6 +419,7 @@ footer h4 {
 .intro-div {
     text-align: center;
     padding: 50px;
+    padding: 50px 200px;
 }
 
 .intro-div p,
@@ -435,6 +436,70 @@ footer h4 {
     margin-top: 10px;
 }
 
+
+/* Home Page */
+
+#home-hero-div {
+    position: relative;
+    height: 600px;
+    background-image: url(../images/home-hero-lg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+#home-hero-text-div {
+    position: absolute;
+    bottom: 15%;
+    opacity: 0.9;
+    padding: 30px 0;
+}
+
+#home-hero-text-div * {
+    margin: 0;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+#home-hero-text-div h1 {
+    font-size: 48px;
+    padding: 0 20px 15px 20px;
+}
+
+.home-text-div h1 {
+    margin-bottom: 20px;
+}
+
+.home-text-div p {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.home-text-div p:first-of-type,
+.home-text-div .swim-btn-large {
+    margin-bottom: 30px;
+}
+
+#home-map-div {
+    padding-bottom: 100px;
+}
+
+#home-map {
+    position: relative;
+    height: 700px;
+    width: 100%;
+    background-image: url(../images/map-placeholder-2.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
 
 /* Forms */
 
@@ -665,7 +730,7 @@ textarea::placeholder {
 }
 
 
-/* events.html */
+/* Events */
 /* Events Search Bar */
 
 .search-wrapper {
@@ -1041,6 +1106,30 @@ textarea::placeholder {
         text-align: center;
         margin-bottom: 20px;
     }
+    
+    #home-hero-div {
+        height: 450px;
+        background-image: url(../images/home-hero-md.jpg);
+    }
+
+    #home-hero-text-div {
+        bottom: 10%;
+        padding: 20px 0;
+    }
+    
+    #home-hero-text-div h1 {
+        padding: 0 20px 5px 20px;
+    }
+
+
+    .home-text-div p:first-of-type,
+    .home-text-div .swim-btn-large {
+        margin-bottom: 20px;
+    }
+
+    .intro-div {
+        padding: 50px;
+    }
 
     .event-page-text {
         padding: 20px 50px 50px 50px;
@@ -1100,6 +1189,34 @@ textarea::placeholder {
 
     .page-footer {
         padding: 30px 20px;
+    }
+
+    #home-hero-div {
+        height: 250px;
+        background-image: url(../images/home-hero-sm.jpg);
+    }
+
+    #home-hero-text-div {
+        width: 250px;
+        bottom: 10%;
+        padding: 10px 0;
+    }
+    
+    #home-hero-text-div h1 {
+        font-size: 24px;
+        padding: 0 10px 0 10px;
+    }
+
+    #home-hero-text-div p {
+        font-size: 12px;
+    }
+
+    #home-map-div {
+        padding-bottom: 50px;
+    }
+
+    #home-map {
+        height: 400px;
     }
 
     .intro-div,

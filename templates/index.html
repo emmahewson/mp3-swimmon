@@ -1,6 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
 
- <h1>HOME</h1>
+    <!-- Hero Image Div -->
+    <div id="home-hero-div">
+        <div class="swim-txt-white swim-bg-hpink center-align" id="home-hero-text-div">
+            <h1 class="font-title weight-600">TAKE THE PLUNGE!</h1>
+            <p class="font-body weight-400">WELCOME TO ANGLESEY'S WILD SWIMMING COMMUNITY</p>
+        </div>
+    </div>
+
+    <!-- What is Swimmon Info - content varies based on whether user is logged in -->
+    <div class="intro-div swim-bg-white swim-txt-dblue home-text-div">
+        <h1 class="font-title weight-400">WHAT IS <span class="weight-600">SWIM</span><span class="weight-300">MÔN?</span></h1>
+        <p class="font-body weight-500">We are a community of wild swimmers based on the Isle of Anglesey / Ynys Môn. We recommended locations for safe and fun outdoor swimming with all the information you need for a perfect dip. Our members can host events at any of these locations or search and join another member’s event.</p>
+        <p class="font-body weight-600">Want to get out in the water with like-minded people on Anglesey?</p>
+
+        {% if session.user %}
+            <a href="{{ url_for('events')}}" class="swim-btn-large btn-hpink font-title weight-600 swim-btn-shadow">SEE EVENTS</a>
+            <p class="font-body weight-400"><a href="{{ url_for('add_event')}}" class="link-text">Or add your own event!</a></p>
+        {% else %}
+            <a href="{{ url_for('join')}}" class="swim-btn-large btn-hblue font-title weight-600 swim-btn-shadow">JOIN</a>
+            <p class="font-body weight-400"><a href="{{ url_for('sign_in')}}" class="link-text">Already part of the community? Log in here!</a></p>
+        {% endif %}
+    </div>
+
+    <!-- Locations Div -->
+    <div class="center-align swim-txt-white intro-div swim-bg-mblue home-text-div">
+        <h1 class="font-title weight-500">LOCATIONS</h1>
+        <p class="font-body weight-400">Check out the map for our recommended places to wild swim on our beautiful island. They are our tried and tested by members of our community, which means we can give you lots of information about what it's like to swim there, (and if there's cake and coffee available nearby!)</p>
+        <p class="font-body weight-600">Click on a location to find out more</p>
+    </div>
+
+    <div class="swim-bg-mblue" id="home-map-div">
+        <div id="home-map"></div>
+    </div>
+
 
 {% endblock %}

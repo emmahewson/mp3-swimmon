@@ -341,7 +341,7 @@ def manage_locations():
         if session["user"] == "admin":
 
             return render_template("manage-locations.html")
- 
+
         # if not admin redirects to user profile
         flash("You do not have permission to view that page")
         return redirect(url_for("profile", username=session["user"]))
