@@ -32,7 +32,24 @@
     </div>
 
     <div class="swim-bg-mblue" id="home-map-div">
-        <div id="home-map">
+        <div id="map-home">
+
+        </div>
+
+        <div class="location-popup-div swim-bg-white" id="location-popup" >
+            <a href="#"><span class="card-link"></span></a>
+            <div class="location-popup-header swim-bg-dblue swim-txt-white">
+                <h2 class="font-title weight-300" id="location-popup-name"></h2>
+            </div>
+            <div class="location-popup-image-wrapper">
+                <img src="" alt="" class="location-popup-image" id="location-popup-image">
+            </div>
+            <div class="location-popup-text">
+                <p class="font-body swim-txt-dblue weight-500" id="location-popup-description"></p>
+            </div>
+        </div>
+
+        <!-- <div id="home-map">
 
             {% for location in locations %}
             <div class="location-popup swim-bg-white">
@@ -48,8 +65,17 @@
                 </div>
             </div>
             {% endfor %}
-        </div>
+        </div> -->
     </div>
 
 
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp3bbw0F5d1sjzp5iet_vlxKb0RrevMCA&callback=initMap">
+    </script>
 {% endblock %}

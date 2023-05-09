@@ -22,10 +22,9 @@ mongo = PyMongo(app)
 # HOME PAGE
 @app.route("/")
 def home():
-    # gets collections as lists for search filters
-        locations = mongo.db.locations.find()
-
-        return render_template("index.html", locations=locations)
+    # gets location collection
+    locations = mongo.db.locations.find()
+    return render_template("index.html", locations=locations)
 
 
 # JOIN (REGISTER) PAGE

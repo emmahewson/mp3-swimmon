@@ -510,6 +510,20 @@ footer h4 {
     margin: 0;
 }
 
+.location-popup-div {
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+    /* opacity: 1;
+    visibility: auto; */
+    /* position: absolute;
+    left: 10px;
+    top: 10px; */
+    /* transform: translate(0, 10px); */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    /* overflow: auto; */
+}
+
 .location-popup {
     width: 80%;
     max-width: 400px;
@@ -569,6 +583,15 @@ footer h4 {
     -webkit-transform: scale(1.1);
     -o-transform: scale(1.1);
     transform: scale(1.1);
+}
+
+
+/* Forms */
+
+#map-home {
+    height: 800px;
+    width: 100%;
+    background-color: green;
 }
 
 
@@ -1173,6 +1196,9 @@ textarea::placeholder {
     margin-bottom: 20px;
 }
 
+.hidden {
+    display: none;
+}
 
 /* Media Queries */
 
