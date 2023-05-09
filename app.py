@@ -1,7 +1,7 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for, jsonify)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -25,6 +25,18 @@ def home():
     # gets location collection
     locations = mongo.db.locations.find()
     return render_template("index.html", locations=locations)
+
+
+@app.route('/fetch')
+def fetch():
+    # Fetch function allows GoogleMaps API to operate with data from MongoDB.
+    if request.method == "GET":
+        locations = mongo.db.locations.find()
+        locationList = []
+        for location in locations:
+            location['_id'] = str(location['_id'])
+            locationList.append(location)
+        return jsonify(locationList)
 
 
 # JOIN (REGISTER) PAGE

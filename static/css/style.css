@@ -487,6 +487,7 @@ footer h4 {
 
 #home-map-div {
     padding-bottom: 100px;
+    position: relative;
 }
 
 #home-map {
@@ -510,19 +511,6 @@ footer h4 {
     margin: 0;
 }
 
-.location-popup-div {
-    width: 80%;
-    max-width: 400px;
-    position: relative;
-    /* opacity: 1;
-    visibility: auto; */
-    /* position: absolute;
-    left: 10px;
-    top: 10px; */
-    /* transform: translate(0, 10px); */
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    /* overflow: auto; */
-}
 
 .location-popup {
     width: 80%;
@@ -583,6 +571,38 @@ footer h4 {
     -webkit-transform: scale(1.1);
     -o-transform: scale(1.1);
     transform: scale(1.1);
+}
+
+
+/* Google Map Info Window Styling */
+
+.gm-style-iw * {
+    margin: 0 !important;
+}
+
+.gm-style .gm-style-iw-c {
+    padding: 0;
+    width: 80% !important;
+    max-width: 400px !important;
+    border-radius: 0px !important;
+}
+
+.gm-style .gm-style-iw-d {
+    overflow: auto !important;
+}
+
+.iw-title,
+.iw-content p {
+    padding: 15px;
+}
+
+.iw-title h2 {
+    font-size: 24px;
+    text-decoration: underline;
+}
+
+.iw-content img {
+	width: 100%;
 }
 
 
