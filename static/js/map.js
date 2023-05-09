@@ -1,13 +1,15 @@
 // This is the GoogleMaps API, see: https://developers.google.com/maps/documentation/javascript/overview. 
 
 function initMap() {
+
+    const home = {
+        lat: 53.286409181339444,
+        lng: -4.359635469750749
+    };
      
     var options = { 
         zoom: 10,
-        center: {
-            lat: 53.286409181339444,
-            lng: -4.359635469750749
-        }
+        center: home
     };
 
 
@@ -58,12 +60,11 @@ function initMap() {
             content: infoContent
             });
         
-        
             google.maps.event.addListener(marker, "click", function () {
             infoWindow.setContent( this.info );
             infoWindow.open( map, this );
             });
-            }
+        }
     }
         var map = new google.maps.Map(document.getElementById("map-home"), options);
   }

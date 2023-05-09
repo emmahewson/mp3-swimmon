@@ -591,6 +591,23 @@ footer h4 {
     overflow: auto !important;
 }
 
+.gm-ui-hover-effect {
+    width: 30px !important;
+    height: 30px !important;
+    top: 10px !important;
+    right: 10px !important;
+    transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+}
+
+.gm-ui-hover-effect>span {
+    width: 100% !important;
+    height: 100% !important;
+    background-color: var(--white);
+}
+
 .iw-title,
 .iw-content p {
     padding: 15px;
