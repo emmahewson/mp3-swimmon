@@ -39,6 +39,14 @@ def fetch():
         return jsonify(locationList)
 
 
+# LOCATION PAGE
+@app.route("/location/<location_id>")
+def location(location_id):
+
+    location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
+    return render_template("location.html", location=location)
+
+
 # JOIN (REGISTER) PAGE
 @app.route("/join", methods=["GET", "POST"])
 def join():
