@@ -22,6 +22,9 @@
       href="{{ url_for('static', filename='css/style.css')}}"
       type="text/css"
     />
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon_io/favicon-16x16.png">
 
     <!-- REMOVE IF NOT USING!! -->
     {% block styles %} {% endblock %}
@@ -132,7 +135,7 @@
         </div>
     </footer>
 
-    {% block scripts %} {% endblock %}
+
 
     <script
       src="https://code.jquery.com/jquery-3.6.4.min.js"
@@ -141,6 +144,7 @@
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block scripts %} {% endblock %}
 
   </body>
 </html>

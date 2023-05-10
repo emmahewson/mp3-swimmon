@@ -1,4 +1,3 @@
-
 function initMap() {
     
     // declaring map settings
