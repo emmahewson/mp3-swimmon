@@ -44,7 +44,7 @@ function initMap() {
                 '<a href="/location/'+locationId+'" class="swim-iw-link">' +
                     '<div class="iw-content swim-bg-white">' +
                         '<div class="iw-img-div">' +
-                            '<img src='+popupImage+'&width=400/>' +
+                            '<img src='+popupImage+' alt="Image of '+popupName+'"/>' +
                         '</div>' +
                         '<p class="map_reader font-body swim-txt-dblue weight-500">'+popupDescription+'</p>'+
                     '</div>' +

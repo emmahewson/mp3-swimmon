@@ -530,11 +530,13 @@ footer h4 {
 
 .iw-img-div {
     overflow: hidden;
+    max-height: 200px;
+    display: flex;
+    align-items: center;
 }
 
 .iw-img-div img {
     width: 100%;
-    object-fit: cover;
 }
 
 /* Google Map Info Window Close Button */
