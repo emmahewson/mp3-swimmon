@@ -163,8 +163,6 @@ p {
 /* Whole Page Layout */
 
 *,
-.event-page-wrapper *,
-.location-page-wrapper *,
 .popover-content *,
 .intro-div * {
     margin: 0;
@@ -1080,6 +1078,12 @@ textarea::placeholder {
     column-gap: 20px;
 }
 
+.event-page-text h1,
+.event-page-location h2,
+.event-page-location {
+    margin: 0 auto;
+}
+
 .event-page-text p i {
     margin-right: 5px;
 }
@@ -1153,6 +1157,11 @@ textarea::placeholder {
 
 
 /* Location Page */
+
+.location-page-wrapper h1,
+.location-page-wrapper .row {
+    margin: 0 auto;
+}
 
 .location-name-div {
     padding: 30px 200px;
