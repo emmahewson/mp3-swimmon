@@ -1,80 +1,4 @@
 {% extends "base.html" %}
-
-{% block scriptsTop %}
-    <script>
-        function initMap() {
-
-            const home = {
-                lat: 53.286409181339444,
-                lng: -4.359635469750749
-            };
-            
-            var options = { 
-                zoom: 10,
-                center: home
-            };
-
-
-        //  Fetch request connects GoogleMaps with the database:
-        // https://github.com/isntlee/Sagacity/blob/master/templates/home.html CREDIT TO GO HERE
-            fetch('/fetch')
-                .then(response => response.json())
-                .then(data => { 
-                    fetchFunction(data);
-                })
-                .catch(err => console.log(err));
-
-
-            function fetchFunction(data) {
-                console.log(data); // REMOVE LATER!!!
-
-
-                // Google Maps markers & info window
-
-                for(var i = 0; i < data.length; i++){
-                    var popupLocation = {lat: parseFloat(data[i].lat), lng: parseFloat(data[i].long)};
-                    var popupName = data[i].name;
-                    var popupImage = data[i].image_url;
-                    var popupDescription = data[i].description;
-                    var locationId = data[i]._id;
-                    var eventLink = "{{ url_for('location', location_id=locationId) }}";
-                    var singleEventLink = eventLink.concat(locationId);
-                    var infoContent =
-
-                        '<div id="iw-container">' +
-                        '<a href='+singleEventLink+'><span class="card-link"></span></a>' +
-                        '<div class="iw-title swim-bg-dblue swim-txt-white">' +
-                            '<h2 class="font-title weight-300">'+popupName.toUpperCase()+'</h2>' +
-                        '</div>' +
-                        '<div class="iw-content">' +
-                            '<img src='+popupImage+'/>' +
-                            '<p class="map_reader font-body swim-txt-dblue weight-500">'+popupDescription+'</p>'+
-                        '</div>'
-                    
-                
-                    var marker = new google.maps.Marker({
-                    position: popupLocation,
-                    map: map,
-                    title: popupName, 
-                    info : infoContent
-                    });
-                
-                    var infoWindow = new google.maps.InfoWindow({
-                    content: infoContent
-                    });
-                
-                    google.maps.event.addListener(marker, "click", function () {
-                    infoWindow.setContent( this.info );
-                    infoWindow.open( map, this );
-                    });
-                }
-            }
-                var map = new google.maps.Map(document.getElementById("map-home"), options);
-        }
-    </script>
-{% endblock %}
-
-
 {% block content %}
 
     <!-- Hero Image Div -->
@@ -108,42 +32,7 @@
     </div>
 
     <div class="swim-bg-mblue" id="home-map-div">
-        
-        <!-- <div class="location-popup-div swim-bg-white" id="location-popup" >
-            <a href="#"><span class="card-link"></span></a>
-            <div class="location-popup-header swim-bg-dblue swim-txt-white">
-                <h2 class="font-title weight-300" id="location-popup-name"></h2>
-            </div>
-            <div class="location-popup-image-wrapper">
-                <img src="" alt="" class="location-popup-image" id="location-popup-image">
-            </div>
-            <div class="location-popup-text">
-                <p class="font-body swim-txt-dblue weight-500" id="location-popup-description"></p>
-            </div>
-        </div> -->
-
-        <div id="map-home">
-
-        </div>
-
-
-        <!-- <div id="home-map">
-
-            {% for location in locations %}
-            <div class="location-popup swim-bg-white">
-                <a href="#"><span class="card-link"></span></a>
-                <div class="location-popup-header swim-bg-dblue swim-txt-white">
-                    <h2 class="font-title weight-300">{{location.name|upper}}</h2>
-                </div>
-                <div class="location-popup-image-wrapper">
-                    <img src="{{location.image_url}}" alt="Image of {{ location.name }}" class="location-popup-image">
-                </div>
-                <div class="location-popup-text">
-                    <p class="font-body swim-txt-dblue weight-500">{{ location.description|truncate(150, False)}}</p>
-                </div>
-            </div>
-            {% endfor %}
-        </div> -->
+        <div id="map-home"></div>
     </div>
 
 
