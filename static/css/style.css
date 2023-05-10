@@ -1311,6 +1311,19 @@ textarea::placeholder {
         width: 70%;
     }
 
+    .location-name-div {
+        padding: 30px 50px;
+    }
+
+    .location-info-div .col {
+        padding: 0;
+    }
+
+    .location-description,
+    .location-park-fac p:first-child {
+        margin-bottom: 15px;
+    }
+
 }
 
 
@@ -1400,9 +1413,27 @@ textarea::placeholder {
         padding: 30px 20px
     }
 
-    .intro-div h1 {
+    .intro-div h1,
+    .location-name-div h1 {
         font-size: 32px;
     }
+
+    .location-name-div {
+        padding: 30px 25px;
+    }
+
+    .location-name-div p {
+        font-size: 16px;
+    }
+
+    .location-image-div {
+        height: 150px;
+    }
+
+    .location-info-div {
+        padding: 25px;
+    }
+
 
 
     /* Events Page */
@@ -1480,5 +1511,7 @@ textarea::placeholder {
     .input-info-div-wrapper .select-wrapper .select-dropdown {
         width: 160px;
     }
+
+
 
 }
