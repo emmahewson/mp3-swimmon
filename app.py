@@ -39,14 +39,6 @@ def fetch():
         return jsonify(locationList)
 
 
-# LOCATION PAGE
-@app.route("/location/<location_id>")
-def location(location_id):
-
-    location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
-    return render_template("location.html", location=location)
-
-
 # JOIN (REGISTER) PAGE
 @app.route("/join", methods=["GET", "POST"])
 def join():
@@ -366,6 +358,75 @@ def manage_locations():
 
         # if not admin redirects to user profile
         flash("You do not have permission to view that page")
+        return redirect(url_for("profile", username=session["user"]))
+
+    # redirects to sign in if user isn't logged in
+    flash("You must be signed in to view that page")
+    return redirect(url_for("sign_in"))
+
+
+# LOCATION PAGE
+@app.route("/location/<location_id>")
+def location(location_id):
+
+    location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
+    # filters events by location and sorts by date
+    events = mongo.db.events.find({"location_id": ObjectId(location_id)}).sort("date", 1)
+    locations = list(mongo.db.locations.find())
+
+    return render_template("location.html", events=events, locations=locations, location=location)
+
+
+# EDIT LOCATION
+@app.route("/edit-location/<location_id>", methods=["GET", "POST"])
+def edit_location(location_id):
+
+    # checks if user is logged in
+    if "user" in session:
+
+        # gets event details
+        location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
+
+        # checks current user is admin
+        if session["user"] == "admin":
+
+            # handles 'POST' method (form submission)
+            if request.method == "POST":
+                print("This is a post method")
+
+            # handles 'GET' method (page load)
+            # gets collections for use in form dropdowns
+            return render_template("edit-location.html", location=location)
+
+        # if not user's event redirects to user profile page
+        flash("You do not have permission to edit locations")
+        return redirect(url_for("profile", username=session["user"]))
+
+    # redirects to sign in if user isn't logged in
+    flash("You must be signed in to view that page")
+    return redirect(url_for("sign_in"))
+
+
+
+@app.route("/delete-location/<location_id>")
+def delete_location(location_id):
+
+    # checks if user is logged in
+    if "user" in session:
+
+        # gets event details
+        location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
+
+        # checks current user is admin
+        if session["user"] == "admin":
+
+            # deletes the event and redirects to events
+            mongo.db.events.delete_one({"_id": ObjectId(location_id)})
+            flash("Location successfully deleted")
+            return redirect(url_for("location"))
+
+        # if not user's event redirects to user profile page
+        flash("You do not have permission to delete locations")
         return redirect(url_for("profile", username=session["user"]))
 
     # redirects to sign in if user isn't logged in

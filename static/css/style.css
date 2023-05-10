@@ -161,6 +161,15 @@ p {
 
 
 /* Whole Page Layout */
+
+*,
+.event-page-wrapper *,
+.location-page-wrapper *,
+.popover-content *,
+.intro-div * {
+    margin: 0;
+}
+
 body, nav {
     max-width: 1750px;
     margin: 0 auto;
@@ -462,7 +471,6 @@ footer h4 {
 }
 
 #home-hero-text-div * {
-    margin: 0;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -524,8 +532,21 @@ footer h4 {
 
 .iw-title h2 {
     font-size: 24px;
+}
+
+.iw-title h2 a {
+    color: var(--white);
     text-decoration: underline;
+}
+
+.iw-title h2,
+.iw-title p {
+    display: inline-block;
     width: fit-content;
+}
+
+.iw-title p {
+    margin-left: 10px !important;
 }
 
 .iw-img-div {
@@ -560,7 +581,7 @@ footer h4 {
 /* Google Map Info Window Hover Effect */
 .iw-img-div img,
 .iw-content,
-.iw-title {
+.iw-title h2 a {
     transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
@@ -575,7 +596,6 @@ footer h4 {
     background-color: var(--dark-blue-hov);
 }
 
-.swim-iw-link-head:hover .iw-img-div img,
 .swim-iw-link:hover .iw-img-div img {
     -ms-transform: scale(1.05);
     -moz-transform: scale(1.05);
@@ -584,7 +604,9 @@ footer h4 {
     transform: scale(1.05);
 }
 
-
+.swim-iw-link-head:hover {
+    color: var(--high-blue);
+}
 
 /* Forms */
 
@@ -779,10 +801,6 @@ textarea::placeholder {
     border: 3px solid var(--mid-blue);
     border-radius: 4px;
     overflow: auto;
-  }
-  
-.popover-content * {
-      margin: 0;
 }
   
 .modal-header,
@@ -890,10 +908,6 @@ textarea::placeholder {
     justify-content: center;
     flex-wrap: wrap;
     gap: 40px;
-}
-
-.event-card * {
-    margin: 0;
 }
 
 .event-card {
@@ -1020,15 +1034,12 @@ textarea::placeholder {
 
 
 
-/* Event Info Page */
+/* Event Page */
 
-.event-page-wrapper {
+.event-page-wrapper,
+.location-page-wrapper {
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.event-page-wrapper * {
-    margin: 0;
 }
 
 .event-image-div {
@@ -1046,7 +1057,7 @@ textarea::placeholder {
     padding: 20px 200px 50px 200px;
 }
 
-.event-page-text h2 {
+.event-page-text h1 {
     font-size: 36px;
 }
 
@@ -1110,7 +1121,7 @@ textarea::placeholder {
     background-color: var(--white);
 }
 
-.event-page-location-text h3 {
+.event-page-location-text h2 {
     font-size: 24px;
 }
 
@@ -1122,30 +1133,75 @@ textarea::placeholder {
     margin-top: 10px;
 }
 
-.event-edit-div {
+.edit-div {
     padding: 20px 15px 30px 15px;
 }
 
-.event-edit-buttons {
+.edit-buttons {
     margin-top: 10px;
     display: flex;
     justify-content: center;
 }
 
-.event-edit-buttons> :first-child {
+.edit-buttons> :first-child {
     margin-right: 40px;
 }
 
-.event-edit-div p {
+.edit-div p {
     font-size: 20px;
 }
 
 
-/* Modal - delete confirm */
+/* Location Page */
 
-.modal * {
-    margin: 0;
+.location-name-div {
+    padding: 30px 200px;
 }
+
+.location-name-div h1 {
+    font-size: 36px;
+}
+
+.location-name-div p {
+    font-size: 20px;
+}
+
+.location-image-div {
+    height: 350px;
+    display: flex;
+    align-content: center;
+}
+
+.location-image-div img {
+    width: 100%;
+    object-fit: cover;
+    background-color: var(--white);
+}
+
+.location-info-div {
+    padding: 50px 25px;
+}
+
+.location-info-div .col {
+    padding: 0 15px;
+}
+
+.location-park-fac p:first-child {
+    margin-bottom: 10px;
+}
+
+.intro-div h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#map-location {
+    height: 430px;
+    width: 100%;
+}
+
+
+/* Modal - delete confirm */
 
 .modal {
     margin-top: 5%;

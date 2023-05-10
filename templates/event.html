@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="event-page-text center-align swim-txt-dblue">
-                    <h2 class="font-title center-align weight-600 uppercase">{{ event.name }}</h2>
+                    <h1 class="font-title center-align weight-600 uppercase">{{ event.name }}</h1>
                     <em><p class="font-body center-align weight-200 created-by">Created by: {{ event.created_by }}</p></em>
                     <div class="when-where-row">
                         <div class="event-place-row">
@@ -31,7 +31,7 @@
 
                 <div class="event-page-location swim-bg-mblue row">
                     <div class="event-page-location-text swim-txt-white col m12 l6 push-l6">
-                        <h3 class="font-title weight-600 uppercase">{{ location.name }}</h3>
+                        <h2 class="font-title weight-600 uppercase">{{ location.name }}</h2>
                         <p class="font-body weight-400 coordinates">{{ location.lat|truncate(9, False, "") }}, {{ location.long|truncate(9, False, "") }}</p>
                         <p class="font-body weight-400 loc-description-para">{{ location.description }}</p>
                         <p class="font-body loc-description-para"><span class="weight-600">Parking:</span><br><span class="weight-400">{{ location.parking }}</span></p>
@@ -45,9 +45,9 @@
 
                 <!-- Add CRUD control buttons if user event -->
                 {% if session.user|lower == event.created_by|lower or session.user|lower == "admin"|lower %}
-                    <div class="event-edit-div swim-bg-grey">
+                    <div class="edit-div swim-bg-grey">
                         <p class="swim-txt-dblue weight-500 font-body center-align">MANAGE YOUR EVENT</p>
-                        <div class="event-edit-buttons">
+                        <div class="edit-buttons">
                             <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
                             <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</a>
                         </div>

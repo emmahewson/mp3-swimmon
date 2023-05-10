@@ -38,7 +38,9 @@ function initMap() {
 
                 '<div id="iw-container">' +
                 '<div class="iw-title swim-bg-dblue swim-txt-white">' +
-                    '<a href="/location/'+locationId+'" class="swim-iw-link-head"><h2 class="font-title weight-300 swim-txt-white">'+popupName.toUpperCase()+'</h2></a>' +
+                    '<h2 class="font-title weight-300 swim-txt-white">' +
+                        '<a href="/location/'+locationId+'" class="swim-iw-link-head">'+popupName.toUpperCase()+'</a>' +
+                    '</h2>' +
                 '</div>' +
                 '<a href="/location/'+locationId+'" class="swim-iw-link">' +
                     '<div class="iw-content swim-bg-white">' +

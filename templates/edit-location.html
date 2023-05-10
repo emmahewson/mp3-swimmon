@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-page-wrapper swim-bg-lgrey">
+    <!-- Intro Section -->
+    <p>{{location.name}} EDIT PAGE</p>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+{% endblock %}
