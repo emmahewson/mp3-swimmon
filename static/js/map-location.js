@@ -4,7 +4,7 @@ function initMap() {
     longitude = Number(document.getElementById('longitude').innerHTML);
     // declaring map settings
     const options = { 
-        zoom: 11,
+        zoom: 15,
         center: {
             lat: latitude,
             lng: longitude
