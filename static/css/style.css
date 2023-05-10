@@ -1104,6 +1104,7 @@ textarea::placeholder {
 
 .event-page-location {
     padding: 50px;
+    display: flex;
 }
 
 .event-page-location .col {
@@ -1118,11 +1119,9 @@ textarea::placeholder {
     padding-left: 15px;
 }
 
-.event-page-map img {
-    height: 300px;
+#map-event {
+    height: 100%;
     width: 100%;
-    object-fit: cover;
-    background-color: var(--white);
 }
 
 .event-page-location-text h2 {
@@ -1305,6 +1304,14 @@ textarea::placeholder {
 
     .event-page-text {
         padding: 20px 50px 50px 50px;
+    }
+
+    .event-page-location {
+        display: block;
+    }
+
+    #map-event {
+        height: 300px;
     }
 
     .event-page-location-text {

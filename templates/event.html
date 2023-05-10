@@ -30,15 +30,16 @@
                 </div>
 
                 <div class="event-page-location swim-bg-mblue row">
-                    <div class="event-page-location-text swim-txt-white col m12 l6 push-l6">
-                        <h2 class="font-title weight-600 uppercase">{{ location.name }}</h2>
-                        <p class="font-body weight-400 coordinates">{{ location.lat|truncate(9, False, "") }}, {{ location.long|truncate(9, False, "") }}</p>
+                    <div class="event-page-location-text swim-txt-white col l6 m12 push-l6">
+                        <h2 class="font-title weight-600 uppercase" id="name-text">{{ location.name }}</h2>
+                        <p class="font-body weight-300 coordinates"><span id="latitude">{{ location.lat|truncate(9, False, "") }}</span>, <span id="longitude">{{ location.long|truncate(9, False, "") }}</span></p>
                         <p class="font-body weight-400 loc-description-para">{{ location.description }}</p>
                         <p class="font-body loc-description-para"><span class="weight-600">Parking:</span><br><span class="weight-400">{{ location.parking }}</span></p>
                         <p class="font-body loc-description-para"><span class="weight-600">Facilities:</span><br><span class="weight-400">{{ location.facilities }}</span></p>
                     </div>
-                    <div class="event-page-map col m12 l6 pull-l6">
-                        <img src="{{ url_for('static', filename='images/map-placeholder.png')}}" alt="map of Anglesey">
+                    <div class="event-page-map col l6 m12 pull-l6">
+                        <!-- Google Maps -->
+                        <div id="map-event"></div>
                     </div>
                 </div>
                             
@@ -72,4 +73,12 @@
 {% endif %}
 {% endfor %}
 
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/map-event.js') }}"></script>
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp3bbw0F5d1sjzp5iet_vlxKb0RrevMCA&callback=initMap">
+    </script>
 {% endblock %}
