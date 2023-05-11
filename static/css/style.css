@@ -1137,6 +1137,25 @@ textarea::placeholder {
     margin-top: 10px;
 }
 
+.location-link {
+    margin-top: 15px;
+}
+
+.location-link a {
+    padding: 5px 10px;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.location-link a:hover {
+    background-color: var(--pale-blue);
+    color: var(--dark-blue);
+    text-decoration: none;
+}
+
 .edit-div {
     padding: 20px 15px 30px 15px;
 }
@@ -1154,6 +1173,7 @@ textarea::placeholder {
 .edit-div p {
     font-size: 20px;
 }
+
 
 
 /* Location Page */

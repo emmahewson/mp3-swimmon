@@ -31,11 +31,12 @@
 
                 <div class="event-page-location swim-bg-mblue row">
                     <div class="event-page-location-text swim-txt-white col l6 m12 push-l6">
-                        <h2 class="font-title weight-600 uppercase" id="name-text">{{ location.name }}</h2>
+                        <h2 class="font-title weight-500 uppercase">{{ location.name }}</h2>
                         <p class="font-body weight-300 coordinates"><span id="latitude">{{ location.lat|truncate(9, False, "") }}</span>, <span id="longitude">{{ location.long|truncate(9, False, "") }}</span></p>
                         <p class="font-body weight-400 loc-description-para">{{ location.description }}</p>
                         <p class="font-body loc-description-para"><span class="weight-600">Parking:</span><br><span class="weight-400">{{ location.parking }}</span></p>
                         <p class="font-body loc-description-para"><span class="weight-600">Facilities:</span><br><span class="weight-400">{{ location.facilities }}</span></p>
+                        <p class="font-body weight-500 location-link"><a class="swim-txt-white swim-bg-dblue" href="{{ url_for('location', location_id=location._id) }}">Go to location page</a></p>
                     </div>
                     <div class="event-page-map col l6 m12 pull-l6">
                         <!-- Google Maps -->
