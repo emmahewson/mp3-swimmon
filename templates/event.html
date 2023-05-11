@@ -10,10 +10,10 @@
 
                 <div class="event-page-text center-align swim-txt-dblue">
                     <h1 class="font-title center-align weight-600 uppercase">{{ event.name }}</h1>
-                    <em><p class="font-body center-align weight-200 created-by">Created by: {{ event.created_by }}</p></em>
+                    <p class="font-body center-align weight-200 created-by"><em>Created by: {{ event.created_by }}</em></p>
                     <div class="when-where-row">
                         <div class="event-place-row">
-                            <p class="font-body weight-500 uppercase"><i class="fa-solid fa-location-dot"></i></i>{{ location.name }}</p>
+                            <p class="font-body weight-500 uppercase"><i class="fa-solid fa-location-dot"></i>{{ location.name }}</p>
                         </div>
                         <div class="event-when-row">
                             <p class="font-body weight-500 uppercase"><i class="fa-regular fa-calendar"></i>{{ event.date.strftime('%d/%m/%y') }}</p>
@@ -51,7 +51,7 @@
                         <p class="swim-txt-dblue weight-500 font-body center-align">MANAGE YOUR EVENT</p>
                         <div class="edit-buttons">
                             <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
-                            <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</a>
+                            <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</button>
                         </div>
                     </div>
             

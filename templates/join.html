@@ -12,20 +12,20 @@
         </div>
 
         <div class="form-wrapper">
-            <form class="swim-form swim-bg-grey div-shadow" method="POST" action="">
+            <form class="swim-form swim-bg-grey div-shadow" method="POST" action="{{ url_for('join')}}">
                 <!-- username -->
                 <div class="input-field">
                     <label for="username" class="font-title weight-600">USERNAME <em class="weight-300"> 5-15 letters/numbers</em></label>
-                    <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" autocomplete="username" class="validate"/>
+                    <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" autocomplete="username" class="validate">
                 </div>
                 <!-- password -->
                 <div class="input-field">
                     <label for="password" class="font-title weight-600">PASSWORD <em class="weight-300"> 5-15 letters/numbers</em></label>
-                    <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" autocomplete="new-password" class="validate"/>
+                    <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" autocomplete="new-password" class="validate">
                 </div>
                 <div class="input-field">
                     <label for="password-confirm" class="font-title weight-600">REPEAT PASSWORD</label>
-                    <input id="password-confirm" name="password-confirm" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" autocomplete="new-password" class="validate"/>
+                    <input id="password-confirm" name="password-confirm" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" autocomplete="new-password" class="validate">
                 </div>
                 <!-- submit button -->
                 <div class="form-button-row">

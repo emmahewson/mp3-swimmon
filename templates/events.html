@@ -56,8 +56,8 @@
                                 </div>
                                 <div class="event-card-text swim-txt-dblue center-align">
                                     <h2 class="font-title center-align weight-600 uppercase">{{ event.name }}</h2>
-                                    <em><p class="font-body center-align weight-200 created-by">Created by: {{ event.created_by }}</p></em>
-                                    <p class="font-body weight-700 uppercase"><i class="fa-solid fa-location-dot"></i></i>{{ location.name }}</p>
+                                    <p class="font-body center-align weight-200 created-by"><em>Created by: {{ event.created_by }}</em></p>
+                                    <p class="font-body weight-700 uppercase"><i class="fa-solid fa-location-dot"></i>{{ location.name }}</p>
                                     <div class="event-when-row">
                                         <p class="font-body weight-500 uppercase"><i class="fa-regular fa-calendar"></i>{{ event.date.strftime('%d/%m/%y') }}</p>
                                         <p class="font-body weight-500 uppercase"><i class="fa-regular fa-clock"></i>{{ event.date.strftime('%H:%M') }}</p>
@@ -76,7 +76,7 @@
                     {% if session.user|lower == event.created_by|lower or session.user|lower == "admin"|lower %}
                         <div class="card-edit-div swim-bg-dblue">
                             <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
-                            <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</a>
+                            <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</button>
                         </div>
                     {% endif %}
                 </div>

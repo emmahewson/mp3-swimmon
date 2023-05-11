@@ -69,18 +69,18 @@
         </nav>
       </div>
 
-    <section>
+    <div>
         <!-- Flash messages -->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages%}
                     <div class="flashes swim-bg-fun">
-                        <p class="center-align font-title weight-500 uppercase">{{ message }}</p>
+                        <h1 class="center-align font-title weight-500 uppercase">{{ message }}</h1>
                     </div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
-    </section>
+    </div>
 
       <!-- mobile nav-bar -->
       <ul class="sidenav right font-title" id="mobile-demo">
