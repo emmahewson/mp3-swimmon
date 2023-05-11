@@ -29,8 +29,7 @@ function initMap() {
 
     let myLatLong = [];
 
-
-    google.maps.event.addListener(marker, 'dragend', function(evt){
+    google.maps.event.addListener(marker, 'dragend', function(){
         let lat = marker.getPosition().lat();
         let lng = marker.getPosition().lng();
         
@@ -40,13 +39,7 @@ function initMap() {
         console.log("myLatLong: "+myLatLong);
         document.getElementById("latitude").value = lat;
         document.getElementById("longitude").value = lng;
-
     });
-
-    
-
-
-
 };
 
 
