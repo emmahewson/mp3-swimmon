@@ -31,11 +31,7 @@
     {% endif %}
 
 
-
-
-
-
-    <!-- Google Maps -->
+    <!-- Google Map -->
     <div id="map-location"></div>
 
     <!-- Intro to Events & Add Event Button -->
@@ -109,7 +105,6 @@
 {% block scripts %}
     <script src="{{ url_for('static', filename='js/map-location.js') }}"></script>
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
-
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp3bbw0F5d1sjzp5iet_vlxKb0RrevMCA&callback=initMap">
     </script>
