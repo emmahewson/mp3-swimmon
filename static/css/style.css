@@ -401,6 +401,17 @@ footer h4 {
     background-color: var(--mid-blue)
 }
 
+.btn-mblue {
+    background-color: var(--mid-blue);
+    color: var(--white);
+}
+
+.btn-mblue:hover,
+.btn-mblue:focus {
+    background-color: var(--pale-blue);
+    color: var(--dblue);
+}
+
 .btn-edit {
     background-color: var(--button-edit);
 }
@@ -900,9 +911,10 @@ textarea::placeholder {
 }
 
 
-/* Events Cards */
+/* Events Cards (events) & Location Cards (manage locations)*/
 
-.events-div {
+.events-div,
+.locations-div {
     padding: 50px 80px;
     display: flex;
     justify-content: center;
@@ -910,16 +922,28 @@ textarea::placeholder {
     gap: 40px;
 }
 
-.event-card {
-    width: 280px;
+.event-card,
+.location-card {
     border-radius: 5px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.35);
     overflow: hidden;
     align-self: start;
 }
 
-.event-card-clickable {
+.event-card {
+    width: 280px;
+}
+
+.location-card {
+    width: 250px;
+}
+
+.event-card-clickable,
+.location-card-clickable {
     position: relative;
+}
+
+.event-card-clickable {
     padding-bottom: 10px;
 }
 
@@ -932,26 +956,48 @@ textarea::placeholder {
     z-index: 1;
 }
 
-.event-image {
-    height: 130px;
+.event-image,
+.location-image {
     overflow: hidden;
 }
 
-.event-card img {
-    width: 100%;
+.event-image {
     height: 130px;
+}
+
+.location-image {
+    height: 100px;
+}
+
+.event-card img,
+.location-card img {
+    width: 100%;
     object-fit: cover;
     background-color: var(--white);
+}
+
+.event-card img {
+    height: 130px;
+}
+
+.location-card img {
+    height: 100px;
 }
 
 .event-card-text {
     padding: 10px;
 }
 
-.event-card-text h2 {
+.location-card-text {
+    padding: 15px 10px;
+}
+
+.event-card-text h2,
+.location-card-text h2 {
     margin: 0;
-    font-size: 16px;
     text-decoration: underline;
+    text-underline-offset: 2px;
+    font-size: 16px;
 }
 
 .event-card-text p {
@@ -997,29 +1043,33 @@ textarea::placeholder {
 }
 
 .card-edit-div> :first-child {
-    margin-right: 40px;
+    margin-right: 30px;
 }
 
 
 /* Events Cards Hover Effect */
 
 .event-card-clickable,
-.event-image img {
+.event-image img,
+.location-card-clickable,
+.location-image img {
     transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
 }
 
-.event-card-clickable:hover .event-image img {
-    -ms-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1);
+.event-card-clickable:hover .event-image img,
+.location-card-clickable:hover .location-image img {
+    -ms-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
-.event-card-clickable:hover {
+.event-card-clickable:hover,
+.location-card-clickable:hover {
     background-color: #dae0e2;
 }
 
@@ -1031,6 +1081,7 @@ textarea::placeholder {
     justify-content: center;
     padding-bottom: 50px;
 }
+
 
 
 
@@ -1174,6 +1225,7 @@ textarea::placeholder {
 .edit-div p {
     font-size: 20px;
 }
+
 
 
 
@@ -1490,7 +1542,8 @@ textarea::placeholder {
 
 
     /* Events Page */
-    .events-div {
+    .events-div,
+    .locations-div {
         padding: 30px 15px
     }
 

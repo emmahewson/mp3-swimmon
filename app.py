@@ -414,7 +414,10 @@ def manage_locations():
         # checks user is admin
         if session["user"] == "admin":
 
-            return render_template("manage-locations.html")
+            locations = mongo.db.locations.find()
+            return render_template(
+                "manage-locations.html",
+                locations=locations)
 
         # if not admin redirects to user profile
         flash("You do not have permission to view that page")
@@ -425,7 +428,6 @@ def manage_locations():
     return redirect(url_for("sign_in"))
 
 
-# LOCATION PAGE
 @app.route("/location/<location_id>")
 def location(location_id):
     '''
@@ -450,7 +452,37 @@ def location(location_id):
     )
 
 
-# EDIT LOCATION
+@app.route("/add-location", methods=["GET", "POST"])
+def add_location():
+    '''
+    Security: admin only
+    Renders the add-location page form
+    Handles the add event form submission
+    Creates a new location in the locations collection
+    '''
+    # checks if user is logged in
+    if "user" in session:
+
+        # checks user is admin
+        if session["user"] == "admin":
+
+            # handles 'POST' method (form submission)
+            if request.method == "POST":
+                print("This is a post method")
+
+            # handles 'GET' method (page load)
+            locations = mongo.db.locations.find()
+            return render_template("add-location.html", locations=locations)
+
+        # if not admin redirects to user profile
+        flash("You do not have permission to view that page")
+        return redirect(url_for("profile", username=session["user"]))
+
+    # redirects to sign in if user isn't logged in
+    flash("You must be signed in to view that page")
+    return redirect(url_for("sign_in"))
+
+
 @app.route("/edit-location/<location_id>", methods=["GET", "POST"])
 def edit_location(location_id):
     '''
