@@ -467,7 +467,7 @@ def add_location():
 
                 # defines new location dictionary
                 location = {
-                    "name": request.form.get("location_name"),
+                    "name": request.form.get("location_name").lower(),
                     "lat": request.form.get("latitude"),
                     "long": request.form.get("longitude"),
                     "description": request.form.get("location_description"),
@@ -481,7 +481,6 @@ def add_location():
                 flash("Location Successfully Added")
                 return redirect(url_for("manage_locations"))
                 
-
             # handles 'GET' method (page load)
             locations = mongo.db.locations.find()
             return render_template("add-location.html", locations=locations)
@@ -544,8 +543,9 @@ def delete_location(location_id):
         # checks current user is admin
         if session["user"] == "admin":
 
-
-            # deletes the event and redirects to events
+            # deletes events at that location
+            mongo.db.events.delete_many({"location_id": ObjectId(location_id)})
+            # deletes the location and redirects to manage locations
             mongo.db.locations.delete_one({"_id": ObjectId(location_id)})
             flash("Location successfully deleted")
             return redirect(url_for("manage_locations"))
