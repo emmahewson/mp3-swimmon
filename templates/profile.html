@@ -14,57 +14,55 @@
         <!-- Event Summary Cards -->
         <div class="events-div" id="events-div">
             {% for event in events %}
-                {% if session.user|lower == event.created_by|lower %}
-                    <div class="event-card">
-                        {% for location in locations %}
-                            {% if event.location_id == location._id %}
-                                <div class="event-card-clickable swim-bg-white swim-txt-dblue">
-                                    <a href="{{ url_for('event', event_id=event._id) }}"><span class="card-link"></span></a>
-                                    <div class="event-image">
-                                        <img src="{{ location.image_url }}" alt="Image of {{ location.name }}">
-                                    </div>
-                                    <div class="event-card-text center-align">
-                                        <h2 class="font-title center-align weight-600 uppercase">{{ event.name }}</h2>
-                                        <p class="font-body center-align weight-200 created-by"><em>Created by: {{ event.created_by }}</em></p>
-                                        <p class="font-body weight-700 uppercase"><i class="fa-solid fa-location-dot"></i>{{ location.name }}</p>
-                                        <div class="event-when-row">
-                                            <p class="font-body weight-500 uppercase"><i class="fa-regular fa-calendar"></i>{{ event.date.strftime('%d/%m/%y') }}</p>
-                                            <p class="font-body weight-500 uppercase"><i class="fa-regular fa-clock"></i>{{ event.date.strftime('%H:%M') }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="event-marker-row uppercase">
-                                        <p class="font-body weight-500 swim-txt-white event-marker swim-bg-{{event.who|lower}}">{{ event.who }}</p>
-                                        <p class="font-body weight-500 swim-txt-black event-marker swim-bg-{{event.challenge|lower}}">{{ event.challenge }}</p>
+                <div class="event-card">
+                    {% for location in locations %}
+                        {% if event.location_id == location._id %}
+                            <div class="event-card-clickable swim-bg-white swim-txt-dblue">
+                                <a href="{{ url_for('event', event_id=event._id) }}"><span class="card-link"></span></a>
+                                <div class="event-image">
+                                    <img src="{{ location.image_url }}" alt="Image of {{ location.name }}">
+                                </div>
+                                <div class="event-card-text center-align">
+                                    <h2 class="font-title center-align weight-600 uppercase">{{ event.name }}</h2>
+                                    <p class="font-body center-align weight-200 created-by"><em>Created by: {{ event.created_by }}</em></p>
+                                    <p class="font-body weight-700 uppercase"><i class="fa-solid fa-location-dot"></i>{{ location.name }}</p>
+                                    <div class="event-when-row">
+                                        <p class="font-body weight-500 uppercase"><i class="fa-regular fa-calendar"></i>{{ event.date.strftime('%d/%m/%y') }}</p>
+                                        <p class="font-body weight-500 uppercase"><i class="fa-regular fa-clock"></i>{{ event.date.strftime('%H:%M') }}</p>
                                     </div>
                                 </div>
-                            {% endif %}
-                        {% endfor %}   
-                                
+                                <div class="event-marker-row uppercase">
+                                    <p class="font-body weight-500 swim-txt-white event-marker swim-bg-{{event.who|lower}}">{{ event.who }}</p>
+                                    <p class="font-body weight-500 swim-txt-black event-marker swim-bg-{{event.challenge|lower}}">{{ event.challenge }}</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}   
+                            
 
-                        <!-- Add CRUD control buttons if user event -->
-                        {% if session.user|lower == event.created_by|lower or session.user|lower == "admin"|lower %}
-                            <div class="card-edit-div swim-bg-dblue">
-                                <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
-                                <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</button>
-                            </div>
-                    </div>
-                    
-                    <!-- Confirm Delete Modal -->
-                    <div id="{{ event._id }}" class="modal">
-                        <div class="modal-contents swim-bg-lgrey center-align">
-                            <div class="swim-txt-dblue">
-                                <h2 class="font-title weight-500 font-body">Are you sure you want to delete this event?</h2>
-                                <p class="font-title font-title">THIS ACTION CAN'T BE UNDONE</p>
-                            </div>
-                            <div class="modal-footer swim-bg-lgrey">
-                                <a href="{{ url_for('delete_event', event_id=event._id) }}" data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
-                                <a href="#!" class="modal-close swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow" data-target="{{ event._id }}">CANCEL</a>
-                            </div>
+                    <!-- Add CRUD control buttons if user event -->
+                    {% if session.user|lower == event.created_by|lower or session.user|lower == "admin"|lower %}
+                        <div class="card-edit-div swim-bg-dblue">
+                            <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
+                            <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</button>
+                        </div>
+                </div>
+                
+                <!-- Confirm Delete Modal -->
+                <div id="{{ event._id }}" class="modal">
+                    <div class="modal-contents swim-bg-lgrey center-align">
+                        <div class="swim-txt-dblue">
+                            <h2 class="font-title weight-500 font-body">Are you sure you want to delete this event?</h2>
+                            <p class="font-title font-title">THIS ACTION CAN'T BE UNDONE</p>
+                        </div>
+                        <div class="modal-footer swim-bg-lgrey">
+                            <a href="{{ url_for('delete_event', event_id=event._id) }}" data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
+                            <a href="#!" class="modal-close swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow" data-target="{{ event._id }}">CANCEL</a>
                         </div>
                     </div>
+                </div>
 
-                        {% endif %}
-                {% endif %}
+                    {% endif %}
             {% endfor %}
         </div>
 

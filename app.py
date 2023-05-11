@@ -19,20 +19,23 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-# HOME PAGE
 @app.route("/")
 def home():
+    '''
+    Renders home page template
+    '''
     # gets location collection
-    locations = mongo.db.locations.find()
-    return render_template("index.html", locations=locations)
+    return render_template("index.html")
 
 
-# Fetch request connects GoogleMaps with the MongoDB database
-# Credit Lee Martina
-# https://github.com/isntlee/Sagacity/blob/master/templates/home.html
 @app.route('/fetch')
 def fetch():
-    # Fetch function allows GoogleMaps API to operate with data from MongoDB.
+    '''
+    Fetch function allows GoogleMaps API to operate with data from MongoDB
+    Converts the locations collection to a JSON file
+    Adapted from SagaCity project by Lee Martina
+    https://github.com/isntlee/Sagacity/blob/master/templates/home.html
+    '''
     if request.method == "GET":
         locations = mongo.db.locations.find()
         locationList = []
@@ -42,9 +45,13 @@ def fetch():
         return jsonify(locationList)
 
 
-# JOIN (REGISTER) PAGE
 @app.route("/join", methods=["GET", "POST"])
 def join():
+    '''
+    Renders the join / register page template
+    Allows users to set up an account
+    Checks if username already exists
+    '''
 
     # Handles 'POST' method (form submission)
     if request.method == "POST":
@@ -81,9 +88,14 @@ def join():
     return render_template("join.html")
 
 
-# SIGN IN PAGE
 @app.route("/sign-in", methods=["GET", "POST"])
 def sign_in():
+    '''
+    Renders the sign in page template
+    Allows registered users to sign in to their account
+    Adds user to session cookie
+    Redirects to user profile
+    '''
 
     # Handles 'POST' method (form submission)
     if request.method == "POST":
@@ -112,9 +124,14 @@ def sign_in():
     return render_template("sign-in.html")
 
 
-# SIGN OUT
 @app.route("/sign-out")
 def sign_out():
+    '''
+    Signs user out of their account
+    Removes logged in user from session cookie
+    Redirects to sign-in page
+    Checks if user is logged in to avoid errors
+    '''
 
     # checks if user is signed in (avoids errors)
     if "user" in session:
@@ -132,6 +149,14 @@ def sign_out():
 # USER PROFILE
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    '''
+    Security: logged-in users only
+    Renders the user's profile page
+    Send current user's username
+    Sends filtered collection of events created by current user
+    Sorts filtered events collection by date
+    Sends locations collection for location info
+    '''
 
     # checks if user is logged in
     if "user" in session:
@@ -141,27 +166,29 @@ def profile(username):
             {"username": session["user"]})["username"]
 
         # gets collections for use in event cards
-        events = mongo.db.events.find().sort("date", 1)
+        events = mongo.db.events.find(
+            {"created_by": username.lower()}).sort("date", 1)
         locations = list(mongo.db.locations.find())
-        whos = list(mongo.db.who_for.find())
-        challenges = list(mongo.db.challenge.find())
 
         return render_template(
             "profile.html",
             username=username,
             events=events,
-            locations=locations,
-            whos=whos,
-            challenges=challenges)
+            locations=locations)
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
     return redirect(url_for("sign_in"))
 
 
-# EVENTS PAGE (ALL)
 @app.route("/events")
 def events():
+    '''
+    Security: logged-in users only
+    Renders the events page (all events)
+    Sends events collection (sorted by date)
+    Sends locations, challenge & whos collections for info & filtering
+    '''
 
     # checks if user is logged in
     if "user" in session:
@@ -186,9 +213,14 @@ def events():
     return redirect(url_for("sign_in"))
 
 
-# EVENT INFO PAGE
 @app.route("/event/<event_id>")
 def event(event_id):
+    '''
+    Security: logged-in users only
+    Renders event page based on event_id
+    Finds correct event using event id
+    Sends locations collection for location info
+    '''
 
     # checks if user is logged in
     if "user" in session:
@@ -201,9 +233,15 @@ def event(event_id):
     return redirect(url_for("sign_in"))
 
 
-# ADD EVENT PAGE
 @app.route("/add-event", methods=["GET", "POST"])
 def add_event():
+    '''
+    Security: logged-in users only
+    Renders the add-event page form
+    Sends locations, whos & challenges collections for form dropdowns
+    Handles the add event form submission
+    Creates a new event in the events collection
+    '''
 
     # checks if user is logged in
     if "user" in session:
@@ -255,9 +293,17 @@ def add_event():
     return redirect(url_for("sign_in"))
 
 
-# EDIT EVENT PAGE
 @app.route("/edit-event/<event_id>", methods=["GET", "POST"])
 def edit_event(event_id):
+    '''
+    Security: logged-in users only
+    Security: only admin & event creator can edit
+    Renders the edit-event page form
+    Form populated by event info based on event_id
+    Sends locations, whos & challenges collections for form dropdowns
+    Handles the edit event form submission
+    Updates event in events collection
+    '''
 
     # checks if user is logged in
     if "user" in session:
@@ -322,6 +368,11 @@ def edit_event(event_id):
 
 @app.route("/delete-event/<event_id>")
 def delete_event(event_id):
+    '''
+    Security: logged-in users only
+    Security: only admin & event creator can delete
+    Deletes event from events collection based on event_id
+    '''
 
     # checks if user is logged in
     if "user" in session:
@@ -347,10 +398,16 @@ def delete_event(event_id):
     return redirect(url_for("sign_in"))
 
 
-# MANAGE LOCATIONS PAGE
 @app.route("/manage-locations")
 def manage_locations():
+    '''
+    Security: admin only
+    Renders the manage locations page
+    NEED TO COMPLETE!
 
+
+
+    '''
     # checks if user is logged in
     if "user" in session:
 
@@ -371,6 +428,13 @@ def manage_locations():
 # LOCATION PAGE
 @app.route("/location/<location_id>")
 def location(location_id):
+    '''
+    Security: admin users only
+    Renders location page based on location_id
+    Finds correct location using location_id
+    Filters events collection by correct location_id for event cards
+    Sends locations collection for location info on event cards
+    '''
 
     location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
     # filters events by location and sorts by date
@@ -389,6 +453,13 @@ def location(location_id):
 # EDIT LOCATION
 @app.route("/edit-location/<location_id>", methods=["GET", "POST"])
 def edit_location(location_id):
+    '''
+    Security: admin only
+    Renders the edit-location page form
+    Form populated by location info based on location_id
+    Handles the edit location form submission
+    Updates location in locations collection
+    '''
 
     # checks if user is logged in
     if "user" in session:
@@ -418,6 +489,10 @@ def edit_location(location_id):
 
 @app.route("/delete-location/<location_id>")
 def delete_location(location_id):
+    '''
+    Security: admin only
+    Deletes location from locations collection based on location_id
+    '''
 
     # checks if user is logged in
     if "user" in session:
@@ -445,11 +520,19 @@ def delete_location(location_id):
 
 @app.errorhandler(404)
 def page_not_found(error):
+    '''
+    Route to handle 404 error
+    Renders custom 404 page
+    '''
     return render_template("404.html", error=error), 404
 
 
 @app.errorhandler(500)
 def internal_error(error):
+    '''
+    Route to handle 500 error
+    Renders custom 500 page
+    '''
     return render_template("500.html", error=error), 500
 
 
