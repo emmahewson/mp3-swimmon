@@ -274,7 +274,6 @@ def add_event():
             # adds event to collection & redirects to events.html
             mongo.db.events.insert_one(event)
             flash("Event Successfully Added")
-            print(dtstring)
             return redirect(url_for("events"))
 
         # handles 'GET' method (page load)
@@ -403,10 +402,7 @@ def manage_locations():
     '''
     Security: admin only
     Renders the manage locations page
-    NEED TO COMPLETE!
-
-
-
+    Sends location collection
     '''
     # checks if user is logged in
     if "user" in session:
@@ -457,7 +453,7 @@ def add_location():
     '''
     Security: admin only
     Renders the add-location page form
-    Handles the add event form submission
+    Handles the add location form submission
     Creates a new location in the locations collection
     '''
     # checks if user is logged in
@@ -468,7 +464,23 @@ def add_location():
 
             # handles 'POST' method (form submission)
             if request.method == "POST":
-                print("This is a post method")
+
+                # defines new location dictionary
+                location = {
+                    "name": request.form.get("location_name"),
+                    "lat": request.form.get("latitude"),
+                    "long": request.form.get("longitude"),
+                    "description": request.form.get("location_description"),
+                    "facilities": request.form.get("location_facilities"),
+                    "parking": request.form.get("location_parking"),
+                    "image_url": request.form.get("image_url"),
+                }
+
+                # adds event to collection & redirects to events.html
+                mongo.db.locations.insert_one(location)
+                flash("Location Successfully Added")
+                return redirect(url_for("manage_locations"))
+                
 
             # handles 'GET' method (page load)
             locations = mongo.db.locations.find()
@@ -529,17 +541,14 @@ def delete_location(location_id):
     # checks if user is logged in
     if "user" in session:
 
-        # # gets location details
-        # location = mongo.db.locations.find_one(
-        # {"_id": ObjectId(location_id)})
-
         # checks current user is admin
         if session["user"] == "admin":
+
 
             # deletes the event and redirects to events
             mongo.db.locations.delete_one({"_id": ObjectId(location_id)})
             flash("Location successfully deleted")
-            return redirect(url_for("location"))
+            return redirect(url_for("manage_locations"))
 
         # if not user's event redirects to user profile page
         flash("You do not have permission to delete locations")

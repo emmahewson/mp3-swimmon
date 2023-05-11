@@ -6,70 +6,42 @@
     <div class="intro-div swim-bg-hpink swim-txt-white div-shadow">
         <h1 class="font-title weight-600">ADD LOCATION</h1>
         <div class="font-body weight-500 intro-div-p-group">
-            <p>Fill in the form to add a new location.</p>
+            <p>Add a new location to the site for members to select when setting up an event.</p>
         </div>
     </div>
 
     <div class="form-wrapper">
-        <form class="swim-form swim-bg-grey div-shadow" method="POST" action="{{ url_for('add_event') }}">
+        <form class="swim-form swim-bg-grey div-shadow" method="POST" action="{{ url_for('add_location') }}">
 
-            <!-- event name -->
+            <!-- location name -->
             <div class="input-field">
-                <label for="event_name" class="font-title weight-600">EVENT NAME <em class="weight-300"> 5-50 characters</em></label>
-                <input id="event_name" name="event_name" type="text" minlength="5" maxlength="50" class="validate" placeholder="e.g. Ladies Sunrise Swim" required>
+                <label for="location_name" class="font-title weight-600">EVENT NAME <em class="weight-300"> 5-20 characters</em></label>
+                <input id="location_name" name="location_name" type="text" minlength="5" maxlength="20" class="validate" placeholder="e.g. Newborough Beach" required>
             </div>
 
-            <!-- event location -->
+            <!-- location latitude -->
             <div class="input-field">
-                <label for="event_location" class="font-title weight-600">LOCATION</label>
+                <label for="latitude" class="font-title weight-600">LATITUDE <em class="weight-300"> Between 53.1 & 53.5 / Max 20 decimal places (Click on ? for more info)</em></label>
                 <div class="input-info-div-wrapper">
-                    <select id="event_location" name="event_location" class="" required>
-                        <option value="" disabled selected>CHOOSE A LOCATION</option>
-                        {% for location in locations %}
-                            <option value="{{location.name|upper}}">{{location.name|upper}}</option>
-                        {% endfor %}
-                    </select>
+                    <input id="latitude" name="latitude" type="number" step="0.0000000000000001" min="53.1" max="53.5" class="validate" placeholder="e.g. 53.1399884986438" required>
                     <!-- Popover Info Box Adapted from https://codepen.io/chocochip/pen/zYxMgRG -->
                     <div class="popover-wrapper">
                         <div class="question-circle swim-txt-white swim-bg-mblue">?</div>
                         <div class="popover-content swim-bg-white">
                             <div class="modal-header swim-bg-mblue swim-txt-white">
-                                <h2 class="font-title weight-500">LOCATION</h2>
+                                <h2 class="font-title weight-500">WHO FOR?</h2>
                             </div>
-                            <p class="font-body swim-txt-dblue weight-500">We limit our locations to a number of safe tried and tested sites on the island. This allows members to wild swim as safely as possible. If you know of a site that you think should be on the list email us: <a href="mailto:test@swimmon.test">test@swimmon.test</a>.</p>
+                            <p class="font-body swim-txt-dblue weight-500">Groups can be female or male only, or open to anyone.</p>
                         </div>
                     </div>
                 </div>
+                
             </div>
-
-            <!-- event description -->
+            <!-- location longitude -->
             <div class="input-field">
-                <label for="event_description" class="font-title weight-600">EVENT DESCRIPTION</label>
-                <textarea id="event_description" name="event_description" class="validate" minlength="5" maxlength="300" placeholder="e.g. What to expect, where to meet..." required></textarea>
-            </div>
-
-            <!-- Date -->
-            <div class="input-field">
-                <label for="event_date" class="font-title weight-600">DATE</label>
-                <input id="event_date" name="event_date" type="text" class="datepicker validate" required>
-            </div>
-
-            <!-- Time -->
-            <div class="input-field">
-                <label for="event_time" class="font-title weight-600">TIME</label>
-                <input id="event_time" name="event_time" type="text" class="timepicker validate" required>
-            </div>
-
-            <!-- Who For? -->
-            <div class="input-field">
-                <label for="event_who" class="font-title weight-600">WHO FOR?</label>
+                <label for="longitude" class="font-title weight-600">LONGITUDE <em class="weight-300"> Between -4.0 & -4.8 / Max 20 decimal places (Click on ? for more info)</em></label>
                 <div class="input-info-div-wrapper">
-                    <select id="event_who" name="event_who" class="" required>
-                        <option value="" disabled selected>CHOOSE FROM LIST</option>
-                        {% for who in whos %}
-                            <option value="{{who.name|upper}}">{{who.name|upper}}</option>
-                        {% endfor %}
-                    </select>
+                    <input id="longitude" name="longitude" type="number" step="0.0000000000000001" min="-4.8" max="-4.0" class="validate" placeholder="e.g. -4.4097094324786" required>
                     <!-- Popover Info Box Adapted from https://codepen.io/chocochip/pen/zYxMgRG -->
                     <div class="popover-wrapper">
                         <div class="question-circle swim-txt-white swim-bg-mblue">?</div>
@@ -83,32 +55,43 @@
                 </div>
             </div>
 
-            <!-- Challenge Level -->
+            
+            <!-- location description -->
             <div class="input-field">
-                <label for="event_challenge" class="font-title weight-600">CHALLENGE LEVEL</label>
+                <label for="location_description" class="font-title weight-600">DESCRIPTION</label>
+                <textarea id="location_description" name="location_description" class="validate" minlength="5" maxlength="300" placeholder="e.g. Conditions, safety information, sand/shingle, best time to go, common dangers, wildlife information etc." required></textarea>
+            </div>
+
+            <!-- location description -->
+            <div class="input-field">
+                <label for="location_parking" class="font-title weight-600">PARKING</label>
+                <textarea id="location_parking" name="location_parking" class="validate" minlength="5" maxlength="300" placeholder="Availability, cost etc" required></textarea>
+            </div>
+
+            <!-- location description -->
+            <div class="input-field">
+                <label for="location_facilities" class="font-title weight-600">FACILITIES</label>
+                <textarea id="location_facilities" name="location_facilities" class="validate" minlength="5" maxlength="300" placeholder="Cafes, toilets etc" required></textarea>
+            </div>
+
+            <!-- location longitude -->
+            <div class="input-field">
+                <label for="image_url" class="font-title weight-600">IMAGE URL</label>
                 <div class="input-info-div-wrapper">
-                    <select id="event_challenge" name="event_challenge" class="" required>
-                        <option value="" disabled selected>CHOOSE FROM LIST</option>
-                        {% for challenge in challenges %}
-                            <option value="{{challenge.name|upper}}">{{challenge.name|upper}}</option>
-                        {% endfor %}
-                    </select>
+                    <input id="image_url" name="image_url" type="url" class="validate" placeholder="e.g https://www.photoplace.com/mybeachphoto.jpg" required>
                     <!-- Popover Info Box Adapted from https://codepen.io/chocochip/pen/zYxMgRG -->
                     <div class="popover-wrapper">
                         <div class="question-circle swim-txt-white swim-bg-mblue">?</div>
                         <div class="popover-content swim-bg-white">
                             <div class="modal-header swim-bg-mblue swim-txt-white">
-                                <h2 class="font-title weight-500">CHALLENGE LEVEL</h2>
+                                <h2 class="font-title weight-500">WHO FOR?</h2>
                             </div>
-                            <p class="font-body swim-txt-dblue weight-500">
-                                <span class="weight-700">FUN: </span>A quick dip, only within depth, no known strong currents or dangers. Appropriate for beginners and weaker swimmers.<br><br>
-                                <span class="weight-700">INTERMEDIATE: </span>Some swimming, close to shore but can be out of depth, no known strong currents or dangers.<br><br>
-                                <span class="weight-700">CHALLENGING: </span>Strong swimmers only, may include areas with stronger currents, going out of depth, some coasteering or jumps.
-                            </p>
+                            <p class="font-body swim-txt-dblue weight-500">Groups can be female or male only, or open to anyone.</p>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <!-- submit button -->
             <div class="form-button-row">

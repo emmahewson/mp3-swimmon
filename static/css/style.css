@@ -408,8 +408,7 @@ footer h4 {
 
 .btn-mblue:hover,
 .btn-mblue:focus {
-    background-color: var(--pale-blue);
-    color: var(--dblue);
+    background-color: var(--dark-blue);
 }
 
 .btn-edit {
@@ -619,6 +618,7 @@ footer h4 {
     color: var(--high-blue);
 }
 
+
 /* Forms */
 
 .form-page-wrapper {
@@ -655,6 +655,8 @@ footer h4 {
 
 input[type=text]:not(.browser-default),
 input[type=password]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=url]:not(.browser-default),
 textarea {
     background-color: var(--white);
     border-radius: 5px;
@@ -680,12 +682,19 @@ textarea {
     height: 120px;
 }
 
+#location_parking,
+#location_facilities {
+    height: 80px;
+}
+
 :focus-visible {
     outline: none;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
 textarea:focus,
 .select-wrapper input.select-dropdown:focus {
     border: 1px solid var(--dark-blue);
@@ -694,6 +703,8 @@ textarea:focus,
 
 input.valid[type=text]:not(.browser-default),
 input.valid[type=password]:not(.browser-default),
+input.valid[type=number]:not(.browser-default),
+input.valid[type=url]:not(.browser-default),
 textarea.valid {
     border-bottom: none;
     border: 2px solid var(--button-edit-hov);
@@ -701,6 +712,8 @@ textarea.valid {
 
 input.invalid[type=text]:not(.browser-default),
 input.invalid[type=password]:not(.browser-default),
+input.invalid[type=number]:not(.browser-default),
+input.invalid[type=url]:not(.browser-default),
 textarea.invalid {
     border-bottom: none;
     border: 2px solid var(--high-pink);
@@ -769,7 +782,9 @@ textarea::placeholder {
     margin-top: 5px;
 }
 
-.input-info-div-wrapper .select-wrapper .select-dropdown {
+.input-info-div-wrapper .select-wrapper .select-dropdown,
+#latitude,
+#longitude {
     margin-top: 0;
     width: 250px;
 }
