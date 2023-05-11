@@ -1,8 +1,20 @@
+
+// Function for map on Home Page with multiple markers
+
 function initMap() {
+
+    // Sets zoom level - zoomed out on smaller screens to show all markers
+    let zoomLevel;
+    let width = screen.width;
+    if (width <= 600) {
+        zoomLevel = 9;
+    } else {
+        zoomLevel = 10;
+    }
     
     // declaring map settings
     const options = { 
-        zoom: 10,
+        zoom: zoomLevel,
         center: {
             lat: 53.286409181339444,
             lng: -4.359635469750749
@@ -69,7 +81,7 @@ function initMap() {
             google.maps.event.addListener(marker, "click", function () {
                 infoWindow.setContent( this.info );
                 infoWindow.open( map, this );
-                google.maps.event.addListener(map, "click", function(event) {
+                google.maps.event.addListener(map, "click", function() {
                     infoWindow.close();
                 });
             });

@@ -27,6 +27,9 @@ def home():
     return render_template("index.html", locations=locations)
 
 
+# Fetch request connects GoogleMaps with the MongoDB database
+# Credit Lee Martina
+# https://github.com/isntlee/Sagacity/blob/master/templates/home.html
 @app.route('/fetch')
 def fetch():
     # Fetch function allows GoogleMaps API to operate with data from MongoDB.
@@ -371,10 +374,16 @@ def location(location_id):
 
     location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
     # filters events by location and sorts by date
-    events = mongo.db.events.find({"location_id": ObjectId(location_id)}).sort("date", 1)
+    events = mongo.db.events.find(
+        {"location_id": ObjectId(location_id)}).sort("date", 1)
     locations = list(mongo.db.locations.find())
 
-    return render_template("location.html", events=events, locations=locations, location=location)
+    return render_template(
+        "location.html",
+        events=events,
+        locations=locations,
+        location=location
+    )
 
 
 # EDIT LOCATION
@@ -407,21 +416,21 @@ def edit_location(location_id):
     return redirect(url_for("sign_in"))
 
 
-
 @app.route("/delete-location/<location_id>")
 def delete_location(location_id):
 
     # checks if user is logged in
     if "user" in session:
 
-        # gets event details
-        location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
+        # # gets location details
+        # location = mongo.db.locations.find_one(
+        # {"_id": ObjectId(location_id)})
 
         # checks current user is admin
         if session["user"] == "admin":
 
             # deletes the event and redirects to events
-            mongo.db.events.delete_one({"_id": ObjectId(location_id)})
+            mongo.db.locations.delete_one({"_id": ObjectId(location_id)})
             flash("Location successfully deleted")
             return redirect(url_for("location"))
 

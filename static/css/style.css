@@ -164,7 +164,8 @@ p {
 
 *,
 .popover-content *,
-.intro-div * {
+.intro-div *,
+#home-hero-div * {
     margin: 0;
 }
 
@@ -1383,6 +1384,18 @@ textarea::placeholder {
         padding: 30px 20px;
     }
 
+    .intro-div,
+    .search-wrapper {
+        padding: 30px 20px
+    }
+
+    .intro-div h1,
+    .location-name-div h1 {
+        font-size: 32px;
+    }
+
+
+    /* Home */
     #home-hero-div {
         height: 250px;
         background-image: url(../images/home-hero-sm.jpg);
@@ -1403,37 +1416,36 @@ textarea::placeholder {
         font-size: 12px;
     }
 
+    
+    /* Home - map */
     #home-map-div {
         padding-bottom: 50px;
     }
 
-    #home-map {
-        height: 400px;
+    #map-home {
+        height: 500px;
     }
 
-    .location-popup-header,
-    .location-popup-text {
-        padding: 10px;
+    /* Google Map Info Window Styling */
+    .gm-style .gm-style-iw-c {
+        width: 300px !important;
+
     }
 
-    .location-popup-header h2 {
+    .gm-style-iw-d {
+        max-height: 450px !important;
+    }
+
+    .iw-title h2 {
         font-size: 20px;
     }
 
-    .location-popup-image-wrapper {
-        height: 150px;
+    .iw-img-div {
+        max-height: 150px;
     }
 
-    .intro-div,
-    .search-wrapper {
-        padding: 30px 20px
-    }
 
-    .intro-div h1,
-    .location-name-div h1 {
-        font-size: 32px;
-    }
-
+    /* Location Page */
     .location-name-div {
         padding: 30px 25px;
     }
@@ -1443,11 +1455,15 @@ textarea::placeholder {
     }
 
     .location-image-div {
-        height: 150px;
+        height: 200px;
     }
 
     .location-info-div {
         padding: 25px;
+    }
+
+    #map-location {
+        height: 300px;
     }
 
 
