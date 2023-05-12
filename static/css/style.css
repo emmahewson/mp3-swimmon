@@ -533,12 +533,12 @@ footer h4 {
     width: 80% !important;
     max-width: 400px !important;
     border-radius: 0px !important;
+    max-height: 500px !important;
 }
 
 .gm-style .gm-style-iw-d {
     overflow: auto !important;
 }
-
 
 .iw-title,
 .iw-content p {
@@ -550,16 +550,21 @@ footer h4 {
     width: fit-content;
 }
 
-.iw-title h2 {
-    font-size: 24px;
+.iw-location-name-div {
+    width: 350px;
 }
 
-.iw-title h2 a {
+.iw-title .iw-location-name-div h2 {
+    font-size: 22px;
+}
+
+.iw-title .iw-location-name-div h2 a {
     color: var(--white);
     text-decoration: underline;
+    word-break: break-word;
 }
 
-.iw-title h2,
+.iw-title .iw-location-name-div h2,
 .iw-title p {
     display: inline-block;
     width: fit-content;
@@ -601,7 +606,7 @@ footer h4 {
 /* Google Map Info Window Hover Effect */
 .iw-img-div img,
 .iw-content,
-.iw-title h2 a {
+.iw-title .iw-location-name-div h2 a {
     transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
@@ -1109,6 +1114,7 @@ textarea::placeholder {
     text-decoration: underline;
     text-underline-offset: 2px;
     font-size: 16px;
+    word-wrap: break-word;
 }
 
 .event-card-text p {
@@ -1123,6 +1129,10 @@ textarea::placeholder {
 
 .event-card-text p i {
     margin-right: 5px;
+}
+
+.event-card-text p:last-of-type {
+    word-wrap: break-word;
 }
 
 .event-marker-row,
@@ -1221,6 +1231,7 @@ textarea::placeholder {
 
 .event-page-text h1 {
     font-size: 36px;
+    word-wrap: break-word;
 }
 
 .created-by,
@@ -1290,6 +1301,7 @@ textarea::placeholder {
 
 .event-page-location-text h2 {
     font-size: 24px;
+    word-break: break-all;
 }
 
 .co-ordinates {
@@ -1353,6 +1365,7 @@ textarea::placeholder {
 
 .location-name-div h1 {
     font-size: 36px;
+    word-break: break-all;
 }
 
 .location-name-div p {
@@ -1386,6 +1399,7 @@ textarea::placeholder {
 .intro-div h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    word-break: break-all;
 }
 
 #map-location {
@@ -1609,8 +1623,12 @@ textarea::placeholder {
         max-height: 450px !important;
     }
 
-    .iw-title h2 {
-        font-size: 20px;
+    .iw-location-name-div {
+        width: 240px;
+    }
+
+    .iw-title .iw-location-name-div h2 {
+        font-size: 16px;
     }
 
     .iw-img-div {
