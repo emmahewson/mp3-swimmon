@@ -876,13 +876,12 @@ textarea::placeholder {
 /* Location Picker (add location form) */
 
 #lat-long-inputs {
-    display: flex;
-    gap: 10px;
+    margin-bottom: 0;
 }
 
-#lat-long-inputs .input-field input {
-    width: 90%;
-    min-width: 150px;
+#lat-long-inputs .input-field {
+    padding: 0;
+
 }
 
 #lp-modal {
@@ -943,13 +942,6 @@ textarea::placeholder {
     height: 100%;
 }
 
-#lp-footer {
-    padding: 15px;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-}
-
 #lp-buttons-div {
     padding: 15px;
     height: 60px;
@@ -957,11 +949,6 @@ textarea::placeholder {
 
 #lp-reset {
     float: left;
-}
-
-
-.backdrop {
-    background-color: var(--light-grey);
 }
 
 
@@ -1718,6 +1705,35 @@ textarea::placeholder {
     .form-button-row {
         margin-top: 30px;
     }
+
+    /* Location Picker */
+    #location-picker-box {
+        top: 15%;
+        width: 90%;
+        min-width: 0;
+    }
+
+    #lp-header {
+        padding: 15px;
+    }
+
+    #lp-header h1 {
+        font-size: 15px;
+        line-height: 1;
+    }
+
+    #lp-header a {
+        font-size: 22px;
+        line-height: 0.8;
+    }
+
+    #lp-map-wrapper {
+        height: 350px;
+    }
+
+
+
+
 
 
     /* Modals / Info Boxes */

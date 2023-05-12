@@ -6,7 +6,7 @@
 <div id="lp-modal" class="hidden">
     <div id="location-picker-box" class="div-shadow">
         <div id="lp-header" class="swim-bg-dblue">
-            <h1 class="font-body weight-400 swim-txt-white">Drag the marker to your chosen location</h1>
+            <h1 class="font-body weight-400 swim-txt-white">Drag the marker to a location</h1>
             <a id="lp-close" class="font-body weight-700 swim-txt-white">&#x2715</a>
         </div>
         <div id="lp-map-wrapper">
@@ -39,15 +39,15 @@
                 <input id="location_name" name="location_name" type="text" minlength="5" maxlength="20" class="validate" placeholder="e.g. Newborough Beach" required>
             </div>
 
-            <div id="lat-long-inputs">
+            <div id="lat-long-inputs" class="row">
                 <!-- location latitude -->
-                <div class="input-field">
+                <div class="input-field col s12 m4">
                     <label for="latitude" class="font-title weight-600">LATITUDE</label>
                     <input id="latitude" name="latitude" type="number" step="any" min="53.1" max="53.4" class="validate" required>
                 </div>
 
                 <!-- location longitude -->
-                <div class="input-field">
+                <div class="input-field col s12 m4 offset-m1">
                     <label for="longitude" class="font-title weight-600">LONGITUDE</label>
                     <input id="longitude" name="longitude" type="number" step="any" min="-4.8" max="-4" class="validate" required>       
                 </div>
