@@ -411,6 +411,16 @@ footer h4 {
     background-color: var(--dark-blue);
 }
 
+.btn-lgrey,
+.btn-lgrey:focus {
+    background-color: var(--light-grey);
+    color: var(--dark-blue);
+}
+
+.btn-lgrey:hover {
+    background-color: var(--grey);
+}
+
 .btn-edit,
 .btn-edit:focus {
     background-color: var(--button-edit);
@@ -805,7 +815,7 @@ textarea::placeholder {
 }
 
 
-/* Popover styling - Question Mark Info Boxes */
+/* Popover styling - Hover Info Boxes */
 /* Adapted from https://codepen.io/chocochip/pen/zYxMgRG */
 
 .popover-wrapper {
@@ -857,6 +867,45 @@ textarea::placeholder {
     background-color: var(--high-pink);
     cursor: pointer;
 }
+
+/* Location Picker (add location form) */
+
+#lp-modal {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+}
+
+#location-picker-box {
+    position: fixed;
+    top: 160px;
+    width: 60%;
+    min-width: 500px;
+    max-width: 600px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+#lp-map-wrapper {
+    height: 400px;
+}
+
+#lp-map {
+    width: 100%;
+    height: 100%;
+}
+
+#lp-buttons-div {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    height: 60px;
+}
+
 
 
 /* Events */
@@ -1334,7 +1383,7 @@ textarea::placeholder {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* Media Queries */

@@ -2,10 +2,17 @@
 
 
 {% block content %}
-<div class="location-picker-wrapper">
-    <div id="location-picker" style="width: 500px; height: 400px;"></div>
-    <button id="lp-reset" class="swim-btn-flexi btn-mblue font-title weight-500 swim-btn-shadow center-align">RESET</button>
-    <button id="lp-select" class="swim-btn-flexi btn-hpink font-title weight-500 swim-btn-shadow center-align">SELECT</button>
+<div id="lp-modal" class="hidden">
+    <div id="location-picker-box" class="div-shadow">
+        <div id="lp-map-wrapper">
+            <div id="lp-map"></div>
+        </div>
+        <div id="lp-buttons-div" class="swim-bg-dblue">
+            <button id="lp-reset" class="swim-btn-small btn-lgrey font-title weight-500 swim-btn-shadow center-align">RESET</button>
+            <button id="lp-select" class="swim-btn-small btn-hpink font-title weight-500 swim-btn-shadow center-align">SELECT</button>
+        </div>
+        
+    </div>
 </div>
 
 

@@ -1,10 +1,27 @@
 
-// Function for location picker
+// gets input box elements for lat / long
+let latBox = document.getElementById("latitude");
+let lngBox = document.getElementById("longitude");
 
+let modal = document.getElementById("lp-modal");
+
+// Opens the location picker modal when lat/long input boxes are clicked
+let boxes = [latBox, lngBox];
+for (box of boxes) {
+    box.addEventListener('click', function(){
+        modal.classList.remove("hidden");
+    })
+}
+
+// closes the modal if user clicks outside of map
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.classList.add('hidden');
+    }
+}
+
+// Handles Google Map creation & population
 function initMap() {
-    // gets input box elements for lat / long
-    let latBox = document.getElementById("latitude");
-    let lngBox = document.getElementById("longitude");
 
     // sets value for centre of Anglesey
     let centerMon = {
@@ -34,7 +51,7 @@ function initMap() {
     }
     
     // creates map with above zoom & position settings
-    const map = new google.maps.Map(document.getElementById("location-picker"), {
+    const map = new google.maps.Map(document.getElementById("lp-map"), {
         zoom: zoomLevel,
         center: startPosition
     });
@@ -64,7 +81,7 @@ function initMap() {
     selectBtn.addEventListener('click', function(){
         latBox.value = marker.getPosition().lat();
         lngBox.value = marker.getPosition().lng();
-        // add a close modal here
+        modal.classList.add("hidden");
     });
 
 };
