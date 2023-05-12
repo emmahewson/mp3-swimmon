@@ -36,8 +36,13 @@ function initMap() {
 
     function fetchFunction(data) {
 
-        // declare variables for infoWindow from JSON 'data'
+        // create new infoWindow
+        // (solution to bug 3 - adapted from https://www.aspsnippets.com/Articles/Google-Maps-API-V3-Open-Show-only-one-InfoWindow-at-a-time-and-close-other-InfoWindow.aspx)
+        let infoWindow = new google.maps.InfoWindow();
+
+        // loop through JSON data to create markers & infoWindow content
         for(let i = 0; i < data.length; i++){
+            // declare variables from JSON data
             let popupLocation = {lat: parseFloat(data[i].lat), lng: parseFloat(data[i].long)};
             let popupName = data[i].name;
             let popupImage = data[i].image_url;
@@ -64,26 +69,24 @@ function initMap() {
                 '</a>'
             
         
-            // declare new google Maps marker
+            // declare new google Maps marker with attached infoWindow content
             let marker = new google.maps.Marker({
             position: popupLocation,
             map: map,
             title: popupName, 
             info : infoContent
             });
-        
-            // declare new infoWindow
-            let infoWindow = new google.maps.InfoWindow({
-            content: infoContent
-            });
-        
+            
             // add marker click event listener - show infoWindow
             google.maps.event.addListener(marker, "click", function () {
                 infoWindow.setContent( this.info );
                 infoWindow.open( map, this );
+
+                // close infoWindow when user clicks outside of current infoWindow
                 google.maps.event.addListener(map, "click", function() {
                     infoWindow.close();
                 });
+                 
             });
         }
     }

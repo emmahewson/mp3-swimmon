@@ -774,7 +774,7 @@ textarea::placeholder {
 }
 
 
-/* Info buttons on form - modal triggers */
+/* Info buttons on form - trigger popovers */
 
 .input-info-div-wrapper {
     display: flex;
@@ -829,12 +829,12 @@ textarea::placeholder {
     overflow: auto;
 }
   
-.modal-header,
+.popover-header,
 .popover-content p  {
     padding: 10px;
 }
 
-.modal-header h2 {
+.popover-header h2 {
     font-size: 20px;
 }
 
@@ -1403,10 +1403,6 @@ textarea::placeholder {
     .event-page-location .col.event-page-map,
     .event-page-location .col.event-page-location-text {
         padding: 0;
-    }
-
-    .swim-modal-contents {
-        width: 70%;
     }
 
     .location-name-div {

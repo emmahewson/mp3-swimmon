@@ -453,6 +453,21 @@ I troubleshooted this issue for a long time, it appears to be related to the hov
 </details>
 
 
+#### **3: Google Maps info windows - multiple windows opening at once**
+
+I encountered a bug on the homepage map (with all the locations represented by markers and associated info windows on click). I found that after clicking on the first marker, any clicks on subsequent markers would result in multiple info windows being open at once, unless the user specifically closed the windows by clicking on the cross on outside the info window. I felt this was a bad user experience as it required more user clicks. I solved this with a simple & neat solution I found [here](https://www.aspsnippets.com/Articles/Google-Maps-API-V3-Open-Show-only-one-InfoWindow-at-a-time-and-close-other-InfoWindow.aspx). By declaring the infoWindow element outside of the For Loop and then populating it inside the for loop it meant that only 1 info window existed (originally I had declared it within the forloop so each marker had its own infowindow.) With only 1 info window element it meant that it was impossible for more than 1 to be open at a time.
+
+
+<details><summary>Screen Recordings</summary>
+
+<img src="">
+<img src="">
+*Before & After*
+
+
+</details>
+
+
 ****
 ## Deployment
 
