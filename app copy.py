@@ -513,8 +513,6 @@ def edit_location(location_id):
             # handles 'POST' method (form submission)
             if request.method == "POST":
 
-
-
                 # defines new dictionary with fields to update
                 submit = {
                     "name": request.form.get("location_name").lower(),
@@ -534,9 +532,7 @@ def edit_location(location_id):
                 
 
             # handles 'GET' method (page load)
-            
-            # gets event details
-            location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
+            # gets collections for use in form dropdowns
             return render_template("edit-location.html", location=location)
 
         # if not user's event redirects to user profile page

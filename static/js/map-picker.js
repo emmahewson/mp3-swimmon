@@ -44,8 +44,8 @@ function initMap() {
     let startPosition = {}
     if (latBox.checkValidity() && lngBox.checkValidity()) {
         startPosition = {
-            lat: latBox.value,
-            lng: lngBox.value
+            lat: Number(latBox.value),
+            lng: Number(lngBox.value)
         }
     } else {
         startPosition = centerMon;
