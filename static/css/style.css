@@ -905,6 +905,35 @@ textarea::placeholder {
     margin: 0 auto;
 }
 
+#lp-header {
+    padding: 20px 15px;
+}
+
+#lp-header h1 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+#lp-header a {
+    font-size: 24px;
+    float: right;
+    line-height: 1;
+    transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+}
+
+#lp-header a:hover {
+    color: var(--high-blue);
+    cursor: pointer;
+}
+
+#lp-header * {
+    display: inline-block;
+}
+
 #lp-map-wrapper {
     height: 400px;
 }
@@ -922,12 +951,17 @@ textarea::placeholder {
 }
 
 #lp-buttons-div {
-    display: flex;
-    flex-wrap: nowrap;
+    padding: 15px;
+    height: 60px;
 }
 
-#lp-buttons-div button {
-    margin-left: 20px;
+#lp-reset {
+    float: left;
+}
+
+
+.backdrop {
+    background-color: var(--light-grey);
 }
 
 

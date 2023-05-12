@@ -19,12 +19,15 @@ for (box of boxes) {
     })
 }
 
-// closes the modal if user clicks outside of map
+document.getElementById("lp-close").addEventListener('click', function(){
+    modal.classList.add("hidden");
+})
+
 window.onclick = function(event) {
     if (event.target == modal) {
-        modal.classList.add('hidden');
+        modal.classList.add("hidden");
     }
-}
+  }
 
 
 // Google Map Functionality
@@ -73,6 +76,8 @@ function initMap() {
     // centres the map on the marker when the marker is dropped
     google.maps.event.addListener(marker, 'dragend', function(){
         map.setCenter(marker.getPosition());
+        latBox.value = marker.getPosition().lat();
+        lngBox.value = marker.getPosition().lng();
     });
 
     // reset button sets the marker & map back to the centre of Anglesey
@@ -81,15 +86,10 @@ function initMap() {
         marker.setPosition(centerMon);
         map.setCenter(centerMon);
         map.setZoom(zoomLevel);
+        latBox.value = '';
+        lngBox.value = '';
     });
 
-    // select button populates the form inputs & closes the modal
-    let selectBtn = document.getElementById("lp-select");
-    selectBtn.addEventListener('click', function(){
-        latBox.value = marker.getPosition().lat();
-        lngBox.value = marker.getPosition().lng();
-        modal.classList.add("hidden");
-    });
 
 };
 
