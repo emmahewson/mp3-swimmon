@@ -81,11 +81,20 @@
                     <!-- Popover Info Box Adapted from https://codepen.io/chocochip/pen/zYxMgRG -->
                     <div class="popover-wrapper">
                         <div class="question-circle swim-txt-white swim-bg-mblue">?</div>
-                        <div class="popover-content swim-bg-white">
+                        <div class="popover-content swim-bg-white popover-narrow">
                             <div class="popover-header swim-bg-mblue swim-txt-white">
-                                <h2 class="font-title weight-500">WHO FOR?</h2>
+                                <h2 class="font-title weight-500">IMAGE URL</h2>
                             </div>
-                            <p class="font-body swim-txt-dblue weight-500">Groups can be female or male only, or open to anyone.</p>
+                            <div class="popover-para-div font-body swim-txt-dblue">
+                                <ul>
+                                    <li>Find a large, high quality image of the location using Google Image Search (use 'tools' and 'size' to filter by size)</li>
+                                    <li>Right click on the image and select 'Copy Image Address' (May be called 'Image Link' or 'Image Location').</li>
+                                    <li>Paste the image addres in to the Image URL box on the form.</li>
+                                </ul>
+                            </div>
+                            <div class="popover-image-div">
+                                <img src="{{ url_for('static', filename='images/popover-copy-image-address.jpg') }}" alt="image of right click menu on Google Image search with 'Copy Image Address' selected">
+                            </div>
                         </div>
                     </div>
                 </div>

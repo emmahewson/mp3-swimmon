@@ -848,9 +848,16 @@ textarea::placeholder {
     border-radius: 4px;
     overflow: auto;
 }
+
+.popover-narrow {
+    width: 50% !important;
+    margin-left: 40%;
+    margin-right: 10%;
+}
   
 .popover-header,
-.popover-content p  {
+.popover-content p,
+.popover-para-div  {
     padding: 10px;
 }
 
@@ -876,6 +883,38 @@ textarea::placeholder {
 .popover-wrapper:hover .question-circle {
     background-color: var(--high-pink);
     cursor: pointer;
+}
+
+.popover-content .col {
+    padding: 0;
+}
+
+.popover-para-div {
+    padding: 10px !important;
+}
+
+
+.popover-para-div ul {
+    padding-left: 20px !important;
+}
+
+.popover-para-div ul,
+.popover-para-div ul li {
+    list-style-type: square !important;
+}
+
+.popover-para-div ul li {
+    margin-bottom: 5px;
+}
+
+.popover-image-div {
+    height: 100%;
+    display: flex;
+}
+
+.popover-image-div img {
+   width: 100%;
+   align-self: flex-end;
 }
 
 /* Location Picker (add location form) */
@@ -1530,6 +1569,16 @@ textarea::placeholder {
 
 }
 
+@media only screen and (max-width: 800px) {
+    .popover-narrow {
+        width: 70% !important;
+        margin-left: 20%;
+        margin-right: 10%;
+    }
+}
+
+    
+
 
 @media only screen and (max-width: 600px) {
 
@@ -1756,10 +1805,18 @@ textarea::placeholder {
 
     /* Modals / Info Boxes */
 
+    .popover-content,
+    .popover-narrow {
+        margin: 0 3% 0 3%;
+    }
+
     .popover-content {
         width: 94%;
-        margin: 0 3% 0 3%;
-      }
+    }
+
+    .popover-narrow {
+        width: 94% !important;
+    }
 
     .input-info-div-wrapper .select-wrapper .select-dropdown {
         width: 160px;
