@@ -371,61 +371,61 @@ footer h4 {
     font-size: 14px;
 }
 
-.btn-hpink {
+.btn-hpink,
+.btn-hpink:focus {
     background-color: var(--high-pink);
     color: var(--white);
 }
 
-.btn-hpink:hover,
-.btn-hpink:focus {
+.btn-hpink:hover {
     background-color: var(--high-pink-hov);
 }
 
-.btn-hblue {
+.btn-hblue,
+.btn-hblue:focus {
     background-color: var(--high-blue);
     color: var(--dark-blue);
 }
 
-.btn-hblue:hover,
-.btn-hblue:focus {
+.btn-hblue:hover {
     background-color: var(--high-blue-hov);
 }
 
-.btn-dblue {
+.btn-dblue,
+.btn-dblue:focus {
     background-color: var(--dark-blue);
     color: var(--white);
 }
 
-.btn-dblue:hover,
-.btn-dblue:focus {
+.btn-dblue:hover {
     background-color: var(--mid-blue)
 }
 
-.btn-mblue {
+.btn-mblue,
+.btn-mblue:focus {
     background-color: var(--mid-blue);
     color: var(--white);
 }
 
-.btn-mblue:hover,
-.btn-mblue:focus {
+.btn-mblue:hover {
     background-color: var(--dark-blue);
 }
 
-.btn-edit {
+.btn-edit,
+.btn-edit:focus {
     background-color: var(--button-edit);
 }
 
-.btn-edit:hover,
-.btn-edit:focus {
+.btn-edit:hover {
     background-color: var(--button-edit-hov);
 }
 
-.btn-delete {
+.btn-delete,
+.btn-delete:focus {
     background-color: var(--button-del);
 }
 
-.btn-delete:hover,
-.btn-delete:focus {
+.btn-delete:hover {
     background-color: var(--button-del-hov);
 }
 
