@@ -42,11 +42,18 @@ function initMap() {
     // sets start position on map
     // if data in boxes is valid sets map to that position, else centre of Anglesey
     let startPosition = {}
-    if (latBox.checkValidity() && lngBox.checkValidity()) {
-        startPosition = {
-            lat: Number(latBox.value),
-            lng: Number(lngBox.value)
-        }
+    let latInput = Number(latBox.value);
+    let lngInput = Number(lngBox.value);
+    if (typeof latInput == 'number' &&
+        latInput >= -90 &&
+        latInput <= 90 &&
+        typeof lngInput == 'number' &&
+        lngInput >= -180 &&
+        lngInput <= 180) {
+            startPosition = {
+                lat: latInput,
+                lng: lngInput
+            }
     } else {
         startPosition = centerMon;
     }
