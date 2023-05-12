@@ -3,12 +3,18 @@
 let latBox = document.getElementById("latitude");
 let lngBox = document.getElementById("longitude");
 
+// gets modal element
 let modal = document.getElementById("lp-modal");
 
-// Opens the location picker modal when lat/long input boxes are clicked
+// Event listeners on boxes for opening the modal
 let boxes = [latBox, lngBox];
 for (box of boxes) {
+    // opens the modal on user click
     box.addEventListener('click', function(){
+        modal.classList.remove("hidden");
+    })
+    // opens the modal on focus (for use of 'tab' key)
+    box.addEventListener('focus', function(){
         modal.classList.remove("hidden");
     })
 }
@@ -20,7 +26,8 @@ window.onclick = function(event) {
     }
 }
 
-// Handles Google Map creation & population
+
+// Google Map Functionality
 function initMap() {
 
     // sets value for centre of Anglesey
@@ -59,7 +66,7 @@ function initMap() {
     // declare new google Maps marker (draggable for relocation)
     let marker = new google.maps.Marker({
         map: map,
-        position: {lat: 53.286409181339444, lng: -4.359635469750749},
+        position: startPosition,
         draggable:true,
     });
 

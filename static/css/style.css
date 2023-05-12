@@ -714,7 +714,6 @@ textarea:focus,
 
 input.valid[type=text]:not(.browser-default),
 input.valid[type=password]:not(.browser-default),
-input.valid[type=number]:not(.browser-default),
 input.valid[type=url]:not(.browser-default),
 textarea.valid {
     border-bottom: none;
@@ -723,11 +722,18 @@ textarea.valid {
 
 input.invalid[type=text]:not(.browser-default),
 input.invalid[type=password]:not(.browser-default),
-input.invalid[type=number]:not(.browser-default),
 input.invalid[type=url]:not(.browser-default),
 textarea.invalid {
     border-bottom: none;
     border: 2px solid var(--high-pink);
+}
+
+input.valid[type=number]:not(.browser-default),
+input.valid[type=number]:not(.browser-default):focus,
+input.invalid[type=number]:not(.browser-default),
+input.invalid[type=number]:not(.browser-default):focus {
+    border-bottom: 1px solid var(--dark-blue);
+    box-shadow: none;
 }
 
 .select-dropdown,
@@ -894,7 +900,7 @@ textarea::placeholder {
     top: 160px;
     width: 60%;
     min-width: 500px;
-    max-width: 600px;
+    max-width: 750px;
     overflow: hidden;
     margin: 0 auto;
 }
@@ -908,12 +914,23 @@ textarea::placeholder {
     height: 100%;
 }
 
-#lp-buttons-div {
-    display: flex;
-    justify-content: space-between;
+#lp-footer {
     padding: 15px;
     height: 60px;
+    display: flex;
+    justify-content: space-between;
 }
+
+#lp-buttons-div {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#lp-buttons-div button {
+    margin-left: 20px;
+}
+
+
 
 
 

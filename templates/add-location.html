@@ -2,20 +2,25 @@
 
 
 {% block content %}
+<!-- Location picker modal -->
 <div id="lp-modal" class="hidden">
     <div id="location-picker-box" class="div-shadow">
         <div id="lp-map-wrapper">
             <div id="lp-map"></div>
         </div>
-        <div id="lp-buttons-div" class="swim-bg-dblue">
-            <button id="lp-reset" class="swim-btn-small btn-lgrey font-title weight-500 swim-btn-shadow center-align">RESET</button>
-            <button id="lp-select" class="swim-btn-small btn-hpink font-title weight-500 swim-btn-shadow center-align">SELECT</button>
+        <div class="swim-bg-dblue" id="lp-footer">
+            <p class="font-body weight-400 swim-txt-white">Drag the marker to a location</p>
+            <div id="lp-buttons-div" >
+                <button id="lp-reset" class="swim-btn-small btn-lgrey font-title weight-500 swim-btn-shadow center-align" type="reset">RESET</button>
+                <button id="lp-select" class="swim-btn-small btn-hpink font-title weight-500 swim-btn-shadow center-align" type="submit">SELECT</button>
+            </div>
         </div>
+    </div>
         
     </div>
 </div>
 
-
+<!-- Form -->
 <div class="form-page-wrapper swim-bg-lgrey">
     <!-- Intro Section -->
     <div class="intro-div swim-bg-hpink swim-txt-white div-shadow">
@@ -38,13 +43,13 @@
                 <!-- location latitude -->
                 <div class="input-field">
                     <label for="latitude" class="font-title weight-600">LATITUDE</label>
-                    <input id="latitude" name="latitude" type="number" step="0.0000000000000001" min="53.1" max="53.5" class="validate" required>
+                    <input id="latitude" name="latitude" type="number" step="any" min="53.1" max="53.4" class="validate" required>
                 </div>
 
                 <!-- location longitude -->
                 <div class="input-field">
                     <label for="longitude" class="font-title weight-600">LONGITUDE</label>
-                    <input id="longitude" name="longitude" type="number" step="0.0000000000000001" min="-4.8" max="-4.0" class="validate" required>       
+                    <input id="longitude" name="longitude" type="number" step="any" min="-4.8" max="-4" class="validate" required>       
                 </div>
             </div>
 
