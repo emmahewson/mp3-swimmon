@@ -678,7 +678,8 @@ textarea {
 }
 
 input[type=text]:not(.browser-default),
-input[type=password]:not(.browser-default) {
+input[type=password]:not(.browser-default),
+input[type=number]:not(.browser-default) {
     padding: 0px 10px;
     width: calc(100% - 20px);
 }
@@ -792,9 +793,7 @@ textarea::placeholder {
     margin-top: 5px;
 }
 
-.input-info-div-wrapper .select-wrapper .select-dropdown,
-#latitude,
-#longitude {
+.input-info-div-wrapper .select-wrapper .select-dropdown {
     margin-top: 0;
     width: 250px;
 }
@@ -869,6 +868,16 @@ textarea::placeholder {
 }
 
 /* Location Picker (add location form) */
+
+#lat-long-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+#lat-long-inputs .input-field input {
+    width: 90%;
+    min-width: 150px;
+}
 
 #lp-modal {
     position: absolute;
