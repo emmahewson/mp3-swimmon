@@ -513,8 +513,6 @@ def edit_location(location_id):
             # handles 'POST' method (form submission)
             if request.method == "POST":
 
-
-
                 # defines new dictionary with fields to update
                 submit = {
                     "name": request.form.get("location_name").lower(),
@@ -526,17 +524,16 @@ def edit_location(location_id):
                     "image_url": request.form.get("image_url"),
                 }
 
-                # updates location in database & redirects to manage-locations.html
+                # updates location in database & redirects to manage-locations
                 mongo.db.locations.update_one(
                     {"_id": ObjectId(location_id)}, {"$set": submit})
                 flash("Location Successfully Updated")
-                return redirect(url_for("manage_locations"))
-                
+                return redirect(url_for("manage_locations"))   
 
             # handles 'GET' method (page load)
-            
             # gets event details
-            location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
+            location = mongo.db.locations.find_one(
+                {"_id": ObjectId(location_id)})
             return render_template("edit-location.html", location=location)
 
         # if not user's event redirects to user profile page
