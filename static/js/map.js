@@ -64,7 +64,7 @@ function initMap() {
                 '<a href="/location/'+locationId+'" class="swim-iw-link">' +
                     '<div class="iw-content swim-bg-white">' +
                         '<div class="iw-img-div">' +
-                            '<img src='+popupImage+' alt="Image of '+popupName+'" onerror="this.onerror=null; this.src=`http://swim-mon.herokuapp.com/static/images/sm-beach.jpg`;">' +
+                            '<img src='+popupImage+' alt="Image of '+popupName+'" onerror="this.onerror=null; this.src=`https://swim-mon.herokuapp.com/static/images/sm-beach.jpg`;">' +
                         '</div>' +
                         '<p class="map_reader font-body swim-txt-dblue weight-500">'+popupDescription+'</p>'+
                     '</div>' +

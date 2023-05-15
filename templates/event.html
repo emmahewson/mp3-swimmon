@@ -5,7 +5,7 @@
         {% for location in locations %}
             {% if event.location_id == location._id %}
                 <div class="event-image-div">
-                    <img src="{{ location.image_url }}" alt="Image of {{ location.name }}" onerror="this.onerror=null; this.src='http://swim-mon.herokuapp.com/static/images/sm-beach.jpg';">
+                    <img src="{{ location.image_url }}" alt="Image of {{ location.name }}" onerror="this.onerror=null; this.src='https://swim-mon.herokuapp.com/static/images/sm-beach.jpg';">
                 </div>
 
                 <div class="event-page-text center-align swim-txt-dblue">
