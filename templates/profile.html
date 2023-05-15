@@ -20,7 +20,7 @@
                             <div class="event-card-clickable swim-bg-white swim-txt-dblue">
                                 <a href="{{ url_for('event', event_id=event._id) }}"><span class="card-link"></span></a>
                                 <div class="event-image">
-                                    <img src="{{ location.image_url }}" alt="Image of {{ location.name }}">
+                                    <img src="{{ location.image_url }}" alt="Image of {{ location.name }}" onerror="this.onerror=null; this.src='http://swim-mon.herokuapp.com/static/images/sm-beach.jpg';">
                                 </div>
                                 <div class="event-card-text center-align">
                                     <h2 class="font-title center-align weight-600 uppercase">{{ event.name }}</h2>

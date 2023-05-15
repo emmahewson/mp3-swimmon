@@ -7,7 +7,7 @@
         <p class="font-body weight-300"><span id="latitude">{{ location.lat|truncate(9, False, "") }}</span>, <span id="longitude">{{ location.long|truncate(9, False, "") }}</span></p>
     </div>
     <div class="location-image-div">
-        <img src="{{ location.image_url }}" alt="Image of {{ location.name }}">
+        <img src="{{ location.image_url }}" alt="Image of {{ location.name }}" onerror="this.onerror=null; this.src='http://swim-mon.herokuapp.com/static/images/sm-beach.jpg';">
     </div>
     <div class="row location-info-div swim-bg-mblue swim-txt-white">
         <div class="col m12 l6 location-description">
