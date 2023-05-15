@@ -659,6 +659,10 @@ footer h4 {
     margin-bottom: 20px;
 }
 
+.input-field input {
+    font-size: 16px !important;
+}
+
 .input-field > label {
     position: relative;
     color: var(--dark-blue);
