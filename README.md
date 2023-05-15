@@ -463,8 +463,19 @@ I encountered a bug on the homepage map (with all the locations represented by m
 <img src="">
 <img src="">
 *Before & After*
+</details>
 
 
+#### **4: Location Picker Map - Mobile keyboard popup**
+
+When testing the deployed site on a mobile device I discovered an issue with the location picker on the add/edit location form. Clicking on the input (which opens the location picker modal) also opened the mobile keyboard as it was detecting a 'number' input being clicked. This was not a good user experience as it obscured the map, caused a flashing cursor to appear over the map and would be confusing for a user. I disabled the mobile keyboard by making the inputs 'readonly' so that the click on the boxes only triggered the location picker modal and not the keyboard as the mobile device would not detect a event where the user would be expected to type anything.
+
+
+<details><summary>Screen Recordings</summary>
+
+<img src="">
+<img src="">
+*Before & After*
 </details>
 
 
