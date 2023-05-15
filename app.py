@@ -6,6 +6,9 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 if os.path.exists("env.py"):
     import env
 
@@ -17,6 +20,11 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+
+# retrieves the hidden env variable for cloudinary API
+cloudinary.config(cloud_name=os.environ.get('CLOUD_NAME'),
+                  api_key=os.environ.get('CLOUD_API_KEY'),
+                  api_secret=os.environ.get('CLOUD_API_SECRET'))
 
 
 @app.route("/")
@@ -465,6 +473,9 @@ def add_location():
             # handles 'POST' method (form submission)
             if request.method == "POST":
 
+                image = request.files['image_url']
+                image_upload = cloudinary.uploader.upload(image)
+
                 # defines new location dictionary
                 location = {
                     "name": request.form.get("location_name").lower(),
@@ -473,14 +484,14 @@ def add_location():
                     "description": request.form.get("location_description"),
                     "facilities": request.form.get("location_facilities"),
                     "parking": request.form.get("location_parking"),
-                    "image_url": request.form.get("image_url"),
+                    "image_url": image_upload["secure_url"]
                 }
 
                 # adds event to collection & redirects to events.html
                 mongo.db.locations.insert_one(location)
                 flash("Location Successfully Added")
                 return redirect(url_for("manage_locations"))
-                
+
             # handles 'GET' method (page load)
             locations = mongo.db.locations.find()
             return render_template("add-location.html", locations=locations)
@@ -528,7 +539,7 @@ def edit_location(location_id):
                 mongo.db.locations.update_one(
                     {"_id": ObjectId(location_id)}, {"$set": submit})
                 flash("Location Successfully Updated")
-                return redirect(url_for("manage_locations"))   
+                return redirect(url_for("manage_locations"))
 
             # handles 'GET' method (page load)
             # gets event details

@@ -33,7 +33,7 @@
     </div>
 
     <div class="form-wrapper">
-        <form class="swim-form swim-bg-grey div-shadow" method="POST" action="{{ url_for('edit_location', location_id=location._id) }}">
+        <form class="swim-form swim-bg-grey div-shadow" method="POST" action="{{ url_for('edit_location', location_id=location._id) }}" enctype="multipart/form-data">
 
             <!-- location name -->
             <div class="input-field">
@@ -62,23 +62,28 @@
                 <textarea id="location_description" name="location_description" class="validate" minlength="5" maxlength="1000" placeholder="e.g. Conditions, safety information, sand/shingle, best time to go etc" required>{{ location.description }}</textarea>
             </div>
 
-            <!-- location description -->
+            <!-- location parking -->
             <div class="input-field">
                 <label for="location_parking" class="font-title weight-600">PARKING</label>
                 <textarea id="location_parking" name="location_parking" class="validate" minlength="5" maxlength="500" placeholder="Availability, cost etc" required>{{ location.parking }}</textarea>
             </div>
 
-            <!-- location description -->
+            <!-- location facilities -->
             <div class="input-field">
                 <label for="location_facilities" class="font-title weight-600">FACILITIES</label>
                 <textarea id="location_facilities" name="location_facilities" class="validate" minlength="5" maxlength="500" placeholder="Cafes, toilets etc" required>{{ location.facilities }}</textarea>
             </div>
 
-            <!-- location longitude -->
+            <!-- location image -->
             <div class="input-field">
                 <label for="image_url" class="font-title weight-600">IMAGE URL</label>
                 <div class="input-info-div-wrapper">
-                    <input id="image_url" name="image_url" type="url" class="validate" placeholder="e.g https://www.photoplace.com/mybeachphoto.jpg" value="{{ location.image_url }}" required>
+                    <input type="file" accept="image/*" name="image_url" id="image_url" required>
+                    <!-- <input id="image_url" name="image_url" type="url" class="validate" placeholder="e.g https://www.photoplace.com/mybeachphoto.jpg" value="{{ location.image_url }}" required> -->
+
+
+
+                    
                     <!-- Popover Info Box Adapted from https://codepen.io/chocochip/pen/zYxMgRG -->
                     <div class="popover-wrapper">
                         <div class="question-circle swim-txt-white swim-bg-mblue">?</div>
