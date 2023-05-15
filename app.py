@@ -524,6 +524,9 @@ def edit_location(location_id):
             # handles 'POST' method (form submission)
             if request.method == "POST":
 
+                image = request.files['image_url']
+                image_upload = cloudinary.uploader.upload(image)
+
                 # defines new dictionary with fields to update
                 submit = {
                     "name": request.form.get("location_name").lower(),
@@ -532,7 +535,7 @@ def edit_location(location_id):
                     "description": request.form.get("location_description"),
                     "facilities": request.form.get("location_facilities"),
                     "parking": request.form.get("location_parking"),
-                    "image_url": request.form.get("image_url"),
+                    "image_url": image_upload["secure_url"]
                 }
 
                 # updates location in database & redirects to manage-locations
