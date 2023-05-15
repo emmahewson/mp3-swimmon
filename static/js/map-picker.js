@@ -13,14 +13,10 @@ for (box of boxes) {
     // opens the modal on user click
     box.addEventListener('click', function(){
         modal.classList.remove("hidden");
-        // removes focus on box to prevent mobile keyboard opening
-        box.blur();
     })
     // opens the modal on focus (for use of 'tab' key)
     box.addEventListener('focus', function(){
         modal.classList.remove("hidden");
-        // removes focus on box to prevent mobile keyboard opening
-        box.blur();
     })
 }
 
