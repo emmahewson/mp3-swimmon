@@ -1504,6 +1504,35 @@ textarea::placeholder {
 }
 
 
+/* 404 & 500 Pages */
+
+#error-page-contents {
+    margin: 50px auto;
+}
+
+#error-page-contents h1,
+#error-page-contents p {
+    margin: 0;
+}
+
+#error-page-contents h1 {
+    font-size: 96px;
+}
+
+#error-page-contents img {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+#error-page-contents p {
+    margin-bottom: 20px;
+}
+
+#error-page-contents a {
+    margin: 0 auto;
+}
+
 
 /* JavaScript Classes */
 
@@ -1829,9 +1858,6 @@ textarea::placeholder {
 
 
 
-
-
-
     /* Modals / Info Boxes */
 
     .popover-content,
@@ -1849,6 +1875,15 @@ textarea::placeholder {
 
     .input-info-div-wrapper .select-wrapper .select-dropdown {
         width: 160px;
+    }
+
+
+   /* 400 & 500 pages */
+
+
+    
+    #error-page-contents h1 {
+        font-size: 48px;
     }
 
 
