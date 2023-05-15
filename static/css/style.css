@@ -987,12 +987,10 @@ textarea::placeholder {
 }
 
 #lp-buttons-div {
+    display: flex;
+    justify-content: space-between;
     padding: 15px;
     height: 60px;
-}
-
-#lp-reset {
-    float: left;
 }
 
 

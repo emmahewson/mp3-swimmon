@@ -45,11 +45,11 @@ function initMap() {
     let latInput = Number(latBox.value);
     let lngInput = Number(lngBox.value);
     if (typeof latInput == 'number' &&
-        latInput >= -90 &&
-        latInput <= 90 &&
+        latInput >= 53.1 &&
+        latInput <= 53.5 &&
         typeof lngInput == 'number' &&
-        lngInput >= -180 &&
-        lngInput <= 180) {
+        lngInput >= -4.8 &&
+        lngInput <= -4.0) {
             startPosition = {
                 lat: latInput,
                 lng: lngInput
@@ -80,11 +80,31 @@ function initMap() {
         draggable:true,
     });
 
+    let chosenLat;
+    let chosenLng;
     // centres the map on the marker when the marker is dropped
     google.maps.event.addListener(marker, 'dragend', function(){
         map.setCenter(marker.getPosition());
-        latBox.value = marker.getPosition().lat();
-        lngBox.value = marker.getPosition().lng();
+        let mLat = marker.getPosition().lat();
+        let mLng = marker.getPosition().lng();
+
+        if (mLat >= 53.1 && mLat <= 53.5 && mLng >= -4.8 && mLng <= -4.0) {
+            chosenLat = marker.getPosition().lat();
+            chosenLng = marker.getPosition().lng();
+        } else {
+            alert("Your location must be on The Island of Anglesey / Ynys Môn")
+            marker.setPosition(centerMon);
+            map.setCenter(centerMon);
+            map.setZoom(zoomLevel);
+        }
+    });
+
+    // Save button closes box and fills form inputs with marker location
+    let saveBtn = document.getElementById("lp-save");
+    saveBtn.addEventListener('click', function(){
+        latBox.value = chosenLat;
+        lngBox.value = chosenLng;
+        modal.classList.add("hidden");
     });
 
     // reset button sets the marker & map back to the centre of Anglesey
