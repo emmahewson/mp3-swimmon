@@ -1,15 +1,15 @@
+// Location Picker - for generating Latitude & Longitude values for Add/Edit Location Forms
 
-// gets input box elements for lat / long
+
+// Get variables for open/close location picker
 let latBox = document.getElementById("latitude");
 let lngBox = document.getElementById("longitude");
-
-// gets modal element
 let modal = document.getElementById("lp-modal");
 
-// Adds a click event to boxes to open modal
+
+// Open Location Picker when user clicks on latitude / longitude input fields
 let boxes = [latBox, lngBox];
 for (box of boxes) {
-
     // opens the modal on user click
     box.addEventListener('click', function(){
         modal.classList.remove("hidden");
@@ -21,7 +21,21 @@ for (box of boxes) {
 }
 
 
-// Google Map Functionality
+
+// Close location picker box (cross icon)
+document.getElementById("lp-close").addEventListener('click', function(){
+    modal.classList.add("hidden");
+})
+
+// Close location picker box (click outside box)
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.classList.add("hidden");
+    }
+}
+
+
+// Populate Google Map (Google Maps API)
 function initMap() {
 
     // sets value for centre of Anglesey
@@ -68,29 +82,58 @@ function initMap() {
     let marker = new google.maps.Marker({
         map: map,
         position: startPosition,
-        draggable:true,
+        draggable: true,
     });
 
+
+    // Handles location selection on drag & drop of maker
     let chosenLat;
     let chosenLng;
-    // centres the map on the marker when the marker is dropped
+
+
+    // User drops marker
     google.maps.event.addListener(marker, 'dragend', function(){
+
+        // centres the map on the dropped marker
         map.setCenter(marker.getPosition());
+
+        // gets the marker's new location
         let mLat = marker.getPosition().lat();
         let mLng = marker.getPosition().lng();
 
+        // Stops user selecting a location outside Anglesey
         if (mLat >= 53.1 && mLat <= 53.5 && mLng >= -4.8 && mLng <= -4.0) {
             chosenLat = marker.getPosition().lat();
             chosenLng = marker.getPosition().lng();
         } else {
-            alert("Your location must be on The Island of Anglesey / Ynys Môn")
-            marker.setPosition(centerMon);
-            map.setCenter(centerMon);
-            map.setZoom(zoomLevel);
+            // Error message if user selects location outside of Anglesey
+            locErrorOn();
+            // resets map
+            resetMap();
+            // removes error message
+            setTimeout(locErrorOff, 1500);
         }
     });
 
-    // Save button closes box and fills form inputs with marker location
+    // error message functions: if user drags marker outside designated co-ordinates
+    let errorMessage = document.getElementById("lp-error-message");
+   
+    // Reveal error message
+    function locErrorOn() {
+        errorMessage.classList.remove("hidden");
+        errorMessage.classList.add("lp-animate");
+    }
+
+    // Hide error message
+    function locErrorOff() {
+        errorMessage.classList.remove("lp-animate");
+        setTimeout(function() {
+            errorMessage.classList.add("hidden")
+        }, 350);
+    }
+
+
+    // Save button: closes box and fills form inputs with marker location
     let saveBtn = document.getElementById("lp-save");
     saveBtn.addEventListener('click', function(){
         latBox.value = chosenLat;
@@ -98,25 +141,20 @@ function initMap() {
         modal.classList.add("hidden");
     });
 
-    // reset button sets the marker & map back to the centre of Anglesey
+
+    // reset button: sets the marker & map back to the centre of Anglesey
     let resetBtn = document.getElementById("lp-reset");
-    resetBtn.addEventListener('click', function(){
-        marker.setPosition(centerMon);
-        map.setCenter(centerMon);
-        map.setZoom(zoomLevel);
+    resetBtn.addEventListener('click', function() {
+        resetMap();
         latBox.value = '';
         lngBox.value = '';
     });
-};
 
-    // close location picker box (cross icon) - doesn't save location
-    document.getElementById("lp-close").addEventListener('click', function(){
-        modal.classList.add("hidden");
-    })
-
-    // close location picker box (click outside box) - doesn't save location
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.classList.add("hidden");
-        }
+    
+    // Function to reset map to start position (if previously set) or centre of Anglesey
+    function resetMap() {
+        marker.setPosition(startPosition);
+        map.setCenter(startPosition);
+        map.setZoom(zoomLevel);
     }
+};
