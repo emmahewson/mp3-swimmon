@@ -463,6 +463,7 @@ I encountered a bug on the homepage map (with all the locations represented by m
 <img src="">
 <img src="">
 *Before & After*
+
 </details>
 
 
@@ -476,7 +477,28 @@ When testing the deployed site on a mobile device I discovered an issue with the
 <img src="">
 <img src="">
 *Before & After*
+
 </details>
+
+
+#### **4: Console error when dynamic images won't load**
+
+The site can sometimes throw up a console error when the external images, that admins submit by url for each location, don't load correctly. Whilst using external web URLs for images is bad practice as I have no control over whether these images are changed or removed, it was beyond the scope of this project and my current skill set to have users upload their own images which would avoid this issue. However I wanted to improve the user experience and make the site more visually appealing by adding a placeholder image to avoid seeing the broken link icon. I did this by adding an 'onerror' attribute to the dynamic images in the HTML files which supplied a URL to a local image with a SwimMon logo. I found I was unable to use the normal method of loading using url_for `{{ url_for('static', filename='js/scroll-top.js') }}` as it didn't recognise the url this way. My workaround was to link directly to the hosted image on the deployed site, whilst this would presumably not be best practice it worked for the purposes and scope of this project to improve the user experience and look of the site which was my main aim. This was based on a technique from [Daily Dev Tips](https://dev.to/dailydevtips1/html-fallback-images-on-error-1aka).
+
+The console error still occurs which means this is an existing bug. Adding image upload functionality would be something to include in future features and would remove the error.
+
+
+<details><summary>Screen Grabs</summary>
+
+<img src="">
+*Error*
+<img src="">
+*Before*
+<img src="">
+*After*
+
+</details>
+
 
 
 ****

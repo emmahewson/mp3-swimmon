@@ -1,8 +1,5 @@
 $(document).ready(function(){
 
- 
-    
-
     // mobile nav bar
     $('.sidenav').sidenav({edge: "right"});
 
