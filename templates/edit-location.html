@@ -42,13 +42,13 @@
                 <!-- location latitude -->
                 <div class="input-field col s12 m4">
                     <label for="latitude" class="font-title weight-600">LATITUDE</label>
-                    <input id="latitude" name="latitude" type="number" step="any" min="53.1" max="53.5" class="validate" value="{{ location.lat }}" required>
+                    <input id="latitude" name="latitude" type="number" step="any" min="53.1" max="53.5" class="validate" value="{{ location.lat }}" required readonly>
                 </div>
 
                 <!-- location longitude -->
                 <div class="input-field col s12 m4 offset-m1">
                     <label for="longitude" class="font-title weight-600">LONGITUDE</label>
-                    <input id="longitude" name="longitude" type="number" step="any" min="-4.8" max="-4" class="validate" value="{{ location.long }}" required>       
+                    <input id="longitude" name="longitude" type="number" step="any" min="-4.8" max="-4" class="validate" value="{{ location.long }}" required readonly>       
                 </div>
             </div>
 
