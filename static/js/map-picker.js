@@ -75,7 +75,8 @@ function initMap() {
     // creates map with above zoom & position settings
     const map = new google.maps.Map(document.getElementById("lp-map"), {
         zoom: zoomLevel,
-        center: startPosition
+        center: startPosition,
+        gestureHandling: "greedy",
     });
 
     // declare new google Maps marker (draggable for relocation)
