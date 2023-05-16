@@ -469,23 +469,30 @@ I encountered a bug on the homepage map (with all the locations represented by m
 
 #### **4: Location Picker Map - Mobile keyboard popup**
 
-When testing the deployed site on a mobile device I discovered an issue with the location picker on the add/edit location form. Clicking on the input (which opens the location picker modal) also opened the mobile keyboard as it was detecting a 'number' input being clicked. This was not a good user experience as it obscured the map, caused a flashing cursor to appear over the map and would be confusing for a user. I disabled the mobile keyboard by making the inputs 'readonly' so that the click on the boxes only triggered the location picker modal and not the keyboard as the mobile device would not detect a event where the user would be expected to type anything.
+When testing the deployed site on a mobile device I discovered an issue with the location picker on the add/edit location form. Clicking on the input (which opens the location picker modal) also opened the mobile keyboard as it was detecting a 'number' input being clicked. This was not a good user experience as it obscured the map, caused a flashing cursor to appear over the map and would be confusing for a user. I initally disabled the mobile keyboard by making the inputs 'readonly' so that the click on the boxes only triggered the location picker modal and not the keyboard as the mobile device would not detect a event where the user would be expected to type anything.
+
+However I then discovered that by making the inputs readonly this disabled the 'required' attribute and it was possible for a user to submit a location with no co-ordinates. I found a partial solution to this [here](https://codepen.io/fxm90/pen/zGogwV) which replaced 'readonly' with a 'data-readonly' attribute and using this to target it with `pointer-events: none;`, disabling the user from clicking on it or selecting it.
+
+However, whilst this did bring back the validation it had the unfortunate effect of also disabling the click-event in map-picker.js. I found a workaround to this by adding a clickable invisible div on top of the inputs that triggered the location-picker modal.
 
 
-<details><summary>Screen Recordings</summary>
+<details><summary>Screen Grabs / Recordings</summary>
+
 
 <img src="">
+*A submitted location with no co-ordinates*
 <img src="">
-*Before & After*
+*The final working solution*
 
 </details>
 
 
-#### **4: Console error when dynamic images won't load**
 
-The site can sometimes throw up a console error when the external images, that admins submit by url for each location, don't load correctly. Whilst using external web URLs for images is bad practice as I have no control over whether these images are changed or removed, it was beyond the scope of this project and my current skill set to have users upload their own images which would avoid this issue. However I wanted to improve the user experience and make the site more visually appealing by adding a placeholder image to avoid seeing the broken link icon. I did this by adding an 'onerror' attribute to the dynamic images in the HTML files which supplied a URL to a local image with a SwimMon logo. I found I was unable to use the normal method of loading using url_for `{{ url_for('static', filename='js/scroll-top.js') }}` as it didn't recognise the url this way. My workaround was to link directly to the hosted image on the deployed site, whilst this would presumably not be best practice it worked for the purposes and scope of this project to improve the user experience and look of the site which was my main aim. This was based on a technique from [Daily Dev Tips](https://dev.to/dailydevtips1/html-fallback-images-on-error-1aka).
+#### **5: Broken Dynamic Image Links**
 
-The console error still occurs which means this is an existing bug. Adding image upload functionality would be something to include in future features and would remove the error.
+In my original plan for the site I had admins inputting a text-based url for the location image. Whilst I amended this ([see bug 6](#6-image-url---not-reliable-with-missing-images)) I also wanted to provide a better user experience by providing a fall-back image that loaded if an image was missing or failed to load. Even after moving across to the user-upload to Cloudinary system (where missing images should be less likely) I kept the placeholder image incase there was a breakdown between the site and Cloudinary.
+
+I did this by adding an 'onerror' attribute to the dynamic images in the HTML files which supplied a URL to a local image with a SwimMon logo. I found I was unable to use the normal method of loading using url_for `{{ url_for('static', filename='js/scroll-top.js') }}` as it didn't recognise the url this way. My workaround was to link directly to the hosted image on the deployed site, thereby covering a failure to connect to the Cloudinary media store. Whilst linking to this image this way would presumably not be best practice it worked for the purposes and scope of this project to improve the user experience and look of the site which was my main aim. This was based on a technique from [Daily Dev Tips](https://dev.to/dailydevtips1/html-fallback-images-on-error-1aka).
 
 
 <details><summary>Screen Grabs</summary>
@@ -498,6 +505,81 @@ The console error still occurs which means this is an existing bug. Adding image
 *After*
 
 </details>
+
+
+#### **6: Image URL - poor user experience and missing images**
+
+Originally when I built the add / edit locations forms I decided that the best solution was to have the user input an text-based image url for the image. I felt that having a file upload was beyond my current skill set and pushing at the edges of the scope of this project. However I found that the images I was loading in to the site caused console errors when they failed to load, which I wasn't happy with and this was something that was happening too much to ignore. I also felt that asking an admin to source and upload a suitable quality image was a poor user experience and left too much space for things to go wrong and errors to occur. I made the decision to include a file upload input field by using Cloudinary's media storage and basic file upload functionality. This meant that all the location image files were stored somewhere safe that I had control of and so wouldn't be removed or changed without me knowing.
+The Cloudinary process is as follows:
+* a user uploads an image to my Cloudinary cloud-based storage
+* Cloudinary then returns a url as a text string which is sent to MongoDB, and the image is accessed in exactly the same way as before
+
+<details><summary>Code Extract: handling the add_location form submission</summary>
+
+```
+    if request.method == "POST":
+
+        image = request.files['location_image']
+        image_upload = cloudinary.uploader.upload(image)
+
+        location = {
+            "name": request.form.get("location_name").lower(),
+            "lat": request.form.get("latitude"),
+            "long": request.form.get("longitude"),
+            "description": request.form.get("location_description"),
+            "facilities": request.form.get("location_facilities"),
+            "parking": request.form.get("location_parking"),
+            "image_url": image_upload["secure_url"]
+        }
+
+        mongo.db.locations.insert_one(location)
+        flash("Location Successfully Added")
+        return redirect(url_for("manage_locations"))
+
+```
+
+</details>
+
+As part of this I also had to change the @app route for edit_location as I couldn't find a way to pre-populate the location image input with the previously selected image, this meant that a user had to re-upload the old image or not be able to submit the form, which was a very bad user experience. I overcame this issue by removing the 'required' attribute from the input, with explanatory text in a popover element to tell the user to ignore the field if they didn't want to update the image. I then added some code in the app route to check if the user had uploaded a new file, if so the new image url would replace the old, if not the old image url would be used.
+
+
+<details><summary>Code Extract: handling the form population & submission in edit_location</summary>
+
+```
+    location = mongo.db.locations.find_one(
+        {"_id": ObjectId(location_id)})
+
+    if request.method == "POST":
+        image = request.files['location_image']
+        old_image = location["image_url"]
+    
+        if image:
+            image_upload = cloudinary.uploader.upload(image)
+            updated_image_url = image_upload["secure_url"]
+        else:
+            updated_image_url = old_image
+
+        submit = {
+                "name": request.form.get("location_name").lower(),
+                "lat": request.form.get("latitude"),
+                "long": request.form.get("longitude"),
+                "description": request.form.get("location_description"),
+                "facilities": request.form.get("location_facilities"),
+                "parking": request.form.get("location_parking"),
+                "image_url": updated_image_url
+            }
+
+        mongo.db.locations.update_one(
+            {"_id": ObjectId(location_id)}, {"$set": submit})
+        flash("Location Successfully Updated")
+        return redirect(url_for("manage_locations"))
+```
+</details>
+
+Should there be an error connecting to the Cloudinary media store for some reason the site could feasibly throw up missing image errors. However I feel that in switching away from using external urls to the user-upload Cloudinary process and by adding a fall-back image ([see bug 5](#5-broken-dynamic-image-links)) I have made the site as robust as possible within the scope of the project.
+
+
+
 
 
 

@@ -44,12 +44,14 @@
             <div id="lat-long-inputs" class="row">
                 <!-- location latitude -->
                 <div class="input-field col s12 m4">
+                    <div class="coord-clicker"></div>
                     <label for="latitude" class="font-title weight-600">LATITUDE</label>
                     <input id="latitude" name="latitude" type="number" step="any" min="53.1" max="53.5" class="validate" value="{{ location.lat }}" required data-readonly>
                 </div>
 
                 <!-- location longitude -->
                 <div class="input-field col s12 m4 offset-m1">
+                    <div class="coord-clicker"></div>
                     <label for="longitude" class="font-title weight-600">LONGITUDE</label>
                     <input id="longitude" name="longitude" type="number" step="any" min="-4.8" max="-4" class="validate" value="{{ location.long }}" required data-readonly>       
                 </div>

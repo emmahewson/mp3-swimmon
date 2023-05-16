@@ -4,11 +4,13 @@
 // Get variables for open/close location picker
 let latBox = document.getElementById("latitude");
 let lngBox = document.getElementById("longitude");
+let overlayBoxes = Array.from(document.getElementsByClassName("coord-clicker"));
 let modal = document.getElementById("lp-modal");
 
 
-// Open Location Picker when user clicks on latitude / longitude input fields
+// Open Location Picker when user clicks on latitude / longitude input fields or div overlay (bug fix - readonly)
 let boxes = [latBox, lngBox];
+boxes.push(...overlayBoxes)
 for (box of boxes) {
     // opens the modal on user click
     box.addEventListener('click', function(){
@@ -19,7 +21,6 @@ for (box of boxes) {
         modal.classList.remove("hidden");
     })
 }
-
 
 
 // Close location picker box (cross icon)

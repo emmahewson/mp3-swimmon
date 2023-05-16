@@ -832,6 +832,12 @@ input[data-readonly] {
     pointer-events: none;
 }
 
+.coord-clicker {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+}
 
 /* Info buttons on form - trigger popovers */
 
