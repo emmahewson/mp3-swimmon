@@ -1075,7 +1075,7 @@ input[data-readonly] {
 }
 
 .search-filter-btn:hover {
-    background: var(--pale-pink);
+    background: var(--mid-pink);
 }
 
 #search-reset {
@@ -1560,6 +1560,7 @@ input[data-readonly] {
 .swim-selected {
     background-color: var(--mid-pink);
 }
+
 
 /* Media Queries */
 
