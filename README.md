@@ -372,13 +372,15 @@ I created fully designed wireframes in [Figma](https://www.figma.com/). This all
 * [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
     * Used to build the core of the backend of the project as well as the running/viewing of the website
     * Python Modules Used:
+        * blinker==1.6.2
         * click==8.1.3
+        * cloudinary==1.33.0
         * dnspython==2.3.0
-        * Flask==2.2.3
+        * Flask==2.3.2
         * Flask-PyMongo==2.3.0
         * itsdangerous==2.1.2
         * pymongo==4.3.3
-        * Werkzeug==2.2.3
+        * Werkzeug==2.3.3
 
 ### Tools
 * [Git](https://git-scm.com/)
@@ -510,6 +512,7 @@ I did this by adding an 'onerror' attribute to the dynamic images in the HTML fi
 #### **6: Image URL - poor user experience and missing images**
 
 Originally when I built the add / edit locations forms I decided that the best solution was to have the user input an text-based image url for the image. I felt that having a file upload was beyond my current skill set and pushing at the edges of the scope of this project. However I found that the images I was loading in to the site caused console errors when they failed to load, which I wasn't happy with and this was something that was happening too much to ignore. I also felt that asking an admin to source and upload a suitable quality image was a poor user experience and left too much space for things to go wrong and errors to occur. I made the decision to include a file upload input field by using Cloudinary's media storage and basic file upload functionality. This meant that all the location image files were stored somewhere safe that I had control of and so wouldn't be removed or changed without me knowing.
+
 The Cloudinary process is as follows:
 * a user uploads an image to my Cloudinary cloud-based storage
 * Cloudinary then returns a url as a text string which is sent to MongoDB, and the image is accessed in exactly the same way as before

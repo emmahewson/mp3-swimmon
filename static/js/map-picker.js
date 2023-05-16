@@ -148,8 +148,10 @@ function initMap() {
     let resetBtn = document.getElementById("lp-reset");
     resetBtn.addEventListener('click', function() {
         resetMap();
-        latBox.value = '';
-        lngBox.value = '';
+        if (startPostion == centerMon) {
+            latBox.value = '';
+            lngBox.value = '';
+        }
     });
 
     
