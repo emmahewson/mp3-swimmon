@@ -47,14 +47,15 @@
             <div id="lat-long-inputs" class="row">
                 <!-- location latitude -->
                 <div class="input-field col s12 m4">
+                    <div class="coord-clicker"></div>
                     <label for="latitude" class="font-title weight-600">LATITUDE</label>
-                    <input id="latitude" name="latitude" type="number" step="any" min="53.1" max="53.5" class="validate" required readonly>
+                    <input id="latitude" name="latitude" type="number" step="any" min="53.1" max="53.5" class="validate" required data-readonly>
                 </div>
 
                 <!-- location longitude -->
                 <div class="input-field col s12 m4 offset-m1">
                     <label for="longitude" class="font-title weight-600">LONGITUDE</label>
-                    <input id="longitude" name="longitude" type="number" step="any" min="-4.8" max="-4" class="validate" required readonly>       
+                    <input id="longitude" name="longitude" type="number" step="any" min="-4.8" max="-4" class="validate" required data-readonly>       
                 </div>
             </div>
 
@@ -80,7 +81,7 @@
             <!-- location image -->
             <div class="input-field">
                 <div class="input-info-div-wrapper">
-                    <label for="image_url" class="font-title weight-600">LOCATION IMAGE</label>
+                    <label for="location_image" class="font-title weight-600">LOCATION IMAGE</label>
                     <!-- Popover Info Box Adapted from https://codepen.io/chocochip/pen/zYxMgRG -->
                     <div class="popover-wrapper">
                         <div class="question-circle swim-txt-white swim-bg-mblue">?</div>
@@ -92,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="file" accept="image/*" name="image_url" id="image_url" class="font-body weight-500" required>
+                <input type="file" accept="image/*" name="location_image" id="location_image" class="font-body weight-500" required>
             </div>
 
             <!-- submit button -->

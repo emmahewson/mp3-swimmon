@@ -18,6 +18,7 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+app.config['MAX_CONTENT_LENGTH'] = 5 * 1000 * 1000
 
 mongo = PyMongo(app)
 
@@ -474,7 +475,7 @@ def add_location():
             # handles 'POST' method (form submission)
             if request.method == "POST":
 
-                image = request.files['image_url']
+                image = request.files['location_image']
                 image_upload = cloudinary.uploader.upload(image)
 
                 # defines new location dictionary
@@ -522,22 +523,35 @@ def edit_location(location_id):
         # checks current user is admin
         if session["user"] == "admin":
 
+            location = mongo.db.locations.find_one(
+                {"_id": ObjectId(location_id)})
+
             # handles 'POST' method (form submission)
             if request.method == "POST":
 
-                image = request.files['image_url']
-                image_upload = cloudinary.uploader.upload(image)
+                # gets the contents of the image upload
+                image = request.files['location_image']
 
-                # defines new dictionary with fields to update
+                # gets the old image url from the database
+                old_image = location["image_url"]
+          
+                # checks if an image has been uploaded
+                # if not the old image url is used
+                if image:
+                    image_upload = cloudinary.uploader.upload(image)
+                    updated_image_url = image_upload["secure_url"]
+                else:
+                    updated_image_url = old_image
+
                 submit = {
-                    "name": request.form.get("location_name").lower(),
-                    "lat": request.form.get("latitude"),
-                    "long": request.form.get("longitude"),
-                    "description": request.form.get("location_description"),
-                    "facilities": request.form.get("location_facilities"),
-                    "parking": request.form.get("location_parking"),
-                    "image_url": image_upload["secure_url"]
-                }
+                        "name": request.form.get("location_name").lower(),
+                        "lat": request.form.get("latitude"),
+                        "long": request.form.get("longitude"),
+                        "description": request.form.get("location_description"),
+                        "facilities": request.form.get("location_facilities"),
+                        "parking": request.form.get("location_parking"),
+                        "image_url": updated_image_url
+                    }
 
                 # updates location in database & redirects to manage-locations
                 mongo.db.locations.update_one(
@@ -547,8 +561,6 @@ def edit_location(location_id):
 
             # handles 'GET' method (page load)
             # gets event details
-            location = mongo.db.locations.find_one(
-                {"_id": ObjectId(location_id)})
             return render_template("edit-location.html", location=location)
 
         # if not user's event redirects to user profile page

@@ -828,6 +828,10 @@ input::file-selector-button:hover {
     background-color: var(--pale-blue);
 }
 
+input[data-readonly] {
+    pointer-events: none;
+}
+
 
 /* Info buttons on form - trigger popovers */
 
