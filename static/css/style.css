@@ -20,6 +20,8 @@ html {
     --high-blue: #45E4EE;
     --high-blue-hov: #97f8ff;
     --form-blue: #b6e3e9;
+    --pale-pink: #ffd5d9;
+    --mid-pink: #fcabb2;
     --high-pink: #F45C68;
     --high-pink-hov:#d9414e;
     --chal-low: #FFE3A5;
@@ -1062,17 +1064,23 @@ input[data-readonly] {
     flex-wrap: wrap;
 }
 
-.search-buttons-div p {
-    margin: 10px 10px 10px 0;
-}
-
 .search-div-section {
     padding-bottom: 20px;
     padding-right: 50px;
 }
 
-.search-div {
-    margin-bottom: 5px;
+
+.search-filter-btn {
+    margin: 10px 10px 10px 0;
+}
+
+.search-filter-btn:hover {
+    background: var(--pale-pink);
+}
+
+#search-reset {
+    position: relative;
+    bottom: 5px;
 }
 
 .swim-collapsible {
@@ -1549,6 +1557,10 @@ input[data-readonly] {
     display: none !important;
 }
 
+.swim-selected {
+    background-color: var(--mid-pink);
+}
+
 /* Media Queries */
 
 @media only screen and (max-width: 992px) {
@@ -1630,14 +1642,6 @@ input[data-readonly] {
         margin-bottom: 15px;
     }
 
-}
-
-@media only screen and (max-width: 800px) {
-    .popover-narrow {
-        width: 70% !important;
-        margin-left: 20%;
-        margin-right: 10%;
-    }
 }
 
     
@@ -1865,17 +1869,9 @@ input[data-readonly] {
 
     /* Modals / Info Boxes */
 
-    .popover-content,
-    .popover-narrow {
-        margin: 0 3% 0 3%;
-    }
-
     .popover-content {
+        margin: 0 3% 0 3%;
         width: 94%;
-    }
-
-    .popover-narrow {
-        width: 94% !important;
     }
 
     .input-info-div-wrapper .select-wrapper .select-dropdown {
