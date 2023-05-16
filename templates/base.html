@@ -36,7 +36,7 @@
       <!-- Dropdown Structure -->
       <ul id="dropdown1" class="dropdown-content">
         {% if session.user %}
-            <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
+            <li><a href="{{ url_for('my_profile', username=session['user']) }}">PROFILE</a></li>
             <li><a href="{{ url_for('sign_out')}}">SIGN OUT</a></li>
         {% else %}
             <li><a href="{{ url_for('join')}}">JOIN</a></li>
@@ -91,7 +91,7 @@
             {% if session.user|lower == "admin"|lower %}
                 <li><a href="{{ url_for('manage_locations')}}">MANAGE LOCATIONS</a></li>
             {% endif %}
-            <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
+            <li><a href="{{ url_for('my_profile', username=session['user']) }}">PROFILE</a></li>
             <li><a href="{{ url_for('sign_out')}}">SIGN OUT</a></li>
         {% else %}
             <li><a href="{{ url_for('join')}}">JOIN</a></li>

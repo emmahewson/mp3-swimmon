@@ -27,7 +27,7 @@
 <!-- Main Page Content -->
 <div class="form-page-wrapper swim-bg-lgrey">
     <!-- Intro Section -->
-    <div class="intro-div swim-bg-hpink swim-txt-white div-shadow">
+    <div class="intro-div swim-bg-mblue swim-txt-white div-shadow">
         <h1 class="font-title weight-600">ADD LOCATION</h1>
         <div class="font-body weight-500 intro-div-p-group">
             <p>Add a new location to the site for members to select when setting up an event.</p>
@@ -79,39 +79,25 @@
 
             <!-- location image -->
             <div class="input-field">
-                <label for="image_url" class="font-title weight-600">IMAGE URL</label>
                 <div class="input-info-div-wrapper">
-                    <input type="file" accept="image/*" name="image_url" id="image_url" required>
-                    <!-- <input id="image_url" name="image_url" type="url" class="validate" placeholder="e.g https://www.photoplace.com/mybeachphoto.jpg" required> -->
-                    
-                    
-                    
+                    <label for="image_url" class="font-title weight-600">LOCATION IMAGE</label>
                     <!-- Popover Info Box Adapted from https://codepen.io/chocochip/pen/zYxMgRG -->
                     <div class="popover-wrapper">
                         <div class="question-circle swim-txt-white swim-bg-mblue">?</div>
-                        <div class="popover-content swim-bg-white popover-narrow">
+                        <div class="popover-content swim-bg-white" id="popover-location-image">
                             <div class="popover-header swim-bg-mblue swim-txt-white">
-                                <h2 class="font-title weight-500">IMAGE URL</h2>
+                                <h2 class="font-title weight-500">LOCATION IMAGE</h2>
                             </div>
-                            <div class="popover-para-div font-body swim-txt-dblue">
-                                <ul>
-                                    <li>Find a large, high quality image of the location using Google Image Search (use 'tools' and 'size' to filter by size)</li>
-                                    <li>Right click on the image and select 'Copy Image Address' (May be called 'Image Link' or 'Image Location').</li>
-                                    <li>Paste the image addres in to the Image URL box on the form.</li>
-                                </ul>
-                            </div>
-                            <div class="popover-image-div">
-                                <img src="{{ url_for('static', filename='images/popover-copy-image-address.jpg') }}" alt="image of right click menu on Google Image search with 'Copy Image Address' selected">
-                            </div>
+                            <p class="font-body swim-txt-dblue weight-500">Upload a high quality image of the swimming location, landscape images with a minimum width of 1200px work best.</p>
                         </div>
                     </div>
                 </div>
+                <input type="file" accept="image/*" name="image_url" id="image_url" class="font-body weight-500" required>
             </div>
-
 
             <!-- submit button -->
             <div class="form-button-row">
-                <button type="submit" class="swim-btn-large btn-hpink font-title weight-600 swim-btn-shadow">ADD LOCATION</button>
+                <button type="submit" class="swim-btn-large btn-mblue font-title weight-600 swim-btn-shadow">ADD LOCATION</button>
             </div>
 
         </form>

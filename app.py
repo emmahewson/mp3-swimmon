@@ -118,7 +118,8 @@ def sign_in():
                     "password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for("profile", username=session["user"]))
+                return redirect(
+                    url_for("my_profile", username=session["user"]))
 
             # invalid password match
             flash("Incorrect Username and/or Password")
@@ -155,8 +156,8 @@ def sign_out():
 
 
 # USER PROFILE
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
+@app.route("/my-profile/<username>", methods=["GET", "POST"])
+def my_profile(username):
     '''
     Security: logged-in users only
     Renders the user's profile page
@@ -179,7 +180,7 @@ def profile(username):
         locations = list(mongo.db.locations.find())
 
         return render_template(
-            "profile.html",
+            "my-profile.html",
             username=username,
             events=events,
             locations=locations)
@@ -366,7 +367,7 @@ def edit_event(event_id):
 
         # if not user's event redirects to user profile page
         flash("You can only edit your own events")
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("my_profile", username=session["user"]))
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
@@ -398,7 +399,7 @@ def delete_event(event_id):
 
         # if not user's event redirects to user profile page
         flash("You can only delete your own events")
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("my_profile", username=session["user"]))
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
@@ -425,7 +426,7 @@ def manage_locations():
 
         # if not admin redirects to user profile
         flash("You do not have permission to view that page")
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("my_profile", username=session["user"]))
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
@@ -498,7 +499,7 @@ def add_location():
 
         # if not admin redirects to user profile
         flash("You do not have permission to view that page")
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("my_profile", username=session["user"]))
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
@@ -552,7 +553,7 @@ def edit_location(location_id):
 
         # if not user's event redirects to user profile page
         flash("You do not have permission to edit locations")
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("my_profile", username=session["user"]))
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
@@ -581,7 +582,7 @@ def delete_location(location_id):
 
         # if not user's event redirects to user profile page
         flash("You do not have permission to delete locations")
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("my_profile", username=session["user"]))
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
