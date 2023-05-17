@@ -1070,10 +1070,6 @@ input[data-readonly] {
     margin: 10px 10px 10px 0;
 }
 
-.search-filter-btn:hover {
-    background: var(--pale-pink);
-}
-
 #search-reset {
     position: relative;
     bottom: 5px;
@@ -1544,21 +1540,6 @@ input[data-readonly] {
 }
 
 
-/* JavaScript Classes */
-
-.collapse-open {
-    margin-bottom: 20px;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.swim-selected,
-.swim-selected:hover {
-    background-color: var(--mid-pink);
-}
-
 
 /* Media Queries */
 
@@ -1885,7 +1866,38 @@ input[data-readonly] {
     #error-page-contents h1 {
         font-size: 48px;
     }
+}
 
+/* Hover effects on search buttons - only on hover devices */
+@media (hover: hover) {
 
+    .search-filter-btn:hover {
+        background: var(--pale-pink);
+    }
+
+    .swim-selected:hover {
+        background-color: var(--mid-pink);
+    }
 
 }
+
+
+/* JavaScript Classes */
+
+.collapse-open {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.swim-selected {
+    background-color: var(--mid-pink);
+}
+
+.test {
+    width: 400px;
+}
+
+
