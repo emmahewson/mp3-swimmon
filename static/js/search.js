@@ -96,6 +96,7 @@ function eventSearch() {
             for (i = 0; i < allFilteredCardArrays.length; i++) {
                 cardReveal(allFilteredCardArrays[i])
             }
+            
 
         // if buttons in more than 1 category have been selected
         } else if (activeCategoryBtns.length >= 2) {
@@ -122,14 +123,12 @@ function eventSearch() {
                         matches.push(card);
                     }
                 }
-            } else {
-                // if events don't match at least 1 button in all active categories - no results
-                noResultsMessageToggle();
-            }
+            } 
             
             // removes 'hidden' class from matching results
             cardReveal(matches);
         }
+        noResultsMessageToggle();
 
     }
 
