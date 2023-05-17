@@ -18,7 +18,7 @@
                         <h3 class="weight-700">Location</h3>
                         <div class="search-buttons-div weight-500 uppercase">
                             {% for location in locations %}
-                                <p class="swim-btn-flexi swim-bg-grey search-filter-btn loction-btn">{{ location.name }}</p>
+                                <p class="swim-btn-flexi swim-bg-grey search-filter-btn location-btn">{{ location.name }}</p>
                             {% endfor %}
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <p><a href="#" class="swim-btn-flexi btn-dblue swim-txt-white font-title weight-500 swim-btn-shadow" id="search-reset">RESET ALL</a></p>
+                <p class="swim-btn-flexi btn-dblue swim-txt-white font-title weight-500 swim-btn-shadow" id="search-reset">RESET ALL</p>
             </div>
         </div>
 
@@ -57,15 +57,15 @@
                                 <div class="event-card-text swim-txt-dblue center-align">
                                     <h2 class="font-title center-align weight-600 uppercase">{{ event.name }}</h2>
                                     <p class="font-body center-align weight-200 created-by"><em>Created by: {{ event.created_by }}</em></p>
-                                    <p class="font-body weight-700 uppercase"><i class="fa-solid fa-location-dot"></i>{{ location.name }}</p>
+                                    <p class="font-body weight-700 uppercase"><i class="fa-solid fa-location-dot"></i><span class="event-card-location">{{ location.name }}</span></p>
                                     <div class="event-when-row">
                                         <p class="font-body weight-500 uppercase"><i class="fa-regular fa-calendar"></i>{{ event.date.strftime('%d/%m/%y') }}</p>
                                         <p class="font-body weight-500 uppercase"><i class="fa-regular fa-clock"></i>{{ event.date.strftime('%H:%M') }}</p>
                                     </div>
                                 </div>
                                 <div class="event-marker-row uppercase">
-                                    <p class="font-body weight-500 swim-txt-white event-marker swim-bg-{{event.who|lower}}">{{ event.who }}</p>
-                                    <p class="font-body weight-500 swim-txt-black event-marker swim-bg-{{event.challenge|lower}}">{{ event.challenge }}</p>
+                                    <p class="font-body weight-500 swim-txt-white event-marker event-card-who swim-bg-{{event.who|lower}}">{{ event.who }}</p>
+                                    <p class="font-body weight-500 swim-txt-black event-marker event-card-challenge swim-bg-{{event.challenge|lower}}">{{ event.challenge }}</p>
                                 </div>
                             </div>
                         {% endif %}
