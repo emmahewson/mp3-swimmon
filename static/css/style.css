@@ -1090,7 +1090,6 @@ input[data-readonly] {
 }
 
 .swim-collapsible:hover {
-    color: var(--high-pink);
     cursor: pointer;
 }
 
@@ -1875,6 +1874,10 @@ input[data-readonly] {
 
     .swim-selected:hover {
         background-color: var(--mid-pink);
+    }
+
+    .swim-collapsible:hover {
+        color: var(--high-pink);
     }
 
 }
