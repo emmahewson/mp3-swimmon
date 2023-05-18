@@ -17,10 +17,10 @@
 
         {% if session.user %}
             <a href="{{ url_for('events')}}" class="swim-btn-large btn-hpink font-title weight-600 swim-btn-shadow">SEE EVENTS</a>
-            <p class="font-body weight-400"><a href="{{ url_for('add_event')}}" class="link-text">Or add your own event!</a></p>
+            <p class="font-body weight-600"><a href="{{ url_for('add_event')}}" class="link-text">Or add your own event!</a></p>
         {% else %}
             <a href="{{ url_for('join')}}" class="swim-btn-large btn-hblue font-title weight-600 swim-btn-shadow">JOIN</a>
-            <p class="font-body weight-400"><a href="{{ url_for('sign_in')}}" class="link-text">Already part of the community? Log in here!</a></p>
+            <p class="font-body weight-600"><a href="{{ url_for('sign_in')}}" class="link-text">Already part of the community? Log in here!</a></p>
         {% endif %}
     </div>
 

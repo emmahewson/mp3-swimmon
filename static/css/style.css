@@ -15,19 +15,19 @@ html {
     --black: #000000;
     --pale-blue: #E9FBFF;
     --mid-blue: #136985;
-    --dark-blue: #05414e;
+    --dark-blue: #033743;
     --dark-blue-hov: #022f39;
-    --high-blue: #45E4EE;
+    --high-blue: #6cf5ff;
     --high-blue-hov: #97f8ff;
     --form-blue: #b6e3e9;
     --pale-pink: #ffd5d9;
     --mid-pink: #ffa8b0;
-    --high-pink: #F45C68;
+    --high-pink: #f04e5b;
     --high-pink-hov:#d9414e;
     --chal-low: #FFE3A5;
     --chal-med: #FFC751;
     --chal-high: #FF7A00;
-    --who-women: #A94ED4;
+    --who-women: #8f37b8;
     --who-men: #826B95;
     --who-all: #58019D;
     --button-edit: #1a8862;
@@ -296,9 +296,8 @@ footer h4 {
     margin: 0;
 }
 
-footer h4 {
+footer p:first-child {
     margin-bottom: 0.5em;
-    font-size: 16px;
 }
 
 #copyright-div {
