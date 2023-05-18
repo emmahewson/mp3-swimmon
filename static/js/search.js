@@ -84,46 +84,58 @@ function eventSearch() {
         // resets all cards to hidden
         hideAllCards();
 
+        console.log("Active Category Buttons Array Length: " + activeCategoryBtns.length)
+
         // if all buttons are deselected then all events appear
         if (activeCategoryBtns.length == 0) {
             showAllCards();
+            console.log("All categories deselected")
 
         // if buttons in only 1 category have been selected
         // results can be filtered by multiple selections within that category at the same time
         } else if (activeCategoryBtns.length == 1){
 
-            // reveals the matching events
+            console.log("One category selected")
+
+            // reveals the matching events for the filtered card array that contains results
             for (i = 0; i < allFilteredCardArrays.length; i++) {
-                cardReveal(allFilteredCardArrays[i])
+                if (allFilteredCardArrays[i].length >= 1) {
+                    cardReveal(allFilteredCardArrays[i])
+                }
             }
             
 
         // if buttons in more than 1 category have been selected
         } else if (activeCategoryBtns.length >= 2) {
+            console.log("More than one category selected")
 
-            // finds the categories which produced matching results & pushes them in to 'usedCategories' array of arrays
-            let usedCategories = [];
+            // finds the categories which produced matching results & pushes them in to 'categoriesWithResults' array of arrays
+            let categoriesWithResults = [];
             for (i = 0; i < allFilteredCardArrays.length; i++) {
                 if (allFilteredCardArrays[i].length >= 1) {
-                    usedCategories.push(allFilteredCardArrays[i]);
+                    categoriesWithResults.push(allFilteredCardArrays[i]);
                 }
             }
+            console.log("Categories with results array Length: " + categoriesWithResults.length)
 
             // checks how many arrays contained results & matches them against the eventCards array
             let matches = [];
-            if (usedCategories.length == 2) {
-                for (let card of eventCards) {
-                    if (usedCategories[0].includes(card) && usedCategories[1].includes(card)) {
-                        matches.push(card);
+            if (activeCategoryBtns.length === categoriesWithResults.length) {
+                if (categoriesWithResults.length == 2) {
+                    for (let card of eventCards) {
+                        if (categoriesWithResults[0].includes(card) && categoriesWithResults[1].includes(card)) {
+                            matches.push(card);
+                        }
                     }
-                }
-            } else if (usedCategories.length == 3) {
-                for (let card of eventCards) {
-                    if (usedCategories[0].includes(card) && usedCategories[1].includes(card) && usedCategories[2].includes(card)) {
-                        matches.push(card);
+                } else if (categoriesWithResults.length == 3) {
+                    for (let card of eventCards) {
+                        if (categoriesWithResults[0].includes(card) && categoriesWithResults[1].includes(card) && categoriesWithResults[2].includes(card)) {
+                            matches.push(card);
+                        }
                     }
-                }
+                } 
             } 
+            
             
             // removes 'hidden' class from matching results
             cardReveal(matches);
