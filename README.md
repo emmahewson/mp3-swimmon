@@ -611,6 +611,21 @@ I revisited my code and discovered that I had made a logical error when writing 
 </details>
 
 
+#### **8: Map Location Picker - inputs emptied on edit location form if user doesn't drag marker **
+
+During testing I found that when opening the edit-location form, if the user clicked on the already populated lat/long input boxes to open the location picker map, then pressed 'save' without dragging the marker anywhere, it would remove the values from the input boxes. This was due to the value of the lat/lng being set based on the position set on the 'dragend' event listener. In order to fix this bug I declared values of these lat/lng variables based on the current map location (which was taken from the values in the form input boxes) prior to the dragend event listener (which could be over-written by any dragend events that happen afterwards). I also added an if statement around this part of the code to stop them being set if the marker was in its opening position in the centre of Anglesey, so that it only saves if the location has previously been set.
+
+
+<details><summary>Screen Recordings</summary>
+
+<img src="">
+*Before*
+<img src="">
+*After*
+
+</details>
+
+
 
 
 ****

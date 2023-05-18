@@ -92,6 +92,11 @@ function initMap() {
     let chosenLat;
     let chosenLng;
 
+    if (startPosition != centerMon) {
+        chosenLat = marker.getPosition().lat();
+        chosenLng = marker.getPosition().lng();
+    }
+
 
     // User drops marker
     google.maps.event.addListener(marker, 'dragend', function(){
@@ -148,7 +153,7 @@ function initMap() {
     let resetBtn = document.getElementById("lp-reset");
     resetBtn.addEventListener('click', function() {
         resetMap();
-        if (startPostion == centerMon) {
+        if (startPostion === centerMon) {
             latBox.value = '';
             lngBox.value = '';
         }
