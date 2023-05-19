@@ -48,6 +48,7 @@
     <!-- Google Map -->
     <div id="map-location"></div>
 
+    {% if session.user %}
     <!-- Intro to Events & Add Event Button -->
     <div class="intro-div swim-bg-dblue swim-txt-white">
         <h2 class="font-title weight-600">EVENTS IN {{location.name|upper}}</h2>
@@ -73,7 +74,7 @@
                                     <p class="font-body weight-700 uppercase"><i class="fa-solid fa-location-dot"></i>{{ loc.name }}</p>
                                     <div class="event-when-row">
                                         <p class="font-body weight-500 uppercase"><i class="fa-regular fa-calendar"></i>{{ event.date.strftime('%d/%m/%y') }}</p>
-                                        <p class="font-body weight-500 uppercase"><i class="fa-regular fa-clock"></i>{{ event.date.strftime('%H:%M') }}</p>
+                                        <p class="font-body weight-500 uppercase"><i class="fa-regular fa-clock"></i>{{ event.date.strftime('%-I:%M %p') }}</p>
                                     </div>
                                 </div>
                                 <div class="event-marker-row uppercase">
@@ -112,6 +113,7 @@
             <button class="swim-btn-flexi btn-hpink font-title weight-500 swim-btn-shadow center-align" id="btt-btn">BACK TO TOP</button>
         </div>  
     </div>
+    {% endif %}
 </div>
     
 {% endblock %}
