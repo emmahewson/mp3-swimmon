@@ -497,7 +497,7 @@ def add_location():
             if request.method == "POST":
 
                 image = request.files['image_upload']
-                check_image_size(image, 5000000)
+                check_image_size(image)
                 image_upload = cloudinary.uploader.upload(image)
 
                 # defines new location dictionary
