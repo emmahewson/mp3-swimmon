@@ -9,10 +9,14 @@
             <img src="{{ url_for('static', filename='images/404-island.png') }}" alt="Cartoon of a man on a desert island">
         </div>
         <div class="row center-align font-body weight-700">
-            <p class="font-body weight-700">That file is too big. Please try again with an image less than 5MB.</p>
-            <a href="{{ url_for('manage_locations')}}" class="swim-btn-small btn-hpink font-title weight-500 swim-btn-shadow center-align">MANAGE LOCATIONS</a>
+            <p class="font-body weight-700">That file is too big. Images must be less than 5MB.</p>
+            <p class="swim-btn-flexi btn-hpink font-title weight-500 swim-btn-shadow" id="error-button">GO BACK TO FORM</p>
         </div>
     </div>
 
 
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/back.js') }}"></script>
 {% endblock %}

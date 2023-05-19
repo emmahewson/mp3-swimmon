@@ -464,15 +464,16 @@ def location(location_id):
     )
 
 
-def check_image_size(image, size_limit_bytes):
+def check_image_size(image):
     '''
-    Checks an uploaded image is less than 5MB
+    Checks an image is less than 5MB
+    Helper Function for location image upload
     '''
     image.seek(0, os.SEEK_END)
     image_size = image.tell()
     image.seek(0, 0)
 
-    if image_size > size_limit_bytes:
+    if image_size > 5000000:
         return abort(413)
     else:
         return True
@@ -637,7 +638,6 @@ def image_too_large(error):
     Route to handle 413 error
     Renders custom 413 page
     '''
-
     return render_template("413.html", error=error), 413
 
 

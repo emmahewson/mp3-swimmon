@@ -1520,7 +1520,7 @@ input::file-selector-button:hover {
 }
 
 
-/* 404 & 500 Pages */
+/* 404, 413 & 500 Pages */
 
 #error-page-contents {
     margin: 50px auto;
@@ -1545,10 +1545,14 @@ input::file-selector-button:hover {
     margin-bottom: 20px;
 }
 
-#error-page-contents a {
-    margin: 0 auto;
+#error-page-contents a,
+#error-button {
+    margin: 0 auto !important;
 }
 
+#error-button {
+    width: fit-content;
+}
 
 
 /* Media Queries */
