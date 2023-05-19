@@ -1,7 +1,7 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for, jsonify)
+    redirect, request, session, url_for, jsonify, abort)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -18,7 +18,7 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
-app.config['MAX_CONTENT_LENGTH'] = 5 * 1000 * 1000
+app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.jpeg', '.heic']
 
 mongo = PyMongo(app)
 
@@ -464,6 +464,20 @@ def location(location_id):
     )
 
 
+def check_image_size(image, size_limit_bytes):
+    '''
+    Checks an uploaded image is less than 5MB
+    '''
+    image.seek(0, os.SEEK_END)
+    image_size = image.tell()
+    image.seek(0, 0)
+
+    if image_size > size_limit_bytes:
+        return abort(413)
+    else:
+        return True
+
+
 @app.route("/add-location", methods=["GET", "POST"])
 def add_location():
     '''
@@ -482,6 +496,7 @@ def add_location():
             if request.method == "POST":
 
                 image = request.files['location_image']
+                check_image_size(image, 5000000)
                 image_upload = cloudinary.uploader.upload(image)
 
                 # defines new location dictionary
@@ -614,6 +629,16 @@ def page_not_found(error):
     Renders custom 404 page
     '''
     return render_template("404.html", error=error), 404
+
+
+@app.errorhandler(413)
+def image_too_large(error):
+    '''
+    Route to handle 413 error
+    Renders custom 413 page
+    '''
+
+    return render_template("413.html", error=error), 413
 
 
 @app.errorhandler(500)
