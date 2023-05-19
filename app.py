@@ -495,7 +495,7 @@ def add_location():
             # handles 'POST' method (form submission)
             if request.method == "POST":
 
-                image = request.files['location_image']
+                image = request.files['image_upload']
                 check_image_size(image, 5000000)
                 image_upload = cloudinary.uploader.upload(image)
 
@@ -551,7 +551,7 @@ def edit_location(location_id):
             if request.method == "POST":
 
                 # gets the contents of the image upload
-                image = request.files['location_image']
+                image = request.files['image_upload']
 
                 # gets the old image url from the database
                 old_image = location["image_url"]
