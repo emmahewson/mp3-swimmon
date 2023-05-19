@@ -94,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="file" accept=".jpg, .jpeg, .png, .heic" name="image_upload" id="image_upload" class="font-body weight-500" required>
+                <input type="file"  name="image_upload" id="image_upload" class="font-body weight-500" required>
                 <p class="font-body" id="file-text-div"><span class="swim-txt-dblue weight-500" id="file-message"></span><span class="font-body weight-700" id="file-message-warning"></span></p>
             </div>
 
@@ -112,7 +112,7 @@
     <script src="{{ url_for('static', filename='js/form.js') }}"></script>
     <script src="{{ url_for('static', filename='js/popover.js') }}"></script>
     <script src="{{ url_for('static', filename='js/map-picker.js') }}"></script>
-
+    <script src="{{ url_for('static', filename='js/file-validation.js') }}"></script>
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp3bbw0F5d1sjzp5iet_vlxKb0RrevMCA&callback=initMap">

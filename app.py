@@ -464,6 +464,8 @@ def location(location_id):
     )
 
 
+# Adapted from https://github.com/kairosity/mp3-snapathon/tree/master
+# by Karina Finegan
 def check_image_size(image):
     '''
     Checks an image is less than 5MB
@@ -496,8 +498,20 @@ def add_location():
             # handles 'POST' method (form submission)
             if request.method == "POST":
 
+                # get the uploaded image from the form
                 image = request.files['image_upload']
+
+                # checks the image is under 5MB
+                # if not aborts & redirects to custom 413 error page
                 check_image_size(image)
+
+                # checks if the image file type is accepted
+                # if not aborts & redirects to custom 415 error page
+                file_extension = os.path.splitext(image.filename)[1]
+                if file_extension not in app.config['UPLOAD_EXTENSIONS']:
+                    abort(415)
+
+                # uploads the image to cloudinary
                 image_upload = cloudinary.uploader.upload(image)
 
                 # defines new location dictionary
@@ -551,18 +565,35 @@ def edit_location(location_id):
             # handles 'POST' method (form submission)
             if request.method == "POST":
 
-                # gets the contents of the image upload
+                # gets the uploaded image from the form
                 image = request.files['image_upload']
 
                 # gets the old image url from the database
                 old_image = location["image_url"]
           
                 # checks if an image has been uploaded
-                # if not the old image url is used
                 if image:
+
+                    # checks the image is under 5MB
+                    # if not aborts & redirects to custom 413 error page
+                    check_image_size(image)
+
+                    # checks if the image file type is accepted
+                    # if not aborts & redirects to custom 415 error page
+                    file_extension = os.path.splitext(image.filename)[1]
+                    if file_extension not in app.config['UPLOAD_EXTENSIONS']:
+                        abort(415)
+
+                    # uploads image image to Cloudinary
                     image_upload = cloudinary.uploader.upload(image)
+
+                    # sets value for database to the new image's URL
                     updated_image_url = image_upload["secure_url"]
+
+                # if no image uploaded
                 else:
+
+                    # sets value for database to the old image's URL
                     updated_image_url = old_image
 
                 submit = {
@@ -639,6 +670,15 @@ def image_too_large(error):
     Renders custom 413 page
     '''
     return render_template("413.html", error=error), 413
+
+
+@app.errorhandler(415)
+def unsupported_media_type(error):
+    '''
+    Route to handle 415 error
+    Renders custom 415 page
+    '''
+    return render_template("415.html", error=error), 415
 
 
 @app.errorhandler(500)
