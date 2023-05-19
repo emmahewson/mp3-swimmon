@@ -82,7 +82,7 @@
             <!-- location image -->
             <div class="input-field">
                 <div class="input-info-div-wrapper">
-                    <label for="location_image" class="font-title weight-600">LOCATION IMAGE</label>
+                    <label for="image_upload" class="font-title weight-600">LOCATION IMAGE <em class="weight-300">JPG / PNG (Max 5MB)</em></label>
                     <!-- Popover Info Box Adapted from https://codepen.io/chocochip/pen/zYxMgRG -->
                     <div class="popover-wrapper">
                         <div class="question-circle swim-txt-white swim-bg-mblue">?</div>
@@ -90,16 +90,17 @@
                             <div class="popover-header swim-bg-mblue swim-txt-white">
                                 <h2 class="font-title weight-500">LOCATION IMAGE</h2>
                             </div>
-                            <p class="font-body swim-txt-dblue weight-500">Upload a high quality image of the swimming location, landscape images with a minimum width of 1200px work best.</p>
+                            <p class="font-body swim-txt-dblue weight-500">Upload a high quality image of the swimming location. Landscape images with a minimum width of 1200px work best.</p>
                         </div>
                     </div>
                 </div>
-                <input type="file" accept="image/*" name="location_image" id="location_image" class="font-body weight-500" required>
+                <input type="file" accept=".jpg, .jpeg, .png" name="image_upload" id="image_upload" class="font-body weight-500" required>
+                <p class="font-body hidden" id="file-text-div"><span class="swim-txt-dblue weight-500" id="file-message"></span><span class="font-body weight-700" id="file-message-warning"></span></p>
             </div>
 
             <!-- submit button -->
             <div class="form-button-row">
-                <button type="submit" class="swim-btn-large btn-mblue font-title weight-600 swim-btn-shadow">ADD LOCATION</button>
+                <button type="submit" id="location-submit" class="swim-btn-large btn-mblue font-title weight-600 swim-btn-shadow">ADD LOCATION</button>
             </div>
 
         </form>
@@ -112,6 +113,7 @@
     <script src="{{ url_for('static', filename='js/form.js') }}"></script>
     <script src="{{ url_for('static', filename='js/popover.js') }}"></script>
     <script src="{{ url_for('static', filename='js/map-picker.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/file-validation.js') }}"></script>
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp3bbw0F5d1sjzp5iet_vlxKb0RrevMCA&callback=initMap">

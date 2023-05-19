@@ -34,6 +34,7 @@ html {
     --button-edit-hov: #00a86d;
     --button-del: #ce4a4a;
     --button-del-hov: #f54a4a;
+    --warning-red: #a8001f;
 }
 
 .swim-bg-white {
@@ -829,8 +830,19 @@ input::file-selector-button:hover {
     background-color: var(--pale-blue);
 }
 
-input[data-readonly] {
-    pointer-events: none;
+#file-message {
+    margin-right: 10px;
+}
+
+#file-message-warning {
+    color: var(--warning-red);
+}
+
+#location-submit[disabled="disabled"] {
+    background-color: var(--light-grey);
+    color: var(--dark-blue);
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 .coord-clicker {
@@ -1309,7 +1321,7 @@ input[data-readonly] {
 .created-by,
 .when-where-row,
 .event-page-markers {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .when-where-row,
@@ -1899,5 +1911,6 @@ input[data-readonly] {
 .test {
     width: 400px;
 }
+
 
 
