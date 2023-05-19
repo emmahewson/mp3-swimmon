@@ -176,8 +176,11 @@ def my_profile(username):
             {"username": session["user"]})["username"]
 
         # gets collections for use in event cards
-        events = mongo.db.events.find(
-            {"created_by": username.lower()}).sort("date", 1)
+        # gets events, filters by current user & today onwards, sorts by date
+        events = mongo.db.events.find({
+            "created_by": username.lower(),
+            "date": {"$gte": datetime.now()}
+            }).sort("date", 1)
         locations = list(mongo.db.locations.find())
 
         return render_template(
@@ -203,8 +206,9 @@ def events():
     # checks if user is logged in
     if "user" in session:
 
-        # sorts events by date
-        events = mongo.db.events.find().sort("date", 1)
+        # gets events, filters by today onwards, sorts by date
+        events = mongo.db.events.find(
+            {"date": {"$gte": datetime.now()}}).sort("date", 1)
 
         # gets collections as lists for search filters
         locations = list(mongo.db.locations.find())
@@ -445,9 +449,11 @@ def location(location_id):
     '''
 
     location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
-    # filters events by location and sorts by date
-    events = mongo.db.events.find(
-        {"location_id": ObjectId(location_id)}).sort("date", 1)
+    # filters events by location, filters by today onwards, sorts by date
+    events = mongo.db.events.find({
+        "location_id": ObjectId(location_id),
+        "date": {"$gte": datetime.now()}
+        }).sort("date", 1)
     locations = list(mongo.db.locations.find())
 
     return render_template(
