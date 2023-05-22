@@ -6,6 +6,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
+from urllib.parse import urlparse, urlsplit
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -179,6 +180,9 @@ def my_profile(username):
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
 
+        # stores url in session to redirect after edit event
+        session['url'] = url_for("my_profile", username=username)
+
         # gets collections for use in event cards
         # gets events, filters by current user & today onwards, sorts by date
         events = mongo.db.events.find({
@@ -207,9 +211,12 @@ def events():
     Sends locations, challenge & whos collections for info & filtering
     '''
 
+    # stores url in session to redirect after sign in / edit
+    session['url'] = url_for("events")
+
     # checks if user is logged in
     if "user" in session:
-
+        
         # gets events, filters by today onwards, sorts by date
         events = mongo.db.events.find(
             {"date": {"$gte": datetime.now()}}).sort("date", 1)
@@ -228,8 +235,6 @@ def events():
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
-    # stores url in session to redirect after sign in
-    session['url'] = url_for("events")
     return redirect(url_for("sign_in"))
 
 
@@ -241,6 +246,11 @@ def event(event_id):
     Finds correct event using event id
     Sends locations collection for location info
     '''
+
+    # grabs event id from url for redirect
+    url_id = request.path.split("/")[-1]
+    # stores url in session to redirect after sign in / edit
+    session['url'] = url_for("event", event_id=url_id)
 
     event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
     # checks if user is logged in
@@ -326,6 +336,9 @@ def edit_event(event_id):
     Updates event in events collection
     '''
 
+    # grabs event id from url for redirect
+    url_id = request.path.split("/")[-1]
+
     # checks if user is logged in
     if "user" in session:
 
@@ -360,10 +373,20 @@ def edit_event(event_id):
                     "date": event_date,
                 }
 
-                # updates event in database & redirects to events.html
+                # updates event in database
                 mongo.db.events.update_one(
                     {"_id": ObjectId(event_id)}, {"$set": submit})
+                
+                # Handles redirect & user message
                 flash("Event Successfully Updated")
+                # redirects user to previous page if a url is stored in session
+                # checks that stored url isn't this page (login redirect)
+                if (
+                    'url' in session and
+                    session['url'] != url_for("edit_event", event_id=url_id)
+                ):
+                    return redirect(session['url'])
+                # redirects to events if url not stored or url is this page
                 return redirect(url_for("events"))
 
             # handles 'GET' method (page load)
@@ -384,6 +407,8 @@ def edit_event(event_id):
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
+    # stores url in session to redirect after sign in
+    session['url'] = url_for("edit_event", event_id=url_id)
     return redirect(url_for("sign_in"))
 
 
@@ -416,6 +441,9 @@ def delete_event(event_id):
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
+    # stores url for events page for redirect after sign in
+    # avoids user triggering to 'delete' functionality on sign in
+    session['url'] = url_for("events")
     return redirect(url_for("sign_in"))
 
 
@@ -426,6 +454,10 @@ def manage_locations():
     Renders the manage locations page
     Sends location collection
     '''
+
+    # stores url in session to redirect after sign in / edit location
+    session['url'] = url_for("manage_locations")
+
     # checks if user is logged in
     if "user" in session:
 
@@ -443,8 +475,6 @@ def manage_locations():
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
-    # stores url in session to redirect after sign in
-    session['url'] = url_for("manage_locations")
     return redirect(url_for("sign_in"))
 
 
@@ -465,6 +495,11 @@ def location(location_id):
         "date": {"$gte": datetime.now()}
         }).sort("date", 1)
     locations = list(mongo.db.locations.find())
+
+    # grabs location id from url for redirect
+    url_id = request.path.split("/")[-1]
+    # stores url in session to redirect after edit location
+    session['url'] = url_for("location", location_id=url_id)
 
     return render_template(
         "location.html",
@@ -565,6 +600,9 @@ def edit_location(location_id):
     Updates location in locations collection
     '''
 
+    # grabs event id from url for redirect
+    url_id = request.path.split("/")[-1]
+
     # checks if user is logged in
     if "user" in session:
 
@@ -618,10 +656,21 @@ def edit_location(location_id):
                         "image_url": updated_image_url
                     }
 
-                # updates location in database & redirects to manage-locations
+                # updates location in database
                 mongo.db.locations.update_one(
                     {"_id": ObjectId(location_id)}, {"$set": submit})
+                
+                # Handles redirect / user message
                 flash("Location Successfully Updated")
+                # redirects user to previous page if a url is stored in session
+                # checks that stored url isn't this page (login redirect)
+                if (
+                    'url' in session and
+                    session['url'] != url_for(
+                        "edit_location", location_id=url_id)
+                ):
+                    return redirect(session['url'])
+                # default redirect if no url stored or url is this page
                 return redirect(url_for("manage_locations"))
 
             # handles 'GET' method (page load)
@@ -634,6 +683,8 @@ def edit_location(location_id):
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
+    # stores url in session to redirect after sign in
+    session['url'] = url_for("edit_location", location_id=url_id)
     return redirect(url_for("sign_in"))
 
 
@@ -663,6 +714,9 @@ def delete_location(location_id):
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
+    # stores url for manage_locations page for redirect after sign in
+    # avoids user triggering to 'delete' functionality on sign in
+    session['url'] = url_for("manage_locations")
     return redirect(url_for("sign_in"))
 
 
