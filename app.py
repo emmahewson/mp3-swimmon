@@ -119,6 +119,10 @@ def sign_in():
                     "password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
+
+                # redirects user to previous page if stored in session
+                if 'url' in session:
+                    return redirect(session['url'])
                 return redirect(
                     url_for("my_profile", username=session["user"]))
 
@@ -224,6 +228,8 @@ def events():
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
+    # stores url in session to redirect after sign in
+    session['url'] = url_for("events")
     return redirect(url_for("sign_in"))
 
 
@@ -236,9 +242,9 @@ def event(event_id):
     Sends locations collection for location info
     '''
 
+    event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
     # checks if user is logged in
     if "user" in session:
-        event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
         locations = list(mongo.db.locations.find())
         return render_template("event.html", event=event, locations=locations)
 
@@ -303,6 +309,8 @@ def add_event():
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
+    # stores url in session to redirect after sign in
+    session['url'] = url_for("add_event")
     return redirect(url_for("sign_in"))
 
 
@@ -435,6 +443,8 @@ def manage_locations():
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
+    # stores url in session to redirect after sign in
+    session['url'] = url_for("manage_locations")
     return redirect(url_for("sign_in"))
 
 
@@ -540,6 +550,8 @@ def add_location():
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
+    # stores url in session to redirect after sign in
+    session['url'] = url_for("add_location")
     return redirect(url_for("sign_in"))
 
 
