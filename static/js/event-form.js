@@ -1,4 +1,4 @@
-// JavaScript functionality for forms
+// JavaScript functionality for event forms
 
 $(document).ready(function(){
     // form dropdown (select)
@@ -49,16 +49,16 @@ $(document).ready(function(){
         autoClose: true
     });
 
-
-    // Checks for event being added in the past on time input change
+    // Checks for event being added in the past on date & time input change
+    dateInput.addEventListener('change', checkDateTime)
     timeInput.addEventListener('change', checkDateTime)
 
     // Runs validation on event time/date
     // Stops event in the past being submitted
     function checkDateTime() {
 
-        // checks date has been inputted
-        if (dateInput.value != 0) {
+        // checks date & time have both been inputted
+        if (dateInput.value.length != 0 && timeInput.value.length != 0) {
 
             // Splits the date string up
             const [day, month, year] = dateInput.value.split("/");
@@ -114,12 +114,7 @@ $(document).ready(function(){
                 timeInput.classList.add("valid")
             }
 
-        } else {
-            // if user hasn't selected date yet adds event listener to date input to re-run validation check on date select
-            console.log("You need to enter a date")
-            dateInput.addEventListener('change', checkDateTime)
         }
-        
     }
   });
 
