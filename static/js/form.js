@@ -22,11 +22,24 @@ $(document).ready(function(){
 
     // form datepicker
     let currentDate = new Date()
+    let pickerDate;
+    let dateInput = document.getElementById("event_date")
+
+    // checks if input already contains date
+    if (dateInput.value.length != 0) {
+        // if so grabs that date, splits & reformats to Y,M,D
+        // adapted from https://github.com/Dogfalo/materialize/issues/5974
+        let oldDate = dateInput.value.split("/");
+        pickerDate = new Date(oldDate[2], oldDate[1]-1, oldDate[0]);
+    } 
+
+    // date picker settings
     $('.datepicker').datepicker({
         format: "dd/mm/yyyy",
         autoClose: true,
-        yearRange: [2023, 2026],
+        yearRange: [currentDate.getFullYear(), currentDate.getFullYear()+3],
         minDate: currentDate,
+        defaultDate: pickerDate,
         setDefaultDate: true
     });
 
