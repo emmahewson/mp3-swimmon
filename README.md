@@ -639,6 +639,25 @@ I initially set up all my JavaScript functions in a single script.js file which 
 </details>
 
 
+#### **10: Possible for a user to create an event in the past and lose access to it**
+
+When creating or editing an event I had set the datepicker to only allow users to select from the today onwards. This functionality worked correctly, however I discovered that it would be technically possible to select today on the datepicker but then a time in the past on the timepicker. This provided a bad user experience because a user would find that their event didn't appear anywhere on the site as the events have been filtered to only show future events, this would mean they wouldn't be able to go in and edit their event to rectify the problem and would have to start from scratch.
+
+I decided the best way to tackle this problem was with some additional front end validation on the form. I added some JavaScript code which converted the date & time strings to a date-time string that JavaScript could understand, then checked if this inputed date was earlier than the current time and date and if so a warning message would appear and the form's submit button would be disabled. This required a couple of workarounds to make sure the validation styling matched the materialize styling I had used on the rest of the form, but by utilizing Materialize's valid & invalid classes within my own functions I was able to make sure that the boxes matched the other validation styling on the site.
+
+
+<details><summary>Screenrecordings</summary>
+
+<img src="">
+*Before - user can submit an event in the past, the event doesn't appear on the events page*
+
+<img src="">
+*After - user can only submit the event when the date and time are in the future*
+
+</details>
+
+
+
 
 
 ****
