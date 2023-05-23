@@ -18,8 +18,8 @@ html {
     --dark-blue: #033743;
     --dark-blue-hov: #022f39;
     --high-blue: #6cf5ff;
-    --high-blue-hov: #97f8ff;
-    --form-blue: #b6e3e9;
+    --high-blue-hov: #74e6ee;
+    --form-blue: #97d7df;
     --pale-pink: #ffd5d9;
     --mid-pink: #ffa8b0;
     --high-pink: #f04e5b;
@@ -1087,6 +1087,16 @@ input::file-selector-button:hover {
     display: inline;
 }
 
+#search-reset,
+#search-reset:focus {
+    background-color: var(--mid-blue);
+    color: var(--white);
+}
+
+.search-bar-header-div {
+    display: flex;
+}
+
 .swim-collapsible {
     margin: 0;
     font-size: 16px;
@@ -1893,6 +1903,11 @@ input::file-selector-button:hover {
 
     .swim-collapsible:hover {
         color: var(--high-pink);
+    }
+
+    #search-reset:hover {
+        background-color: var(--form-blue);
+        color: var(--dark-blue);
     }
 
 }

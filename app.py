@@ -216,7 +216,7 @@ def events():
 
     # checks if user is logged in
     if "user" in session:
-        
+
         # gets events, filters by today onwards, sorts by date
         events = mongo.db.events.find(
             {"date": {"$gte": datetime.now()}}).sort("date", 1)
@@ -376,7 +376,7 @@ def edit_event(event_id):
                 # updates event in database
                 mongo.db.events.update_one(
                     {"_id": ObjectId(event_id)}, {"$set": submit})
-                
+
                 # Handles redirect & user message
                 flash("Event Successfully Updated")
                 # redirects user to previous page if a url is stored in session
@@ -552,6 +552,8 @@ def add_location():
 
                 # checks if the image file type is accepted
                 # if not aborts & redirects to custom 415 error page
+                # Adapted from project by Karina Finegan
+                # https://github.com/kairosity/mp3-snapathon/tree/master
                 file_extension = os.path.splitext(image.filename)[1]
                 if file_extension not in app.config['UPLOAD_EXTENSIONS']:
                     abort(415)
@@ -620,7 +622,7 @@ def edit_location(location_id):
 
                 # gets the old image url from the database
                 old_image = location["image_url"]
-          
+
                 # checks if an image has been uploaded
                 if image:
 
@@ -630,6 +632,8 @@ def edit_location(location_id):
 
                     # checks if the image file type is accepted
                     # if not aborts & redirects to custom 415 error page
+                    # Adapted from project by Karina Finegan
+                    # https://github.com/kairosity/mp3-snapathon/tree/master
                     file_extension = os.path.splitext(image.filename)[1]
                     if file_extension not in app.config['UPLOAD_EXTENSIONS']:
                         abort(415)
@@ -650,7 +654,8 @@ def edit_location(location_id):
                         "name": request.form.get("location_name").lower(),
                         "lat": request.form.get("latitude"),
                         "long": request.form.get("longitude"),
-                        "description": request.form.get("location_description"),
+                        "description": request.form.get(
+                            "location_description"),
                         "facilities": request.form.get("location_facilities"),
                         "parking": request.form.get("location_parking"),
                         "image_url": updated_image_url
@@ -659,7 +664,7 @@ def edit_location(location_id):
                 # updates location in database
                 mongo.db.locations.update_one(
                     {"_id": ObjectId(location_id)}, {"$set": submit})
-                
+
                 # Handles redirect / user message
                 flash("Location Successfully Updated")
                 # redirects user to previous page if a url is stored in session
