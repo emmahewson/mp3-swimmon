@@ -31,15 +31,15 @@ SWIMMÔN is a website for swimmers on The Isle of Anglesey / Ynys Môn to find a
 
 
 #### Site Goals
-* Goal 1
-* Goal 2
+* To give wild swimmers on Anglesey the opportunity to arrange or join wild swimming events / meet-ups
+* To provide information about wild swimming locations on Anglesey
 
 #### User stories
 * As a user:
     * I want to be able to find what I need immediately and for the navigation to be easy to follow & intuitive
     * I want to be able to view the site on any device and for it to be fully responsive
     * I want to be able to contact the site to suggest additional swim locations or ask questions
-    * As a user, I want to be able to return to the main site without having to use the browser buttons if I end up on a non-existent page
+    * As a user, I want to be able to return to the main site without having to use the browser buttons if I end up on a non-existent page or the site throws an error
 * As a user without an account:
     * I want to understand the purpose of the site immediately upon entering
     * I want to be able to view information about places to go wild swimming on Anglesey
@@ -70,11 +70,11 @@ SWIMMÔN is a website for swimmers on The Isle of Anglesey / Ynys Môn to find a
     * Location page with detailed location information
     * Sign in functionality
     * Sign up functionality
-    * Custom 404 Page
+    * Custom Error Code Pages (404, 500)
 * Signed in (registered users)
     * Sign out functionality
     * Profile Page with user's own events (with CRUD functionality links)
-    * Events page with all events (summary only) and search/filter functionality
+    * Events page with all events (summary cards) and search/filter functionality
     * Event page with full event information (with CRUD functionality links for user's own events)
     * Add event functionality
     * Edit / Delete event functionality for user's own events
@@ -347,12 +347,222 @@ I created fully designed wireframes in [Figma](https://www.figma.com/). This all
 
 
 ****
-## Features
+## Finished Site - All Features
 
-### Existing Features
+As well as the features listed in the planned features above this section breaks down the smaller features and the functionality of the site.
 
+### All Sections/Pages
+
+#### **Layout**
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+*Max-Width of site*
+
+</details>
+
+* The site has a max-width of 1750px. This helps to maintain the quality of the hero image on the home page on wider-screen devices. The area around this max-width is set to a branded blue to maintain the site's brand colours.
+
+
+#### **General Responsiveness**
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+*Caption*
+
+</details>
+
+* The site is fully responsive across all pages to help all features appear correctly and look their best on all devices. This includes:
+    * Changes to font size
+    * Image size adjustments
+    * Changes to padding & margins
+    * Changes to the height of divs/sections
+    * Layout changes
+* Details of more specific changes can be found in the feature sections below.
+
+
+#### **Favicon**
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+*Favicon*
+
+</details>
+
+* The site has a Favicon using an S to represent SWIMMON. This helped to build the brand and continue the site design in the user's browser tab.
+
+#### **Navbar**
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+*Responsive navbar*
+
+<img src="">
+
+*Hover effect*
+
+<img src="">
+
+*Dropdown Menu*
+
+<img src="">
+
+*Navbar changes based on log-in status*
+
+</details>
+
+* Based around Materialize's inbuilt navbar
+* Includes a clickable logo of the name of the site which takes the user back to the home page
+* The navbar sticks to the top of the screen to aid navigation on longer pages
+* Includes menu items with a hover effect
+    * These vary based on whether a user is logged in or not, or whether they are an admin (who have access to more areas of the site)
+    * All the account-specific functionality is stored in a dropdown menu to help keep the navbar uncluttered
+* The navbar is fully responsive, on smaller screens the navbar is shorter and the menu items are replaced with a burger menu and a sidenav
+
+
+#### **Site Main Buttons**
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+<img src="">
+<img src="">
+
+*Button Colour Variety with Hover Effects*
+
+</details>
+
+* The site utilizes a repeating button design for major navigation or form submission functionality. In general the button colours are themed according to their purpose (along with the associated page explanatory header sections):
+    * Pink - Events
+    * Mid-Blue - Locations
+    * Highlight-Blue - Sign in / Join
+* Other secondary buttons are used across the site too - details in the features sections below
+
+
+#### **Footer**
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+*Responsive Footer*
+
+* Appears on all pages
+* Contains a clickable link to a 'contact us' email address
+* Contains a disclaimer to tell people that the site has been made for educational purposes and not to be used for sea swimming adice (due to the inherant dangers involved of sea swimming).
+* The footer contains the text "Made By Emma Hewson" and links to my relevant social media sites so that it can be used as a portfolio project
+* The footer social icons have aria labels to make them accessible
+* The footer social icons have a hover effect with a smooth colour transition
+* The footer is responsive, the layout adjusts on different sized devices
+
+
+- - -
+
+### Home Page
+
+![Home Page - Mock Up](docs/mockups/mockup_2_welcome.jpeg)
+
+#### **Hero**
+
+* A large, powerful hero image to grab people's attention and create a strong sense of what the site is for
+* A bright pink text box with compelling text building allowing users to immediately know what the purpose of the site is
+* Fully responsive
+    * There are 3 versions of the image selected based on screen size to improve the site's performance and load speed
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+*Responsive Hero Section*
+
+</details>
+
+
+#### **'WHAT IS SWIMMÔN?' Section**
+
+* Explanatory Text helping to clearly explain the purpose of the site and what the site can offer a user.
+* The content of this section varies depending on whether a user is logged in - offering different paths through the site to either
+    1. encourage a non-logged in user to sign up (primary) or log in (secondary) to enjoy the site's features
+    2. encourage a logged in user to go to the events page (primary) or add an event (secondary)
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+*Responsiveness*
+
+<img src="">
+
+*Not-Logged-In Contents*
+
+<img src="">
+
+*Logged-In Contents*
+
+</details>
+
+
+#### **Locations Map - Multiple Location Markers**
+
+* Includes explanatory text on a colour themed background (mid-blue for locations)
+* Google Maps API containing clickable markers of all locations from the locations collection
+    * Pulls data from the location collection - all locations in the collection are represented on the map
+    * The map has full Google Maps functionality including:
+        * Choice of map or satellite
+        * Streetview
+        * Full screen
+        * Google Places
+        * Zoom buttons
+        * Touchscreen zoom & scroll
+    * Markers are clickable and bring up a custom infowindow containing summary info about the location
+    * Infowindows are clickable and lead to the relevant location page for full information
+    * Infowindows have a hover effect, underlined name and truncated description text followed by an elipsis `...` to indicate that they are clickable
+    * Marker / infowindow click functionality
+        * when clicking on a marker
+            * the map will scroll to show the whole infowindow if needed
+            * any other infowindow that is open will close
+        * clicking outside the infowindow will close it
+    * The map is responsive
+        * zoom level varies based on screensize to make sure all locations are visible
+        * the map container size reduces on smaller devices to avoid users getting stuck on the map and not being able to scroll past
+    * If something goes wrong and the map fails to load Google has a built in error message to handle the problem in a user-friendly way
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+*Locations Map Functionality*
+
+</details>
+
+
+
+
+
+- - -
 
 ### Future Features
+
+I would like to expand the site in the future with the following features:
+
+**Mark self as 'Going' to an Event:** give the user the ability to mark themselves as 'going' to an event. The event could then include information on who is going.
+
+**Comments / Chat on Event page:** functionality for users to be able to discuss the event in a comments or chat section on the Event page, where they could ask questions, make plans etc.
+
+**Expand Personal Profile:** users can add more information about themselves on their profile, which could include 'home swim-spot' with their closest beach (and tailored event suggestions based on this), a list of events they are marked as 'going' to, and a profile photo or avatar.
+
+**Recurring Events:** The ability to make an event 'recurring' for users who hold regular swim meetings (e.g. every week), saving them time creating new events.
+
+
 
 ****
 ## Technologies
@@ -631,7 +841,7 @@ During testing I found that when opening the edit-location form, if the user cli
 I initially set up all my JavaScript functions in a single script.js file which was linked via the base.html template. However I soon discovered that if a page was loaded that didn't include the elements referenced in the JS file that the console would throw an error. E.g. the `scrollToTop()` function was used on the events page but the element that it linked to didn't exist on the home page. I fixed this by splitting up any JavaScript functions that were causing these errors in to separate files with the relevant functions for each page and linking them via a `{% block scripts %}` at the bottom of their associated page.
 
 
-<details><summary>Screengrab</summary>
+<details><summary>Screen Grab</summary>
 
 <img src="">
 *Console Error on Home Page when JavaScript tries to call scrollToTop() function*
@@ -646,7 +856,7 @@ When creating or editing an event I had set the datepicker to only allow users t
 I decided the best way to tackle this problem was with some additional front end validation on the form. I added some JavaScript code which converted the date & time strings to a date-time string that JavaScript could understand, then checked if this inputed date was earlier than the current time and date and if so a warning message would appear and the form's submit button would be disabled. This required a couple of workarounds to make sure the validation styling matched the materialize styling I had used on the rest of the form, but by utilizing Materialize's valid & invalid classes within my own functions I was able to make sure that the boxes matched the other validation styling on the site.
 
 
-<details><summary>Screenrecordings</summary>
+<details><summary>Screen Recordings</summary>
 
 <img src="">
 *Before - user can submit an event in the past, the event doesn't appear on the events page*
