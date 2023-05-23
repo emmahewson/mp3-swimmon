@@ -12,4 +12,5 @@ $(document).ready(function(){
     // set date in footer
     document.getElementById('copyright-year').innerText = new Date().getFullYear()
   });
+  
 

@@ -105,6 +105,10 @@ html {
     color: var(--black);
 }
 
+.swim-txt-warning {
+    color: var(--warning-red);
+}
+
 html {
     background-color: #475967;
 }
@@ -803,6 +807,11 @@ textarea::placeholder {
     fill: var(--high-pink);
 }
 
+#past-event-message {
+    text-align: right;
+    margin-top: 5px;
+}
+
 input[type=file] {
     padding: 5px 5px 5px 0;
     max-width: 100%;
@@ -834,11 +843,8 @@ input::file-selector-button:hover {
     margin-right: 10px;
 }
 
-#file-message-warning {
-    color: var(--warning-red);
-}
-
-#location-submit[disabled="disabled"] {
+#location-submit[disabled="disabled"],
+#event-submit[disabled="disabled"] {
     background-color: var(--light-grey);
     color: var(--dark-blue);
     cursor: not-allowed;
@@ -1039,7 +1045,6 @@ input::file-selector-button:hover {
     -o-transition: all 0.3s ease-in-out;
 
 }
-
 
 
 /* Events */
@@ -1298,8 +1303,6 @@ input::file-selector-button:hover {
 }
 
 
-
-
 /* Event Page */
 
 .event-page-wrapper,
@@ -1442,8 +1445,6 @@ input::file-selector-button:hover {
 .edit-div p {
     font-size: 20px;
 }
-
-
 
 
 /* Location Page */
