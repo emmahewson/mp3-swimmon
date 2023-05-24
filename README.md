@@ -248,10 +248,7 @@ Implementation
         * Facililties Description (textarea)
         * Image URL (with an explanatory popover box to guide the admin on how to find and input)
     * Edit: The location boxes will have an edit button which will take the admin to a pre-filled form containing the location information which will be editable.
-    * Delete: The location boxes will have a delete button which will trigger a warning to the admin before they delete it.
-
-
-    TBC - WHAT HAPPENS TO ASSOCIATED EVENTS?!
+    * Delete: The location boxes will have a delete button which will trigger a warning to the admin before they delete it. When an admin deletes a location all events set to that location will also delete.
 
 
 User Story:
@@ -267,7 +264,9 @@ Implementation
 #### Database Design
 MongoDB Object format examples:
 
-**Collection: events**<br>
+**Collection: events**
+
+Example Event<br>
 {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;_id : unique-value,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;name : "Sunday Swim",<br>
@@ -279,10 +278,21 @@ MongoDB Object format examples:
 &nbsp;&nbsp;&nbsp;&nbsp;created-by : session[user],<br>
 }
 
-**Collection: locations**<br>
+Notes
+* location_id is the ID for the event's location - this pulls in all the data from the location to populate the event information
+* the time & date will be collected separately to improve UX but then combined and converted to the format below to allow the events to be sorted chronologically
+* the 'who' and 'challenge' fields are strings rather than object ids, but populated by giving the user a multiple choice from the relevant collections below. This is because they only supply a simple string value and don't need to link back to those other collections
+* the created_by field takes its value from the session cookie for the user who is logged in when they are created
+    * this allows the events to be filtered by user and to offer edit/delete functionality to the event creator only
+
+
+
+**Collection: locations**
+
+Example Location<br>
 {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;_id : unique-value,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;name : "Llanddwyn",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name : "llanddwyn",<br>
 &nbsp;&nbsp;&nbsp;&nbsp;latitude : "53.14466044027234",<br>
 &nbsp;&nbsp;&nbsp;&nbsp;latitude : "-4.385204789999572",<br>
 &nbsp;&nbsp;&nbsp;&nbsp;description : "A large sandy beach with beautiful views of the mountains",<br>
@@ -291,30 +301,80 @@ MongoDB Object format examples:
 &nbsp;&nbsp;&nbsp;&nbsp;image_url : "https://www.fotovue.com/wp-content/uploads/2016/10/IMGP1890-scaled.jpg"<br>
 }
 
-**Collection: users**<br>
+Notes
+* the location name is used to populate a dropdown select input on the add/edit-event forms
+* the _id value of the chosen location is sent to the events collection on event creation to connect the data in the location to the event
+* the location name is converted to lower case to make searching easier
+* the latitude & longitude need to be in the correct format to be read by Google Maps
+    * this could be achieved by either:
+        * providing the user detailed information about how to get these values from an external resource (easier/quicker, less good UX)
+        * providing a map where the user can select the location (better UX, more challenging/time-consuming)
+    * which of these is implemented will depend on time and during development & how challenging & time consuming they turn out to be
+* the image_url will need to be a reasonably high quality image linked to a location online
+    * this could be achieved by either:
+        * providing the user with detailed information about what is needed and how to input the url (easier/quicker, less good UX, more room for errors and missing images)
+        * allowing the user to upload an image to be hosted in a location under the site's control (better UX, more challenging/time-consuming)
+    * which of these is implemented will depend on time and during development & how challenging & time consuming they turn out to be
+* this collection is also used in the 'events' page search filters, to filter by the event location
+
+
+
+**Collection: users**
+
+Example User<br>
 {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;_id: unique-value,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;username: "Admin",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;username: "admin",<br>
 &nbsp;&nbsp;&nbsp;&nbsp;password : "ab123bn548",<br>
 }
 
-**Collection: who_for**<br>
+Notes
+* the username is converted to lower case to make searching easier
+* the username is used to populate the created_by field in the 'events' collection as a string value
+* the password are protected using the Werkzeug module's 'generate_password_hash' & 'check_password_hash' to enhance security and protect user data
+
+
+**Collection: who_for**
+
+Example: who-for<br>
 {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;_id: unique-value,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;name: "Women-Only",<br>
 }
 
-**Collection: challenge**<br>
+Notes
+* the name is used to populate a dropdown select input on the add/edit-event forms
+* the chosen name is passed to the event's 'who' field as a string value
+* this collection is also used in the 'events' page search filters, to filter by who the event is for
+
+
+**Collection: challenge**
+
+Example: challenge<br>
 {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;_id: unique-value,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;name: "Intermediate",<br>
 }
 
+Notes
+* the name is used to populate a dropdown select input on the add/edit-event forms
+* the chosen name is passed to the event's 'challenge' field as a string value
+* this collection is also used in the 'events' page search filters, to filter by the challenge-level of the event
+
 #### Security
 
 Database connection details are set up in an [env.py](https://pypi.org/project/env.py/) for development, for 
 security reasons this is not uploaded to GitHub so that database and connection details are not visible to 
-users. In production these are stored in Heroku. 
+users. In production these are stored in Heroku.
+
+Parts of the site will require user log in to access and the site will implement both front end and back end security to stop users accessing parts of the site they do not have permission to visit. Full details of security, form validation & back end functionality are available below in [Features - Backend Functionality, Site Security & Form Validation](#backend-functionality-site-security--form-validation) but as a general overview these measures will mean the following:
+* Location information & pages are visible to everyone
+* Events are only visible to users who are logged in
+* Events can only be created by users who are logged in
+* Only the user who created an event can edit or delete it (unless they are an admin)
+* Locations can only be added, edited & deleted by an admin
+* A user can only see their own profile page, not anyone else's
+* Users' passwords will be hashed and not readable in the database to protect user privacy
 
 ****
 ### **Surface Plane**
@@ -602,7 +662,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Front End Form Validation** | All fields are required. Fields must match correct type and length using built in HTML validation. |
 | **Back End Form Validation** | Username must not already exist and passwords must match |
 | **Front End Security** | None |
-| **Back End Security** | None |
+| **Back End Security** | User password is hashed using Werkzeug's 'generate_password_hash' to protect user data |
 | **Routing - log in** | Redirects to 'events' on log-in |
 | **Routing - other** | None |
 
@@ -616,7 +676,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Template** | sign-in.html |
 | **Back End Functionality** | Adds user to session cookie (log in) |
 | **Front End Form Validation** | All fields are required. Fields must match correct type and length using built in HTML validation. |
-| **Back End Form Validation** | Password & username must exist & be correct |
+| **Back End Form Validation** | Password & username must exist & be correct - uses Werkzeug's 'check_password_hash' to protect user data |
 | **Front End Security** | None |
 | **Back End Security** | None |
 | **Routing - log in** | Any page visible to logged in users only redirects here if user not logged in. On log in return user to the previous page they attempted to visit, or if none is stored in session to 'profile'. |
@@ -649,7 +709,7 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | my-profile.html |
-| **Back End Functionality** | Populates page with current user's details. Add any events created by user including event & location details from database. Events filtered by future only & sorted by date. |
+| **Back End Functionality** | Populates page with current user's details. Populates event cards with events filtered using the 'created_by' field of the event to show only events created by the current user using the `session['user']` value, pulls in location information for the event using the location_id field & connecting the locations collection. Events filtered by future only & sorted by date. |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
 | **Front End Security** | Edit / Delete Buttons only visible on user's own events (or all events if admin) (Only user events should be visible but this adds another layer of security). |
@@ -666,7 +726,7 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | events.html |
-| **Back End Functionality** | Populates page with events including event & location details from database. Events filtered by future only & sorted by date. |
+| **Back End Functionality** | Populates page with events including event & location details from database. Events filtered by future only & sorted by date. Location, who & challenge collections are used to populate the search filters (JavaScript is used to filter the event cards on the page). |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
 | **Front End Security** | Edit / Delete Buttons only visible on user's own events (or all events if admin) |
@@ -684,7 +744,7 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | event.html |
-| **Back End Functionality** | Populates page with event and location information |
+| **Back End Functionality** | Populates page with event based on the event id provided. Pulls in location information from the locations collection using the location_id field on the event document. |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
 | **Front End Security** | Edit / Delete Buttons only visible if event created by current user (or user is admin) |
@@ -702,7 +762,7 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | add-event.html |
-| **Back End Functionality** | Populates form with locations, whos & challenge-levels for user selection. Submission: converts date & time to UTC format, adds location id to event, adds event to database. |
+| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, adds event to database. |
 | **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (JavaScript - form.js) |
 | **Back End Form Validation** | None |
 | **Front End Security** | None |
@@ -719,7 +779,7 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | Logged In Users - own events only. Admin - all events. |
 | **Template** | edit-event.html |
-| **Back End Functionality** | Populates form with event data, locations, whos & challenge-levels for user selection / edit. Submission: converts date & time to UTC format, adds location id to event, updates event on database. |
+| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. |
 | **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (JavaScript - form.js) |
 | **Back End Form Validation** | None |
 | **Front End Security** | None |
@@ -737,7 +797,7 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | Logged In Users - own events only. Admin - all events. |
 | **Template** | None |
-| **Back End Functionality** | Removes event from database. |
+| **Back End Functionality** | Removes event from database.|
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
 | **Front End Security** | Delete buttons on other pages only visible for admin or on user's own events. |
@@ -756,7 +816,7 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | manage-locations.html |
-| **Back End Functionality** | Populates page with all locations. |
+| **Back End Functionality** | Populates page with all location documents in the locations collection. |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
 | **Front End Security** | None |
@@ -773,7 +833,7 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | All Users |
 | **Template** | location.html |
-| **Back End Functionality** | Populates page with location information & any events at this location. Events filtered by future only & sorted by date. |
+| **Back End Functionality** | Populates page with location information based on the location id provided. Populates page with events at that location by filtering using location_id field on events. Events also filtered by future only & sorted by date. |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
 | **Front End Security** | Location Edit / Delete Buttons only visible for admin. Events only visible for logged in users. Event Edit / Delete Buttons only visible on user's own events (or all events if admin). |
@@ -791,9 +851,9 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | add-location.html |
-| **Back End Functionality** | Submission: uploads image to Cloudinary & adds image url to location data. Adds location to database. |
-| **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Latitude & Longitude populated using Map Picker (not directly editable). Image under 5mb (JavaScript file-validation.js) and correct format (HTML validation). |
-| **Back End Form Validation** | Checks image is under 5MB & correct formats - redirects to 413/415 page if not. |
+| **Back End Functionality** | Submission: converts location name to lowercase to make searching easier, uploads image to Cloudinary & adds image url to location data. Adds location to database. |
+| **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Latitude & Longitude populated using Map Picker (not directly editable to make sure they're in the correct format) with JavaScript & HTML validation to check selected location is in correct area by setting min/max latitude/longitude values. Uploaded image checks: under 5mb (JavaScript file-validation.js) and correct format (HTML validation). |
+| **Back End Form Validation** | Checks image is under 5MB & in accepted format - redirects to 413/415 page if not. |
 | **Front End Security** | None |
 | **Back End Security** | User must be logged in and admin. |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
@@ -808,9 +868,9 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | edit-location.html |
-| **Back End Functionality** | Populates form with location data. Submission: checks if new image uploaded & if so replaces it. Uploads image to Cloudinary & adds image url to location data. Updates location on database. |
-| **Front End Form Validation** | All fields required except image upload (to keep old image). Fields must match type and length (HTML validation). Latitude & Longitude populated using Map Picker (not directly editable). Image under 5mb (JavaScript file-validation.js) and correct format (HTML validation). |
-| **Back End Form Validation** | Checks image is under 5MB & correct formats - redirects to 413/415 page if not. |
+| **Back End Functionality** | Populates form with location data using object id. Submission: converts location name to lowercase to make searching easier, checks if new image uploaded & if so replaces it. Uploads image to Cloudinary & adds image url to location data. Updates location on database. |
+| **Front End Form Validation** | All fields required except image upload (to keep old image). Fields must match type and length (HTML validation). Latitude & Longitude populated using Map Picker (not directly editable to make sure they're in the correct format) with JavaScript & HTML validation to check selected location is in correct area by setting min/max latitude/longitude values. Uploaded image checks: under 5mb (JavaScript file-validation.js) and correct format (HTML validation). |
+| **Back End Form Validation** | Checks image is under 5MB & in accepted format - redirects to 413/415 page if not. |
 | **Front End Security** | None |
 | **Back End Security** | User must be logged in and admin. |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. Id for session url is taken from page url. |
@@ -825,7 +885,7 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | None |
-| **Back End Functionality** | Removes location from database |
+| **Back End Functionality** | Removes location from database & deletes all events at that location. |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
 | **Front End Security** | Delete buttons on other pages only visible for admin. |
