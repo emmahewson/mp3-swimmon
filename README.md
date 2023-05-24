@@ -93,7 +93,7 @@ The table shows the importance and difficulty of these features - I will priorit
 | All Users | Navigation | 1 | 5 |
 | All Users | Home Page - branding & Explanatory Text | 1 | 5 |
 | All Users | Home Page - list of swimming locations on map (Google Maps API) with clickable markers | 5 | 1 |
-| All Users | Individual Location Info page | 5 | 1 |
+| All Users | * Individual Location Info page | 5 | 1 |
 | All Users | Sign In Functionality | 5 | 5 |
 | All Users | Sign Up Functionality | 5 | 5 |
 | All Users | Custom 404 Page | 1 | 4 |
@@ -455,6 +455,10 @@ As well as the features listed in the planned features above this section breaks
 
 *Responsive Footer*
 
+</details>
+
+
+
 * Appears on all pages
 * Contains a clickable link to a 'contact us' email address
 * Contains a disclaimer to tell people that the site has been made for educational purposes and not to be used for sea swimming adice (due to the inherant dangers involved of sea swimming).
@@ -573,7 +577,7 @@ I would like to expand the site in the future with the following features:
     * Used to build the main structure of the site
 * [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
     * Used to style the website
-* [JavaScript] is used for:
+* [JavaScript](https://en.wikipedia.org/wiki/JavaScript) is used for:
     * Events search bar collapsible
     * 
 * [JQuery](https://jquery.com/) is used for the following:
@@ -854,6 +858,24 @@ I initially set up all my JavaScript functions in a single script.js file which 
 When creating or editing an event I had set the datepicker to only allow users to select from the today onwards. This functionality worked correctly, however I discovered that it would be technically possible to select today on the datepicker but then a time in the past on the timepicker. This provided a bad user experience because a user would find that their event didn't appear anywhere on the site as the events have been filtered to only show future events, this would mean they wouldn't be able to go in and edit their event to rectify the problem and would have to start from scratch.
 
 I decided the best way to tackle this problem was with some additional front end validation on the form. I added some JavaScript code which converted the date & time strings to a date-time string that JavaScript could understand, then checked if this inputed date was earlier than the current time and date and if so a warning message would appear and the form's submit button would be disabled. This required a couple of workarounds to make sure the validation styling matched the materialize styling I had used on the rest of the form, but by utilizing Materialize's valid & invalid classes within my own functions I was able to make sure that the boxes matched the other validation styling on the site.
+
+
+<details><summary>Screen Recordings</summary>
+
+<img src="">
+*Before - user can submit an event in the past, the event doesn't appear on the events page*
+
+<img src="">
+*After - user can only submit the event when the date and time are in the future*
+
+</details>
+
+
+#### **11: Previous username showing on URL on profile**
+
+I came across an interesting bug during testing where if I was logged in as e.g. 'user1' and on the user's profile page when I signed out, then I signed back in as a different user e.g. 'user2' that the profile would display the correct information for user2 but the url would still contain the user name 'user1'. Working through step by step using print statements I isolated the problem to the `session["url"]` which I was passing in to the session cookie on the profile page to make sure that they were redirected back there once they had finished editing any events they had accessed via the profile page. When combined with the redirect I had included after sign-in that took users back to the page they were trying to access when signed out, this meant this `session["url"]` from the profile page was being used to create the url, though the page was being populated with the correct user.
+
+I felt that this was a security issue as it revealed another user's username, so I fixed it by adding `session.pop("url")` to the signout route, which removed any stored urls from the session on signout.
 
 
 <details><summary>Screen Recordings</summary>

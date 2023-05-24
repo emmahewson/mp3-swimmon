@@ -154,6 +154,7 @@ def sign_out():
         # remove user from session cookies
         flash("You have been logged out")
         session.pop("user")
+        session.pop("url")
         return redirect(url_for("sign_in"))
 
     # redirects to sign in if user isn't logged in
