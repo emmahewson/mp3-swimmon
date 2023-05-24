@@ -573,9 +573,11 @@ I would like to expand the site in the future with the following features:
 
 Below are all the details of each features's security (front & back end), routing & templates, form validation (front & back end) & back end functionality.
 
+
+
 <details><summary>HOME</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | All Users |
 | **Template** | index.html |
@@ -592,7 +594,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>JOIN</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | **All Users** |
 | **Template** | join.html |
@@ -608,7 +610,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>SIGN IN</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | All Users |
 | **Template** | sign-in.html |
@@ -625,7 +627,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>SIGN OUT</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | None |
@@ -643,7 +645,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>PROFILE</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | my-profile.html |
@@ -660,7 +662,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>EVENTS</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | events.html |
@@ -678,7 +680,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>EVENT</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | event.html |
@@ -696,7 +698,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>ADD EVENT</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | add-event.html |
@@ -713,7 +715,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>EDIT EVENT</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | Logged In Users - own events only. Admin - all events. |
 | **Template** | edit-event.html |
@@ -731,7 +733,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>DELETE EVENT</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | Logged In Users - own events only. Admin - all events. |
 | **Template** | None |
@@ -750,7 +752,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>MANAGE LOCATIONS</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | manage-locations.html |
@@ -767,7 +769,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>LOCATION</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | All Users |
 | **Template** | location.html |
@@ -785,7 +787,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>ADD LOCATION</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | add-location.html |
@@ -802,7 +804,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>EDIT LOCATION</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | edit-location.html |
@@ -819,7 +821,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>DELETE LOCATION</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | None |
@@ -836,7 +838,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>404</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | All Users |
 | **Template** | 404.html |
@@ -852,7 +854,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>413</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | All Users |
 | **Template** | 413.html |
@@ -868,7 +870,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>415</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | All Users |
 | **Template** | 415.html |
@@ -884,7 +886,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>500</summary>
 
-|  |  |
+| Attribute | Details |
 |---|---|
 | **Visible To** | All Users |
 | **Template** | 500.html |
