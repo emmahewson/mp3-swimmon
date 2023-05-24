@@ -407,9 +407,15 @@ I created fully designed wireframes in [Figma](https://www.figma.com/). This all
 
 
 ****
+### Changes to Design
+
+DETAILS HERE
+
+
+****
 ## Features
 
-As well as the features listed in the planned features above this section breaks down the smaller features and the functionality of the site.
+Details of all features on the finished site, expanding on the broader features listed above, including content, functionality & security.
 
 ### All Sections/Pages
 
@@ -962,9 +968,6 @@ Below are all the details of each features's security (front & back end), routin
 
 
 
-
-
-
 ****
 ## Technologies
 ## Technologies Used
@@ -974,12 +977,27 @@ Below are all the details of each features's security (front & back end), routin
     * Used to build the main structure of the site
 * [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
     * Used to style the website
-* [JavaScript](https://en.wikipedia.org/wiki/JavaScript) is used for:
-    * Events search bar collapsible
-    * 
-* [JQuery](https://jquery.com/) is used for the following:
-    * Mobile Side Nav
-    * 
+* [Vanilla JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+    * Footer year (script.js)
+    * Events page search bar collapsible (search.js)
+    * Events page filters (search.js)
+    * Time & date validation (event-form.js)
+    * Google Maps API
+        * Home page map with all location & clickable markers (map.js)
+        * Event page map (map-event.js)
+        * Location page map (map-location.js)
+        * Location picker on add location form (map-picker.js)
+    * Info box 'popovers' on forms (popover.js)
+    * Scroll to Top button (scroll-top.js)
+* [JQuery](https://jquery.com/)
+    * Mobile Side Nav (script.js)
+    * Navbar Dropdown Menu (script.js)
+    * Materialize modal (script.js)
+    * Back button on error pages (back.js)
+    * Validating image upload (file-validation.js)
+    * Form dropdown select inputs (event-form.js)
+    * Validation message on select inputs (event-form.js)
+    * Initiating time & date pickers on event form (event-form.js)
 * [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
     * Used to build the core of the backend of the project as well as the running/viewing of the website
     * Python Modules Used:
@@ -1017,12 +1035,18 @@ Below are all the details of each features's security (front & back end), routin
     * Used to crop, adjust and resize the photos to optimise them for the site
 * [Tiny PNG](https://tinypng.com/)
     * Used to further optimise the images for the site and reduce file size
+* [ezGIF](https://ezgif.com/)
+    * Creating GIFs for the README
+* [tableconvert.com](https://tableconvert.com/csv-to-markdown)
+    * Converting CSV files to Markdown tables for README
 * [Favicon.io](https://favicon.io/favicon-converter/)
     * Used to create and add the favicon to the browser tab
 * [Google Chrome Dev Tools](https://developers.google.com/web/tools/chrome-devtools)
     * Used to inspect page elements, debug issues with the site & test responsiveness on different mockup devices
 * [Techsini](http://techsini.com/multi-mockup/index.php)
     * Website mockup image generator for images in this README.
+* [Google Maps API](https://developers.google.com/maps)
+    * Linked to Google Maps API to load the relevant country map and create clickable markers
 
 
 ****
@@ -1299,9 +1323,38 @@ I felt that this was a security issue as it revealed another user's username, so
 
 ### Code
 
+Details of any projects or online sources that I have learned from or adapted in developing this website. All relevant code is also credited in comments above the code itself.
+
+* [Lee Martina - Sagacity CI Project](https://github.com/isntlee/Sagacity/blob/master/templates/home.html): Fetch function to send JSON data from MongoDB
+* [Karina Finegan - Snapathon CI Project](https://github.com/kairosity/mp3-snapathon/tree/master): Image size & format backend validation & error handling
+* [https://github.com/Dogfalo/materialize - Issue](https://github.com/Dogfalo/materialize/issues/1861): Validation message on form dropdowns
+* [https://github.com/Dogfalo/materialize - Issue](https://github.com/Dogfalo/materialize/issues/5974): Date input format conversion
+* [https://www.tutorialspoint.com - Article](https://www.tutorialspoint.com/converting-12-hour-format-time-to-24-hour-format-in-javascript): Converting AM/PM time string to 24hr string
+* [https://www.geeksforgeeks.org - Article](https://www.geeksforgeeks.org/validation-of-file-size-while-uploading-using-javascript-jquery/): Front end validation on image upload
+* [https://www.aspsnippets.com - Article](https://www.aspsnippets.com/Articles/Google-Maps-API-V3-Open-Show-only-one-InfoWindow-at-a-time-and-close-other-InfoWindow.aspx): Bug 3 Solution - multiple infowindows on map
+* [https://codepen.io - Sample Code](https://codepen.io/chocochip/pen/zYxMgRG): Popover Info Boxes
+
+
+### Images & Text
+
+* Homepage Hero Image [Vidar Nordli-Mathisen on Unsplash](https://unsplash.com/photos/AvnXCFX25GA)
+* Location Backup Image [Lopez Robin on Unsplash](https://unsplash.com/photos/apax4M-4kFI)
+* Llanddwyn: [Fotovue](https://www.fotovue.com/wp-content/uploads/2016/10/IMGP1890-scaled.jpg)
+* Bull Bay: [Wales Tourists Online](https://www.walestouristsonline.co.uk/pictures/mainpics/2338_DGG72M57DCQ5.jpg)
+* Porth Dafarch: [Anglesey Outdoors]()
+* Porth Trecastell: [Holidays Anglesey](https://www.holidaysanglesey.co.uk/perch/resources/porth-trecastell-beach-1-corrected-w720pxh520px.jpg)
+* Porth Swtan: [Visit Anglesey](https://www.visitanglesey.co.uk/ImageGen.ashx?image=/media/445871/church-bay-1280-x-618.jpg&width=1280&height=618)
+* Cemaes Bay: [Clued In With Kids](https://www.cluedinwithkids.co.uk/wp-content/uploads/2019/05/AdobeStock_52856375.jpeg-1600.jpeg)
+
 
 ### Acknowledgements
 
+* My mentor [Daisy McGirr](https://github.com/Daisy-McG) for all her help and advice throughout the project
+* The whole team at [Code Institute](https://codeinstitute.net/) for their teaching and support
 
+- - -
+- - -
+
+[Go to Top](#swimmôn-wild-swimming-events-website)
 
 ****
