@@ -434,6 +434,15 @@ def delete_event(event_id):
             # deletes the event and redirects to events
             mongo.db.events.delete_one({"_id": ObjectId(event_id)})
             flash("Event successfully deleted")
+            # redirects user to previous page if a url is stored in session
+            # checks that stored url isn't this page (login redirect)
+            if (
+                'url' in session and
+                session['url'] != url_for("event", event_id=event_id)
+            ):
+                return redirect(session['url'])
+            # redirects to events if url not stored
+            # or url is for the deleted event page
             return redirect(url_for("events"))
 
         # if not user's event redirects to user profile page
