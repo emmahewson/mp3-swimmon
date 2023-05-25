@@ -407,7 +407,7 @@ Database connection details are set up in an [env.py](https://pypi.org/project/e
 security reasons this is not uploaded to GitHub so that database and connection details are not visible to
 users. In production these are stored in Heroku.
 
-Parts of the site will require user log in to access and the site will implement both front end and back end security to stop users accessing parts of the site they do not have permission to visit. Full details of security, form validation & back end functionality are available below in [Features - Backend Functionality, Site Security & Form Validation](#backend-functionality-site-security--form-validation) but as a general overview these measures will mean the following:
+Parts of the site will require user log in to access and the site will implement both front end and back end security to stop users accessing parts of the site they do not have permission to visit. Full details of security, form validation & back end functionality are available below in [Features](#features) but as a general overview these measures will mean the following:
 
 - Location information & pages are visible to everyone
 - Events are only visible to users who are logged in
@@ -572,7 +572,23 @@ _Responsive Footer_
 
 ### Home Page
 
-![Home Page - Mock Up](docs/mockups/mockup_2_welcome.jpeg)
+![Home Page - Mock Up]()
+
+
+<details><summary>Security, Validation & Backend Functionality</summary>
+
+| Attribute | Details |
+|---|---|
+| **Visible To** | All Users |
+| **Template** | index.html |
+| **Front End Functionality** | Interactive map with clickable markers built using Google Maps API & JavaScript. Markers show each location and are clickable to reveal Info-Windows with summary info of the location - these cards are clickable & lead to the location page with full information. |
+| **Back End Functionality** | Sends locations collection as JSON data via a fetch function to allow the data to be used in creating the map using JavaScript & Google Maps API. |
+| **Front End Security** | Contents of info text div change based on whether user is logged in |
+| **Back End Security** | None |
+| **Routing** | None |
+
+
+</details>
 
 #### **Hero**
 
@@ -647,6 +663,219 @@ _Locations Map Functionality_
 
 ---
 
+### Join / Sign In / Sign Out
+
+![Join / Sign In / Sign Out - Mock Up]()
+
+
+#### **Join & Sign-In Pages**
+
+<details><summary>Functionality, Validation, Security & Routing</summary>
+
+<details><summary>JOIN</summary>
+
+| Attribute | Details |
+|---|---|
+| **Visible To** | **All Users** |
+| **Template** | join.html |
+| **Back End Functionality** | Creates new user in db. Adds user to session cookie (log in). Welcomes user with flash message on submission. |
+| **Front End Form Validation** | All fields are required. Fields must match correct type, format and length using built in HTML validation. |
+| **Back End Form Validation** | Username must not already exist and passwords must match |
+| **Front End Security** | Navbar link only visible to logged-out users |
+| **Back End Security** | User password is hashed using Werkzeug's 'generate_password_hash' to protect user data |
+| **Routing - log in** | Redirects to 'events' on log-in |
+
+
+</details>
+
+
+<details><summary>SIGN IN</summary>
+
+| Attribute | Details |
+|---|---|
+| **Visible To** | All Users |
+| **Template** | sign-in.html |
+| **Back End Functionality** | Adds user to session cookie (log in). Welcomes user with flash message on submission. |
+| **Front End Form Validation** | All fields are required. Fields must match correct type, format and length using built in HTML validation. |
+| **Back End Form Validation** | Password & username must exist & be correct - uses Werkzeug's 'check_password_hash' to protect user data |
+| **Front End Security** | Navbar link only visible to logged-out users|
+| **Back End Security** | None |
+| **Routing - log in** | Any page visible to logged in users only redirects here if user not logged in. On log in return user to the previous page they attempted to visit, or if none is stored in session to 'profile'. |
+
+</details>
+
+</details>
+
+- Brief intro text to explain to a user what the purpose of the page is and what they need to do
+- Intro text box & submit buttons are in the site's branded 'highlight blue' - used across the account-related pages
+- Forms are fully responsive on all devices
+- Flash messages are styled using custom CSS
+- Join Page
+    - A page for users to set up an account
+    - Link to 'sign-in' page for users who are already registered
+- Sign In Page
+    - A page for users to sign in to their account
+    - Link to 'join' page for users who aren't yet registered
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Join_
+
+<img src="">
+
+_Sign-In_
+
+</details>
+
+
+#### **Sign-Out**
+
+<details><summary>Functionality, Validation, Security & Routing</summary>
+
+| Attribute | Details |
+|---|---|
+| **Visible To** | Logged In Users |
+| **Template** | None |
+| **Back End Functionality** | Removes user & any stored url from session cookie. Confirmation flash message on sign out. |
+| **Front End Security** | Navbar link only visible to users who are logged in |
+| **Back End Security** | User must be logged in |
+| **Routing - log in** | Redirects to 'sign-in' on log-out |
+
+</details>
+
+- Nav link only visible to logged in users
+- Logs user out & takes them to 'sign-in' page
+- Flash messages are styled using custom CSS
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Sign Out_
+
+</details>
+
+---
+
+### Events
+
+![Events - Mock Up]()
+
+<details><summary>Functionality, Validation, Security & Routing</summary>
+
+| Attribute | Details |
+|---|---|
+| **Visible To** | Logged In Users |
+| **Template** | events.html |
+| **Front End Functionality** | Search buttons filter the event cards using JavaScript. Search filters contained in an animated collapsible dropdown. Jinja Templating used to dynamically set the colour of the Who/Challenge text background. Confirmation modal triggered by delete buttons. Scroll to Top button to take user back to the top of the page. |
+| **Back End Functionality** | Populates page with events including event & location details from database. Events filtered by future only & sorted by date. Location, who & challenge collections are used to populate the search filters (JavaScript is used to filter the event cards on the page). |
+| **Front End Security** | Navbar link only visible to users who are logged in. Edit / Delete Buttons only visible on user's own events (or all events if admin). Confirmation modal prior to delete to avoid accidental deletion. |
+| **Back End Security** | User must be logged in |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
+| **Routing - other** | Session url stored to redirect back here after editing or deleting an event via this page. |
+
+</details>
+
+#### **Intro Section**
+
+- Title and text explaining the purpose of the page and that event cards are clickable
+- Add Event button (in branded event pink) to encourage users to add their own event
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+<img src="">
+
+
+</details>
+
+
+#### **Events Cards**
+
+- Summary cards of all events happening in future (filtered by present time onwards)
+    - Card container is fully responsive, cards stack vertically on smaller screens
+    - Cards are designed to fit on even the narrowest devices without compromising the design or content
+    - Cards are clickable and link to event info page
+    - Cards have a hover effect and underlined title to make it clear they are clickable
+    - Cards contain information pulled from events and locations collections in database:
+        - Location image
+        - Event name
+        - Created by
+        - Location name
+        - Date & Time
+        - Who event is for
+        - Challenge level of event
+    - Who & Challenge categories have coloured backgrounds which change based on their content to make them easy to visually scan & find what a user is looking for
+        - This is set dynamically using Jinja templating to set a bespoke class name in the HTML file
+    - Cards have edit & delete buttons for CRUD functionality
+        - These buttons are only visible if the event was created by the current user or if the current user is an admin
+        - Edit button leads to edit-event page
+        - Delete button brings up a modal to confirm the user definitely wants to delete event
+            - modal uses Materialize's in-built animations
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+
+#### **Events Filters**
+
+- Filter buttons to narrow down events based on categorised selections
+- Contained within a collapsible dropdown to take up less space in the site - this is particularly important on smaller screens. Uses JavaScript.
+    - The collapsible animates open and closed using a transform effect.
+- The filter section is fully responsive with buttons stacking vertically on smaller screens
+- Results are filtered using JavaScript to allow user to filter events instantly without having to reload the page
+    - Better user experience than a backend search as it allows users to get immediate feedback about what's available and quickly change their search criteria depending on the results
+    - Uses the DOM text content to filter the events as all the filter buttons target text are contained in the events cards
+    - Filter buttons have a hover effect (disabled on non-hover devices as this causes confusion between the hover and selected effects)
+    - Selected buttons change to pink by adding a custom CSS class
+    - Multiple selections can be made within a category e.g. choosing 2 locations local to a user will show results from both locations
+    - When selections are made within multiple categories results must match a selection from each active category to appear
+    - When a user deselects all the buttons all the event cards reappear
+    - The 'reset all' button deselects all the buttons & reveals all the event cards 
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+
+#### **Back To Top Button**
+
+- Button at the bottom of all the event cards to take user back to the top of the page
+- This is particularly useful on smaller screens where event cards are stacked vertically
+- The button triggers a smooth scroll to improve the user experience and avoid jarring motion
+
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+
+
+
+
+
+---
+
 ### Future Features
 
 I would like to expand the site in the future with the following features:
@@ -665,73 +894,6 @@ I would like to expand the site in the future with the following features:
 
 Below are all the details of each features's security (front & back end), routing & templates, form validation (front & back end) & back end functionality.
 
-
-
-<details><summary>HOME</summary>
-
-| Attribute | Details |
-|---|---|
-| **Visible To** | All Users |
-| **Template** | index.html |
-| **Back End Functionality** | Sends locations collection as JSON data via a fetch function to allow the data to be used in creating the map using JavaScript & Google Maps API. |
-| **Front End Form Validation** | N/A |
-| **Back End Form Validation** | N/A |
-| **Front End Security** | Contents of info text div change based on whether user is logged in |
-| **Back End Security** | None |
-| **Routing - log in** | None |
-| **Routing - other** | None |
-
-
-</details>
-
-<details><summary>JOIN</summary>
-
-| Attribute | Details |
-|---|---|
-| **Visible To** | **All Users** |
-| **Template** | join.html |
-| **Back End Functionality** | Creates new user in db. Adds user to session cookie (log in) |
-| **Front End Form Validation** | All fields are required. Fields must match correct type and length using built in HTML validation. |
-| **Back End Form Validation** | Username must not already exist and passwords must match |
-| **Front End Security** | Navbar link only visible to logged-out users |
-| **Back End Security** | User password is hashed using Werkzeug's 'generate_password_hash' to protect user data |
-| **Routing - log in** | Redirects to 'events' on log-in |
-| **Routing - other** | None |
-
-</details>
-
-<details><summary>SIGN IN</summary>
-
-| Attribute | Details |
-|---|---|
-| **Visible To** | All Users |
-| **Template** | sign-in.html |
-| **Back End Functionality** | Adds user to session cookie (log in) |
-| **Front End Form Validation** | All fields are required. Fields must match correct type and length using built in HTML validation. |
-| **Back End Form Validation** | Password & username must exist & be correct - uses Werkzeug's 'check_password_hash' to protect user data |
-| **Front End Security** | Navbar link only visible to logged-out users|
-| **Back End Security** | None |
-| **Routing - log in** | Any page visible to logged in users only redirects here if user not logged in. On log in return user to the previous page they attempted to visit, or if none is stored in session to 'profile'. |
-| **Routing - other** | None |
-
-</details>
-
-
-<details><summary>SIGN OUT</summary>
-
-| Attribute | Details |
-|---|---|
-| **Visible To** | Logged In Users |
-| **Template** | None |
-| **Back End Functionality** | Removes user & any stored url from session cookie |
-| **Front End Form Validation** | N/a |
-| **Back End Form Validation** | N/a |
-| **Front End Security** | Navbar link only visible to users who are logged in |
-| **Back End Security** | User must be logged in |
-| **Routing - log in** | Redirects to 'sign-in' on log-out |
-| **Routing - other** | None |
-
-</details>
 
 
 
@@ -754,17 +916,7 @@ Below are all the details of each features's security (front & back end), routin
 
 <details><summary>EVENTS</summary>
 
-| Attribute | Details |
-|---|---|
-| **Visible To** | Logged In Users |
-| **Template** | events.html |
-| **Back End Functionality** | Populates page with events including event & location details from database. Events filtered by future only & sorted by date. Location, who & challenge collections are used to populate the search filters (JavaScript is used to filter the event cards on the page). |
-| **Front End Form Validation** | N/a |
-| **Back End Form Validation** | N/a |
-| **Front End Security** | Navbar link only visible to users who are logged in. Edit / Delete Buttons only visible on user's own events (or all events if admin) |
-| **Back End Security** | User must be logged in |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
-| **Routing - other** | Session url stored to redirect back here after editing or deleting an event via this page. |
+
 
 </details>
 
