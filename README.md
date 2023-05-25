@@ -1041,22 +1041,26 @@ _Caption_
 
 </details>
 
-
-- Brief intro text to explain to a user what the purpose of the page is and what they need to do
-- Intro text box & Submit buttons are in the site's branded 'highlight pink' - used across the event-related pages
+- Intro Text
+    - Brief intro text to explain to a user what the purpose of the page is and what they need to do
+    - Intro text box & Submit buttons are in the site's branded 'highlight pink' - used across the event-related pages
 - Forms are fully responsive on all devices
-- Popover info circles with hover/click effect to give a user more information about some of the inputs
+- Popovers 
+    - Popover info circles with hover/click effect to give a user more information about some of the inputs
     - Location - popover contains link to site email address for user to suggest a new location to site admins
     - Who For - gives information about the categories
     - Challenge Level - gives more detail about what the different categories mean
-- Locations, Who-For's & Challenge-Levels are populated from the relevant collections in the database
-- The date & time are selected using Materializes built in date & time pickers
+- Dropdown Select Inputs
+    - Locations, Who-For's & Challenge-Levels are populated from the relevant collections in the database
+- Date/Time Pickers
+    - The date & time are selected using Materializes built in date & time pickers
     - Colours match site's branding
     - Format of time matches event information
     - Both inputs are not directly editable - keeps the data a consistent format
     - Users can only select from the current day onwards
         - Additional bespoke JavaScript validation checks if a user selects today's date & a time in the past. If an event were submitted like this it would not display on the site as the events are filtered from now onwards, the user would have to create a new event as they wouldn't not be able to access the event to edit it. [See bug 10](#10-possible-for-a-user-to-create-an-event-in-the-past-and-lose-access-to-it)
-- On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
+- Flash Messages   
+    - On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
 - Add Event Specific Features
     - The top input has an autofocus attribute so the user can begin typing without selecting it
     - I have not included this on the edit event form as the user may not want to access all of the inputs in order
@@ -1099,7 +1103,7 @@ _Caption_
 
 - Delete event buttons only visible to event creator & admin
 - Additional back-end security to prevent others deleting events
-- Modal confirms whether the user is sure they want to delete the event
+- Modal confirms whether the user is sure they want to delete the event (on page with delete button)
 - Flash messages confirms successful event deletion
 
 
@@ -1377,14 +1381,16 @@ _Caption_
 
 </details>
 
-
-- Brief intro text to explain to a user what the purpose of the page is and what they need to do
-- Intro text box & Submit buttons are in the site's branded 'mid blue' - used across the location-related pages
+- Intro Text
+    - Brief intro text to explain to a user what the purpose of the page is and what they need to do
+    - Intro text box & Submit buttons are in the site's branded 'mid blue' - used across the location-related pages
 - Forms are fully responsive on all devices
-- Popover info circles with hover/click effect to give a user more information about the image url input
+- Popover
+    - Popover info circles with hover/click effect to give a user more information about the image url input
     - Tells user the best practice for selecting a photo
     - This is in addition to the validation
-- Latitude & Longitude inputs trigger a location picker popup window where the user can drag a marker to their chosen location
+- Lat/Long
+    - Latitude & Longitude inputs trigger a location picker popup window where the user can drag a marker to their chosen location
     - This is designed to offer the best user experience possible & to gather the lat/long values in a readable, valid format.
     - The map is centered on Anglesey (unless the user has previously selected a location)
     - The zoom level changes depending on screen size to help make the whole of the island visible when the map appears
@@ -1396,7 +1402,8 @@ _Caption_
         - On the add-location form this would reset back to the centre of Anglesey
         - On the edit-location form this would reset back to the location's existing co-ordinates
     - The map is closed by either selecting 'save' or clicking outside the map box
-- The image upload input allows the user to upload an image for the location
+- Image Upload
+    - Allows the user to upload an image for the location
     - This uses Cloudinary to store the photo and provide a URL to the image
     - This avoids using external images from sources that the site admin has no control of, minimising broken images and missing content
     - Front & Back end validation is in place for the image upload
@@ -1404,7 +1411,8 @@ _Caption_
         - HTML validation on the accepted file types
         - Back end validation also checks that the file is under 5MB (if not - aborts and reroutes to a [413 page](#error-pages)) and is of the correct type (if not - aborts and reroutes to a [415 page](#error-pages)). This is in place in case the front end validation is bypassed and to protect against large or malicious files being uploaded, giving additional protection to the site.
     - At this stage there are no checks on image dimensions or quality and so nothing to stop a user uploading a low quality or inappropriate image. This is something I would like to address in the future.
-- On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
+- Flash Message
+    - On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
 - Add Location Specific Features
     - The top input has an autofocus attribute so the user can begin typing without selecting it
     - I have not included this on the edit location form as the user may not want to access all of the inputs in order
@@ -1447,9 +1455,14 @@ _Caption_
 </details>
 
 
-#### **Feature**
-
-- Info here
+- Delete location buttons only visible to admin
+- Additional back-end security to prevent others deleting locations
+- Modal confirms whether the user is sure they want to delete the location (on page with delete button)
+    - Warns that this will also delete associated events
+- Deleting a location will also delete any events at that location (connected via the location_id on the event objects)
+    - This has been written in to the backend as MongoDB doesn't do this automatically as it is not a relational database
+    - This avoids causing errors on the site as the event information pages and cards depend upon the location existing in the database
+- Flash messages confirms successful event deletion
 
 
 <details><summary>Screenshots</summary>
@@ -1459,7 +1472,6 @@ _Caption_
 _Caption_
 
 </details>
-
 
 
 ---
@@ -1513,9 +1525,24 @@ _Caption_
 </details>
 
 
-#### **Feature**
-
-- Info here
+- The Error pages handle any errors that occur in a user friendly way by directing the user to a custom error page
+- All pages contain the site navbar and footer
+    - This keeps a sense of still being on the site and not having left, improving user experience
+    - This also allows users to easily navigate to where they want to be
+- All pages contain a navigation button to take the user back in to the site (see below)
+- Pages contain the error number, a brief description of the problem, written in a light-hearted, user friendly way and a cartoon of a man on a desert island, keeping with the theme of wild swimming.
+- 404 Page
+    - if a user navigates to a page that doesn't exist
+    - button navigates to home page
+- 413 Page
+    - if a user tries to upload a file larger than 5mb (and bypasses the front end validation)
+    - button navigates back to the previous page (either add-location or edit-location forms)
+- 415 page
+    - if a user tries to upload a file in a format that isn't accepted (and bypasses the front end validation)
+    - button navigates back to the previous page (either add-location or edit-location forms)
+- 500 Page
+    - if there is a server error
+    - button navigates to home page
 
 
 <details><summary>Screenshots</summary>
@@ -1546,8 +1573,6 @@ I would like to expand the site in the future with the following features:
 ---
 
 ## Technologies
-
-## Technologies Used
 
 ### Languages
 
