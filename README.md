@@ -693,7 +693,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Creates new user in db. Adds user to session cookie (log in) |
 | **Front End Form Validation** | All fields are required. Fields must match correct type and length using built in HTML validation. |
 | **Back End Form Validation** | Username must not already exist and passwords must match |
-| **Front End Security** | None |
+| **Front End Security** | Navbar link only visible to logged-out users |
 | **Back End Security** | User password is hashed using Werkzeug's 'generate_password_hash' to protect user data |
 | **Routing - log in** | Redirects to 'events' on log-in |
 | **Routing - other** | None |
@@ -709,7 +709,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Adds user to session cookie (log in) |
 | **Front End Form Validation** | All fields are required. Fields must match correct type and length using built in HTML validation. |
 | **Back End Form Validation** | Password & username must exist & be correct - uses Werkzeug's 'check_password_hash' to protect user data |
-| **Front End Security** | None |
+| **Front End Security** | Navbar link only visible to logged-out users|
 | **Back End Security** | None |
 | **Routing - log in** | Any page visible to logged in users only redirects here if user not logged in. On log in return user to the previous page they attempted to visit, or if none is stored in session to 'profile'. |
 | **Routing - other** | None |
@@ -726,7 +726,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Removes user & any stored url from session cookie |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
-| **Front End Security** | None |
+| **Front End Security** | Navbar link only visible to users who are logged in |
 | **Back End Security** | User must be logged in |
 | **Routing - log in** | Redirects to 'sign-in' on log-out |
 | **Routing - other** | None |
@@ -744,7 +744,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Populates page with current user's details. Populates event cards with events filtered using the 'created_by' field of the event to show only events created by the current user using the `session['user']` value, pulls in location information for the event using the location_id field & connecting the locations collection. Events filtered by future only & sorted by date. |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
-| **Front End Security** | Edit / Delete Buttons only visible on user's own events (or all events if admin) (Only user events should be visible but this adds another layer of security). |
+| **Front End Security** | Navbar link only visible to users who are logged in. Edit / Delete Buttons only visible on user's own events (or all events if admin) (Only user events should be visible but this adds another layer of security). |
 | **Back End Security** | User must be logged in |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' (session url not stored for logged-out users as this is default redirect after sign in) |
 | **Routing - other** | Session url stored for logged in users to redirect back here after editing or deleting an event via this page. |
@@ -761,7 +761,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Populates page with events including event & location details from database. Events filtered by future only & sorted by date. Location, who & challenge collections are used to populate the search filters (JavaScript is used to filter the event cards on the page). |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
-| **Front End Security** | Edit / Delete Buttons only visible on user's own events (or all events if admin) |
+| **Front End Security** | Navbar link only visible to users who are logged in. Edit / Delete Buttons only visible on user's own events (or all events if admin) |
 | **Back End Security** | User must be logged in |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
 | **Routing - other** | Session url stored to redirect back here after editing or deleting an event via this page. |
@@ -779,7 +779,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Populates page with event based on the event id provided. Pulls in location information from the locations collection using the location_id field on the event document. |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
-| **Front End Security** | Edit / Delete Buttons only visible if event created by current user (or user is admin) |
+| **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Edit / Delete Buttons only visible if event created by current user (or user is admin) |
 | **Back End Security** | User must be logged in |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
 | **Routing - other** | Session url stored to redirect back here after editing an event via this page. |
@@ -797,7 +797,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, adds event to database. |
 | **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (JavaScript - form.js) |
 | **Back End Form Validation** | None |
-| **Front End Security** | None |
+| **Front End Security** | Navbar link only visible to users who are logged in. |
 | **Back End Security** | User must be logged in |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
 | **Routing - other** | None |
@@ -814,7 +814,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. |
 | **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (JavaScript - form.js) |
 | **Back End Form Validation** | None |
-| **Front End Security** | None |
+| **Front End Security** | No direct link to page in nav - all links to this page are visible to logged in users only. |
 | **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. Id for session url is taken from page url. |
 | **Routing - other** | Redirects to previous page after editing unless session url is this page (from login redirect). Defaults to 'events' page. |
@@ -832,7 +832,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Removes event from database.|
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
-| **Front End Security** | Delete buttons on other pages only visible for admin or on user's own events. |
+| **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Delete buttons on other pages only visible for admin or on user's own events. |
 | **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'events' page to redirect there post log-in. This adds a layer of protection when deleting events. |
 | **Routing - other** | Redirects to previous page after deleting unless session url is for the deleted 'event' page.  Defaults to 'events' page. |
@@ -851,7 +851,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Populates page with all location documents in the locations collection. |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
-| **Front End Security** | None |
+| **Front End Security** | Navbar link only visible to admin. |
 | **Back End Security** | User must be logged in and 'admin' |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
 | **Routing - other** | Session url stored to redirect back here after editing or deleting a location via this page. |
@@ -886,7 +886,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Submission: converts location name to lowercase to make searching easier, uploads image to Cloudinary & adds image url to location data. Adds location to database. |
 | **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Latitude & Longitude populated using Map Picker (not directly editable to make sure they're in the correct format) with JavaScript & HTML validation to check selected location is in correct area by setting min/max latitude/longitude values. Uploaded image checks: under 5mb (JavaScript file-validation.js) and correct format (HTML validation). |
 | **Back End Form Validation** | Checks image is under 5MB & in accepted format - redirects to 413/415 page if not. |
-| **Front End Security** | None |
+| **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
 | **Back End Security** | User must be logged in and admin. |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
 | **Routing - other** | None |
@@ -903,7 +903,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Populates form with location data using object id. Submission: converts location name to lowercase to make searching easier, checks if new image uploaded & if so replaces it. Uploads image to Cloudinary & adds image url to location data. Updates location on database. |
 | **Front End Form Validation** | All fields required except image upload (to keep old image). Fields must match type and length (HTML validation). Latitude & Longitude populated using Map Picker (not directly editable to make sure they're in the correct format) with JavaScript & HTML validation to check selected location is in correct area by setting min/max latitude/longitude values. Uploaded image checks: under 5mb (JavaScript file-validation.js) and correct format (HTML validation). |
 | **Back End Form Validation** | Checks image is under 5MB & in accepted format - redirects to 413/415 page if not. |
-| **Front End Security** | None |
+| **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
 | **Back End Security** | User must be logged in and admin. |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. Id for session url is taken from page url. |
 | **Routing - other** | Redirects to previous page after editing unless session url is this page (from login redirect). Defaults to 'manage-locations' page. |
@@ -920,7 +920,7 @@ Below are all the details of each features's security (front & back end), routin
 | **Back End Functionality** | Removes location from database & deletes all events at that location. |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
-| **Front End Security** | Delete buttons on other pages only visible for admin. |
+| **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
 | **Back End Security** | User must be logged in & admin. |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'manage-locations' page to redirect there post log-in. This adds a layer of protection when deleting locations. |
 | **Routing - other** | Redirects to manage-locations page. |
