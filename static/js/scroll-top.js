@@ -6,8 +6,7 @@ $(document).ready(function(){
 
 // scroll to top button
 function scrollToTop() {
-    let button = document.getElementById("btt-btn");
-    button.onclick = function() {
+    $('#btt-btn').click(function() {
         window.scrollTo({top: 0, behaviour: 'smooth'});
-    };
-}
+    })
+};

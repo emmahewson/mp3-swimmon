@@ -10,7 +10,7 @@ $(document).ready(function(){
     $('.modal').modal();
 
     // set date in footer
-    document.getElementById('copyright-year').innerText = new Date().getFullYear()
+    $('#copyright-year').text(new Date().getFullYear())
   });
   
 

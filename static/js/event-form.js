@@ -34,7 +34,7 @@ $(document).ready(function(){
         pickerDate = new Date(oldDate[2], oldDate[1]-1, oldDate[0]);
     } 
 
-    // date picker settings
+    // date picker initialization & settings
     $('.datepicker').datepicker({
         format: "dd/mm/yyyy",
         autoClose: true,
@@ -44,12 +44,13 @@ $(document).ready(function(){
         setDefaultDate: true
     });
 
-    // form timepicker
+    // form timepicker initialization & settings
     $('.timepicker').timepicker({
         autoClose: true
     });
 
-    // Checks for event being added in the past on date & time input change
+    // Time & Date Validation
+    // Checks that event is in the future
     dateInput.addEventListener('change', checkDateTime)
     timeInput.addEventListener('change', checkDateTime)
 
@@ -83,7 +84,7 @@ $(document).ready(function(){
             // creates 24hr time string
             time = convertTime(timeStr);
 
-            // converts time & date to JS friendly format
+            // converts time & date to JS friendly string format
             let dateTimeStr = `${year}-${month}-${day}T${time}:00.000`
 
             // gets present time/date
@@ -100,9 +101,6 @@ $(document).ready(function(){
                 submitBtn.setAttribute("disabled", "disabled");
                 dateInput.classList.add("invalid")
                 timeInput.classList.add("invalid")
-
-                // adds extra event listener to date to allow user to fix by changing date
-                dateInput.addEventListener('change', checkDateTime)
 
             } else {
                 // if date/time is not in past hides warning, removes invalid styling, adds valid styling & enables submit button
