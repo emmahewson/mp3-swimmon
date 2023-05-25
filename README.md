@@ -715,7 +715,7 @@ _Locations Map Functionality_
 - Brief intro text to explain to a user what the purpose of the page is and what they need to do
 - Intro text box & submit buttons are in the site's branded 'highlight blue' - used across the account-related pages
 - Forms are fully responsive on all devices
-- Flash messages are styled using custom CSS
+- Flash messages welcome the user on successful sign-in / join submission, styled using custom CSS
 - Join Page
     - A page for users to set up an account
     - Link to 'sign-in' page for users who are already registered
@@ -754,7 +754,7 @@ _Sign-In_
 
 - Nav link only visible to logged in users
 - Logs user out & takes them to 'sign-in' page
-- Flash messages are styled using custom CSS
+- Flash messages appears confirming successful sign out, styled using custom CSS
 
 
 <details><summary>Screenshots</summary>
@@ -778,7 +778,7 @@ _Sign Out_
 | **Visible To** | Logged In Users |
 | **Template** | events.html |
 | **Front End Functionality** | Search buttons filter the event cards using JavaScript. Search filters contained in an animated collapsible dropdown. Jinja used to dynamically set the colour of the Who/Challenge text background. Jinja filters convert the time & date to a user-friendly format that matches the format on the add event form. Confirmation modal triggered by delete buttons. Scroll to Top button to take user back to the top of the page. |
-| **Back End Functionality** | Populates page with events including event & location details from database. Events filtered by future only & sorted by date. Location, who & challenge collections are used to populate the search filters (JavaScript is used to filter the event cards on the page). |
+| **Back End Functionality** | Populates page with events including event & location details from database. Events filtered by future only & sorted by date. Location, who & challenge collections are used to populate the search filters. |
 | **Front End Security** | Navbar link only visible to users who are logged in. Edit / Delete Buttons only visible on user's own events (or all events if admin). Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | User must be logged in |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
@@ -892,7 +892,7 @@ _Caption_
 | **Template** | event.html |
 | **Front End Functionality** | Header image has backup placeholder incase of failure to load. Jinja used to dynamically set the colour of the Who/Challenge text background. Location map uses Google Maps API and pulls the co-ordinates directly from the DOM content (rather than linking via a fetch function in the backend). Jinja Filters truncate the latitude & longitude values for display & converts the time & date to a user-friendly format that matches the format on the add event form. |
 | **Back End Functionality** | Populates page with event based on the event id provided. Pulls in location information from the locations collection using the location_id field on the event document. |
-| **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Edit / Delete Buttons only visible if event created by current user (or user is admin) |
+| **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Edit / Delete Buttons only visible if event created by current user (or user is admin). Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | User must be logged in |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
 | **Routing - other** | Session url stored to redirect back here after editing an event via this page. |
@@ -906,7 +906,7 @@ _Caption_
     - This helps to mitigate issues with image quality as the image is selected and uploaded by the site admin when creating a location.
 
 
-#### **Image**
+#### **Event Page - Location Image**
 
 - A header image of the event's location
 - Fully responsive, resizes on smaller screens
@@ -960,7 +960,7 @@ _Caption_
 - Map of the location shown by a marker set using the latitude & longitude
     - Map is created using Google Maps API
     - Location is taken from the lat/long text in the DOM, rather than from the back end via a fetch function
-    - The map is zoomed in closer in to a centered on the location marker
+    - The map is zoomed in and centered on the location marker
     - Map has all standard Google Maps functionality
         - Choice of map or satellite
         - Streetview
@@ -1012,7 +1012,7 @@ _Caption_
 | **Visible To** | Logged In Users |
 | **Template** | add-event.html |
 | **Front End Functionality** | Uses Materialize's Timepicker & Datepicker to give a user-friendly way of selecting a time & date and making sure they are in a consistent format. Hover/click effect popovers created ith JavaScript give more information to users filling in the form. The top input on the form has an 'autofocus' attribute to allow the user to begin typing immediately on page load, rather than having to select the first input manually. |
-| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, adds event to database. |
+| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, adds event to database. Flash message confirms successful submission. |
 | **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (event-form.js). Additional validation popup messages on dropdown/select inputs added to Materialize template (event-form.js) |
 | **Back End Form Validation** | None |
 | **Front End Security** | Navbar link only visible to users who are logged in. |
@@ -1029,7 +1029,7 @@ _Caption_
 | **Visible To** | Logged In Users - own events only. Admin - all events. |
 | **Template** | edit-event.html |
 | **Front End Functionality** | Uses Materialize's Timepicker & Datepicker to give a user-friendly way of selecting a time & date and making sure they are in a consistent format. Datepicker is set to the exisiting event date (event-form.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
-| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Pre-fills form with event information from event object in database. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. |
+| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Pre-fills form with event information from event object in database. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. Flash message confirms successful submission. |
 | **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (form.js). Additional validation popup messages on dropdown/select inputs added to Materialize template (event-form.js) |
 | **Back End Form Validation** | None |
 | **Front End Security** | No direct link to page in nav - all links to this page are visible to logged in users only. |
@@ -1041,8 +1041,6 @@ _Caption_
 
 </details>
 
-
-#### **Add Event & Edit Event Forms**
 
 - Brief intro text to explain to a user what the purpose of the page is and what they need to do
 - Intro text box & Submit buttons are in the site's branded 'highlight pink' - used across the event-related pages
@@ -1058,7 +1056,7 @@ _Caption_
     - Both inputs are not directly editable - keeps the data a consistent format
     - Users can only select from the current day onwards
         - Additional bespoke JavaScript validation checks if a user selects today's date & a time in the past. If an event were submitted like this it would not display on the site as the events are filtered from now onwards, the user would have to create a new event as they wouldn't not be able to access the event to edit it. [See bug 10](#10-possible-for-a-user-to-create-an-event-in-the-past-and-lose-access-to-it)
-- On submission a flash message displays telling the user their submission has been sucessful. Flash messages are styled using custom CSS
+- On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
 - Add Event Specific Features
     - The top input has an autofocus attribute so the user can begin typing without selecting it
     - I have not included this on the edit event form as the user may not want to access all of the inputs in order
@@ -1091,17 +1089,18 @@ _Caption_
 | **Visible To** | Logged In Users - own events only. Admin - all events. |
 | **Template** | None |
 | **Back End Functionality** | Removes event from database.|
-| **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Delete buttons on other pages only visible for admin or on user's own events. |
+| **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Delete buttons on other pages only visible for admin or on user's own events. Modal appears to confirm delete prior to deletion on page containing delete button. |
 | **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'events' page to redirect there post log-in. This adds a layer of protection when deleting events. |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'events' page rather than 'delete-event' to redirect there post log-in. This adds a layer of protection when deleting events. |
 | **Routing - other** | Redirects to previous page after deleting unless session url is for the deleted 'event' page.  Defaults to 'events' page. |
 
 </details>
 
 
-#### **Feature**
-
-- Info here
+- Delete event buttons only visible to event creator & admin
+- Additional back-end security to prevent others deleting events
+- Modal confirms whether the user is sure they want to delete the event
+- Flash messages confirms successful event deletion
 
 
 <details><summary>Screenshots</summary>
@@ -1125,20 +1124,38 @@ _Caption_
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | my-profile.html |
+| **Front End Functionality** | Jinja used to dynamically set the colour of the Who/Challenge text background. Jinja filters convert the time & date to a user-friendly format that matches the format on the add event form. Confirmation modal triggered by delete buttons. Scroll to Top button to take user back to the top of the page. |
 | **Back End Functionality** | Populates page with current user's details. Populates event cards with events filtered using the 'created_by' field of the event to show only events created by the current user using the `session['user']` value, pulls in location information for the event using the location_id field & connecting the locations collection. Events filtered by future only & sorted by date. |
-| **Front End Form Validation** | N/a |
-| **Back End Form Validation** | N/a |
-| **Front End Security** | Navbar link only visible to users who are logged in. Edit / Delete Buttons only visible on user's own events (or all events if admin) (Only user events should be visible but this adds another layer of security). |
-| **Back End Security** | User must be logged in |
+| **Front End Security** | Navbar link only visible to users who are logged in. Edit / Delete Buttons only visible on user's own events (or all events if admin) (Only user events should be visible but this adds another layer of security). Confirmation modal prior to delete to avoid accidental deletion. |
+| **Back End Security** | User must be logged in. Page is automatically populated with user's own data, user cannot visit another user's profile page |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' (session url not stored for logged-out users as this is default redirect after sign in) |
 | **Routing - other** | Session url stored for logged in users to redirect back here after editing or deleting an event via this page. |
 
 </details>
 
 
-#### **Feature**
+#### **Intro Section**
 
-- Info here
+- Title and text explaining the purpose of the page and actions that the user can undertake
+- Add Event button (in branded event pink) to encourage users to add their own event
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+<img src="">
+
+
+</details>
+
+
+#### **Event Cards & Back To Top Button**
+
+- Summary cards of events filtered by current user & present time onwards  & sorted chronologically
+- User will be able to see edit/delete buttons on all cards as they are all their own events
+    - However additional front end security is in place to limit these to the user events only as another layer of protection
+- For content & functionality of cards see [Event Cards](#event-cards)
+- For content & functionality of back to top button see [Back To Top Button](#back-to-top-button)
 
 
 <details><summary>Screenshots</summary>
@@ -1162,20 +1179,33 @@ _Caption_
 |---|---|
 | **Visible To** | All Users |
 | **Template** | location.html |
+| **Front End Functionality** | Header image has backup placeholder incase of failure to load. Jinja used to dynamically set the colour of the Who/Challenge text background on event cards. Location map uses Google Maps API and pulls the co-ordinates directly from the DOM content (rather than linking via a fetch function in the backend). Jinja Filters truncate the latitude & longitude values for display & converts the time & date on event cards to a user-friendly format that matches the format on the add event form. |
 | **Back End Functionality** | Populates page with location information based on the location id provided. Populates page with events at that location by filtering using location_id field on events. Events also filtered by future only & sorted by date. |
-| **Front End Form Validation** | N/a |
-| **Back End Form Validation** | N/a |
-| **Front End Security** | Location Edit / Delete Buttons only visible for admin. Events only visible for logged in users. Event Edit / Delete Buttons only visible on user's own events (or all events if admin). |
+| **Front End Security** | Location Edit / Delete Buttons only visible for admin. Events only visible for logged in users. Event Edit / Delete Buttons only visible on user's own events (or all events if admin). Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | None |
 | **Routing - log in** | None |
 | **Routing - other** | Session url stored to redirect back here after editing a location via this page. |
 
+
+
 </details>
 
+#### **Whole Page**
 
-#### **Feature**
+- Location information & event cards are contained within a div with a max-width of 1200px
+    - This helps to mitigate issues with image quality as the header image is selected and uploaded by the site admin when creating a location.
 
-- Info here
+
+#### **Location Information**
+
+- Page displays information pulled from the locations collection in database filtered by the relevant location's 'id'
+    - Location name
+    - A header image of the location
+        - For full information see [Event - Header Image](#event-page---location-image)
+    - Latitude & Longitude (truncated using Jinja filters in the HTML file)
+    - Location description
+    - Parking information
+    - Facilities information
 
 
 <details><summary>Screenshots</summary>
@@ -1185,6 +1215,62 @@ _Caption_
 _Caption_
 
 </details>
+
+
+#### **Edit/Delete Buttons**
+
+- If the user is an admin they will see edit & delete buttons for CRUD functionality
+    - These are secured in the front end using Jinja to make sure they're only visible to the authorised people
+    - Edit button leads to edit-location page
+    - Delete button brings up a modal to confirm the user definitely wants to delete location
+        - modal uses Materialize's in-built animations
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+
+#### **Location Map**
+
+- Map of the location shown by a marker set using the latitude & longitude
+    - Map is created using Google Maps API
+    - Location is taken from the lat/long text in the DOM, rather than from the back end via a fetch function
+    - The map is zoomed in and centered on the location marker
+    - Map has all standard Google Maps functionality
+        - Choice of map or satellite
+        - Streetview
+        - Full screen
+        - Google Places
+        - Zoom buttons
+        - Touchscreen zoom & scroll
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+
+#### **Events Section**
+
+
+- Intro Section
+    - Title and text explaining the purpose of the section and actions that the user can undertake
+    - Add Event button (in branded event pink) to encourage users to add their own event
+- Summary cards of events filtered by matching location & present time onwards & sorted chronologically
+- Events Cards
+    - If the user created the event or is an admin they will be able to see edit/delete buttons on relevant event cards
+    - For content & functionality of cards see [Event Cards](#event-cards)
+- Back To Top Button
+    - For content & functionality of back to top button see [Back To Top Button](#back-to-top-button)
+
 
 
 ---
@@ -1200,9 +1286,7 @@ _Caption_
 | **Visible To** | Admin Only |
 | **Template** | manage-locations.html |
 | **Back End Functionality** | Populates page with all location documents in the locations collection. |
-| **Front End Form Validation** | N/a |
-| **Back End Form Validation** | N/a |
-| **Front End Security** | Navbar link only visible to admin. |
+| **Front End Security** | Navbar link only visible to admin. Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | User must be logged in and 'admin' |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
 | **Routing - other** | Session url stored to redirect back here after editing or deleting a location via this page. |
@@ -1210,9 +1294,10 @@ _Caption_
 </details>
 
 
-#### **Feature**
+#### **Intro Section**
 
-- Info here
+- Title and text explaining the purpose of the page and actions that the user can undertake
+- Add Location button (in branded location mid-blue) - this is the only place that an admin can add a new location
 
 
 <details><summary>Screenshots</summary>
@@ -1224,18 +1309,43 @@ _Caption_
 </details>
 
 
+#### **Location Cards**
+
+- Summary cards of all locations
+    - Card container is fully responsive, cards stack vertically on smaller screens
+    - Cards are designed to fit on even the narrowest devices without compromising the design or content
+    - Cards are clickable and link to location page
+    - Cards have a hover effect and underlined title to make it clear they are clickable
+    - Cards contain information pulled from events and locations collections in database:
+        - Location image
+            - taken from the location image_url field
+            - uploaded by admin when creating location & stored on Cloudinary
+            - if image fails to load a placeholder image will appear with Swimmon logo
+    - Cards have edit & delete buttons for CRUD functionality
+        - These buttons are always visible as this page is only accessible to a site admin protected with back-end security
+        - Edit button leads to edit-location page
+        - Delete button brings up a modal to confirm the user definitely wants to delete location
+            - Modal warns that deleting a location also deletes all events at that location (connected using the location_id field on the event)
+            - modal uses Materialize's in-built animations
+- Back To Top Button
+    - For content & functionality of back to top button see [Back To Top Button](#back-to-top-button)
+
+
 ---
 
-### Add Location
+### Add Location / Edit Location
 
 ![Add Location - Mock Up]()
 
 <details><summary>Functionality, Validation, Security & Routing</summary>
 
+<details><summary>ADD LOCATION</summary>
+
 | Attribute | Details |
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | add-location.html |
+| **Front End Functionality** | Bespoke location picker used to populate Latitude & Longitude inputs, built using JavaScript & Google Maps API (map-picker.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. The top input on the form has an 'autofocus' attribute to allow the user to begin typing immediately on page load, rather than having to select the first input manually. |
 | **Back End Functionality** | Submission: converts location name to lowercase to make searching easier, uploads image to Cloudinary & adds image url to location data. Adds location to database. |
 | **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Latitude & Longitude populated using Map Picker (not directly editable to make sure they're in the correct format) with JavaScript & HTML validation to check selected location is in correct area by setting min/max latitude/longitude values. Uploaded image checks: under 5mb (JavaScript file-validation.js) and correct format (HTML validation). |
 | **Back End Form Validation** | Checks image is under 5MB & in accepted format - redirects to 413/415 page if not. |
@@ -1247,33 +1357,13 @@ _Caption_
 </details>
 
 
-#### **Feature**
-
-- Info here
-
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
-</details>
-
-
-
----
-
-### Edit Location
-
-![Edit Location - Mock Up]()
-
-<details><summary>Functionality, Validation, Security & Routing</summary>
+<details><summary>EDIT LOCATION</summary>
 
 | Attribute | Details |
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | edit-location.html |
+| **Front End Functionality** | Bespoke location picker used to populate Latitude & Longitude inputs, built using JavaScript & Google Maps API (map-picker.js). Map set to previously selected location (map-picker.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
 | **Back End Functionality** | Populates form with location data using object id. Submission: converts location name to lowercase to make searching easier, checks if new image uploaded & if so replaces it. Uploads image to Cloudinary & adds image url to location data. Updates location on database. |
 | **Front End Form Validation** | All fields required except image upload (to keep old image). Fields must match type and length (HTML validation). Latitude & Longitude populated using Map Picker (not directly editable to make sure they're in the correct format) with JavaScript & HTML validation to check selected location is in correct area by setting min/max latitude/longitude values. Uploaded image checks: under 5mb (JavaScript file-validation.js) and correct format (HTML validation). |
 | **Back End Form Validation** | Checks image is under 5MB & in accepted format - redirects to 413/415 page if not. |
@@ -1285,9 +1375,45 @@ _Caption_
 </details>
 
 
-#### **Feature**
+</details>
 
-- Info here
+
+- Brief intro text to explain to a user what the purpose of the page is and what they need to do
+- Intro text box & Submit buttons are in the site's branded 'mid blue' - used across the location-related pages
+- Forms are fully responsive on all devices
+- Popover info circles with hover/click effect to give a user more information about the image url input
+    - Tells user the best practice for selecting a photo
+    - This is in addition to the validation
+- Latitude & Longitude inputs trigger a location picker popup window where the user can drag a marker to their chosen location
+    - This is designed to offer the best user experience possible & to gather the lat/long values in a readable, valid format.
+    - The map is centered on Anglesey (unless the user has previously selected a location)
+    - The zoom level changes depending on screen size to help make the whole of the island visible when the map appears
+    - The map includes validation checks to stop the user selecting a location far outside of Anglesey by limiting the range of the lat/long values
+        - If a user selects a location outside this range an custom error message appears.
+    - The lat/long inputs are not directly editable to avoid users adding invalid data. This uses a bespoke readonly style to allow the inputs to retain their 'required' attribute/validation [See bug ](#4-location-picker-map---mobile-keyboard-popup)
+    - The map has a save button to log the location to the form inputs
+    - The map has a reset button to reset the map back to its original state
+        - On the add-location form this would reset back to the centre of Anglesey
+        - On the edit-location form this would reset back to the location's existing co-ordinates
+    - The map is closed by either selecting 'save' or clicking outside the map box
+- The image upload input allows the user to upload an image for the location
+    - This uses Cloudinary to store the photo and provide a URL to the image
+    - This avoids using external images from sources that the site admin has no control of, minimising broken images and missing content
+    - Front & Back end validation is in place for the image upload
+        - JavaScript validation to disable the submit button & show an error message if a user tries to upload a file larger than 5MB
+        - HTML validation on the accepted file types
+        - Back end validation also checks that the file is under 5MB (if not - aborts and reroutes to a [413 page](#error-pages)) and is of the correct type (if not - aborts and reroutes to a [415 page](#error-pages)). This is in place in case the front end validation is bypassed and to protect against large or malicious files being uploaded, giving additional protection to the site.
+    - At this stage there are no checks on image dimensions or quality and so nothing to stop a user uploading a low quality or inappropriate image. This is something I would like to address in the future.
+- On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
+- Add Location Specific Features
+    - The top input has an autofocus attribute so the user can begin typing without selecting it
+    - I have not included this on the edit location form as the user may not want to access all of the inputs in order
+- Edit Location Specific Features
+    - Form is populated with the existing location information
+    - Additional JavaScript code added to make the location picker map show the previously selected location when opened
+    - The location image on this form is not 'required.' This allows the user to retain the old image by not uploading a new one. The popover contains additional information to explain this to the user
+- Full information is available in the Functionality, Validation, Security & Routing table in the dropdown above
+
 
 
 <details><summary>Screenshots</summary>
@@ -1297,6 +1423,7 @@ _Caption_
 _Caption_
 
 </details>
+
 
 
 ---
@@ -1412,6 +1539,8 @@ I would like to expand the site in the future with the following features:
 **Expand Personal Profile:** users can add more information about themselves on their profile, which could include 'home swim-spot' with their closest beach (and tailored event suggestions based on this), a list of events they are marked as 'going' to, and a profile photo or avatar.
 
 **Recurring Events:** The ability to make an event 'recurring' for users who hold regular swim meetings (e.g. every week), saving them time creating new events.
+
+**Location Images:** Implementing additional validation on location images, checking for quality, dimensions and to protect against inappropriate images.
 
 
 ---
