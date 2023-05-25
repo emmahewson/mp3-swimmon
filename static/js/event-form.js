@@ -31,6 +31,8 @@ $(document).ready(function(){
         // if so grabs that date, splits & reformats to Y,M,D
         // adapted from https://github.com/Dogfalo/materialize/issues/5974
         let oldDate = dateInput.value.split("/");
+
+        // pre-loads the datepicker with the previously selected date (for edit event form)
         pickerDate = new Date(oldDate[2], oldDate[1]-1, oldDate[0]);
     } 
 

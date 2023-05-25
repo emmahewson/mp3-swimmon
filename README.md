@@ -575,7 +575,7 @@ _Responsive Footer_
 ![Home Page - Mock Up]()
 
 
-<details><summary>Security, Validation & Backend Functionality</summary>
+<details><summary>Functionality, Validation, Security & Routing</summary>
 
 | Attribute | Details |
 |---|---|
@@ -641,13 +641,17 @@ _Logged-In Contents_
     - Zoom buttons
     - Touchscreen zoom & scroll
   - Markers are clickable and bring up a custom Info-Window containing summary info about the location
-  - Info-Window are clickable and lead to the relevant location page for full information
-  - Info-Window have a hover effect, underlined name and truncated description text followed by an ellipsis `...` to indicate that they are clickable
+    - The image is sourced from the image_url field
+        - this image is a url to where the site's images are stored on Cloudinary after being uploaded by the admin when creating or editing a location
+        - the image has an animated zoom hover effect
+    - The text is truncated using JavaScript in the map function to show just the first 150 characters
+    - Info-Window have a hover effect, underlined name and truncated description text followed by an ellipsis `...` to indicate that they are clickable
+  - Info-Windows are clickable and lead to the relevant location page for full information
   - Marker / Info-Window click functionality
     - when clicking on a marker
       - the map will scroll to show the whole Info-Window if needed
       - any other Info-Window that is open will close
-    - clicking outside the Info-Window will close it
+    - clicking outside the Info-Window or on the cross icon will close it
   - The map is responsive
     - zoom level varies based on screen-size to make sure all locations are visible
     - the map container size reduces on smaller devices to avoid users getting stuck on the map and not being able to scroll past
@@ -678,6 +682,7 @@ _Locations Map Functionality_
 |---|---|
 | **Visible To** | **All Users** |
 | **Template** | join.html |
+| **Front End Functionality** | The top input on the form has an 'autofocus' attribute to allow the user to begin typing immediately on page load, rather than having to select the first input manually. |
 | **Back End Functionality** | Creates new user in db. Adds user to session cookie (log in). Welcomes user with flash message on submission. |
 | **Front End Form Validation** | All fields are required. Fields must match correct type, format and length using built in HTML validation. |
 | **Back End Form Validation** | Username must not already exist and passwords must match |
@@ -695,6 +700,7 @@ _Locations Map Functionality_
 |---|---|
 | **Visible To** | All Users |
 | **Template** | sign-in.html |
+| **Front End Functionality** | The top input on the form has an 'autofocus' attribute to allow the user to begin typing immediately on page load, rather than having to select the first input manually. |
 | **Back End Functionality** | Adds user to session cookie (log in). Welcomes user with flash message on submission. |
 | **Front End Form Validation** | All fields are required. Fields must match correct type, format and length using built in HTML validation. |
 | **Back End Form Validation** | Password & username must exist & be correct - uses Werkzeug's 'check_password_hash' to protect user data |
@@ -771,7 +777,7 @@ _Sign Out_
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | events.html |
-| **Front End Functionality** | Search buttons filter the event cards using JavaScript. Search filters contained in an animated collapsible dropdown. Jinja Templating used to dynamically set the colour of the Who/Challenge text background. Confirmation modal triggered by delete buttons. Scroll to Top button to take user back to the top of the page. |
+| **Front End Functionality** | Search buttons filter the event cards using JavaScript. Search filters contained in an animated collapsible dropdown. Jinja used to dynamically set the colour of the Who/Challenge text background. Jinja filters convert the time & date to a user-friendly format that matches the format on the add event form. Confirmation modal triggered by delete buttons. Scroll to Top button to take user back to the top of the page. |
 | **Back End Functionality** | Populates page with events including event & location details from database. Events filtered by future only & sorted by date. Location, who & challenge collections are used to populate the search filters (JavaScript is used to filter the event cards on the page). |
 | **Front End Security** | Navbar link only visible to users who are logged in. Edit / Delete Buttons only visible on user's own events (or all events if admin). Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | User must be logged in |
@@ -795,7 +801,7 @@ _Sign Out_
 </details>
 
 
-#### **Events Cards**
+#### **Event Cards**
 
 - Summary cards of all events happening in future (filtered by present time onwards)
     - Card container is fully responsive, cards stack vertically on smaller screens
@@ -804,14 +810,17 @@ _Sign Out_
     - Cards have a hover effect and underlined title to make it clear they are clickable
     - Cards contain information pulled from events and locations collections in database:
         - Location image
+            - taken from the location object associated with the event via the location_id field in the event object
+            - uploaded by admin when creating location & stored on Cloudinary
+            - if image fails to load a placeholder image will appear with Swimmon logo
         - Event name
         - Created by
         - Location name
-        - Date & Time
+        - Date & Time (converted to a user-friendly format using Jinja filters)
         - Who event is for
         - Challenge level of event
     - Who & Challenge categories have coloured backgrounds which change based on their content to make them easy to visually scan & find what a user is looking for
-        - This is set dynamically using Jinja templating to set a bespoke class name in the HTML file
+        - This is set dynamically using Jinja to add a bespoke class name in the HTML file
     - Cards have edit & delete buttons for CRUD functionality
         - These buttons are only visible if the event was created by the current user or if the current user is an admin
         - Edit button leads to edit-event page
@@ -828,7 +837,7 @@ _Caption_
 </details>
 
 
-#### **Events Filters**
+#### **Event Filters**
 
 - Filter buttons to narrow down events based on categorised selections
 - Contained within a collapsible dropdown to take up less space in the site - this is particularly important on smaller screens. Uses JavaScript.
@@ -869,35 +878,248 @@ _Caption_
 
 </details>
 
+---
+
+### Event Page
+
+![Event Page - Mock Up]()
+
+<details><summary>Functionality, Validation, Security & Routing</summary>
+
+| Attribute | Details |
+|---|---|
+| **Visible To** | Logged In Users |
+| **Template** | event.html |
+| **Front End Functionality** | Header image has backup placeholder incase of failure to load. Jinja used to dynamically set the colour of the Who/Challenge text background. Location map uses Google Maps API and pulls the co-ordinates directly from the DOM content (rather than linking via a fetch function in the backend). Jinja Filters truncate the latitude & longitude values for display & converts the time & date to a user-friendly format that matches the format on the add event form. |
+| **Back End Functionality** | Populates page with event based on the event id provided. Pulls in location information from the locations collection using the location_id field on the event document. |
+| **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Edit / Delete Buttons only visible if event created by current user (or user is admin) |
+| **Back End Security** | User must be logged in |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
+| **Routing - other** | Session url stored to redirect back here after editing an event via this page. |
+
+</details>
+
+
+#### **Whole Page**
+
+- Event information is contained within a div with a max-width of 1200px
+    - This helps to mitigate issues with image quality as the image is selected and uploaded by the site admin when creating a location.
+
+
+#### **Image**
+
+- A header image of the event's location
+- Fully responsive, resizes on smaller screens
+- Image source is from the url in the location object associated with the event via the event field 'location_id', the admin of the site uploads an image when creating or editing a location.
+    - These images are stored on Cloudinary to minimise the possible disruption of sourcing an image from an external URL that the site owners don't have control of
+    - If the image fails to load for any reason a placeholder image will appear containing the SWIMMON logo
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+
+#### **Event Information**
+
+- Page displays information pulled from events and locations collections in database:
+    - Event name
+    - Created by
+    - Location name
+    - Date & Time (converted to a user-friendly format using Jinja filters)
+    - Who event is for
+    - Challenge level of event
+    - Event description (full)
+- Who & Challenge categories have coloured backgrounds which change based on their content to make them easy to visually scan & find what a user is looking for
+    - This is set dynamically using Jinja to add a bespoke class name in the HTML file
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+
+#### **Location Information**
+
+- Page displays information pulled from the locations collection in database (from the location whose ID matches the event's location_id)
+    - Location name
+    - Latitude & Longitude (truncated using Jinja filters in the HTML file)
+    - Location description
+    - Parking information
+    - Facilities information
+- A link to the full location page showing the same location information and all events at that location
+    - This makes the site easy & intuitive to navigate for a user
+    - The link has a different style to the rest of the text and a hover effect to make it clear it is clickable
+- Map of the location shown by a marker set using the latitude & longitude
+    - Map is created using Google Maps API
+    - Location is taken from the lat/long text in the DOM, rather than from the back end via a fetch function
+    - The map is zoomed in closer in to a centered on the location marker
+    - Map has all standard Google Maps functionality
+        - Choice of map or satellite
+        - Streetview
+        - Full screen
+        - Google Places
+        - Zoom buttons
+        - Touchscreen zoom & scroll
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+
+#### **Edit/Delete Buttons**
+
+- If the user created the event or is an admin they will also see edit & delete buttons for CRUD functionality
+    - These are secured in the front end using Jinja to make sure they're only visible to the authorised people
+    - Edit button leads to edit-event page
+    - Delete button brings up a modal to confirm the user definitely wants to delete event
+        - modal uses Materialize's in-built animations
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+---
+
+### Add Event / Edit Event
+
+![Add/Edit Event - Mock Up]()
+
+<details><summary>Functionality, Validation, Security & Routing</summary>
+
+
+<details><summary>ADD EVENT</summary>
+
+| Attribute | Details |
+|---|---|
+| **Visible To** | Logged In Users |
+| **Template** | add-event.html |
+| **Front End Functionality** | Uses Materialize's Timepicker & Datepicker to give a user-friendly way of selecting a time & date and making sure they are in a consistent format. Hover/click effect popovers created ith JavaScript give more information to users filling in the form. The top input on the form has an 'autofocus' attribute to allow the user to begin typing immediately on page load, rather than having to select the first input manually. |
+| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, adds event to database. |
+| **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (event-form.js). Additional validation popup messages on dropdown/select inputs added to Materialize template (event-form.js) |
+| **Back End Form Validation** | None |
+| **Front End Security** | Navbar link only visible to users who are logged in. |
+| **Back End Security** | User must be logged in |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
+| **Routing - other** | None |
+
+</details>
+
+<details><summary>EDIT EVENT</summary>
+
+| Attribute | Details |
+|---|---|
+| **Visible To** | Logged In Users - own events only. Admin - all events. |
+| **Template** | edit-event.html |
+| **Front End Functionality** | Uses Materialize's Timepicker & Datepicker to give a user-friendly way of selecting a time & date and making sure they are in a consistent format. Datepicker is set to the exisiting event date (event-form.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
+| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Pre-fills form with event information from event object in database. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. |
+| **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (form.js). Additional validation popup messages on dropdown/select inputs added to Materialize template (event-form.js) |
+| **Back End Form Validation** | None |
+| **Front End Security** | No direct link to page in nav - all links to this page are visible to logged in users only. |
+| **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. Id for session url is taken from page url. |
+| **Routing - other** | Redirects to previous page after editing unless session url is this page (from login redirect). Defaults to 'events' page. |
+
+</details>
+
+</details>
+
+
+#### **Add Event & Edit Event Forms**
+
+- Brief intro text to explain to a user what the purpose of the page is and what they need to do
+- Intro text box & Submit buttons are in the site's branded 'highlight pink' - used across the event-related pages
+- Forms are fully responsive on all devices
+- Popover info circles with hover/click effect to give a user more information about some of the inputs
+    - Location - popover contains link to site email address for user to suggest a new location to site admins
+    - Who For - gives information about the categories
+    - Challenge Level - gives more detail about what the different categories mean
+- Locations, Who-For's & Challenge-Levels are populated from the relevant collections in the database
+- The date & time are selected using Materializes built in date & time pickers
+    - Colours match site's branding
+    - Format of time matches event information
+    - Both inputs are not directly editable - keeps the data a consistent format
+    - Users can only select from the current day onwards
+        - Additional bespoke JavaScript validation checks if a user selects today's date & a time in the past. If an event were submitted like this it would not display on the site as the events are filtered from now onwards, the user would have to create a new event as they wouldn't not be able to access the event to edit it. [See bug 10](#10-possible-for-a-user-to-create-an-event-in-the-past-and-lose-access-to-it)
+- On submission a flash message displays telling the user their submission has been sucessful. Flash messages are styled using custom CSS
+- Add Event Specific Features
+    - The top input has an autofocus attribute so the user can begin typing without selecting it
+    - I have not included this on the edit event form as the user may not want to access all of the inputs in order
+- Edit Event Specific Features
+    - Form is populated with the existing event information
+    - Additional JavaScript code added to make the date picker show the previously selected date 
+- Full validation information is available in the Functionality, Validation, Security & Routing table in the dropdown above
 
 
 
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
 
 
 ---
 
-### Future Features
+### Delete Event
 
-I would like to expand the site in the future with the following features:
+![Delete Event - Mock Up]()
 
-**Mark self as 'Going' to an Event:** give the user the ability to mark themselves as 'going' to an event. The event could then include information on who is going.
+<details><summary>Functionality, Validation, Security & Routing</summary>
 
-**Comments / Chat on Event page:** functionality for users to be able to discuss the event in a comments or chat section on the Event page, where they could ask questions, make plans etc.
+| Attribute | Details |
+|---|---|
+| **Visible To** | Logged In Users - own events only. Admin - all events. |
+| **Template** | None |
+| **Back End Functionality** | Removes event from database.|
+| **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Delete buttons on other pages only visible for admin or on user's own events. |
+| **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'events' page to redirect there post log-in. This adds a layer of protection when deleting events. |
+| **Routing - other** | Redirects to previous page after deleting unless session url is for the deleted 'event' page.  Defaults to 'events' page. |
 
-**Expand Personal Profile:** users can add more information about themselves on their profile, which could include 'home swim-spot' with their closest beach (and tailored event suggestions based on this), a list of events they are marked as 'going' to, and a profile photo or avatar.
+</details>
 
-**Recurring Events:** The ability to make an event 'recurring' for users who hold regular swim meetings (e.g. every week), saving them time creating new events.
+
+#### **Feature**
+
+- Info here
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
 
 ---
 
-### Backend Functionality, Site Security & Form Validation
+### Profile Page
 
-Below are all the details of each features's security (front & back end), routing & templates, form validation (front & back end) & back end functionality.
+![Profile Page - Mock Up]()
 
-
-
-
-<details><summary>PROFILE</summary>
+<details><summary>Functionality, Validation, Security & Routing</summary>
 
 | Attribute | Details |
 |---|---|
@@ -914,87 +1136,64 @@ Below are all the details of each features's security (front & back end), routin
 </details>
 
 
-<details><summary>EVENTS</summary>
+#### **Feature**
+
+- Info here
 
 
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
 
 </details>
 
 
+---
 
-<details><summary>EVENT</summary>
+### Location Page
+
+![Location Page - Mock Up]()
+
+<details><summary>Functionality, Validation, Security & Routing</summary>
 
 | Attribute | Details |
 |---|---|
-| **Visible To** | Logged In Users |
-| **Template** | event.html |
-| **Back End Functionality** | Populates page with event based on the event id provided. Pulls in location information from the locations collection using the location_id field on the event document. |
+| **Visible To** | All Users |
+| **Template** | location.html |
+| **Back End Functionality** | Populates page with location information based on the location id provided. Populates page with events at that location by filtering using location_id field on events. Events also filtered by future only & sorted by date. |
 | **Front End Form Validation** | N/a |
 | **Back End Form Validation** | N/a |
-| **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Edit / Delete Buttons only visible if event created by current user (or user is admin) |
-| **Back End Security** | User must be logged in |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
-| **Routing - other** | Session url stored to redirect back here after editing an event via this page. |
-
-
-</details>
-
-
-<details><summary>ADD EVENT</summary>
-
-| Attribute | Details |
-|---|---|
-| **Visible To** | Logged In Users |
-| **Template** | add-event.html |
-| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, adds event to database. |
-| **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (JavaScript - form.js) |
-| **Back End Form Validation** | None |
-| **Front End Security** | Navbar link only visible to users who are logged in. |
-| **Back End Security** | User must be logged in |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
-| **Routing - other** | None |
+| **Front End Security** | Location Edit / Delete Buttons only visible for admin. Events only visible for logged in users. Event Edit / Delete Buttons only visible on user's own events (or all events if admin). |
+| **Back End Security** | None |
+| **Routing - log in** | None |
+| **Routing - other** | Session url stored to redirect back here after editing a location via this page. |
 
 </details>
 
 
-<details><summary>EDIT EVENT</summary>
+#### **Feature**
 
-| Attribute | Details |
-|---|---|
-| **Visible To** | Logged In Users - own events only. Admin - all events. |
-| **Template** | edit-event.html |
-| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. |
-| **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (JavaScript - form.js) |
-| **Back End Form Validation** | None |
-| **Front End Security** | No direct link to page in nav - all links to this page are visible to logged in users only. |
-| **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. Id for session url is taken from page url. |
-| **Routing - other** | Redirects to previous page after editing unless session url is this page (from login redirect). Defaults to 'events' page. |
+- Info here
 
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
 
 </details>
 
 
-<details><summary>DELETE EVENT</summary>
+---
 
-| Attribute | Details |
-|---|---|
-| **Visible To** | Logged In Users - own events only. Admin - all events. |
-| **Template** | None |
-| **Back End Functionality** | Removes event from database.|
-| **Front End Form Validation** | N/a |
-| **Back End Form Validation** | N/a |
-| **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Delete buttons on other pages only visible for admin or on user's own events. |
-| **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'events' page to redirect there post log-in. This adds a layer of protection when deleting events. |
-| **Routing - other** | Redirects to previous page after deleting unless session url is for the deleted 'event' page.  Defaults to 'events' page. |
+### Manage Locations
 
+![Manage Locations - Mock Up]()
 
-
-</details>
-
-
-<details><summary>MANAGE LOCATIONS</summary>
+<details><summary>Functionality, Validation, Security & Routing</summary>
 
 | Attribute | Details |
 |---|---|
@@ -1011,25 +1210,27 @@ Below are all the details of each features's security (front & back end), routin
 </details>
 
 
-<details><summary>LOCATION</summary>
+#### **Feature**
 
-| Attribute | Details |
-|---|---|
-| **Visible To** | All Users |
-| **Template** | location.html |
-| **Back End Functionality** | Populates page with location information based on the location id provided. Populates page with events at that location by filtering using location_id field on events. Events also filtered by future only & sorted by date. |
-| **Front End Form Validation** | N/a |
-| **Back End Form Validation** | N/a |
-| **Front End Security** | Location Edit / Delete Buttons only visible for admin. Events only visible for logged in users. Event Edit / Delete Buttons only visible on user's own events (or all events if admin). |
-| **Back End Security** | None |
-| **Routing - log in** | None |
-| **Routing - other** | Session url stored to redirect back here after editing a location via this page. |
+- Info here
 
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
 
 </details>
 
 
-<details><summary>ADD LOCATION</summary>
+---
+
+### Add Location
+
+![Add Location - Mock Up]()
+
+<details><summary>Functionality, Validation, Security & Routing</summary>
 
 | Attribute | Details |
 |---|---|
@@ -1046,7 +1247,28 @@ Below are all the details of each features's security (front & back end), routin
 </details>
 
 
-<details><summary>EDIT LOCATION</summary>
+#### **Feature**
+
+- Info here
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+
+
+---
+
+### Edit Location
+
+![Edit Location - Mock Up]()
+
+<details><summary>Functionality, Validation, Security & Routing</summary>
 
 | Attribute | Details |
 |---|---|
@@ -1063,15 +1285,33 @@ Below are all the details of each features's security (front & back end), routin
 </details>
 
 
-<details><summary>DELETE LOCATION</summary>
+#### **Feature**
+
+- Info here
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+
+---
+
+### Delete Location
+
+![Delete Location - Mock Up]()
+
+<details><summary>Functionality, Validation, Security & Routing</summary>
 
 | Attribute | Details |
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | None |
 | **Back End Functionality** | Removes location from database & deletes all events at that location. |
-| **Front End Form Validation** | N/a |
-| **Back End Form Validation** | N/a |
 | **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
 | **Back End Security** | User must be logged in & admin. |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'manage-locations' page to redirect there post log-in. This adds a layer of protection when deleting locations. |
@@ -1080,18 +1320,35 @@ Below are all the details of each features's security (front & back end), routin
 </details>
 
 
+#### **Feature**
+
+- Info here
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+
+
+---
+
+### Error Pages
+
+![Error Pages - Mock Up]()
+
+<details><summary>Functionality, Validation, Security & Routing</summary>
+
 <details><summary>404</summary>
 
 | Attribute | Details |
 |---|---|
 | **Visible To** | All Users |
 | **Template** | 404.html |
-| **Back End Functionality** | None |
-| **Front End Form Validation** | N/a |
-| **Back End Form Validation** | N/a |
-| **Front End Security** | N/a |
-| **Back End Security** | N/a |
-| **Routing - log in** | N/a |
 | **Routing - other** | Redirects here when user enters a non-existent page |
 
 </details>
@@ -1102,13 +1359,7 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | All Users |
 | **Template** | 413.html |
-| **Back End Functionality** | None |
-| **Front End Form Validation** | N/a |
-| **Back End Form Validation** | N/a |
-| **Front End Security** | N/a |
-| **Back End Security** | N/a |
-| **Routing - log in** | N/a |
-| **Routing - other** | Redirects here if user uploads an image larger than 5MB (if they have bypassed frontend validation) |
+| **Routing** | Redirects here if user uploads an image larger than 5MB (if they have bypassed frontend validation) |
 
 </details>
 
@@ -1118,12 +1369,6 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | All Users |
 | **Template** | 415.html |
-| **Back End Functionality** | None |
-| **Front End Form Validation** | N/a |
-| **Back End Form Validation** | N/a |
-| **Front End Security** | N/a |
-| **Back End Security** | N/a |
-| **Routing - log in** | N/a |
 | **Routing - other** | Redirects here if user uploads a file in the wrong format (if they have bypassed frontend validation) |
 
 </details>
@@ -1134,15 +1379,40 @@ Below are all the details of each features's security (front & back end), routin
 |---|---|
 | **Visible To** | All Users |
 | **Template** | 500.html |
-| **Back End Functionality** | None |
-| **Front End Form Validation** | N/a |
-| **Back End Form Validation** | N/a |
-| **Front End Security** | N/a |
-| **Back End Security** | N/a |
-| **Routing - log in** | N/a |
 | **Routing - other** | Redirects here if there is a server error |
 
 </details>
+
+</details>
+
+
+#### **Feature**
+
+- Info here
+
+
+<details><summary>Screenshots</summary>
+
+<img src="">
+
+_Caption_
+
+</details>
+
+---
+
+### Future Features
+
+I would like to expand the site in the future with the following features:
+
+**Mark self as 'Going' to an Event:** give the user the ability to mark themselves as 'going' to an event. The event could then include information on who is going.
+
+**Comments / Chat on Event page:** functionality for users to be able to discuss the event in a comments or chat section on the Event page, where they could ask questions, make plans etc.
+
+**Expand Personal Profile:** users can add more information about themselves on their profile, which could include 'home swim-spot' with their closest beach (and tailored event suggestions based on this), a list of events they are marked as 'going' to, and a profile photo or avatar.
+
+**Recurring Events:** The ability to make an event 'recurring' for users who hold regular swim meetings (e.g. every week), saving them time creating new events.
+
 
 ---
 
