@@ -1594,7 +1594,7 @@ I would like to expand the site in the future with the following features:
   - Mobile Side Nav (script.js)
   - Navbar Dropdown Menu (script.js)
   - Materialize modal (script.js)
-  - Footer year (script.js)
+  - Footer Year (script.js)
   - Scroll to Top button (scroll-top.js)
   - Back button on error pages (back.js)
   - Validating image upload (file-validation.js)
