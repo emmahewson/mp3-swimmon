@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Font Awesome Icons CSS -->
     <link
       rel="stylesheet"
@@ -15,16 +16,16 @@
     >
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css')}}" type="text/css">
+    <!-- Main CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css">
+    <!-- Favicon Files -->
     <link rel="apple-touch-icon" sizes="180x180" href="../static/images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon_io/favicon-16x16.png">
 
-    <!-- REMOVE IF NOT USING!! -->
-    {% block scriptsTop %} {% endblock %}
-
     <title>SWIMMÔN</title>
   </head>
+
   <body>
     <header class="font-title">
       <!-- Dropdown Structure -->
@@ -92,9 +93,10 @@
       </ul>
     </header>
 
-
+    <!-- Main Page Content -->
     <main>{% block content%} {% endblock %}</main>
 
+    <!-- Footer -->
     <footer class="page-footer font-body swim-bg-dblue swim-txt-white">
         <div class="row" id="footer-contact">
             <p class="weight-500"><a href="mailto:test@swimmon.test" class="swim-txt-white">Got a question? Email us!</a></p>

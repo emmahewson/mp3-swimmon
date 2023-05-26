@@ -1892,6 +1892,19 @@ I felt that this was a security issue as it revealed another user's username, so
 
 </details>
 
+#### **12: Timepicker console errors on touchscreen devices**
+
+When testing the site using Dev Tools' device toolbar and simulating a touchscreen device Materialize's Timepicker on the add-event form threw up multiple errors about a passive event listener being unable to preventDefault. Upon investigation it appeared to relate to the Materialize JavaScript code which I was connecting to using a CDN. Despite the timepicker working correctly I wanted to try and get rid of the error so I downloaded the Materialize files and hosted them locally rather than via a CDN, this meant I was able to edit Materialize's code by removing the preventDefault command in the offending function. I fully tested the Timepicker with the amended code and it had no impact on its functionality and so the bug & error code were fixed.
+
+
+<details><summary>Screengrab</summary>
+
+<img src="">
+*Console Errors triggered by time-picker on touchscreen devices*
+
+
+</details>
+
 ---
 
 ## Deployment
