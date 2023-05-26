@@ -1909,6 +1909,60 @@ When testing the site using Dev Tools' device toolbar and simulating a touchscre
 
 ## Deployment
 
+## Project Creation
+I used the [CI MongoDB Code Anywhere Full Template](https://github.com/Code-Institute-Org/ci-mongo-template) to create this project and used Code Anywhere as my IDE.
+
+From the CI Mongo template above the steps to create this project were:
+1. Click on 'Use this template' and select 'Create a new repository'
+2. Enter your chosen repo name
+3. Click 'Create respository'
+4. From the new GitHub repo copy the the page URL
+5. Open Code Anywhere and navigate to the 'workspaces' page
+6. Click on 'New Workspace'
+7. Paste the GitHub repo URL in to the 'Repository URL' box
+8. Click 'Create'
+
+
+## Deployment to Heroku
+I used Heroku to deploy this project.
+
+To deploy to Heroku:
+1. In Code Anywhere CLI from the main directory run `pip3 freeze > requirements.txt` to create/update a requirements.txt file containing project dependencies.
+2. In Code Anywhere CLI from the main directory run `echo web: python app.py > Procfile` to create a Procfile. Check that the file contains the text 'web: python app.py' and delete any blank lines at the bottom.
+3. Push the 2 new files to the GitHub repository
+4. Login to Heroku, select 'Create New App', create a unique name for the app and select your nearest region. Click 'Create App'
+5. Navigate to the Deploy tab on Heroku dashboard and select Github, search for your repository by name and click 'connect'.
+6. Navigate to 'settings', click reveal config vars and input the the following:
+
+| Key | Value |
+| :---: | :---: |
+| CLOUD_API_KEY | _Cloudinary API key_ |
+| CLOUD_API_SECRET | _Cloudinary API secret_ |
+| CLOUD_NAME | _Cloudinary Name_   |
+| IP | 0.0.0.0 |
+| PORT | 5000 |
+| MONGO_DB | _Mongodb Database Name_ |
+| MONGO_URI | mongodb+srv://<_USERNAME_>:<_PASSWORD_>@<_CLUSTER_>.tfci8tb.mongodb.net/<_DATABASE_>?retryWrites=true&w=majority |
+| SECRET_KEY | _Secret Key From env.py required for 'Session' & 'Flash' functions of Flask_ |
+
+7. Go back to the Deploy tab and click on 'Enable Automatic Deploys'
+8. Click deploy branch
+9. Once build is complete click on 'View' to launch the new app
+
+## Local Development
+__NB: This project will not run locally with database connections unless hte user sets up an env.py file configuring the above environment variables as these are not included in the GitHub files for security reasons.__
+
+To Run Locally:
+1. Navigate to the [GitHub Repository](https://github.com/emmahewson/mp3-swimmon)
+2. Click on 'Code' & select 'Download Zip' to download the files locally and open with an IDE or Copy the URL from the top box
+3. If copying the code open your development editor & in the terminal use the 'Git Clone' command followed by the above URL to create a clone of the project locally.
+
+To Fork Project:
+1. Navigate to the [GitHub Repository](https://github.com/emmahewson/mp3-swimmon)
+2. Click on the 'Fork' button at the top right of the page
+3. This will duplicate the project for you to work on
+
+
 ---
 
 ## Credits
