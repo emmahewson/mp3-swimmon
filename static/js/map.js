@@ -1,6 +1,5 @@
 
 // Function for map on Home Page with multiple markers
-
 function initMap() {
 
     // Sets zoom level - zoomed out on smaller screens to show all markers

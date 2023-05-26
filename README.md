@@ -1062,8 +1062,7 @@ _Caption_
 - Flash Messages   
     - On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
 - Add Event Specific Features
-    - The top input has an autofocus attribute so the user can begin typing without selecting it
-    - I have not included this on the edit event form as the user may not want to access all of the inputs in order
+    - The top input has an autofocus attribute so the user can begin typing without selecting it. (I have not included this on the edit event form as the user may not want to access all of the inputs in order)
 - Edit Event Specific Features
     - Form is populated with the existing event information
     - Additional JavaScript code added to make the date picker show the previously selected date 
@@ -1414,8 +1413,7 @@ _Caption_
 - Flash Message
     - On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
 - Add Location Specific Features
-    - The top input has an autofocus attribute so the user can begin typing without selecting it
-    - I have not included this on the edit location form as the user may not want to access all of the inputs in order
+    - The top input has an autofocus attribute so the user can begin typing without selecting it (I have not included this on the edit location form as the user may not want to access all of the inputs in order)
 - Edit Location Specific Features
     - Form is populated with the existing location information
     - Additional JavaScript code added to make the location picker map show the previously selected location when opened
@@ -1531,6 +1529,7 @@ _Caption_
     - This also allows users to easily navigate to where they want to be
 - All pages contain a navigation button to take the user back in to the site (see below)
 - Pages contain the error number, a brief description of the problem, written in a light-hearted, user friendly way and a cartoon of a man on a desert island, keeping with the theme of wild swimming.
+- The 413 & 415 were not included in the original planned features but came about as I learned how to include validation on uploaded files.
 - 404 Page
     - if a user navigates to a page that doesn't exist
     - button navigates to home page

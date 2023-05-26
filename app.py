@@ -114,7 +114,7 @@ def sign_in():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            # ensure hased password matches user input
+            # ensure hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get(
                     "password")):

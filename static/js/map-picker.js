@@ -1,6 +1,4 @@
 // Location Picker - for generating Latitude & Longitude values for Add/Edit Location Forms
-
-
 // Get variables for open/close location picker
 let latBox = document.getElementById("latitude");
 let lngBox = document.getElementById("longitude");
@@ -22,7 +20,6 @@ for (box of boxes) {
     })
 }
 
-
 // Close location picker box (cross icon)
 document.getElementById("lp-close").addEventListener('click', function(){
     modal.classList.add("hidden");
@@ -35,8 +32,7 @@ window.onclick = function(event) {
     }
 }
 
-
-// Populate Google Map (Google Maps API)
+// Google Map Main Function - Map Picker (Uses Google Maps API)
 function initMap() {
 
     // sets value for centre of Anglesey
