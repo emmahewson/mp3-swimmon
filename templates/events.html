@@ -90,9 +90,9 @@
                         <!-- Edit/Delete buttons -->
                         <div class="card-edit-div swim-bg-dblue">
                             <!-- Edit Event Button -->
-                            <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
+                            <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title weight-500 swim-btn-shadow">EDIT</a>
                             <!-- Delete Event Modal Trigger -->
-                            <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</button>
+                            <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title weight-500 swim-btn-shadow modal-trigger">DELETE</button>
                         </div>
                     {% endif %}
                 </div>
@@ -106,9 +106,9 @@
                         </div>
                         <div class="modal-footer swim-bg-lgrey">
                             <!-- Cancel Button -->
-                            <a href="#!" class="modal-close swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow" data-target="{{ event._id }}">CANCEL</a>
+                            <p class="modal-close swim-btn-small btn-close font-title weight-500 swim-btn-shadow" data-target="{{ event._id }}">CANCEL</p>
                             <!-- Delete Event Button -->
-                            <a href="{{ url_for('delete_event', event_id=event._id) }}" data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
+                            <a href="{{ url_for('delete_event', event_id=event._id) }}" data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title weight-500 swim-btn-shadow">DELETE</a>
                         </div>
                     </div>
                 </div> 

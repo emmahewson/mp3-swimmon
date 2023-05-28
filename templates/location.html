@@ -27,13 +27,13 @@
 
     {% if session.user|lower == "admin"|lower %}
         <!-- Edit/Delete Location Buttons -->
-        <div class="edit-div swim-bg-grey">
+        <div class="edit-div swim-bg-lgrey">
             <p class="swim-txt-dblue weight-500 font-body center-align">MANAGE LOCATION</p>
             <div class="edit-buttons">
                 <!-- Edit Location Button -->
-                <a href="{{ url_for('edit_location', location_id=location._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
+                <a href="{{ url_for('edit_location', location_id=location._id) }}" class="swim-btn-small btn-edit font-title weight-500 swim-btn-shadow">EDIT</a>
                 <!-- Delete Location Modal Trigger -->
-                <button data-target="{{ location._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</button>
+                <button data-target="{{ location._id }}" class="swim-btn-small btn-delete font-title weight-500 swim-btn-shadow modal-trigger">DELETE</button>
             </div>
         </div>
 
@@ -46,9 +46,9 @@
                 </div>
                 <div class="modal-footer swim-bg-lgrey">
                     <!-- Cancel Button -->
-                    <a href="#!" class="modal-close swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow" data-target="{{ location._id }}">CANCEL</a>
+                    <p class="modal-close swim-btn-small btn-close font-title weight-500 swim-btn-shadow" data-target="{{ location._id }}">CANCEL</p>
                     <!-- Delete Location Button -->
-                    <a href="{{ url_for('delete_location', location_id=location._id) }}" data-target="{{ location._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
+                    <a href="{{ url_for('delete_location', location_id=location._id) }}" data-target="{{ location._id }}" class="swim-btn-small btn-delete font-title weight-500 swim-btn-shadow">DELETE</a>
                 </div>
             </div>
         </div> 
@@ -76,9 +76,9 @@
                     {% for loc in locations %}
                         {% if event.location_id == loc._id %}
                             <div class="event-card-clickable swim-bg-white swim-txt-dblue">
-                                <a href="{{ url_for('event', event_id=event._id) }}"><span class="card-link"></span></a>
+                                <a href="{{ url_for('event', event_id=event._id) }}" class="card-link"><span class="sr-only">{{ event.name }}: Event Details</span></a>
                                 <div class="event-image">
-                                    <img src="{{ loc.image_url }}" alt="Image of {{ loc.name }}" onerror="this.onerror=null; this.src='https://swim-mon.herokuapp.com/static/images/sm-beach.jpg';">
+                                    <img src="{{ loc.image_url }}" alt="{{ loc.name }}" onerror="this.onerror=null; this.src='https://swim-mon.herokuapp.com/static/images/sm-beach.jpg';">
                                 </div>
                                 <div class="event-card-text swim-txt-dblue center-align">
                                     <h2 class="font-title center-align weight-600 uppercase">{{ event.name }}</h2>
@@ -101,9 +101,9 @@
                         <!-- Edit/Delete Event Buttons -->
                         <div class="card-edit-div swim-bg-dblue">
                             <!-- Edit Event Button -->
-                            <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
+                            <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title weight-500 swim-btn-shadow">EDIT</a>
                             <!-- Delete Event Modal Trigger -->
-                            <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</button>
+                            <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title weight-500 swim-btn-shadow modal-trigger">DELETE</button>
                         </div>
                     {% endif %}
                 </div>
@@ -117,9 +117,9 @@
                         </div>
                         <div class="modal-footer swim-bg-lgrey">
                             <!-- Cancel Button -->
-                            <a href="#!" class="modal-close swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow" data-target="{{ event._id }}">CANCEL</a>
+                            <p class="modal-close swim-btn-small btn-close font-title weight-500 swim-btn-shadow" data-target="{{ event._id }}">CANCEL</p>
                             <!-- Delete Event Button -->
-                            <a href="{{ url_for('delete_event', event_id=event._id) }}" data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
+                            <a href="{{ url_for('delete_event', event_id=event._id) }}" data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title weight-500 swim-btn-shadow">DELETE</a>
                         </div>
                     </div>
                 </div>

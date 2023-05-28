@@ -4,7 +4,7 @@
 <div class="form-page-wrapper swim-bg-lgrey">
 
     <!-- Intro Section -->
-    <div class="intro-div swim-bg-hpink swim-txt-white div-shadow">
+    <div class="intro-div swim-bg-hpink swim-txt-dblue div-shadow">
         <h1 class="font-title weight-600">ADD EVENT</h1>
         <div class="font-body weight-500 intro-div-p-group">
             <p>Fill in the form to share your wild swimming event or meetup with other members.</p>
@@ -25,7 +25,7 @@
             <div class="input-field">
                 <label for="event_location" class="font-title weight-600">LOCATION</label>
                 <div class="input-info-div-wrapper">
-                    <select id="event_location" name="event_location" class="" required>
+                    <select id="event_location" name="event_location" required>
                         <option value="" disabled selected>CHOOSE A LOCATION</option>
                         {% for location in locations %}
                             <option value="{{location.name|upper}}">{{location.name|upper}}</option>

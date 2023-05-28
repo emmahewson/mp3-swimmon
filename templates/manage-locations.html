@@ -18,9 +18,9 @@
                 <!-- Location Card -->
                 <div class="location-card">
                     <div class="location-card-clickable swim-bg-white swim-txt-dblue">
-                        <a href="{{ url_for('location', location_id=location._id) }}"><span class="card-link"></span></a>
+                        <a href="{{ url_for('location', location_id=location._id) }}" class="card-link"><span class="sr-only">{{ location.name }}: Location Details</span></a>
                         <div class="location-image">
-                            <img src="{{ location.image_url }}" alt="Image of {{ location.name }}" onerror="this.onerror=null; this.src='https://swim-mon.herokuapp.com/static/images/sm-beach.jpg';">
+                            <img src="{{ location.image_url }}" alt="{{ location.name }}" onerror="this.onerror=null; this.src='https://swim-mon.herokuapp.com/static/images/sm-beach.jpg';">
                         </div>
                         <div class="location-card-text center-align">
                             <h2 class="font-title center-align weight-600 uppercase">{{ location.name }}</h2>
@@ -30,9 +30,9 @@
                     <!-- Edit/Delete Location buttons -->
                     <div class="card-edit-div swim-bg-dblue">
                         <!-- Edit Location Button -->
-                        <a href="{{ url_for('edit_location', location_id=location._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
+                        <a href="{{ url_for('edit_location', location_id=location._id) }}" class="swim-btn-small btn-edit font-title weight-500 swim-btn-shadow">EDIT</a>
                         <!-- Delete Location Modal Trigger -->
-                        <button data-target="{{ location._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</button>
+                        <button data-target="{{ location._id }}" class="swim-btn-small btn-delete font-title weight-500 swim-btn-shadow modal-trigger">DELETE</button>
                     </div>
                 </div>
             
@@ -45,9 +45,9 @@
                         </div>
                         <div class="modal-footer swim-bg-lgrey">
                             <!-- Cancel Button -->
-                            <a href="#!" class="modal-close swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow" data-target="{{ location._id }}">CANCEL</a>
+                            <p class="modal-close swim-btn-small btn-close font-title weight-500 swim-btn-shadow" data-target="{{ location._id }}">CANCEL</p>
                             <!-- Delete Location Button -->
-                            <a href="{{ url_for('delete_location', location_id=location._id) }}" data-target="{{ location._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
+                            <a href="{{ url_for('delete_location', location_id=location._id) }}" data-target="{{ location._id }}" class="swim-btn-small btn-delete font-title weight-500 swim-btn-shadow">DELETE</a>
                         </div>
                     </div>
                 </div> 

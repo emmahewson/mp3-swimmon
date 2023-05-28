@@ -11,7 +11,7 @@ html {
     --white: #ffffff;
     --light-grey: #F4F4F4;
     --grey: #D8D8D8;
-    --dark-grey: #626262;
+    --dark-grey: #6f6f6f;
     --black: #000000;
     --pale-blue: #E9FBFF;
     --mid-blue: #136985;
@@ -22,18 +22,20 @@ html {
     --form-blue: #97d7df;
     --pale-pink: #ffd5d9;
     --mid-pink: #ffa8b0;
-    --high-pink: #f04e5b;
-    --high-pink-hov:#d9414e;
+    --high-pink: #fd8791;
+    --high-pink-hov:#F45C68;
     --chal-low: #FFE3A5;
     --chal-med: #FFC751;
     --chal-high: #FF7A00;
     --who-women: #8f37b8;
     --who-men: #826B95;
     --who-all: #58019D;
-    --button-edit: #1a8862;
-    --button-edit-hov: #00a86d;
-    --button-del: #ce4a4a;
-    --button-del-hov: #f54a4a;
+    --button-edit: #86d0b6;
+    --button-edit-hov: #40b58c;
+    --button-del: #ffa68e;
+    --button-del-hov: #ff8676;
+    --button-close: #83bbce;
+    --button-close-hov: #40b58c;
     --warning-red: #a8001f;
 }
 
@@ -47,6 +49,10 @@ html {
 
 .swim-bg-grey {
     background-color: var(--grey);
+}
+
+.swim-bg-dgrey {
+    background-color: var(--dark-grey);
 }
 
 .swim-bg-dblue {
@@ -67,6 +73,10 @@ html {
 
 .swim-bg-hpink {
     background-color: var(--high-pink);
+}
+
+.swim-bg-hpinkhov {
+    background-color: var(--high-pink-hov);
 }
 
 .swim-bg-fun {
@@ -380,7 +390,7 @@ footer p:first-child {
 .btn-hpink,
 .btn-hpink:focus {
     background-color: var(--high-pink);
-    color: var(--white);
+    color: var(--black);
 }
 
 .btn-hpink:hover {
@@ -430,19 +440,35 @@ footer p:first-child {
 .btn-edit,
 .btn-edit:focus {
     background-color: var(--button-edit);
+    color: var(--dark-blue);
 }
 
 .btn-edit:hover {
     background-color: var(--button-edit-hov);
 }
 
+p.btn-close {
+    font-size: 14px !important;
+}
+
 .btn-delete,
 .btn-delete:focus {
     background-color: var(--button-del);
+    color: var(--dark-blue);
 }
 
 .btn-delete:hover {
     background-color: var(--button-del-hov);
+}
+
+.btn-close,
+.btn-close:focus {
+    background-color: var(--button-close);
+    color: var(--dark-blue);
+}
+
+.btn-close:hover {
+    background-color: var(--button-close-hov);
 }
 
 .swim-btn-shadow {
@@ -805,6 +831,10 @@ textarea::placeholder {
 .timepicker-canvas-bg,
 .timepicker-canvas-bearing {
     fill: var(--high-pink);
+}
+
+.timepicker-clear {
+    color: var(--warning-red);
 }
 
 #past-event-message {
@@ -1930,6 +1960,14 @@ input::file-selector-button:hover {
 
 .test {
     width: 400px;
+}
+
+.sr-only {
+    color: var(--black)
+}
+
+.sr-only.sr-light {
+    color: var(--white)
 }
 
 

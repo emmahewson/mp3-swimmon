@@ -48,7 +48,8 @@ $(document).ready(function(){
 
     // form timepicker initialization & settings
     $('.timepicker').timepicker({
-        autoClose: true
+        autoClose: true,
+        showClearBtn: true
     });
 
     // Time & Date Validation
