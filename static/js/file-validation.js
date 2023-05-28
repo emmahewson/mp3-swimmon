@@ -1,7 +1,6 @@
 // handles front end validation on image upload on location forms
+// adapted from https://www.geeksforgeeks.org/validation-of-file-size-while-uploading-using-javascript-jquery/
 $(document).ready(function(){
-
-    // adapted from https://www.geeksforgeeks.org/validation-of-file-size-while-uploading-using-javascript-jquery/
 
     // checks for an image being uploaded
     $('#image_upload').on('change', function() {
@@ -13,7 +12,7 @@ $(document).ready(function(){
             // this allows the user to still submit without uploading on the edit-location form & keep previous image
             $("#file-message-warning").text("");
             $("#file-message").text("");
-            $('#location-submit').attr("disabled", false)
+            $('#location-submit').attr("disabled", false);
 
         } else {
 
@@ -29,12 +28,12 @@ $(document).ready(function(){
 
                 // if bigger than 5MB reveals warning text & disables the submit button
                 $("#file-message-warning").text("Max file size is 5MB, please choose a smaller image.");
-                $('#location-submit').attr("disabled", true)
+                $('#location-submit').attr("disabled", true);
 
             } else {
 
                 // if less than 5MB enables the submit button & hides the warning text
-                $('#location-submit').attr("disabled", false)
+                $('#location-submit').attr("disabled", false);
                 $("#file-message-warning").text("");
             }
         }     

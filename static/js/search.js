@@ -1,3 +1,4 @@
+// Events page search functionality
 $(document).ready(function(){
 
     // search bar collapsible
@@ -7,17 +8,15 @@ $(document).ready(function(){
     searchEvents();
 });
 
-
-// collapsible search bar function - taken from https://www.w3schools.com/howto/howto_js_collapsible.asp
+// collapsible search bar - taken from https://www.w3schools.com/howto/howto_js_collapsible.asp
 function collapse() {
     let coll = document.getElementsByClassName("swim-collapsible");
-    for (i = 0; i < coll.length; i++) {
+    for (let i = 0; i < coll.length; i++) {
 
         coll[i].addEventListener("click", function() {
             this.classList.toggle("collapse-open");
 
             let content = this.nextElementSibling;
-
             if (content.style.maxHeight){
                 content.style.maxHeight = null;
             } else {
@@ -26,7 +25,6 @@ function collapse() {
         });
     }
 }
-
 
 // Handles all filtering of events based on user selecting filter buttons in different categories
 // User can filter by multiple selections within a category e.g. women-only & all-welcome & see both results at once
@@ -44,22 +42,19 @@ function searchEvents() {
             // adds a class of swim-selected to the clicked button
             addSelectedClass(this);
             // starts search functionality
-            runSearch()
-        })
+            runSearch();
+        });
     }
 
     // reset button - on click removes all search filters & classes
-    let resetBtn = document.getElementById("search-reset") 
+    let resetBtn = document.getElementById("search-reset");
     resetBtn.addEventListener("click", function() {
         for (let btn of searchBtns) {
-            btn.classList.remove("swim-selected")
+            btn.classList.remove("swim-selected");
         }
         showAllCards();
         noResultsMessageToggle();
-    })
-
-
-    // HELPER FUNCTIONS
+    });
 
     // Handles all search functionality
     function runSearch() {
@@ -73,12 +68,12 @@ function searchEvents() {
         let activeCategoryBtns = getActiveCategories(locationSelectedBtns, whoSelectedBtns, challengeSelectedBtns);
 
         // filters events based on each category's selected buttons
-        let locationFilteredCards = filterCategory(locationSelectedBtns, "location")
-        let whoFilteredCards = filterCategory(whoSelectedBtns, "who")
-        let challengeFilteredCards = filterCategory(challengeSelectedBtns, "challenge")
+        let locationFilteredCards = filterCategory(locationSelectedBtns, "location");
+        let whoFilteredCards = filterCategory(whoSelectedBtns, "who");
+        let challengeFilteredCards = filterCategory(challengeSelectedBtns, "challenge");
 
         // creates an array of arrays of all categories' filtered results
-        let allFilteredCardArrays = [locationFilteredCards, whoFilteredCards, challengeFilteredCards]
+        let allFilteredCardArrays = [locationFilteredCards, whoFilteredCards, challengeFilteredCards];
 
         // resets all cards to hidden
         hideAllCards();
@@ -88,9 +83,7 @@ function searchEvents() {
 
         // adds 'no results' text if no events match chosen filters
         noResultsMessageToggle();
-
     }
-
 
     // calculates which event cards match chosen filters & reveals the results
     function calculateMatchingCards(activeCategoryBtns, allFilteredCardArrays) {
@@ -104,9 +97,9 @@ function searchEvents() {
         } else if (activeCategoryBtns.length == 1){
 
             // reveals the matching events for the filtered card array that contains results
-            for (i = 0; i < allFilteredCardArrays.length; i++) {
+            for (let i = 0; i < allFilteredCardArrays.length; i++) {
                 if (allFilteredCardArrays[i].length >= 1) {
-                    cardReveal(allFilteredCardArrays[i])
+                    cardReveal(allFilteredCardArrays[i]);
                 }
             }
             
@@ -115,17 +108,15 @@ function searchEvents() {
 
             // finds the categories which produced matching results & pushes them in to 'categoriesWithResults' array of arrays
             let categoriesWithResults = [];
-            for (i = 0; i < allFilteredCardArrays.length; i++) {
+            for (let i = 0; i < allFilteredCardArrays.length; i++) {
                 if (allFilteredCardArrays[i].length >= 1) {
                     categoriesWithResults.push(allFilteredCardArrays[i]);
                 }
             }
-
             // array to contain the matching results to reveal
             let matches = [];
 
         // checks how many arrays contained results & matches them against the eventCards array
-            
             // checks if all of the selected categories have produced results (if not there will be no matches) - Bug 7 fix
             if (activeCategoryBtns.length === categoriesWithResults.length) {
 
@@ -152,12 +143,10 @@ function searchEvents() {
                     }
                 } 
             } 
-            
             // removes 'hidden' class from matches to reveal results
             cardReveal(matches);
         }
     }
-
 
     // Pushes 'selected' buttons to a new array
     function populateSelectedBtn(originalButtonArray, categoryName) {
@@ -174,7 +163,6 @@ function searchEvents() {
         }
         return finalButtonArray;
     }
-
 
     // Creates an array of arrays of categories' 'selected' buttons
     function getActiveCategories(locationSelectedBtns, whoSelectedBtns, challengeSelectedBtns) {
@@ -193,42 +181,37 @@ function searchEvents() {
         return result;
     }
 
-
     // filters the event results for a single category
     function filterCategory(selectedBtnArray, btnCategory) {
 
         let filteredEvents = [];
-
         for (let btn of selectedBtnArray) {
             // Loop through event cards
             for (let card of eventCards) {
                 // declare class for targeting element to search for matching event info
-                searchClass = "event-card-" + btnCategory;
+                let searchClass = "event-card-" + btnCategory;
                 // sets the element on card to search - based on category
-                targetElement = card.getElementsByClassName(searchClass)[0];
+                let targetElement = card.getElementsByClassName(searchClass)[0];
                 // removes any matching card from the eventCards array
                 if (btn.innerText.toLowerCase() === targetElement.innerText.toLowerCase()) {
                     filteredEvents.push(card);
                 }
             }
         }
-        return filteredEvents
+        return filteredEvents;
     }
-
 
     // Reveals event cards that match filters
     function cardReveal(array) {
-        for (card of array) {
+        for (let card of array) {
             card.classList.remove("hidden");
         }
     }
 
-
     // Adds 'selected' class to button
     function addSelectedClass(btn) {
-        btn.classList.toggle("swim-selected")
+        btn.classList.toggle("swim-selected");
     }
-
 
     // Hides all cards
     function hideAllCards() {
@@ -238,7 +221,6 @@ function searchEvents() {
         }
     }
 
-
     // shows all cards
     function showAllCards() {
         for (let card of eventCards) {
@@ -246,27 +228,18 @@ function searchEvents() {
         }
     }
 
-
     // Triggers 'no results' message if no events are visible
     function noResultsMessageToggle() {
-
         let visibleCards = [];
-        for (card of eventCards) {
-
+        for (let card of eventCards) {
             if (!card.classList.contains("hidden")) {
                 visibleCards.push(card);
             }
         }
-
         if (visibleCards.length == 0) {
             document.getElementById("results-message").classList.remove("hidden");
         } else {
             document.getElementById("results-message").classList.add("hidden");
         }
     }
-
-
-
-
 }
-

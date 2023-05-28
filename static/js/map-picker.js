@@ -1,36 +1,35 @@
 // Location Picker - for generating Latitude & Longitude values for Add/Edit Location Forms
-// Get variables for open/close location picker
+// Declare variables for input boxes & triggers
 let latBox = document.getElementById("latitude");
 let lngBox = document.getElementById("longitude");
 let overlayBoxes = Array.from(document.getElementsByClassName("coord-clicker"));
 let modal = document.getElementById("lp-modal");
 
-
 // Open Location Picker when user clicks on latitude / longitude input fields or div overlay (bug fix - readonly)
 let boxes = [latBox, lngBox];
-boxes.push(...overlayBoxes)
-for (box of boxes) {
+boxes.push(...overlayBoxes);
+for (let box of boxes) {
     // opens the modal on user click
     box.addEventListener('click', function(){
         modal.classList.remove("hidden");
-    })
+    });
     // opens the modal on focus (for use of 'tab' key)
     box.addEventListener('focus', function(){
         modal.classList.remove("hidden");
-    })
+    });
 }
 
 // Close location picker box (cross icon)
 document.getElementById("lp-close").addEventListener('click', function(){
     modal.classList.add("hidden");
-})
+});
 
 // Close location picker box (click outside box)
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.classList.add("hidden");
     }
-}
+};
 
 // Google Map Main Function - Map Picker (Uses Google Maps API)
 function initMap() {
@@ -39,11 +38,11 @@ function initMap() {
     let centerMon = {
         lat: 53.286409181339444,
         lng: -4.359635469750749
-    }
+    };
 
     // sets start position on map
     // if data in boxes is valid sets map to that position, else centre of Anglesey
-    let startPosition = {}
+    let startPosition = {};
     let latInput = Number(latBox.value);
     let lngInput = Number(lngBox.value);
     if (typeof latInput == 'number' &&
@@ -55,7 +54,7 @@ function initMap() {
             startPosition = {
                 lat: latInput,
                 lng: lngInput
-            }
+            };
     } else {
         startPosition = centerMon;
     }
@@ -74,6 +73,7 @@ function initMap() {
         zoom: zoomLevel,
         center: startPosition,
         gestureHandling: "greedy",
+        fullscreenControl: false
     });
 
     // declare new google Maps marker (draggable for relocation)
@@ -92,7 +92,6 @@ function initMap() {
         chosenLat = marker.getPosition().lat();
         chosenLng = marker.getPosition().lng();
     }
-
 
     // User drops marker
     google.maps.event.addListener(marker, 'dragend', function(){
@@ -131,10 +130,9 @@ function initMap() {
     function locErrorOff() {
         errorMessage.classList.remove("lp-animate");
         setTimeout(function() {
-            errorMessage.classList.add("hidden")
+            errorMessage.classList.add("hidden");
         }, 350);
     }
-
 
     // Save button: closes box and fills form inputs with marker location
     let saveBtn = document.getElementById("lp-save");
@@ -144,22 +142,20 @@ function initMap() {
         modal.classList.add("hidden");
     });
 
-
     // reset button: sets the marker & map back to the centre of Anglesey
     let resetBtn = document.getElementById("lp-reset");
     resetBtn.addEventListener('click', function() {
         resetMap();
-        if (startPostion === centerMon) {
+        if (startPosition === centerMon) {
             latBox.value = '';
             lngBox.value = '';
         }
     });
 
-    
     // Function to reset map to start position (if previously set) or centre of Anglesey
     function resetMap() {
         marker.setPosition(startPosition);
         map.setCenter(startPosition);
         map.setZoom(zoomLevel);
     }
-};
+}

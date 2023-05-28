@@ -8,5 +8,5 @@ $(document).ready(function(){
 function scrollToTop() {
     $('#btt-btn').click(function() {
         window.scrollTo({top: 0, behaviour: 'smooth'});
-    })
-};
+    });
+}

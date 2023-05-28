@@ -1,5 +1,5 @@
-
 // Function for map on Home Page with multiple markers
+
 function initMap() {
 
     // Sets zoom level - zoomed out on smaller screens to show all markers
@@ -20,21 +20,17 @@ function initMap() {
         }
     };
 
-
-// Fetch request connects GoogleMaps with the MongoDB database
-// Creates a JSON file with the collection
-// Adapted from https://github.com/isntlee/Sagacity/blob/master/templates/home.html
-// Credit Lee Martina
+    // Fetch request connects GoogleMaps API with the MongoDB database
+    // Creates a JSON file with the collection
+    // Adapted from https://github.com/isntlee/Sagacity/blob/master/templates/home.html
+    // Credit Lee Martina
     fetch('/fetch')
         .then(response => response.json())
         .then(data => { 
             fetchFunction(data);
-        })
-        .catch(err => console.log(err));
-
+    });
 
     function fetchFunction(data) {
-
         // create new infoWindow
         // (solution to bug 3 - adapted from https://www.aspsnippets.com/Articles/Google-Maps-API-V3-Open-Show-only-one-InfoWindow-at-a-time-and-close-other-InfoWindow.aspx)
         let infoWindow = new google.maps.InfoWindow();
@@ -46,7 +42,7 @@ function initMap() {
             let popupName = data[i].name;
             let popupImage = data[i].image_url;
             let popupDescriptionFull = data[i].description;
-            let popupDescription = popupDescriptionFull.slice(0, 150)+"..."
+            let popupDescription = popupDescriptionFull.slice(0, 150)+"...";
             let locationId = data[i]._id;
 
             // declare HTML content for infoWindow using JSON data
@@ -67,7 +63,7 @@ function initMap() {
                         '</div>' +
                         '<p class="map_reader font-body swim-txt-dblue weight-500">'+popupDescription+'</p>'+
                     '</div>' +
-                '</a>'
+                '</a>';
             
         
             // declare new google Maps marker with attached infoWindow content

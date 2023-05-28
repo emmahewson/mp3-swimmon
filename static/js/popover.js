@@ -1,5 +1,4 @@
-// JavaScript functionality for popovers
-
+// Form info boxes (popovers)
 $(document).ready(function(){
     
     // scroll to popover info boxes on small screen devices
@@ -10,7 +9,7 @@ $(document).ready(function(){
             popTriggers[i].addEventListener('click', () => {
                 let popUp = popTriggers[i].querySelector('.popover-content');
                 popUp.scrollIntoView({block: 'center'});
-            })
+            });
         }
     }
   });

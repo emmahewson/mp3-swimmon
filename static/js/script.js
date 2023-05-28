@@ -10,7 +10,5 @@ $(document).ready(function(){
     $('.modal').modal();
 
     // set date in footer
-    $('#copyright-year').text(new Date().getFullYear())
+    $('#copyright-year').text(new Date().getFullYear());
   });
-  
-

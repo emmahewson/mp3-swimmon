@@ -1,8 +1,8 @@
 // Event Page Map
 function initMap() {
 
-    latitude = Number(document.getElementById('latitude').innerHTML);
-    longitude = Number(document.getElementById('longitude').innerHTML);
+    let latitude = Number(document.getElementById('latitude').innerHTML);
+    let longitude = Number(document.getElementById('longitude').innerHTML);
     
     const map = new google.maps.Map(document.getElementById("map-event"), {
         zoom: 11,
@@ -17,4 +17,4 @@ function initMap() {
         map: map,
         position: {lat: latitude, lng: longitude},
     });
-};
+}

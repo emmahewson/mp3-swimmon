@@ -21,10 +21,10 @@ $(document).ready(function(){
     });
 
     // form datepicker
-    let currentDate = new Date()
+    let currentDate = new Date();
     let pickerDate;
-    let dateInput = document.getElementById("event_date")
-    let timeInput = document.getElementById("event_time")
+    let dateInput = document.getElementById("event_date");
+    let timeInput = document.getElementById("event_time");
 
     // checks if input already contains date
     if (dateInput.value.length != 0) {
@@ -53,8 +53,8 @@ $(document).ready(function(){
 
     // Time & Date Validation
     // Checks that event is in the future
-    dateInput.addEventListener('change', checkDateTime)
-    timeInput.addEventListener('change', checkDateTime)
+    dateInput.addEventListener('change', checkDateTime);
+    timeInput.addEventListener('change', checkDateTime);
 
     // Runs validation on event time/date
     // Stops event in the past being submitted
@@ -67,7 +67,7 @@ $(document).ready(function(){
             const [day, month, year] = dateInput.value.split("/");
 
             // gets the inputted time value
-            timeStr = timeInput.value
+            let timeStr = timeInput.value;
 
             // converts AM/PM time to 24hr
             // credit: https://www.tutorialspoint.com/converting-12-hour-format-time-to-24-hour-format-in-javascript
@@ -84,38 +84,37 @@ $(document).ready(function(){
             };
         
             // creates 24hr time string
-            time = convertTime(timeStr);
+            let time = convertTime(timeStr);
 
             // converts time & date to JS friendly string format
-            let dateTimeStr = `${year}-${month}-${day}T${time}:00.000`
+            let dateTimeStr = `${year}-${month}-${day}T${time}:00.000`;
 
             // gets present time/date
-            now = new Date();
+            let now = new Date();
 
             // text warning element
-            let warning = document.getElementById("past-event-message")
-            let submitBtn = document.getElementById("event-submit")
+            let warning = document.getElementById("past-event-message");
+            let submitBtn = document.getElementById("event-submit");
         
             // compares current date/time to inputted date/time (parsed to milliseconds since Jan 1 1970)
             if (Date.parse(dateTimeStr) < Date.parse(now)) {
                 // if date/time is in the past shows warning, adds invalid styling & disables submit button
-                warning.classList.remove("hidden")
+                warning.classList.remove("hidden");
                 submitBtn.setAttribute("disabled", "disabled");
-                dateInput.classList.add("invalid")
-                timeInput.classList.add("invalid")
+                dateInput.classList.add("invalid");
+                timeInput.classList.add("invalid");
 
             } else {
                 // if date/time is not in past hides warning, removes invalid styling, adds valid styling & enables submit button
-                warning.classList.add("hidden")
-                submitBtn.removeAttribute("disabled")
-                dateInput.classList.remove("invalid")
-                timeInput.classList.remove("invalid")
-                dateInput.classList.add("valid")
-                timeInput.classList.add("valid")
+                warning.classList.add("hidden");
+                submitBtn.removeAttribute("disabled");
+                dateInput.classList.remove("invalid");
+                timeInput.classList.remove("invalid");
+                dateInput.classList.add("valid");
+                timeInput.classList.add("valid");
             }
-
         }
     }
-  });
+});
 
 

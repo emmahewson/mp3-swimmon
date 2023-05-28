@@ -1187,7 +1187,7 @@ _Caption_
 | **Front End Security** | Location Edit / Delete Buttons only visible for admin. Events only visible for logged in users. Event Edit / Delete Buttons only visible on user's own events (or all events if admin). Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | None |
 | **Routing - log in** | None |
-| **Routing - other** | Session url stored to redirect back here after editing a location via this page. |
+| **Routing - other** | Session url stored to redirect back here after editing location/event or deleting an event accessed via this page. |
 
 
 
@@ -1291,7 +1291,7 @@ _Caption_
 | **Back End Functionality** | Populates page with all location documents in the locations collection. |
 | **Front End Security** | Navbar link only visible to admin. Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | User must be logged in and 'admin' |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in', flash message shows & site stores session url to redirect here post log-in. If user not admin re-routes to 'profile' and flash message shows. |
 | **Routing - other** | Session url stored to redirect back here after editing or deleting a location via this page. |
 
 </details>
@@ -1354,7 +1354,7 @@ _Caption_
 | **Back End Form Validation** | Checks image is under 5MB & in accepted format - redirects to 413/415 page if not. |
 | **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
 | **Back End Security** | User must be logged in and admin. |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in', flash message shows & site stores session url to redirect here post log-in. If user not admin re-routes to 'profile' and flash message shows. |
 | **Routing - other** | None |
 
 </details>
@@ -1372,7 +1372,7 @@ _Caption_
 | **Back End Form Validation** | Checks image is under 5MB & in accepted format - redirects to 413/415 page if not. |
 | **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
 | **Back End Security** | User must be logged in and admin. |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. Id for session url is taken from page url. |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in', flash message shows & site stores session url to redirect here post log-in. Id for session url is taken from page url. If user not admin re-routes to 'profile' and flash message shows. |
 | **Routing - other** | Redirects to previous page after editing unless session url is this page (from login redirect). Defaults to 'manage-locations' page. |
 
 </details>
@@ -1393,6 +1393,7 @@ _Caption_
     - This is designed to offer the best user experience possible & to gather the lat/long values in a readable, valid format.
     - The map is centered on Anglesey (unless the user has previously selected a location)
     - The zoom level changes depending on screen size to help make the whole of the island visible when the map appears
+    - The map has the full screen option disabled as this hides the error message when selecting a location outside Anglesey and causes a bad user experience.
     - The map includes validation checks to stop the user selecting a location far outside of Anglesey by limiting the range of the lat/long values
         - If a user selects a location outside this range an custom error message appears.
     - The lat/long inputs are not directly editable to avoid users adding invalid data. This uses a bespoke readonly style to allow the inputs to retain their 'required' attribute/validation [See bug ](#4-location-picker-map---mobile-keyboard-popup)
@@ -1447,7 +1448,7 @@ _Caption_
 | **Back End Functionality** | Removes location from database & deletes all events at that location. |
 | **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
 | **Back End Security** | User must be logged in & admin. |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'manage-locations' page to redirect there post log-in. This adds a layer of protection when deleting locations. |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'manage-locations' page to redirect there post log-in. This adds a layer of protection when deleting locations. If user not admin re-routes to 'profile' and flash message shows. |
 | **Routing - other** | Redirects to manage-locations page. |
 
 </details>
@@ -1915,7 +1916,7 @@ I used the [CI MongoDB Code Anywhere Full Template](https://github.com/Code-Inst
 From the CI Mongo template above the steps to create this project were:
 1. Click on 'Use this template' and select 'Create a new repository'
 2. Enter your chosen repo name
-3. Click 'Create respository'
+3. Click 'Create Repository'
 4. From the new GitHub repo copy the the page URL
 5. Open Code Anywhere and navigate to the 'workspaces' page
 6. Click on 'New Workspace'
