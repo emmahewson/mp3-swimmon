@@ -11,9 +11,15 @@
     <!-- Search Bar -->
     <div class="events-wrapper swim-bg-lgrey">
         <div class="search-wrapper div-shadow font-title swim-txt-dblue swim-bg-white">
+
+            <!-- Collapsible Toggle -->
             <h2 class="weight-800 swim-collapsible"><i class="fa-solid fa-caret-down"></i>FILTER BY</h2>
+
+            <!-- Collapsible Content-->
             <div class="swim-collapsible-content">
                 <div class="search-div">
+
+                    <!-- Locations Buttons -->
                     <div class="search-div-section">
                         <h3 class="weight-700">Location</h3>
                         <div class="search-buttons-div weight-500 uppercase">
@@ -22,6 +28,8 @@
                             {% endfor %}
                         </div>
                     </div>
+
+                    <!-- Who-For Buttons -->
                     <div class="search-div-section">
                         <h3 class="weight-700">Who For?</h3>
                         <div class="search-buttons-div weight-500 uppercase">
@@ -30,6 +38,8 @@
                             {% endfor %}
                         </div>
                     </div>
+
+                    <!-- Challenge Level Buttons -->
                     <div class="search-div-section">
                         <h3 class="weight-700">Challenge Level</h3>
                         <div class="search-buttons-div weight-500 uppercase">
@@ -38,16 +48,19 @@
                             {% endfor %}
                         </div>
                     </div>
-                    
                 </div>
+
+                <!-- Reset All Button -->
                 <p class="swim-btn-flexi swim-txt-white font-title weight-500" id="search-reset">RESET ALL</p>
             </div>
         </div>
 
-        <!-- Event Summary Cards -->
+        <!-- Event Cards Container -->
         <div class="events-div" id="events-div">
             <p id="results-message" class="hidden font-body swim-txt-dblue weight-600">No Results</p>
+            
             {% for event in events %}
+                <!-- Event Card -->
                 <div class="event-card">
                     {% for location in locations %}
                         {% if event.location_id == location._id %}
@@ -72,16 +85,18 @@
                             </div>
                         {% endif %}
                     {% endfor %}   
-                            
 
-                    <!-- Add CRUD control buttons if user event -->
                     {% if session.user|lower == event.created_by|lower or session.user|lower == "admin"|lower %}
+                        <!-- Edit/Delete buttons -->
                         <div class="card-edit-div swim-bg-dblue">
+                            <!-- Edit Event Button -->
                             <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
+                            <!-- Delete Event Modal Trigger -->
                             <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</button>
                         </div>
                     {% endif %}
                 </div>
+
                 <!-- Confirm Delete Modal -->
                 <div id="{{ event._id }}" class="modal">
                     <div class="modal-contents swim-bg-lgrey center-align">
@@ -90,25 +105,27 @@
                             <p class="font-title font-title">THIS ACTION CAN'T BE UNDONE</p>
                         </div>
                         <div class="modal-footer swim-bg-lgrey">
+                            <!-- Cancel Button -->
                             <a href="#!" class="modal-close swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow" data-target="{{ event._id }}">CANCEL</a>
+                            <!-- Delete Event Button -->
                             <a href="{{ url_for('delete_event', event_id=event._id) }}" data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
                         </div>
                     </div>
                 </div> 
             {% endfor %}
         </div>
+
+        <!-- Back To Top Button -->
         <div class="btt-btn-div">
             <button class="swim-btn-flexi btn-hpink font-title weight-500 swim-btn-shadow center-align" id="btt-btn">BACK TO TOP</button>
         </div>
-
-        
-        
     </div>
 
 {% endblock %}
 
 {% block scripts %}
+    <!-- Back To Top Button JavaScript -->
     <script src="{{ url_for('static', filename='js/scroll-top.js') }}"></script>
+    <!-- Search Functionality JavaScript -->
     <script src="{{ url_for('static', filename='js/search.js') }}"></script>
-    
 {% endblock %}

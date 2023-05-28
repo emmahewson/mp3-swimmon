@@ -2,6 +2,7 @@
 {% block content %}
 
     <div class="form-page-wrapper swim-bg-lgrey">
+
         <!-- Intro Section -->
         <div class="intro-div swim-bg-hblue swim-txt-dblue div-shadow">
             <h1 class="font-title weight-600">JOIN</h1>
@@ -11,29 +12,36 @@
             </div>
         </div>
 
+        <!-- Form -->
         <div class="form-wrapper">
             <form class="swim-form swim-bg-grey div-shadow" method="POST" action="{{ url_for('join')}}">
-                <!-- username -->
+                
+                <!-- Username -->
                 <div class="input-field">
                     <label for="username" class="font-title weight-600">USERNAME <em class="weight-300"> 5-15 letters/numbers</em></label>
                     <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" autocomplete="username" class="validate" required autofocus>
                 </div>
-                <!-- password -->
+
+                <!-- Password -->
                 <div class="input-field">
                     <label for="password" class="font-title weight-600">PASSWORD <em class="weight-300"> 5-15 letters/numbers</em></label>
                     <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" autocomplete="new-password" class="validate" required>
                 </div>
+
+                <!-- Repeat Password -->
                 <div class="input-field">
                     <label for="password-confirm" class="font-title weight-600">REPEAT PASSWORD</label>
                     <input id="password-confirm" name="password-confirm" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" autocomplete="new-password" class="validate" required>
                 </div>
-                <!-- submit button -->
+
+                <!-- Submit Button -->
                 <div class="form-button-row">
                     <button type="submit" class="swim-btn-large btn-hblue font-title weight-600 swim-btn-shadow">JOIN</button>
                 </div>
-        </form>
+            </form>
         </div>
         
+        <!-- Sign In Link -->
         <div class="below-form-text-div">
             <p class="center-align font-body weight-700"><a href="{{ url_for('sign_in')}}" class="link-text">Already a member? Sign in here!</a></p>
         </div>

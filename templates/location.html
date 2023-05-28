@@ -2,13 +2,19 @@
 {% block content %}
 
 <div class="location-page-wrapper swim-bg-white div-shadow">
+
+    <!-- Location Name & Co-ordinates -->
     <div class="location-name-div swim-bg-mblue center-align swim-txt-white">
         <h1 class="font-title weight-500">{{ location.name|upper}}</h1>
         <p class="font-body weight-300"><span id="latitude">{{ location.lat|truncate(9, False, "") }}</span>, <span id="longitude">{{ location.long|truncate(9, False, "") }}</span></p>
     </div>
+
+    <!-- Image -->
     <div class="location-image-div">
         <img src="{{ location.image_url }}" alt="Image of {{ location.name }}" onerror="this.onerror=null; this.src='https://swim-mon.herokuapp.com/static/images/sm-beach.jpg';">
     </div>
+
+    <!-- Location Information -->
     <div class="row location-info-div swim-bg-mblue swim-txt-white">
         <div class="col m12 l6 location-description">
             <p><span class="weight-700">Description:</span><br>{{ location.description}}</p>
@@ -19,12 +25,14 @@
         </div>
     </div>
 
-    <!-- Add CRUD control buttons if user event -->
     {% if session.user|lower == "admin"|lower %}
+        <!-- Edit/Delete Location Buttons -->
         <div class="edit-div swim-bg-grey">
             <p class="swim-txt-dblue weight-500 font-body center-align">MANAGE LOCATION</p>
             <div class="edit-buttons">
+                <!-- Edit Location Button -->
                 <a href="{{ url_for('edit_location', location_id=location._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
+                <!-- Delete Location Modal Trigger -->
                 <button data-target="{{ location._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</button>
             </div>
         </div>
@@ -37,19 +45,20 @@
                     <p class="font-title">THIS ACTION CAN'T BE UNDONE</p>
                 </div>
                 <div class="modal-footer swim-bg-lgrey">
+                    <!-- Cancel Button -->
                     <a href="#!" class="modal-close swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow" data-target="{{ location._id }}">CANCEL</a>
+                    <!-- Delete Location Button -->
                     <a href="{{ url_for('delete_location', location_id=location._id) }}" data-target="{{ location._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
                 </div>
             </div>
         </div> 
     {% endif %}
 
-
-    <!-- Google Map -->
+    <!-- Map -->
     <div id="map-location"></div>
 
     {% if session.user %}
-    <!-- Intro to Events & Add Event Button -->
+    <!-- Intro & Add Event Button -->
     <div class="intro-div swim-bg-dblue swim-txt-white">
         <h2 class="font-title weight-600">EVENTS IN {{location.name|upper}}</h2>
         <p class="font-body weight-500">Check out member events at this location. Don't see one that suits? Why not add your own?</p>
@@ -57,9 +66,12 @@
     </div>
 
     <div class="events-wrapper swim-bg-lgrey">
-        <!-- Event Summary Cards -->
+
+        <!-- Event Cards Container -->
         <div class="events-div" id="events-div">
+
             {% for event in events %}
+                <!-- Event Card -->
                 <div class="event-card">
                     {% for loc in locations %}
                         {% if event.location_id == loc._id %}
@@ -85,15 +97,17 @@
                         {% endif %}
                     {% endfor %}   
                             
-
-                    <!-- Add CRUD control buttons if user event -->
                     {% if session.user|lower == event.created_by|lower or session.user|lower == "admin"|lower %}
+                        <!-- Edit/Delete Event Buttons -->
                         <div class="card-edit-div swim-bg-dblue">
+                            <!-- Edit Event Button -->
                             <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
+                            <!-- Delete Event Modal Trigger -->
                             <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</button>
                         </div>
                     {% endif %}
                 </div>
+
                 <!-- Confirm Delete Modal -->
                 <div id="{{ event._id }}" class="modal">
                     <div class="modal-contents swim-bg-lgrey center-align">
@@ -102,16 +116,22 @@
                             <p class="font-title font-title">THIS ACTION CAN'T BE UNDONE</p>
                         </div>
                         <div class="modal-footer swim-bg-lgrey">
+                            <!-- Cancel Button -->
                             <a href="#!" class="modal-close swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow" data-target="{{ event._id }}">CANCEL</a>
+                            <!-- Delete Event Button -->
                             <a href="{{ url_for('delete_event', event_id=event._id) }}" data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
                         </div>
                     </div>
-                </div> 
+                </div>
+
             {% endfor %}
         </div>
+
+        <!-- Back to Top Button -->
         <div class="btt-btn-div">
             <button class="swim-btn-flexi btn-hpink font-title weight-500 swim-btn-shadow center-align" id="btt-btn">BACK TO TOP</button>
         </div>  
+
     </div>
     {% endif %}
 </div>
@@ -119,11 +139,15 @@
 {% endblock %}
 
 {% block scripts %}
+    <!-- Location Page Map JavaScript -->
     <script src="{{ url_for('static', filename='js/map-location.js') }}"></script>
+    <!-- Google Maps API - Markers -->
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <!-- Google Maps API - Map -->
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp3bbw0F5d1sjzp5iet_vlxKb0RrevMCA&callback=initMap">
     </script>
+    <!-- Back To Top Button JavaScript -->
     <script src="{{ url_for('static', filename='js/scroll-top.js') }}"></script>
 {% endblock %}
 

@@ -1,22 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <!-- 415 Page Contents -->
     <div class="container swim-txt-dblue" id="error-page-contents">
+
+        <!-- Error Number -->
         <div class="row center-align">
             <h1 class="font-title weight-600">415!</h1>
         </div>
+
+        <!-- Image -->
         <div class="row center-align">
             <img src="{{ url_for('static', filename='images/404-island.png') }}" alt="Cartoon of a man on a desert island">
         </div>
+
+        <!-- Message & Link Button -->
         <div class="row center-align font-body weight-700">
             <p class="font-body weight-700">Unsupported Media Type. Images must be JPG, PNG or HEIC</p>
             <p class="swim-btn-flexi btn-hpink font-title weight-500 swim-btn-shadow" id="error-button">GO BACK TO FORM</p>
         </div>
     </div>
 
-
 {% endblock %}
 
 {% block scripts %}
+    <!-- Go Back Button Script -->
     <script src="{{ url_for('static', filename='js/back.js') }}"></script>
 {% endblock %}

@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-
 {% block content %}
+
 <!-- Location picker modal -->
 <div id="lp-modal" class="hidden">
     <div id="location-picker-box" class="div-shadow">
         <div id="lp-header" class="swim-bg-dblue">
             <h1 class="font-body weight-400 swim-txt-white">Drag the marker to a location on Anglesey</h1>
-            <a id="lp-close" class="font-body weight-700 swim-txt-white">&#x2715</a>
+            <a id="lp-close" class="font-body weight-700 swim-txt-white">&#x2715;</a>
         </div>
         <div id="lp-map-wrapper">
             <div id="lp-error-message" class="swim-bg-hblue div-shadow hidden">
@@ -19,12 +19,11 @@
             <button id="lp-save" class="swim-btn-small btn-hpink font-title weight-500 swim-btn-shadow center-align" type="submit">SAVE</button>
         </div>
     </div>
-        
-    </div>
 </div>
 
 <!-- Main Page Content -->
 <div class="form-page-wrapper swim-bg-lgrey">
+    
     <!-- Intro Section -->
     <div class="intro-div swim-bg-mblue swim-txt-white div-shadow">
         <h1 class="font-title weight-600">ADD LOCATION</h1>
@@ -43,7 +42,9 @@
                 <input id="location_name" name="location_name" type="text" minlength="5" maxlength="25" class="validate" placeholder="e.g. Newborough Beach" autofocus required>
             </div>
 
+            <!-- location Co-ordinates -->
             <div id="lat-long-inputs" class="row">
+
                 <!-- location latitude -->
                 <div class="input-field col s12 m4">
                     <div class="coord-clicker"></div>
@@ -59,7 +60,6 @@
                 </div>
             </div>
 
-            
             <!-- location description -->
             <div class="input-field">
                 <label for="location_description" class="font-title weight-600">DESCRIPTION</label>
@@ -82,7 +82,11 @@
             <div class="input-field">
                 <div class="input-info-div-wrapper">
                     <label for="image_upload" class="font-title weight-600">LOCATION IMAGE <em class="weight-300">JPG / PNG / HEIC (Max 5MB)</em></label>
-                    <!-- Popover Info Box Adapted from https://codepen.io/chocochip/pen/zYxMgRG -->
+                    
+                    <!-- 
+                        Popover Info Box
+                        Adapted from https://codepen.io/chocochip/pen/zYxMgRG
+                    -->
                     <div class="popover-wrapper">
                         <div class="question-circle swim-txt-white swim-bg-mblue">?</div>
                         <div class="popover-content swim-bg-white" id="popover-location-image">
@@ -99,8 +103,6 @@
 
             <!-- submit button -->
             <button type="submit" id="location-submit" class="swim-btn-large btn-mblue font-title weight-600 swim-btn-shadow">ADD LOCATION</button>
-
-
         </form>
     </div>
 </div>
@@ -108,10 +110,15 @@
 {% endblock %}
 
 {% block scripts %}
+    <!-- Popover JavaScript -->
     <script src="{{ url_for('static', filename='js/popover.js') }}"></script>
+    <!-- Map Location Picker JavaScript -->
     <script src="{{ url_for('static', filename='js/map-picker.js') }}"></script>
+    <!-- Image Upload Validation JavaScript -->
     <script src="{{ url_for('static', filename='js/file-validation.js') }}"></script>
+    <!-- Google Maps API - Markers -->
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <!-- Google Maps API - Map -->
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp3bbw0F5d1sjzp5iet_vlxKb0RrevMCA&callback=initMap">
     </script>

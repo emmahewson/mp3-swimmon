@@ -2,6 +2,7 @@
 {% block content %}
 
     <div class="form-page-wrapper swim-bg-lgrey">
+
         <!-- Intro Section -->
         <div class="intro-div swim-bg-hblue swim-txt-dblue div-shadow">
             <h1 class="font-title weight-600">SIGN IN</h1>
@@ -10,28 +11,34 @@
             </div>
         </div>
 
+        <!-- Form -->
         <div class="form-wrapper">
             <form class="swim-form swim-bg-grey div-shadow" method="POST" action="{{ url_for('sign_in')}}">
-                <!-- username -->
+
+                <!-- Username -->
                 <div class="input-field">
                     <label for="username" class="font-title weight-600">USERNAME <em class="weight-300"> 5-15 letters/numbers</em></label>
                     <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" autocomplete="username" class="validate" required autofocus>
                 </div>
-                <!-- password -->
+                
+                <!-- Password -->
                 <div class="input-field">
                     <label for="password" class="font-title weight-600">PASSWORD <em class="weight-300"> 5-15 letters/numbers</em></label>
                     <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" autocomplete="current-password" class="validate" required>
                 </div>
-                <!-- submit button -->
+
+                <!-- Submit Button -->
                 <div class="form-button-row">
                     <button type="submit" class="swim-btn-large btn-hblue font-title weight-600 swim-btn-shadow">SIGN IN</button>
                 </div>
-        </form>
+            </form>
         </div>
         
+        <!-- Join Link -->
         <div class="below-form-text-div">
             <p class="center-align font-body weight-700"><a href="{{ url_for('join')}}" class="link-text">Not a member yet? Join here!</a></p>
         </div>
+        
     </div>
 
 {% endblock %}

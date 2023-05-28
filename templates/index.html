@@ -9,17 +9,21 @@
         </div>
     </div>
 
-    <!-- What is Swimmon Info - content varies based on whether user is logged in -->
+    <!-- What is Swimmon Section -->
     <div class="intro-div swim-bg-white swim-txt-dblue home-text-div">
         <h1 class="font-title weight-400">WHAT IS <span class="weight-600">SWIM</span><span class="weight-300">MÔN?</span></h1>
         <p class="font-body weight-500">We are a community of wild swimmers based on the Isle of Anglesey / Ynys Môn. We recommended locations for safe and fun outdoor swimming with all the information you need for a perfect dip. Our members can host events at any of these locations or search and join another member’s event.</p>
         <p class="font-body weight-600">Want to get out in the water with like-minded people on Anglesey?</p>
 
         {% if session.user %}
+            <!-- Events Button -->
             <a href="{{ url_for('events')}}" class="swim-btn-large btn-hpink font-title weight-600 swim-btn-shadow">SEE EVENTS</a>
+            <!-- Add Event Link -->
             <p class="font-body weight-600"><a href="{{ url_for('add_event')}}" class="link-text">Or add your own event!</a></p>
         {% else %}
+            <!-- Join Button -->
             <a href="{{ url_for('join')}}" class="swim-btn-large btn-hblue font-title weight-600 swim-btn-shadow">JOIN</a>
+            <!-- Sign In Link -->
             <p class="font-body weight-600"><a href="{{ url_for('sign_in')}}" class="link-text">Already part of the community? Log in here!</a></p>
         {% endif %}
     </div>
@@ -31,18 +35,19 @@
         <p class="font-body weight-600">Click on a location to find out more</p>
     </div>
 
-    <!-- Google Maps -->
+    <!-- Map -->
     <div class="swim-bg-mblue" id="home-map-div">
         <div id="map-home"></div>
     </div>
 
-
 {% endblock %}
 
 {% block scripts %}
+    <!-- Home Page Map JavaScript -->
     <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+    <!-- Google Maps API - Markers -->
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
-
+    <!-- Google Maps API - Map -->
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp3bbw0F5d1sjzp5iet_vlxKb0RrevMCA&callback=initMap">
     </script>

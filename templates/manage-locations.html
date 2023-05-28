@@ -8,12 +8,14 @@
         <a href="{{ url_for('add_location')}}" class="swim-btn-large btn-mblue font-title weight-600 swim-btn-shadow">ADD LOCATION</a>
     </div>
 
-    <!-- Search Bar -->
     <div class="events-wrapper swim-bg-lgrey">
 
-        <!-- Location Cards -->
+        <!-- Location Cards Container -->
         <div class="locations-div">
+
             {% for location in locations %}
+
+                <!-- Location Card -->
                 <div class="location-card">
                     <div class="location-card-clickable swim-bg-white swim-txt-dblue">
                         <a href="{{ url_for('location', location_id=location._id) }}"><span class="card-link"></span></a>
@@ -24,9 +26,12 @@
                             <h2 class="font-title center-align weight-600 uppercase">{{ location.name }}</h2>
                         </div>
                     </div>
-                    <!-- CRUD control buttons -->
+                    
+                    <!-- Edit/Delete Location buttons -->
                     <div class="card-edit-div swim-bg-dblue">
+                        <!-- Edit Location Button -->
                         <a href="{{ url_for('edit_location', location_id=location._id) }}" class="swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow">EDIT</a>
+                        <!-- Delete Location Modal Trigger -->
                         <button data-target="{{ location._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow modal-trigger">DELETE</button>
                     </div>
                 </div>
@@ -39,14 +44,18 @@
                             <p class="font-title">THIS ACTION CAN'T BE UNDONE</p>
                         </div>
                         <div class="modal-footer swim-bg-lgrey">
+                            <!-- Cancel Button -->
                             <a href="#!" class="modal-close swim-btn-small btn-edit font-title swim-txt-white weight-400 swim-btn-shadow" data-target="{{ location._id }}">CANCEL</a>
+                            <!-- Delete Location Button -->
                             <a href="{{ url_for('delete_location', location_id=location._id) }}" data-target="{{ location._id }}" class="swim-btn-small btn-delete font-title swim-txt-white weight-400 swim-btn-shadow">DELETE</a>
                         </div>
                     </div>
                 </div> 
+
             {% endfor %}
         </div>
         
+        <!-- Back to Top Button -->
         <div class="btt-btn-div">
             <button class="swim-btn-flexi btn-hpink font-title weight-500 swim-btn-shadow center-align" id="btt-btn">BACK TO TOP</button>
         </div>
@@ -58,5 +67,6 @@
 {% endblock %}
 
 {% block scripts %}
+    <!-- Back To Top Button JavaScript -->
     <script src="{{ url_for('static', filename='js/scroll-top.js') }}"></script>
 {% endblock %}

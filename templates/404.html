@@ -1,18 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <!-- 404 Page Contents -->
     <div class="container swim-txt-dblue" id="error-page-contents">
+
+        <!-- Error Number -->
         <div class="row center-align">
             <h1 class="font-title weight-600">404!</h1>
         </div>
+
+        <!-- Image -->
         <div class="row center-align">
             <img src="{{ url_for('static', filename='images/404-island.png') }}" alt="Cartoon of a man on a desert island">
         </div>
+
+        <!-- Message & Link Button -->
         <div class="row center-align font-body weight-700">
             <p class="font-body weight-700">You've strayed too far from the coast and arrived at a page that doesn't exist!</p>
             <a href="{{ url_for('home')}}" class="swim-btn-small btn-hpink font-title weight-500 swim-btn-shadow center-align">GO HOME</a>
         </div>
     </div>
-
 
 {% endblock %}

@@ -2,6 +2,7 @@
 {% block content %}
 
 <div class="form-page-wrapper swim-bg-lgrey">
+
     <!-- Intro Section -->
     <div class="intro-div swim-bg-hpink swim-txt-white div-shadow">
         <h1 class="font-title weight-600">ADD EVENT</h1>
@@ -10,6 +11,7 @@
         </div>
     </div>
 
+    <!-- Form -->
     <div class="form-wrapper">
         <form class="swim-form swim-bg-grey div-shadow" method="POST" action="{{ url_for('add_event') }}">
 
@@ -29,7 +31,11 @@
                             <option value="{{location.name|upper}}">{{location.name|upper}}</option>
                         {% endfor %}
                     </select>
-                    <!-- Popover Info Box Adapted from https://codepen.io/chocochip/pen/zYxMgRG -->
+
+                    <!-- 
+                        Popover Info Box
+                        Adapted from https://codepen.io/chocochip/pen/zYxMgRG
+                    -->
                     <div class="popover-wrapper">
                         <div class="question-circle swim-txt-white swim-bg-mblue">?</div>
                         <div class="popover-content swim-bg-white">
@@ -71,7 +77,11 @@
                             <option value="{{who.name|upper}}">{{who.name|upper}}</option>
                         {% endfor %}
                     </select>
-                    <!-- Popover Info Box Adapted from https://codepen.io/chocochip/pen/zYxMgRG -->
+
+                    <!-- 
+                        Popover Info Box
+                        Adapted from https://codepen.io/chocochip/pen/zYxMgRG
+                    -->
                     <div class="popover-wrapper">
                         <div class="question-circle swim-txt-white swim-bg-mblue">?</div>
                         <div class="popover-content swim-bg-white">
@@ -94,7 +104,11 @@
                             <option value="{{challenge.name|upper}}">{{challenge.name|upper}}</option>
                         {% endfor %}
                     </select>
-                    <!-- Popover Info Box Adapted from https://codepen.io/chocochip/pen/zYxMgRG -->
+
+                    <!-- 
+                        Popover Info Box
+                        Adapted from https://codepen.io/chocochip/pen/zYxMgRG
+                    -->
                     <div class="popover-wrapper">
                         <div class="question-circle swim-txt-white swim-bg-mblue">?</div>
                         <div class="popover-content swim-bg-white">
@@ -123,6 +137,8 @@
 {% endblock %}
 
 {% block scripts %}
+    <!-- Event-Form JavaScript -->
     <script src="{{ url_for('static', filename='js/event-form.js') }}"></script>
+    <!-- Popover JavaScript -->
     <script src="{{ url_for('static', filename='js/popover.js') }}"></script>
 {% endblock %}

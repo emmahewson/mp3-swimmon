@@ -1,141 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Font Awesome Icons CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-      type="text/css"
-    >
-    <!-- Materialize CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css')}}" type="text/css">
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css">
-    <!-- Favicon Files -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../static/images/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon_io/favicon-16x16.png">
+        <!-- Font Awesome Icons CSS -->
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+        type="text/css"
+        >
+        <!-- Materialize CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css')}}" type="text/css">
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css">
+        <!-- Favicon Files -->
+        <link rel="apple-touch-icon" sizes="180x180" href="../static/images/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon_io/favicon-16x16.png">
 
-    <title>SWIMMÔN</title>
-  </head>
+        <title>SWIMMÔN</title>
+    </head>
 
-  <body>
-    <header class="font-title">
-      <!-- Dropdown Structure -->
-      <ul id="dropdown1" class="dropdown-content">
-        {% if session.user %}
-            <li><a href="{{ url_for('my_profile', username=session['user']) }}">PROFILE</a></li>
-            <li><a href="{{ url_for('sign_out')}}">SIGN OUT</a></li>
-        {% else %}
-            <li><a href="{{ url_for('join')}}">JOIN</a></li>
-            <li><a href="{{ url_for('sign_in')}}">SIGN IN</a></li>
-        {% endif %}
-      </ul>
-      <!-- main nav-bar -->
-      <div class="navbar-fixed">
-        <nav class="swim-bg-pblue">
-          <div class="nav-wrapper valign-center">
-            <a href="{{ url_for('home')}}" class="brand-logo-swim"><img src="{{ url_for('static', filename='images/sm-logo.png') }}" alt="SWIMMÔN Logo"></a>
-            <a href="#" aria-label="Mobile Nav Trigger" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="{{ url_for('home')}}">HOME</a></li>
-                {% if session.user %}
-                    <li><a href="{{ url_for('events')}}">EVENTS</a></li>
-                    <li><a href="{{ url_for('add_event')}}">ADD EVENT</a></li>
-                    {% if session.user|lower == "admin"|lower %}
-                        <li><a href="{{ url_for('manage_locations')}}">MANAGE LOCATIONS</a></li>
-                    {% endif %}
-                {% endif %}
-              <!-- Dropdown Trigger -->
-              <li>
-                <a href="#" class="dropdown-trigger" data-target="dropdown1">ACCOUNT<i class="fa-solid fa-caret-down right"></i></a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+    <body>
 
-    <div>
-        <!-- Flash messages -->
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages%}
-                    <div class="flashes swim-bg-fun">
-                        <h1 class="center-align font-title weight-500 uppercase">{{ message }}</h1>
-                    </div>
-                {% endfor %}
+        <!-- Nav -->
+        <header class="font-title">
+
+        <!-- Nav Dropdown (see below)-->
+        <ul id="dropdown1" class="dropdown-content">
+            {% if session.user %}
+                <li><a href="{{ url_for('my_profile', username=session['user']) }}">PROFILE</a></li>
+                <li><a href="{{ url_for('sign_out')}}">SIGN OUT</a></li>
+            {% else %}
+                <li><a href="{{ url_for('join')}}">JOIN</a></li>
+                <li><a href="{{ url_for('sign_in')}}">SIGN IN</a></li>
             {% endif %}
-        {% endwith %}
-    </div>
+        </ul>
 
-      <!-- mobile nav-bar -->
-      <ul class="sidenav right font-title" id="mobile-demo">
-        <li><a href="{{ url_for('home')}}">HOME</a></li>
-        {% if session.user %}
-            <li><a href="{{ url_for('events')}}">EVENTS</a></li>
-            <li><a href="{{ url_for('add_event')}}">ADD EVENT</a></li>
-            {% if session.user|lower == "admin"|lower %}
-                <li><a href="{{ url_for('manage_locations')}}">MANAGE LOCATIONS</a></li>
-            {% endif %}
-            <li><a href="{{ url_for('my_profile', username=session['user']) }}">PROFILE</a></li>
-            <li><a href="{{ url_for('sign_out')}}">SIGN OUT</a></li>
-        {% else %}
-            <li><a href="{{ url_for('join')}}">JOIN</a></li>
-            <li><a href="{{ url_for('sign_in')}}">SIGN IN</a></li>
-        {% endif %}
-      </ul>
-    </header>
-
-    <!-- Main Page Content -->
-    <main>{% block content%} {% endblock %}</main>
-
-    <!-- Footer -->
-    <footer class="page-footer font-body swim-bg-dblue swim-txt-white">
-        <div class="row" id="footer-contact">
-            <p class="weight-500"><a href="mailto:test@swimmon.test" class="swim-txt-white">Got a question? Email us!</a></p>
-        </div>
-        <div class="row">
-            <div class="footer-div" id="copyright-div">
-                <div class="" id="social-links">
-                    <a href="https://www.linkedin.com/in/emmajmhewson/" target="_blank">
-                        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-                        <span class="sr-only">LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/emmahewson" target="_blank">
-                        <i class="fa-brands fa-github" aria-hidden="true"></i>
-                        <span class="sr-only">GitHub</span>
-                    </a>
+        <!-- main nav-bar -->
+        <div class="navbar-fixed">
+            <nav class="swim-bg-pblue">
+                <div class="nav-wrapper valign-center">
+                    <a href="{{ url_for('home')}}" class="brand-logo-swim"><img src="{{ url_for('static', filename='images/sm-logo.png') }}" alt="SWIMMÔN Logo"></a>
+                    <a href="#" aria-label="Mobile Nav Trigger" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="{{ url_for('home')}}">HOME</a></li>
+                        {% if session.user %}
+                            <li><a href="{{ url_for('events')}}">EVENTS</a></li>
+                            <li><a href="{{ url_for('add_event')}}">ADD EVENT</a></li>
+                            {% if session.user|lower == "admin"|lower %}
+                                <li><a href="{{ url_for('manage_locations')}}">MANAGE LOCATIONS</a></li>
+                            {% endif %}
+                        {% endif %}
+                        
+                        <!-- Dropdown Trigger -->
+                        <li>
+                            <a href="#" class="dropdown-trigger" data-target="dropdown1">ACCOUNT<i class="fa-solid fa-caret-down right"></i></a>
+                        </li>
+                    </ul>
                 </div>
-                <p class="weight-500">© EMMA HEWSON <span id="copyright-year"></span></p>
-            </div>
-            <div class="footer-div" id="disclaimer-div">
-            <p class="weight-900">DISCLAIMER</p>
-            <p class="weight-500">This website was created for educational purposes only
-                SWIMMÔN is not a real organisation, do not use this website as a source for wild swimming information.</p>
-            </div>
+            </nav>
         </div>
-    </footer>
+
+        <!-- Flash messages -->
+        <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages%}
+                        <div class="flashes swim-bg-fun">
+                            <h1 class="center-align font-title weight-500 uppercase">{{ message }}</h1>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <!-- mobile nav-bar -->
+        <ul class="sidenav right font-title" id="mobile-demo">
+            <li><a href="{{ url_for('home')}}">HOME</a></li>
+            {% if session.user %}
+                <li><a href="{{ url_for('events')}}">EVENTS</a></li>
+                <li><a href="{{ url_for('add_event')}}">ADD EVENT</a></li>
+                {% if session.user|lower == "admin"|lower %}
+                    <li><a href="{{ url_for('manage_locations')}}">MANAGE LOCATIONS</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('my_profile', username=session['user']) }}">PROFILE</a></li>
+                <li><a href="{{ url_for('sign_out')}}">SIGN OUT</a></li>
+            {% else %}
+                <li><a href="{{ url_for('join')}}">JOIN</a></li>
+                <li><a href="{{ url_for('sign_in')}}">SIGN IN</a></li>
+            {% endif %}
+        </ul>
+        </header>
+
+        <!-- Main Page Content -->
+        <main>{% block content%} {% endblock %}</main>
+
+        <!-- Footer -->
+        <footer class="page-footer font-body swim-bg-dblue swim-txt-white">
+            <div class="row" id="footer-contact">
+                <p class="weight-500"><a href="mailto:test@swimmon.test" class="swim-txt-white">Got a question? Email us!</a></p>
+            </div>
+            <div class="row">
+                <div class="footer-div" id="copyright-div">
+                    <div class="" id="social-links">
+                        <a href="https://www.linkedin.com/in/emmajmhewson/" target="_blank">
+                            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                            <span class="sr-only">LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/emmahewson" target="_blank">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i>
+                            <span class="sr-only">GitHub</span>
+                        </a>
+                    </div>
+                    <p class="weight-500">© EMMA HEWSON <span id="copyright-year"></span></p>
+                </div>
+                <div class="footer-div" id="disclaimer-div">
+                <p class="weight-900">DISCLAIMER</p>
+                <p class="weight-500">This website was created for educational purposes only
+                    SWIMMÔN is not a real organisation, do not use this website as a source for wild swimming information.</p>
+                </div>
+            </div>
+        </footer>
 
 
-    <!-- JQuery -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.4.min.js"
-      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-      crossorigin="anonymous"
-    ></script>
-    <!-- Materialize JavaScript-->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
-    <!-- Main JavaScript File -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <!-- Page Specific JavaScript -->
-    {% block scripts %} {% endblock %}
+        <!-- JQuery -->
+        <script
+        src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+        crossorigin="anonymous"
+        ></script>
+        <!-- Materialize JavaScript-->
+        <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+        <!-- Main JavaScript File -->
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        
+        <!-- Page Specific JavaScript -->
+        {% block scripts %} {% endblock %}
 
-  </body>
+    </body>
 </html>
