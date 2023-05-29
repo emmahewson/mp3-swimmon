@@ -25,7 +25,7 @@
             <div class="input-field">
                 <label for="event_location" class="font-title weight-600">LOCATION</label>
                 <div class="input-info-div-wrapper">
-                    <select id="event_location" name="event_location" required>
+                    <select id="event_location" name="event_location" class="browser-default" required>
                         <option value="" disabled selected>CHOOSE A LOCATION</option>
                         {% for location in locations %}
                             <option value="{{location.name|upper}}">{{location.name|upper}}</option>
