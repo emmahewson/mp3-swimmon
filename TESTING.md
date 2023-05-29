@@ -13,14 +13,33 @@ The live Website can be found [here](https://swim-mon.herokuapp.com/).
 
 ## Table of Contents
 
+- [Introduction](#introduction)
+- [Validation](#validation)
+    - [HTML Validation](#html-validation)
+    - [CSS Validation](#css-validation)
+    - [JavaScript Linting](#javascript-linting)
+    - [Python Linting](#python-linting)
+    - [Accessibility Testing](#accessibility)
+    - [Performance Testing](#performance)
+- [Feature Testing](#feature-testing)
+    - [Responsiveness/Device Testing](#responsiveness--device-testing)
+    - [Browser Compatibility](#browser-compatibility)
+    - [Feature Testing Results](#feature-testing-results)
+- [User Stories Testing]()
+
+
 
 ---
 
-- - -
 
 ## Introduction
 
-In my testing I developed a comprehensive testing plan to make sure that the site was functioning correctly. I used manual testing and automated validation to test the site. The site was tested throughout the process, both in the development and deployed version of the sites. All the test results detailed below are based on the [deployed site](https://emmahewson.github.io/mp2_travel_quiz/). 
+In my testing I developed a comprehensive testing plan to make sure that the site was functioning correctly. I used manual testing and automated validation to test the site. The site was tested throughout the process, both in the development and deployed version of the sites. All the test results detailed below are based on the [deployed site](https://emmahewson.github.io/mp2_travel_quiz/).
+
+All information about any bugs encountered that were fixed or remain in the site can be found in the [README](README.md).
+
+- - -
+
 
 ## Validation
 
@@ -90,7 +109,7 @@ I ran the CSS code through the [W3C CSS Validator](https://jigsaw.w3.org/css-val
 
 - - -
 
-### JavaScript Validation
+### JavaScript Linting
 
 I ran the JavaScript code through [JSHint](https://jshint.com/). There were some minor errors & warnings which are detailed in the notes below. Based on the research done in to these errors, and the fact that they are mostly due to errors on the part of the validator or external code over which I have no control I have accepted them and marked the tests as passed for the purposes and scope of this project. For full results see the dropdowns below.
 
@@ -124,7 +143,7 @@ I ran the JavaScript code through [JSHint](https://jshint.com/). There were some
 
 - - -
 
-### Python Validation
+### Python Linting
 
 I ran the app.py code through [https://extendsclass.com/python-tester.html](https://extendsclass.com/python-tester.html) to check the Syntax. Code Anywhere also has a built in Python Linter which was used throughout the development process. All code passed the validation tests. For full results see the dropdowns below.
 
@@ -247,3 +266,31 @@ I ran the site through Google Chrome Dev Tools' Lighthouse to check on its perfo
 
 
 </details>
+
+
+- - -
+
+## Feature Testing
+
+The whole site and all its features were tested thoroughly throughout the development process and at the end of development. This testing covered content, style, interactive feature functionality as well as making sure all backend processes worked as expected including testing of all CRUD functionality and routing.
+
+### **Responsiveness / Device Testing**
+
+The site was tested on the following devices
+* Apple Macbook Pro 16inch
+* LG Ultrafine Display 27inch External Monitor
+* Apple iMac 5K 27-inch
+* Apple iPhone SE 2020
+* Apple iPhone SE 2022
+* Google Chrome Developer Tools - simulator for all different device options as well as using the adjustable sizing options
+
+### **Browser Compatibility**
+
+The site was tested on the following browsers.
+* Google Chrome
+* Mozilla Firefox
+* Apple Safari
+
+__ __
+
+### **Feature Testing Results**

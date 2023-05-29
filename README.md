@@ -407,6 +407,10 @@ Database connection details are set up in an [env.py](https://pypi.org/project/e
 security reasons this is not uploaded to GitHub so that database and connection details are not visible to
 users. In production these are stored in Heroku.
 
+The API key for Google Maps is stored in the HTML code but I have restricted the key usage to only the development and the deployed versions of this site and if copied and used elsewhere it will not work.
+
+__Site Security__
+
 Parts of the site will require user log in to access and the site will implement both front end and back end security to stop users accessing parts of the site they do not have permission to visit. Full details of security, form validation & back end functionality are available below in [Features](#features) but as a general overview these measures will mean the following:
 
 - Location information & pages are visible to everyone
@@ -1656,6 +1660,27 @@ I would like to expand the site in the future with the following features:
 
 ## Testing
 
+The whole site has been thoroughly tested as follows:
+
+- Automated Validation / Testing
+    - HTML Validation: [W3C Markup Validation](https://validator.w3.org/nu/)
+    - CSS Validation: [W3C CSS Validation](https://jigsaw.w3.org/css-validator/)
+    - JavaScript Linting: [JS Hint](https://jshint.com/)
+    - Python Linting: [Python Tester](https://extendsclass.com/python-tester.html) & Code Anywhere's inbuilt Linting
+    - Accessibility: [Wave WebAIM](https://wave.webaim.org/)
+    - Performance: [Google Chrome's Dev Tools](https://developer.chrome.com/docs/devtools/)
+- Feature Testing
+    - Full feature testing on all pages
+    - Testing of CRUD functionality
+    - Checking consistency between database & app content
+    - Site tested across different browsers
+    - Site tested across different devices
+- User Stories Testing
+    - Full app testing for each user story
+
+The full test results can be found in the [TESTING document](TESTING.md)
+
+
 ### Bugs & Fixes
 
 During development and testing I encountered the following bugs:
@@ -1664,7 +1689,7 @@ During development and testing I encountered the following bugs:
 
 #### **1: Dropdown Search Bar `<a>` link not displaying properly**
 
-The 'reset all' button at the bottom of the events search-bar (within the dropdown menu) was not displaying properly and getting cut off by the div padding. This appeared to be caused by the way the dropdown menu worked, not recognising the `<a>`'s full height. I fixed this by wrapping the `<a>` inside a `<p>` element, which solved the problem.
+The 'reset all' button at the bottom of the events search-bar (within the dropdown menu) was not displaying properly and getting cut off by the div padding. This appeared to be caused by the way the dropdown menu worked, not recognising the `<a>`'s full height. I fixed this by changing the `<a>` to a `<p>` element and playing with the positioning slightly by setting it to relative and moving it up away from the bottom of the div, which solved the problem.
 
 <details><summary>Screenshots</summary>
 
