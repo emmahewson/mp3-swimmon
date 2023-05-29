@@ -1,10 +1,6 @@
 /* Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Lato:wght@300;400;500;600;700;800;900&display=swap');
 
-html {
-    scroll-behavior: smooth;
-  }
-
 /* General Styles */
 /* Colours */
 :root {
@@ -39,6 +35,7 @@ html {
     --warning-red: #a8001f;
 }
 
+/* Background colour classes */
 .swim-bg-white {
     background-color: var(--white);
 }
@@ -79,6 +76,8 @@ html {
     background-color: var(--high-pink-hov);
 }
 
+/* Background colour classes - Challenge Levels */
+
 .swim-bg-fun {
     background-color: var(--chal-low);
 }
@@ -91,6 +90,8 @@ html {
     background-color: var(--chal-high);
 }
 
+/* Background colour classes - Who For */
+
 .swim-bg-women-only {
     background-color: var(--who-women);
 }
@@ -102,6 +103,8 @@ html {
 .swim-bg-all-welcome {
     background-color: var(--who-all);
 }
+
+/* Text colour classes */
 
 .swim-txt-white {
     color: var(--white);
@@ -124,7 +127,7 @@ html {
 }
 
 
-/* Text */
+/* Fonts & Text Styling */
 
 .font-title {
     font-family: "Jost", sans-serif
@@ -176,8 +179,7 @@ p {
 }
 
 
-
-/* Whole Page Layout */
+/* Whole Page Layout & Repeating Styles */
 
 *,
 .popover-content *,
@@ -201,8 +203,25 @@ main, footer {
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.5);
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
-/* base.html */
+
+/* All Pages */
+/* Flashes */
+
+.flashes {
+    padding: 15px;
+    position: relative;
+    top: 15px;
+}
+
+.flashes h1 {
+    margin: 0;
+    font-size: 16px;
+}
+
 /* Nav Bar */
 
 nav {
@@ -267,21 +286,6 @@ i.right {
 .dropdown-content li > a {
     font-size: 1rem;
 }
-
-
-/* Flashes */
-
-.flashes {
-    padding: 15px;
-    position: relative;
-    top: 15px;
-}
-
-.flashes h1 {
-    margin: 0;
-    font-size: 16px;
-}
-
 
 /* Footer */
 
@@ -348,7 +352,9 @@ footer p:first-child {
 }
 
 
+/* Repeating Elements */
 /* Buttons */
+
 .swim-btn-large,
 .swim-btn-small,
 .swim-btn-flexi {
@@ -475,8 +481,7 @@ p.btn-close {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
-
-/* Intro Div - Multiple Pages */
+/* Intro Divs */
 
 .intro-div {
     text-align: center;
@@ -496,6 +501,33 @@ p.btn-close {
 
 .intro-div-p-group {
     margin-top: 10px;
+}
+
+/* Modal - delete event/location confirmation */
+
+.modal {
+    margin-top: 5%;
+}
+
+.modal-contents {
+    padding: 20px;
+}
+
+.modal-contents p,
+.modal-contents h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.modal .modal-footer {
+    background-color: var(--light-grey);
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.modal .modal-footer> :first-child {
+    margin-right: 30px;
 }
 
 
@@ -554,7 +586,7 @@ p.btn-close {
     width: 100%;
 }
 
-/* Google Map Info Window Styling */
+/* Home Page - Google Map Info Window Styling */
 
 .gm-style-iw * {
     margin: 0 !important;
@@ -617,7 +649,7 @@ p.btn-close {
     width: 100%;
 }
 
-/* Google Map Info Window Close Button */
+/* IW Close Button */
 .gm-ui-hover-effect {
     width: 30px !important;
     height: 30px !important;
@@ -635,7 +667,7 @@ p.btn-close {
     background-color: var(--white);
 }
 
-/* Google Map Info Window Hover Effect */
+/* IW Hover Effect */
 .iw-img-div img,
 .iw-content,
 .iw-title .iw-location-name-div h2 a {
@@ -685,6 +717,16 @@ p.btn-close {
     padding: 50px;
     border-radius: 5px;
 }
+
+.form-button-row {
+    margin-top: 50px;
+}
+
+.below-form-text-div {
+    margin-top: 50px;
+}
+
+/* Form Inputs */
 
 .input-field {
     margin: 0;
@@ -740,6 +782,8 @@ textarea {
 #location_facilities {
     height: 80px;
 }
+
+/* Input Validation Styling (Replaces Materialize Styling) */
 
 :focus-visible {
     outline: none;
@@ -797,6 +841,8 @@ textarea::placeholder {
     font-weight: 400;
 }
 
+/* Materialize Datepicker & Timepicker (Replaces Materialize Styling) */
+
 .datepicker-date-display,
 .timepicker-digital-display {
     background-color: var(--mid-blue);
@@ -816,14 +862,6 @@ textarea::placeholder {
     font-weight: 600;
 }
 
-.form-button-row {
-    margin-top: 50px;
-}
-
-.below-form-text-div {
-    margin-top: 50px;
-}
-
 .timepicker-canvas line {
     stroke: var(--high-pink);
 }
@@ -841,6 +879,8 @@ textarea::placeholder {
     text-align: right;
     margin-top: 5px;
 }
+
+/* File Upload Input */
 
 input[type=file] {
     padding: 5px 5px 5px 0;
@@ -869,6 +909,8 @@ input::file-selector-button:hover {
     background-color: var(--pale-blue);
 }
 
+/* Additional Front End Validation - time/datepicker & file input */
+
 #file-message {
     margin-right: 10px;
 }
@@ -881,14 +923,7 @@ input::file-selector-button:hover {
     box-shadow: none;
 }
 
-.coord-clicker {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    cursor: pointer;
-}
-
-/* Info buttons on form - trigger popovers */
+/* Info buttons on form - popover triggers */
 
 .input-info-div-wrapper {
     display: flex;
@@ -977,13 +1012,19 @@ input::file-selector-button:hover {
 
 /* Location Picker (add location form) */
 
+.coord-clicker {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+}
+
 #lat-long-inputs {
     margin-bottom: 0;
 }
 
 #lat-long-inputs .input-field {
     padding: 0;
-
 }
 
 #lp-modal {
@@ -1077,7 +1118,7 @@ input::file-selector-button:hover {
 }
 
 
-/* Events */
+/* Events / Manage Locations */
 /* Events Search Bar */
 
 .search-wrapper {
@@ -1110,7 +1151,6 @@ input::file-selector-button:hover {
     padding-bottom: 20px;
     padding-right: 50px;
 }
-
 
 .search-filter-btn {
     margin: 10px 10px 10px 0;
@@ -1155,8 +1195,7 @@ input::file-selector-button:hover {
     transition: max-height 0.2s ease-out;
 }
 
-
-/* Events Cards (events) & Location Cards (manage locations)*/
+/* Event Cards (events/profile/location) & Location Cards (manage locations)*/
 
 .events-div,
 .locations-div {
@@ -1296,8 +1335,7 @@ input::file-selector-button:hover {
     margin-right: 30px;
 }
 
-
-/* Events Cards Hover Effect */
+/* Card Hover Effect */
 
 .event-card-clickable,
 .event-image img,
@@ -1323,8 +1361,7 @@ input::file-selector-button:hover {
     background-color: #dae0e2;
 }
 
-
-/* Events - Back to Top Button */
+/* Back to Top Button Container */
 
 .btt-btn-div {
     display: flex;
@@ -1458,24 +1495,6 @@ input::file-selector-button:hover {
     text-decoration: none;
 }
 
-.edit-div {
-    padding: 20px 15px 30px 15px;
-}
-
-.edit-buttons {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-}
-
-.edit-buttons> :first-child {
-    margin-right: 40px;
-}
-
-.edit-div p {
-    font-size: 20px;
-}
-
 
 /* Location Page */
 
@@ -1513,10 +1532,6 @@ input::file-selector-button:hover {
     padding: 50px 25px;
 }
 
-.location-info-div .col {
-    padding: 0 15px;
-}
-
 .location-park-fac p:first-child {
     margin-bottom: 10px;
 }
@@ -1533,35 +1548,28 @@ input::file-selector-button:hover {
 }
 
 
-/* Modal - delete confirm */
+/* Edit / Delete Button Containers - Event/Location pages */
 
-.modal {
-    margin-top: 5%;
+.edit-div {
+    padding: 20px 15px 30px 15px;
 }
 
-.modal-contents {
-    padding: 20px;
-}
-
-.modal-contents p,
-.modal-contents h2 {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.modal .modal-footer {
-    background-color: var(--light-grey);
-    height: fit-content;
+.edit-buttons {
+    margin-top: 10px;
     display: flex;
     justify-content: center;
 }
 
-.modal .modal-footer> :first-child {
-    margin-right: 30px;
+.edit-buttons> :first-child {
+    margin-right: 40px;
+}
+
+.edit-div p {
+    font-size: 20px;
 }
 
 
-/* 404, 413 & 500 Pages */
+/* Error Pages */
 
 #error-page-contents {
     margin: 50px auto;
@@ -1597,8 +1605,11 @@ input::file-selector-button:hover {
 
 
 /* Media Queries */
+/* Materialize 'medium' devices */
 
 @media only screen and (max-width: 992px) {
+
+    /* General / All Pages */
 
     .nav-wrapper {
         padding: 0px 25px;
@@ -1618,7 +1629,13 @@ input::file-selector-button:hover {
         text-align: center;
         margin-bottom: 20px;
     }
+
+    .intro-div {
+        padding: 50px;
+    }
     
+    /* Home */
+
     #home-hero-div {
         height: 450px;
         background-image: url(../images/home-hero-md.jpg);
@@ -1633,15 +1650,12 @@ input::file-selector-button:hover {
         padding: 0 20px 5px 20px;
     }
 
-
     .home-text-div p:first-of-type,
     .home-text-div .swim-btn-large {
         margin-bottom: 20px;
     }
 
-    .intro-div {
-        padding: 50px;
-    }
+    /* Event Page */
 
     .event-page-text {
         padding: 20px 50px 50px 50px;
@@ -1669,22 +1683,22 @@ input::file-selector-button:hover {
     }
 
     .location-info-div .col {
-        padding: 0;
+        float: none;
     }
 
     .location-description,
     .location-park-fac p:first-child {
         margin-bottom: 15px;
     }
-
 }
 
-    
 
+/* Materialize 'small' devices */
 
 @media only screen and (max-width: 600px) {
 
     /* General / All Pages */
+
     main, footer {
         top: 0;
     }
@@ -1732,8 +1746,8 @@ input::file-selector-button:hover {
         font-size: 32px;
     }
 
-
     /* Home */
+
     #home-hero-div {
         height: 250px;
         background-image: url(../images/home-hero-sm.jpg);
@@ -1754,8 +1768,6 @@ input::file-selector-button:hover {
         font-size: 12px;
     }
 
-    
-    /* Home - map */
     #home-map-div {
         padding-bottom: 50px;
     }
@@ -1765,6 +1777,7 @@ input::file-selector-button:hover {
     }
 
     /* Google Map Info Window Styling */
+
     .gm-style .gm-style-iw-c {
         width: 300px !important;
 
@@ -1786,8 +1799,8 @@ input::file-selector-button:hover {
         max-height: 150px;
     }
 
-
     /* Location Page */
+
     .location-name-div {
         padding: 30px 25px;
     }
@@ -1808,9 +1821,8 @@ input::file-selector-button:hover {
         height: 300px;
     }
 
-
-
     /* Events Page */
+
     .events-div,
     .locations-div {
         padding: 30px 15px
@@ -1820,8 +1832,8 @@ input::file-selector-button:hover {
         padding-right: 0px;
     }
 
-
     /* Event Info Page */
+
     .event-page-text h2 {
         font-size: 24px;
     }
@@ -1856,8 +1868,8 @@ input::file-selector-button:hover {
         width: 100%;
     }
 
-
     /* Forms */
+
     .form-page-wrapper {
         padding-bottom: 60px;
     }
@@ -1875,7 +1887,8 @@ input::file-selector-button:hover {
         margin-top: 30px;
     }
 
-    /* Location Picker */
+    /* Form - Location Picker */
+
     #location-picker-box {
         top: 15%;
         width: 90%;
@@ -1900,9 +1913,7 @@ input::file-selector-button:hover {
         height: 350px;
     }
 
-
-
-    /* Modals / Info Boxes */
+    /* Popovers */
 
     .popover-content {
         margin: 0 3% 0 3%;
@@ -1913,15 +1924,15 @@ input::file-selector-button:hover {
         width: 160px;
     }
 
-
-   /* 400 & 500 pages */
+   /* Error pages */
     
     #error-page-contents h1 {
         font-size: 48px;
     }
 }
 
-/* Hover effects on search buttons - only on hover devices */
+
+/* Hover effects on search buttons (events page) restricted to hover devices */
 @media (hover: hover) {
 
     .search-filter-btn:hover {
@@ -1940,7 +1951,6 @@ input::file-selector-button:hover {
         background-color: var(--form-blue);
         color: var(--dark-blue);
     }
-
 }
 
 
@@ -1969,6 +1979,3 @@ input::file-selector-button:hover {
 .sr-only.sr-light {
     color: var(--white)
 }
-
-
-
