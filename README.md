@@ -1932,7 +1932,7 @@ When testing the site using Dev Tools' device toolbar and simulating a touchscre
 </details>
 
 
-#### **13: Accessibility - No label for dropdown menus on forms**
+#### **13: Accessibility - No label for select dropdown menus on forms**
 
 During validation in WAVE Web AIM I discovered that due to the way that Materialize creates its dropdown select inputs that the label to go with the input was no longer labelling the input, this was because Materialize uses JavaScript to build a new text input to replace the select input which doesn't have the correct ID. There was no way to solve this problem without completely rebuilding the dropdown form input and due to time restraints this wasn't possible. This is unfortunate as it reduces the accessibility of the form and I would think about building my own next time to avoid this.
 
@@ -1941,6 +1941,25 @@ During validation in WAVE Web AIM I discovered that due to the way that Material
 
 <img src="">
 *Code as rendered in dev tools - the `<select>` has the correct ID but an additional `<input>` has been created which is causing the error*
+
+
+</details>
+
+
+#### **14: Materialize Select Dropdown on iPhone**
+
+During device testing I discovered that the Materialize `<select>` input didn't work correctly on the iPhone. It would either not select the correct option or not select anything at all and trigger something else on the page. Through online research I found this was a consistent problem with Materialize on iPhone and was a known bug from IOS 13+. However Materialize had released a patch .js file that fixed the problem thankfully and I was able to add this in to the pages containing the `<select>` elements and it fixed the problem.
+
+
+<details><summary>Screengrabs</summary>
+
+<img src="">
+
+*Before*
+
+<img src="">
+
+*After*
 
 
 </details>
