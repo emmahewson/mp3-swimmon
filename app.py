@@ -181,22 +181,29 @@ def my_profile(username):
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
 
-        # stores url in session to redirect after edit event
-        session['url'] = url_for("my_profile", username=username)
+        # checks if a result was found if not aborts and routes to 404
+        if type(username) is not None:
 
-        # gets collections for use in event cards
-        # gets events, filters by current user & today onwards, sorts by date
-        events = mongo.db.events.find({
-            "created_by": username.lower(),
-            "date": {"$gte": datetime.now()}
-            }).sort("date", 1)
-        locations = list(mongo.db.locations.find())
+            # stores url in session to redirect after edit event
+            session['url'] = url_for("my_profile", username=username)
 
-        return render_template(
-            "my-profile.html",
-            username=username,
-            events=events,
-            locations=locations)
+            # gets collections for use in event cards
+            # gets events, filters by current user & today onwards
+            # sorts by date
+            events = mongo.db.events.find({
+                "created_by": username.lower(),
+                "date": {"$gte": datetime.now()}
+                }).sort("date", 1)
+            locations = list(mongo.db.locations.find())
+
+            return render_template(
+                "my-profile.html",
+                username=username,
+                events=events,
+                locations=locations)
+
+        # if no result found routes to 404 page
+        return abort(404)
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
@@ -253,11 +260,21 @@ def event(event_id):
     # stores url in session to redirect after sign in / edit
     session['url'] = url_for("event", event_id=url_id)
 
-    event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
     # checks if user is logged in
     if "user" in session:
-        locations = list(mongo.db.locations.find())
-        return render_template("event.html", event=event, locations=locations)
+
+        event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
+
+        # checks if a result was found if not aborts and routes to 404
+        if event is not None:
+            locations = list(mongo.db.locations.find())
+            return render_template(
+                "event.html", event=event,
+                locations=locations
+            )
+
+        # if no result found routes to 404 page
+        return abort(404)
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
@@ -346,65 +363,75 @@ def edit_event(event_id):
         # gets event details
         event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
 
-        # checks event was created by current user or user is admin
-        if session["user"] == event['created_by'] or session[
-          "user"] == "admin":
+        # checks if a result was found if not aborts and routes to 404
+        if event is not None:
 
-            # handles 'POST' method (form submission)
-            if request.method == "POST":
+            # checks event was created by current user or user is admin
+            if (
+                session["user"] == event['created_by'] or
+                session["user"] == "admin"
+            ):
+                # handles 'POST' method (form submission)
+                if request.method == "POST":
 
-                # sets the event location as the location's id
-                event_location = request.form.get("event_location")
-                location_id = ObjectId(mongo.db.locations.find_one(
-                    {"name": event_location.lower()})["_id"])
+                    # sets the event location as the location's id
+                    event_location = request.form.get("event_location")
+                    location_id = ObjectId(mongo.db.locations.find_one(
+                        {"name": event_location.lower()})["_id"])
 
-                # converts the date & time to UTC format (to order by date)
-                dtstring = request.form.get(
-                    "event_date") + request.form.get("event_time")
-                format_data = "%d/%m/%Y%I:%M %p"
-                event_date = datetime.strptime(dtstring, format_data)
+                    # converts the date & time to UTC format (to order by date)
+                    dtstring = request.form.get(
+                        "event_date") + request.form.get("event_time")
+                    format_data = "%d/%m/%Y%I:%M %p"
+                    event_date = datetime.strptime(dtstring, format_data)
 
-                # defines new dictionary with fields to update
-                submit = {
-                    "name": request.form.get("event_name"),
-                    "location_id": location_id,
-                    "description": request.form.get("event_description"),
-                    "who": request.form.get("event_who"),
-                    "challenge": request.form.get("event_challenge"),
-                    "date": event_date,
-                }
+                    # defines new dictionary with fields to update
+                    submit = {
+                        "name": request.form.get("event_name"),
+                        "location_id": location_id,
+                        "description": request.form.get("event_description"),
+                        "who": request.form.get("event_who"),
+                        "challenge": request.form.get("event_challenge"),
+                        "date": event_date,
+                    }
 
-                # updates event in database
-                mongo.db.events.update_one(
-                    {"_id": ObjectId(event_id)}, {"$set": submit})
+                    # updates event in database
+                    mongo.db.events.update_one(
+                        {"_id": ObjectId(event_id)}, {"$set": submit})
 
-                # Handles redirect & user message
-                flash("Event Successfully Updated")
-                # redirects user to previous page if a url is stored in session
-                # checks that stored url isn't this page (login redirect)
-                if (
-                    'url' in session and
-                    session['url'] != url_for("edit_event", event_id=url_id)
-                ):
-                    return redirect(session['url'])
-                # redirects to events if url not stored or url is this page
-                return redirect(url_for("events"))
+                    # Handles redirect & user message
+                    flash("Event Successfully Updated")
+                    # redirects user to prev. page if a url in session
+                    # checks that stored url isn't this page (login redirect)
+                    if (
+                        'url' in session and
+                        session['url'] != url_for(
+                            "edit_event",
+                            event_id=url_id
+                        )
+                    ):
+                        return redirect(session['url'])
+                    # redirects to events if url not stored or url is this page
+                    return redirect(url_for("events"))
 
-            # handles 'GET' method (page load)
-            # gets collections for use in form dropdowns
-            locations = list(mongo.db.locations.find())
-            whos = list(mongo.db.who_for.find())
-            challenges = list(mongo.db.challenge.find())
-            return render_template(
-                "edit-event.html",
-                event=event,
-                locations=locations,
-                whos=whos,
-                challenges=challenges)
+                # handles 'GET' method (page load)
+                # gets collections for use in form dropdowns
+                locations = list(mongo.db.locations.find())
+                whos = list(mongo.db.who_for.find())
+                challenges = list(mongo.db.challenge.find())
+                return render_template(
+                    "edit-event.html",
+                    event=event,
+                    locations=locations,
+                    whos=whos,
+                    challenges=challenges)
 
-        # if not user's event redirects to user profile page
-        flash("You can only edit your own events")
-        return redirect(url_for("my_profile", username=session["user"]))
+            # if not user's event redirects to user profile page
+            flash("You can only edit your own events")
+            return redirect(url_for("my_profile", username=session["user"]))
+
+        # if no result found routes to 404 page
+        return abort(404)
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
@@ -427,27 +454,34 @@ def delete_event(event_id):
         # gets event details
         event = mongo.db.events.find_one({"_id": ObjectId(event_id)})
 
-        # checks event was created by current user or user is admin
-        if session["user"] == event['created_by'] or session[
-          "user"] == "admin":
+        # checks if a result was found if not aborts and routes to 404
+        if event is not None:
 
-            # deletes the event and redirects to events
-            mongo.db.events.delete_one({"_id": ObjectId(event_id)})
-            flash("Event successfully deleted")
-            # redirects user to previous page if a url is stored in session
-            # checks that stored url isn't this page (login redirect)
+            # checks event was created by current user or user is admin
             if (
-                'url' in session and
-                session['url'] != url_for("event", event_id=event_id)
+                session["user"] == event['created_by'] or
+                session["user"] == "admin"
             ):
-                return redirect(session['url'])
-            # redirects to events if url not stored
-            # or url is for the deleted event page
-            return redirect(url_for("events"))
+                # deletes the event and redirects to events
+                mongo.db.events.delete_one({"_id": ObjectId(event_id)})
+                flash("Event successfully deleted")
+                # redirects user to previous page if a url is stored in session
+                # checks that stored url isn't this page (login redirect)
+                if (
+                    'url' in session and
+                    session['url'] != url_for("event", event_id=event_id)
+                ):
+                    return redirect(session['url'])
+                # redirects to events if url not stored
+                # or url is for the deleted event page
+                return redirect(url_for("events"))
 
-        # if not user's event redirects to user profile page
-        flash("You can only delete your own events")
-        return redirect(url_for("my_profile", username=session["user"]))
+            # if not user's event redirects to user profile page
+            flash("You can only delete your own events")
+            return redirect(url_for("my_profile", username=session["user"]))
+
+        # if no result found routes to 404 page
+        return abort(404)
 
     # redirects to sign in if user isn't logged in
     flash("You must be signed in to view that page")
@@ -499,24 +533,31 @@ def location(location_id):
     '''
 
     location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
-    # filters events by location, filters by today onwards, sorts by date
-    events = mongo.db.events.find({
-        "location_id": ObjectId(location_id),
-        "date": {"$gte": datetime.now()}
-        }).sort("date", 1)
-    locations = list(mongo.db.locations.find())
 
-    # grabs location id from url for redirect
-    url_id = request.path.split("/")[-1]
-    # stores url in session to redirect after edit location
-    session['url'] = url_for("location", location_id=url_id)
+    # checks if a result was found if not aborts and routes to 404
+    if location is not None:
 
-    return render_template(
-        "location.html",
-        events=events,
-        locations=locations,
-        location=location
-    )
+        # filters events by location, filters by today onwards, sorts by date
+        events = mongo.db.events.find({
+            "location_id": ObjectId(location_id),
+            "date": {"$gte": datetime.now()}
+            }).sort("date", 1)
+        locations = list(mongo.db.locations.find())
+
+        # grabs location id from url for redirect
+        url_id = request.path.split("/")[-1]
+        # stores url in session to redirect after edit location
+        session['url'] = url_for("location", location_id=url_id)
+
+        return render_template(
+            "location.html",
+            events=events,
+            locations=locations,
+            location=location
+        )
+
+    # if no result found routes to 404 page
+    return abort(404)
 
 
 # Adapted from https://github.com/kairosity/mp3-snapathon/tree/master
@@ -624,73 +665,87 @@ def edit_location(location_id):
             location = mongo.db.locations.find_one(
                 {"_id": ObjectId(location_id)})
 
-            # handles 'POST' method (form submission)
-            if request.method == "POST":
+            # checks if a result was found if not aborts and routes to 404
+            if location is not None:
 
-                # gets the uploaded image from the form
-                image = request.files['image_upload']
+                # handles 'POST' method (form submission)
+                if request.method == "POST":
 
-                # gets the old image url from the database
-                old_image = location["image_url"]
+                    # gets the uploaded image from the form
+                    image = request.files['image_upload']
 
-                # checks if an image has been uploaded
-                if image:
+                    # gets the old image url from the database
+                    old_image = location["image_url"]
 
-                    # checks the image is under 5MB
-                    # if not aborts & redirects to custom 413 error page
-                    check_image_size(image)
+                    # checks if an image has been uploaded
+                    if image:
 
-                    # checks if the image file type is accepted
-                    # if not aborts & redirects to custom 415 error page
-                    # Adapted from project by Karina Finegan
-                    # https://github.com/kairosity/mp3-snapathon/tree/master
-                    file_extension = os.path.splitext(image.filename)[1]
-                    if file_extension not in app.config['UPLOAD_EXTENSIONS']:
-                        abort(415)
+                        # checks the image is under 5MB
+                        # if not aborts & redirects to custom 413 error page
+                        check_image_size(image)
 
-                    # uploads image image to Cloudinary
-                    image_upload = cloudinary.uploader.upload(image)
+                        # checks if the image file type is accepted
+                        # if not aborts & redirects to custom 415 error page
+                        # Adapted from project by Karina Finegan
+                        # https://github.com/kairosity/mp3-snapathon/tree/master
+                        file_extension = os.path.splitext(image.filename)[1]
+                        if (
+                            file_extension not in app.config[
+                                'UPLOAD_EXTENSIONS']
+                        ):
+                            abort(415)
 
-                    # sets value for database to the new image's URL
-                    updated_image_url = image_upload["secure_url"]
+                        # uploads image image to Cloudinary
+                        image_upload = cloudinary.uploader.upload(image)
 
-                # if no image uploaded
-                else:
+                        # sets value for database to the new image's URL
+                        updated_image_url = image_upload["secure_url"]
 
-                    # sets value for database to the old image's URL
-                    updated_image_url = old_image
+                    # if no image uploaded
+                    else:
 
-                submit = {
-                        "name": request.form.get("location_name").lower(),
-                        "lat": request.form.get("latitude"),
-                        "long": request.form.get("longitude"),
-                        "description": request.form.get(
-                            "location_description"),
-                        "facilities": request.form.get("location_facilities"),
-                        "parking": request.form.get("location_parking"),
-                        "image_url": updated_image_url
-                    }
+                        # sets value for database to the old image's URL
+                        updated_image_url = old_image
 
-                # updates location in database
-                mongo.db.locations.update_one(
-                    {"_id": ObjectId(location_id)}, {"$set": submit})
+                    submit = {
+                            "name": request.form.get(
+                                "location_name").lower(),
+                            "lat": request.form.get(
+                                "latitude"),
+                            "long": request.form.get(
+                                "longitude"),
+                            "description": request.form.get(
+                                "location_description"),
+                            "facilities": request.form.get(
+                                "location_facilities"),
+                            "parking": request.form.get(
+                                "location_parking"),
+                            "image_url": updated_image_url
+                        }
 
-                # Handles redirect / user message
-                flash("Location Successfully Updated")
-                # redirects user to previous page if a url is stored in session
-                # checks that stored url isn't this page (login redirect)
-                if (
-                    'url' in session and
-                    session['url'] != url_for(
-                        "edit_location", location_id=url_id)
-                ):
-                    return redirect(session['url'])
-                # default redirect if no url stored or url is this page
-                return redirect(url_for("manage_locations"))
+                    # updates location in database
+                    mongo.db.locations.update_one(
+                        {"_id": ObjectId(location_id)}, {"$set": submit})
 
-            # handles 'GET' method (page load)
-            # gets event details
-            return render_template("edit-location.html", location=location)
+                    # Handles redirect / user message
+                    flash("Location Successfully Updated")
+                    # redirects user to prev. page if a url is in session
+                    # checks that stored url isn't this page (login redirect)
+                    if (
+                        'url' in session and
+                        session['url'] != url_for(
+                            "edit_location", location_id=url_id)
+                    ):
+                        return redirect(session['url'])
+                    # default redirect if no url stored or url is this page
+                    return redirect(url_for("manage_locations"))
+
+                # handles 'GET' method (page load)
+                # gets event details
+                return render_template("edit-location.html", location=location)
+
+            # if no result found routes to 404 page
+            return abort(404)
 
         # if not user's event redirects to user profile page
         flash("You do not have permission to edit locations")
@@ -716,12 +771,24 @@ def delete_location(location_id):
         # checks current user is admin
         if session["user"] == "admin":
 
-            # deletes events at that location
-            mongo.db.events.delete_many({"location_id": ObjectId(location_id)})
-            # deletes the location and redirects to manage locations
-            mongo.db.locations.delete_one({"_id": ObjectId(location_id)})
-            flash("Location successfully deleted")
-            return redirect(url_for("manage_locations"))
+            location = mongo.db.locations.find_one(
+                {"_id": ObjectId(location_id)}
+            )
+
+            # checks if a result was found if not aborts and routes to 404
+            if location is not None:
+
+                # deletes events at that location
+                mongo.db.events.delete_many(
+                    {"location_id": ObjectId(location_id)}
+                )
+                # deletes the location and redirects to manage locations
+                mongo.db.locations.delete_one({"_id": ObjectId(location_id)})
+                flash("Location successfully deleted")
+                return redirect(url_for("manage_locations"))
+
+            # if no result found routes to 404 page
+            return abort(404)
 
         # if not user's event redirects to user profile page
         flash("You do not have permission to delete locations")

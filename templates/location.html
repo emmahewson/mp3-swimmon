@@ -69,6 +69,7 @@
 
         <!-- Event Cards Container -->
         <div class="events-div" id="events-div">
+            <p id="nothing-returned" class="hidden font-body swim-txt-dblue weight-400 center-align">No events!<br><a href="{{ url_for('add_event')}}" class="weight-600">Why not add one?</a></p>
 
             {% for event in events %}
                 <!-- Event Card -->
@@ -149,6 +150,8 @@
     </script>
     <!-- Back To Top Button JavaScript -->
     <script src="{{ url_for('static', filename='js/scroll-top.js') }}"></script>
+    <!-- No results message JavaScript -->
+    <script src="{{ url_for('static', filename='js/no-events.js') }}"></script>
 {% endblock %}
 
 

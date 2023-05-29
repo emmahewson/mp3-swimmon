@@ -57,7 +57,7 @@
 
         <!-- Event Cards Container -->
         <div class="events-div" id="events-div">
-            <p id="results-message" class="hidden font-body swim-txt-dblue weight-600">No Results</p>
+            <p id="nothing-returned" class="hidden font-body swim-txt-dblue weight-400 center-align">No events!<br><a href="{{ url_for('add_event')}}" class="weight-600">Why not add one?</a></p>
             
             {% for event in events %}
                 <!-- Event Card -->

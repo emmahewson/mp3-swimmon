@@ -12,6 +12,7 @@
 
         <!-- Location Cards Container -->
         <div class="locations-div">
+            <p id="nothing-returned" class="hidden font-body swim-txt-dblue weight-400 center-align">No locations!<br><a href="{{ url_for('add_location')}}" class="weight-600">Why not add one?</a></p>
 
             {% for location in locations %}
 
@@ -69,4 +70,6 @@
 {% block scripts %}
     <!-- Back To Top Button JavaScript -->
     <script src="{{ url_for('static', filename='js/scroll-top.js') }}"></script>
+    <!-- No results message JavaScript -->
+    <script src="{{ url_for('static', filename='js/no-locations.js') }}"></script>
 {% endblock %}

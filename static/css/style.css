@@ -1206,6 +1206,11 @@ input::file-selector-button:hover {
     gap: 40px;
 }
 
+#nothing-returned a {
+    text-decoration: underline;
+    color: var(--dark-blue)
+}
+
 .event-card,
 .location-card {
     border-radius: 5px;

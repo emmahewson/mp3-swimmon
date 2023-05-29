@@ -6,6 +6,9 @@ $(document).ready(function(){
 
     // search bar filter functionality
     searchEvents();
+
+    // no results message (nothing returned from database)
+    nothingReturned();
 });
 
 // collapsible search bar - taken from https://www.w3schools.com/howto/howto_js_collapsible.asp
@@ -23,6 +26,29 @@ function collapse() {
                 content.style.maxHeight = content.scrollHeight + "px";
             }
         });
+    }
+}
+
+function nothingReturned() {
+
+    // creates an array of the event cards
+    let cardResults = Array.from(document.getElementsByClassName('event-card'));
+    // gets the error message
+    let nothingReturnedMsg = document.getElementById('nothing-returned')
+
+    // checks if any of the cards are hidden (search filters)
+    let visibleCards = [];
+    for (let card of cardResults) {
+        if (!card.classList.contains("hidden")) {
+            visibleCards.push(card);
+        }
+    }
+    
+    // if no cards returned or visible then show 'no events/locations' message
+    if (cardResults.length == 0 || visibleCards.length == 0) {
+        nothingReturnedMsg.classList.remove('hidden')
+    } else {
+        nothingReturnedMsg.classList.add('hidden')
     }
 }
 
@@ -53,7 +79,7 @@ function searchEvents() {
             btn.classList.remove("swim-selected");
         }
         showAllCards();
-        noResultsMessageToggle();
+        nothingReturned();
     });
 
     // Handles all search functionality
@@ -82,7 +108,7 @@ function searchEvents() {
         calculateMatchingCards(activeCategoryBtns, allFilteredCardArrays);
 
         // adds 'no results' text if no events match chosen filters
-        noResultsMessageToggle();
+        nothingReturned();
     }
 
     // calculates which event cards match chosen filters & reveals the results
@@ -225,21 +251,6 @@ function searchEvents() {
     function showAllCards() {
         for (let card of eventCards) {
             card.classList.remove("hidden");
-        }
-    }
-
-    // Triggers 'no results' message if no events are visible
-    function noResultsMessageToggle() {
-        let visibleCards = [];
-        for (let card of eventCards) {
-            if (!card.classList.contains("hidden")) {
-                visibleCards.push(card);
-            }
-        }
-        if (visibleCards.length == 0) {
-            document.getElementById("results-message").classList.remove("hidden");
-        } else {
-            document.getElementById("results-message").classList.add("hidden");
         }
     }
 }

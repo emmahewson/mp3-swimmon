@@ -1964,6 +1964,33 @@ During device testing I discovered that the Materialize `<select>` input didn't 
 
 </details>
 
+
+#### **15: No routing to 404 after event/location deletion when user tries to re-visit page**
+
+During testing I discovered that if a user were to try and revisit a page using the id of a deleted or non-existent event or location (e.g. by deleting the event from the 'event' page and then hitting the back button in the browser) rather than directing to a 404 page as I expected it would go to an empty event or location page. This also happened if a user entered their own id number, or tried to edit or delete an event or location using an ID of an event or location that didn't exist anymore. I decided that this was a bad user experience as it wouldn't be clear what had happened on the blank page and any Google Map would throw a console error as it would have no co-ordinates to use in the map.
+
+I realised I had left out an important stage in the app routing which was to check if the database had produced a result and if not to re-direct the user to the 404 page. I added this in using a simple if statement checking whether the searched event, location or username was returning a result, and if not to abort to 404.
+
+In addition to this I realised that it would be possible if there were no events or locations in the database for the pages showing the event or location cards to show nothing with no explanatory message about there being no events/locations. So I added a simple bit of JavaScript to display a message to the user if the database returned no results. On the 'events' page this was tied in with the search results so that the same message displayed if no results were shown after the filters were selected.
+
+
+<details><summary>Screengrab</summary>
+
+<img src="">
+
+*Empty Location Page*
+
+<img src="">
+
+*New 'no results' message - Event cards*
+
+<img src="">
+
+*New 'no results' message - Location cards*
+
+
+</details>
+
 ---
 
 ## Deployment
