@@ -151,7 +151,7 @@ I ran the app.py code through [https://extendsclass.com/python-tester.html](http
 
 ### Accessibility
 
-I ran the site through the [Wave Web Accessibility Evaulation Tool](https://wave.webaim.org/). All pages passed the validation tests. For full results see the dropdowns below.
+I ran the site through the [Wave Web Accessibility Evaulation Tool](https://wave.webaim.org/). There were some minor errors & warnings which I was unable to rectify which are detailed in the notes below. Based on the research done in to these errors, and the fact that they are mostly due to errors on the part of the validator or external code over which I have no control I have accepted them and marked the tests as passed for the purposes and scope of this project. For full results see the dropdowns below.
 
 
 <details><summary>Accessibility Results Table</summary>
