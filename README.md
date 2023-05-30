@@ -1687,7 +1687,13 @@ The full test results can be found in the [TESTING document](TESTING.md)
 
 ### Bugs & Fixes
 
-During development and testing I encountered the following bugs:
+During development and testing I encountered the a number of bugs, all the details of these can be found below.
+
+__All bugs were fixed apart from the following:__
+
+- [2: Popover (hover info box) on mobile not scrolling](#2-popover-hover-info-box-on-mobile-not-scrolling)
+- [13: Accessibility - No label for select dropdown menus on forms](#13-accessibility---no-label-for-select-dropdown-menus-on-forms)
+
 
 ---
 
@@ -1994,6 +2000,7 @@ In addition to this I realised that it would be possible if there were no events
 
 
 </details>
+
 
 ---
 

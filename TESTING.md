@@ -34,7 +34,7 @@ The live Website can be found [here](https://swim-mon.herokuapp.com/).
 
 In my testing I developed a comprehensive testing plan to make sure that the site was functioning correctly. I used manual testing and automated validation to test the site. The site was tested throughout the process, both in the development and deployed version of the sites. All the test results detailed below are based on the [deployed site](https://emmahewson.github.io/mp2_travel_quiz/).
 
-All information about any bugs encountered that were fixed or remain in the site can be found in the [README](README.md).
+All information about any bugs encountered that were fixed or remain in the site can be found in the [README - Bugs & Fixes section](README.md/#bugs--fixes).
 
 - - -
 
