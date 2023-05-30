@@ -1754,7 +1754,9 @@ When testing the deployed site on a mobile device I discovered an issue with the
 
 However I then discovered that by making the inputs readonly this disabled the 'required' attribute and it was possible for a user to submit a location with no co-ordinates. I found a partial solution to this [here](https://codepen.io/fxm90/pen/zGogwV) which replaced 'readonly' with a 'data-readonly' attribute and using this to target it with `pointer-events: none;`, disabling the user from clicking on it or selecting it.
 
-However, whilst this did bring back the validation it had the unfortunate effect of also disabling the click-event in map-picker.js. I found a workaround to this by adding a clickable invisible div on top of the inputs that triggered the location-picker modal.
+However, whilst this did bring back the validation it had the unfortunate effect of also disabling the click-event in map-picker.js. I found a workaround to this by adding a clickable invisible div on top of the inputs that triggered the location-picker modal which meant I could remove the data-readonly attribute as a user on a mobile would be clicking on the new div, rather than the input, which would mean they keyboard wasn't triggered.
+
+I later encountered another bug relating to these inputs & the time/date inputs on the add-event form. [See bug 16](#16-possible-to-paste-data-in-to-inputs-populated-by-timedate-picker--map-picker).
 
 <details><summary>Screen Grabs / Recordings</summary>
 
@@ -2000,6 +2002,103 @@ In addition to this I realised that it would be possible if there were no events
 
 
 </details>
+
+
+
+#### **16: Possible to paste data in to inputs populated by time/date picker & map-picker**
+
+During feature testing I discovered that it was possible to paste text in to the latitude & longitude inputs on the add location form as well as the time & date picker inputs on the add event form. This was a problem as both sets of data had to be in a very specific format in order to function in the website. I had previously overcome a related [bug on the map-picker](#4-location-picker-map---mobile-keyboard-popup) and attempted to make the inputs readonly then, (which would solve this problem), but discovered that it stopped the 'required' attribute working and the form could be submitted without these inputs being filled in.
+
+I came up with a solution to allow a user to click or tab to the input but then use JavaScript on the clickEvent to make the input temporarily readonly, whilst the modal (map, time or date picker) was open, which meant it could still be populated using JavaScript but the user could not paste data in to it during that time. When the modal closed the readonly attribute was removed which meant that the inputs could be clicked or focused on again to change the values, and the form could not be submitted with empty inputs.
+
+The implementation of this varied slightly between the 2 forms as the triggers functioned differently, on the time & date pickers the code was being controlled by Materialize which was moving the focus around, but it lacked a trigger to open the pickers on tab, which meant it was possible to paste in text in that way. The solution to this was to add an event listener for 'focus' to add a 'readonly' attribute, and another for 'blur' which removed it, so that as the user selected the input, whether through click or tab, it was made readonly, and this was reversed when the user clicked or tabbed to another input.
+
+<details><summary>Time & Date Picker Bug Fix - Code Snippet</summary>
+
+```
+    // stops user pasting text in to input when focused
+    let inputs = [dateInput, timeInput]
+    for (let input of inputs) {
+        input.addEventListener('focus', function(){
+            this.setAttribute("readonly", "readonly");
+        });
+        input.addEventListener('blur', function(){
+            this.removeAttribute("readonly");
+        });
+    }
+```
+</details>
+
+The code in the map picker was slightly more complex as the 2 boxes worked in tandem and I had added functionality to trigger the picker with the tab key, but the same principle applied, at the point the user clicks or tabs to an input (triggering the map picker) the inputs are made readonly, which is reversed when they either close the map picker or select a location.
+
+<details><summary>Map Picker Bug Fix - Code Snippets</summary>
+
+_Triggering the map picker_
+```
+// Open Location Picker when user clicks on latitude / longitude input fields or div overlay (bug fix - readonly)
+let boxes = [latBox, lngBox];
+boxes.push(...overlayBoxes);
+for (let box of boxes) {
+    // opens the modal on user click & makes input readonly (bug 16 fix)
+    box.addEventListener('click', function(){
+        modal.classList.remove("hidden");
+        latBox.setAttribute("readonly", "readonly");
+        lngBox.setAttribute("readonly", "readonly");
+    });
+    // opens the modal on focus (for use of 'tab' key) & makes input readonly (bug 16 fix)
+    box.addEventListener('focus', function(){
+        modal.classList.remove("hidden");
+        latBox.setAttribute("readonly", "readonly");
+        lngBox.setAttribute("readonly", "readonly");
+    });
+}
+```
+
+_Closing the map picker without saving_
+```
+// Close location picker box (cross icon) & removes readonly attribute
+document.getElementById("lp-close").addEventListener('click', function(){
+    modal.classList.add("hidden");
+    latBox.removeAttribute("readonly");
+    lngBox.removeAttribute("readonly");
+});
+
+// Close location picker box (click outside box) & removes readonly attribute
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.classList.add("hidden");
+        latBox.removeAttribute("readonly");
+        lngBox.removeAttribute("readonly");
+    }
+};
+```
+
+_Saving the co-ordinate values & closing the map picker_
+```
+// Save button: closes box and fills form inputs with marker location & removes readonly attribute
+    let saveBtn = document.getElementById("lp-save");
+    saveBtn.addEventListener('click', function(){
+        latBox.value = chosenLat;
+        lngBox.value = chosenLng;
+        modal.classList.add("hidden");
+        latBox.removeAttribute("readonly");
+        lngBox.removeAttribute("readonly");
+    });
+```
+</details>
+
+
+<details><summary>Screengrabs</summary>
+
+<img src="">
+
+*Empty Location Page*
+
+
+</details>
+
+
+
 
 
 ---

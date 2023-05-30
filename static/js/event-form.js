@@ -26,6 +26,18 @@ $(document).ready(function(){
     let dateInput = document.getElementById("event_date");
     let timeInput = document.getElementById("event_time");
 
+
+    // stops user pasting text in to input when focused
+    let inputs = [dateInput, timeInput]
+    for (let input of inputs) {
+        input.addEventListener('focus', function(){
+            this.setAttribute("readonly", "readonly");
+        });
+        input.addEventListener('blur', function(){
+            this.removeAttribute("readonly");
+        });
+    }
+
     // checks if input already contains date
     if (dateInput.value.length != 0) {
         // if so grabs that date, splits & reformats to Y,M,D

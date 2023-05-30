@@ -26,7 +26,7 @@
                 <label for="event_location" class="font-title weight-600">LOCATION</label>
                 <div class="input-info-div-wrapper">
                     <select id="event_location" name="event_location" required>
-                        <option value="" disabled selected>CHOOSE A LOCATION</option>
+                        <option value="" disabled selected>CHOOSE LOCATION</option>
                         {% for location in locations %}
                             <option value="{{location.name|upper}}">{{location.name|upper}}</option>
                         {% endfor %}
@@ -57,13 +57,13 @@
             <!-- Date -->
             <div class="input-field">
                 <label for="event_date" class="font-title weight-600">DATE</label>
-                <input id="event_date" name="event_date" type="text" class="datepicker" required>
+                <input id="event_date" name="event_date" type="text" class="datepicker" required data-readonly>
             </div>
 
             <!-- Time -->
             <div class="input-field">
                 <label for="event_time" class="font-title weight-600">TIME</label>
-                <input id="event_time" name="event_time" type="text" class="timepicker" required>
+                <input id="event_time" name="event_time" type="text" class="timepicker" required data-readonly>
                 <p class="font-body weight-700 swim-txt-warning hidden" id="past-event-message">Your event is in the past! Please select a time & date in the future</p>
             </div>
 

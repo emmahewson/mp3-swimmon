@@ -9,25 +9,33 @@ let modal = document.getElementById("lp-modal");
 let boxes = [latBox, lngBox];
 boxes.push(...overlayBoxes);
 for (let box of boxes) {
-    // opens the modal on user click
+    // opens the modal on user click & makes input readonly (bug 16 fix)
     box.addEventListener('click', function(){
         modal.classList.remove("hidden");
+        latBox.setAttribute("readonly", "readonly");
+        lngBox.setAttribute("readonly", "readonly");
     });
-    // opens the modal on focus (for use of 'tab' key)
+    // opens the modal on focus (for use of 'tab' key) & makes input readonly (bug 16 fix)
     box.addEventListener('focus', function(){
         modal.classList.remove("hidden");
+        latBox.setAttribute("readonly", "readonly");
+        lngBox.setAttribute("readonly", "readonly");
     });
 }
 
-// Close location picker box (cross icon)
+// Close location picker box (cross icon) & removes readonly attribute
 document.getElementById("lp-close").addEventListener('click', function(){
     modal.classList.add("hidden");
+    latBox.removeAttribute("readonly");
+    lngBox.removeAttribute("readonly");
 });
 
-// Close location picker box (click outside box)
+// Close location picker box (click outside box) & removes readonly attribute
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.classList.add("hidden");
+        latBox.removeAttribute("readonly");
+        lngBox.removeAttribute("readonly");
     }
 };
 
@@ -134,12 +142,14 @@ function initMap() {
         }, 350);
     }
 
-    // Save button: closes box and fills form inputs with marker location
+    // Save button: closes box and fills form inputs with marker location & removes readonly attribute
     let saveBtn = document.getElementById("lp-save");
     saveBtn.addEventListener('click', function(){
         latBox.value = chosenLat;
         lngBox.value = chosenLng;
         modal.classList.add("hidden");
+        latBox.removeAttribute("readonly");
+        lngBox.removeAttribute("readonly");
     });
 
     // reset button: sets the marker & map back to the centre of Anglesey

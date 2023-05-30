@@ -129,11 +129,11 @@ def sign_in():
 
             # invalid password match
             flash("Incorrect Username and/or Password")
-            return redirect(url_for("signin"))
+            return redirect(url_for("sign_in"))
 
         # if username doesn't exist
         flash("Incorrect Username and/or Password")
-        return redirect(url_for("signin"))
+        return redirect(url_for("sign_in"))
 
     # Handles 'GET' method (page load)
     return render_template("sign-in.html")
