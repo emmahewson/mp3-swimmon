@@ -1337,7 +1337,7 @@ _Caption_
         - Delete button brings up a modal to confirm the user definitely wants to delete location
             - Modal warns that deleting a location also deletes all events at that location (connected using the location_id field on the event)
             - modal uses Materialize's in-built animations
-    - If no results are returned from the database a 'no results' message containing a link to 'add-location' appears in the location cards container.
+    - If no results are returned from the database a 'no results' message containing a link to 'add-location' appears in the event cards container.
 - Back To Top Button
     - For content & functionality of back to top button see [Back To Top Button](#back-to-top-button)
 
@@ -1935,7 +1935,7 @@ When testing the site using Dev Tools' device toolbar and simulating a touchscre
 
 </details>
 
-
+[](#13-accessibility---no-label-for-select-dropdown-menus-on-forms)
 #### **13: Accessibility - No label for select dropdown menus on forms**
 
 During validation in WAVE Web AIM I discovered that due to the way that Materialize creates its dropdown select inputs that the label to go with the input was no longer labelling the input, this was because Materialize uses JavaScript to build a new text input to replace the select input which doesn't have the correct ID. There was no way to solve this problem without completely rebuilding the dropdown form input and due to time restraints this wasn't possible. This is unfortunate as it reduces the accessibility of the form and I would think about building my own next time to avoid this.
@@ -2067,7 +2067,7 @@ Details of any projects or online sources that I have learned from or adapted in
 - [https://github.com/Dogfalo/materialize - Issue](https://github.com/Dogfalo/materialize/issues/5974): Date input format conversion
 - [https://www.tutorialspoint.com - Article](https://www.tutorialspoint.com/converting-12-hour-format-time-to-24-hour-format-in-javascript): Converting AM/PM time string to 24hr string
 - [https://www.geeksforgeeks.org - Article](https://www.geeksforgeeks.org/validation-of-file-size-while-uploading-using-javascript-jquery/): Front end validation on image upload
-- [https://www.aspsnippets.com - Article](https://www.aspsnippets.com/Articles/Google-Maps-API-V3-Open-Show-only-one-InfoWindow-at-a-time-and-close-other-InfoWindow.aspx): Bug 3 Solution - multiple Info-Windows on map
+- [https://www.aspsnippets.com - Article](https://www.aspsnippets.com/Articles/Google-Maps-API-V3-Open-Show-only-one-InfoWindow-at-a-time-and-close-other-InfoWindow.aspx): Bug 3 Solution [multiple Info-Windows on map](#3-google-maps-info-windows---multiple-windows-opening-at-once)
 - [https://codepen.io - Sample Code](https://codepen.io/chocochip/pen/zYxMgRG): Popover Info Boxes
 
 ### Images & Text

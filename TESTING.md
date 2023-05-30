@@ -7,8 +7,6 @@ This is the testing documentation for my web application: SWIMMÔN Wild Swimming
 
 The live Website can be found [here](https://swim-mon.herokuapp.com/).
 
-
-
 ---
 
 ## Table of Contents
@@ -223,7 +221,7 @@ Google Maps threw up a number of errors and warnings in the accessibility checks
 
 __Error: Label for Dropdown Menu on Forms__
 
-On the forms containing dropdown menus Wave threw up an error about there not being an associated label for the input. However I had included a label with a matching 'for' attribute. Looking in to this problem further I discovered that the issue was caused by the Materialize JavaScript code creating a new input element when it populated the dropdown. Unfortunately in order to fix this I would have to re-write the entire code for the dropdown from scratch and so I was unable to fix this error. (See bug 13 in [README](readme.md))
+On the forms containing dropdown menus Wave threw up an error about there not being an associated label for the input. However I had included a label with a matching 'for' attribute. Looking in to this problem further I discovered that the issue was caused by the Materialize JavaScript code creating a new input element when it populated the dropdown. Unfortunately in order to fix this I would have to re-write the entire code for the dropdown from scratch and so I was unable to fix this error. [See Bug 13 - No label for select dropdown menus on forms - Links to README](readme.md/#13-accessibility---no-label-for-select-dropdown-menus-on-forms)
 
 __Datepicker Tab Index__
 
@@ -290,6 +288,10 @@ The site was tested on the following browsers.
 * Google Chrome
 * Mozilla Firefox
 * Apple Safari
+
+#### **Links to Bugs found specific to device & browser testing**
+
+* [Materialize Dropdown not working correctly on iPhone - Links to README](readme.md/#14-materialize-select-dropdown-on-iphone)
 
 __ __
 
