@@ -1935,7 +1935,7 @@ When testing the site using Dev Tools' device toolbar and simulating a touchscre
 
 </details>
 
-[](#13-accessibility---no-label-for-select-dropdown-menus-on-forms)
+
 #### **13: Accessibility - No label for select dropdown menus on forms**
 
 During validation in WAVE Web AIM I discovered that due to the way that Materialize creates its dropdown select inputs that the label to go with the input was no longer labelling the input, this was because Materialize uses JavaScript to build a new text input to replace the select input which doesn't have the correct ID. There was no way to solve this problem without completely rebuilding the dropdown form input and due to time restraints this wasn't possible. This is unfortunate as it reduces the accessibility of the form and I would think about building my own next time to avoid this.
