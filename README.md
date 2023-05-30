@@ -1039,7 +1039,7 @@ _Caption_
 | **Back End Form Validation** | None |
 | **Front End Security** | No direct link to page in nav - all links to this page are visible to logged in users only. |
 | **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. Id for session url is taken from page url. |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. Id for session url is taken from page url. If not user's event re-routes to 'profile' and flash message shows. |
 | **Routing - other** | Redirects to previous page after editing unless session url is this page (from login redirect). Defaults to 'events' page. |
 
 </details>
@@ -1099,7 +1099,7 @@ _Caption_
 | **Back End Functionality** | Removes event from database. If event id is not found in database aborts and re-routes to 404 page. |
 | **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Delete buttons on other pages only visible for admin or on user's own events. Modal appears to confirm delete prior to deletion on page containing delete button. |
 | **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'events' page rather than 'delete-event' to redirect there post log-in. This adds a layer of protection when deleting events. |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'events' page rather than 'delete-event' to redirect there post log-in. This adds a layer of protection when deleting events. If not user's event re-routes to 'profile' and flash message shows.|
 | **Routing - other** | Redirects to previous page after deleting unless session url is for the deleted 'event' page.  Defaults to 'events' page. |
 
 </details>
