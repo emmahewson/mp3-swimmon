@@ -27,7 +27,7 @@ $(document).ready(function(){
     let timeInput = document.getElementById("event_time");
 
 
-    // stops user pasting text in to input when focused
+    // stops user pasting text in to input when focused (bug 16 fix)
     let inputs = [dateInput, timeInput]
     for (let input of inputs) {
         input.addEventListener('focus', function(){
