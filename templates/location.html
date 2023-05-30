@@ -58,83 +58,93 @@
     <div id="map-location"></div>
 
     {% if session.user %}
-    <!-- Intro & Add Event Button -->
-    <div class="intro-div swim-bg-dblue swim-txt-white">
-        <h2 class="font-title weight-600">EVENTS IN {{location.name|upper}}</h2>
-        <p class="font-body weight-500">Check out member events at this location. Don't see one that suits? Why not add your own?</p>
-        <a href="{{ url_for('add_event')}}" class="swim-btn-large btn-hpink font-title weight-600 swim-btn-shadow">ADD EVENT</a>
-    </div>
-
-    <div class="events-wrapper swim-bg-lgrey">
-
-        <!-- Event Cards Container -->
-        <div class="events-div" id="events-div">
-            <p id="nothing-returned" class="hidden font-body swim-txt-dblue weight-400 center-align">No events!<br><a href="{{ url_for('add_event')}}" class="weight-600">Why not add one?</a></p>
-
-            {% for event in events %}
-                <!-- Event Card -->
-                <div class="event-card">
-                    {% for loc in locations %}
-                        {% if event.location_id == loc._id %}
-                            <div class="event-card-clickable swim-bg-white swim-txt-dblue">
-                                <a href="{{ url_for('event', event_id=event._id) }}" class="card-link"><span class="sr-only">{{ event.name }}: Event Details</span></a>
-                                <div class="event-image">
-                                    <img src="{{ loc.image_url }}" alt="{{ loc.name }}" onerror="this.onerror=null; this.src='https://swim-mon.herokuapp.com/static/images/sm-beach.jpg';">
-                                </div>
-                                <div class="event-card-text swim-txt-dblue center-align">
-                                    <h2 class="font-title center-align weight-600 uppercase">{{ event.name }}</h2>
-                                    <p class="font-body center-align weight-200 created-by"><em>Created by: {{ event.created_by }}</em></p>
-                                    <p class="font-body weight-700 uppercase"><i class="fa-solid fa-location-dot"></i>{{ loc.name }}</p>
-                                    <div class="event-when-row">
-                                        <p class="font-body weight-500 uppercase"><i class="fa-regular fa-calendar"></i>{{ event.date.strftime('%d/%m/%y') }}</p>
-                                        <p class="font-body weight-500 uppercase"><i class="fa-regular fa-clock"></i>{{ event.date.strftime('%-I:%M %p') }}</p>
-                                    </div>
-                                </div>
-                                <div class="event-marker-row uppercase">
-                                    <p class="font-body weight-500 swim-txt-white event-marker swim-bg-{{event.who|lower}}">{{ event.who }}</p>
-                                    <p class="font-body weight-500 swim-txt-black event-marker swim-bg-{{event.challenge|lower}}">{{ event.challenge }}</p>
-                                </div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}   
-                            
-                    {% if session.user|lower == event.created_by|lower or session.user|lower == "admin"|lower %}
-                        <!-- Edit/Delete Event Buttons -->
-                        <div class="card-edit-div swim-bg-dblue">
-                            <!-- Edit Event Button -->
-                            <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title weight-500 swim-btn-shadow">EDIT</a>
-                            <!-- Delete Event Modal Trigger -->
-                            <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title weight-500 swim-btn-shadow modal-trigger">DELETE</button>
-                        </div>
-                    {% endif %}
-                </div>
-
-                <!-- Confirm Delete Modal -->
-                <div id="{{ event._id }}" class="modal">
-                    <div class="modal-contents swim-bg-lgrey center-align">
-                        <div class="swim-txt-dblue">
-                            <h2 class="font-title weight-500 font-body">Are you sure you want to delete this event?</h2>
-                            <p class="font-title font-title">THIS ACTION CAN'T BE UNDONE</p>
-                        </div>
-                        <div class="modal-footer swim-bg-lgrey">
-                            <!-- Cancel Button -->
-                            <p class="modal-close swim-btn-small btn-close font-title weight-500 swim-btn-shadow" data-target="{{ event._id }}">CANCEL</p>
-                            <!-- Delete Event Button -->
-                            <a href="{{ url_for('delete_event', event_id=event._id) }}" data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title weight-500 swim-btn-shadow">DELETE</a>
-                        </div>
-                    </div>
-                </div>
-
-            {% endfor %}
+        <!-- Intro & Add Event Button -->
+        <div class="intro-div swim-bg-dblue swim-txt-white">
+            <h2 class="font-title weight-600">EVENTS IN {{location.name|upper}}</h2>
+            <p class="font-body weight-500">Check out member events at this location. Don't see one that suits? Why not add your own?</p>
+            <a href="{{ url_for('add_event')}}" class="swim-btn-large btn-hpink font-title weight-600 swim-btn-shadow">ADD EVENT</a>
         </div>
 
-        <!-- Back to Top Button -->
-        <div class="btt-btn-div">
-            <button class="swim-btn-flexi btn-hpink font-title weight-500 swim-btn-shadow center-align" id="btt-btn">BACK TO TOP</button>
-        </div>  
+        <div class="events-wrapper swim-bg-lgrey">
 
-    </div>
+            <!-- Event Cards Container -->
+            <div class="events-div" id="events-div">
+                <p id="nothing-returned" class="hidden font-body swim-txt-dblue weight-400 center-align">No events!<br><a href="{{ url_for('add_event')}}" class="weight-600">Why not add one?</a></p>
+
+                {% for event in events %}
+                    <!-- Event Card -->
+                    <div class="event-card">
+                        {% for loc in locations %}
+                            {% if event.location_id == loc._id %}
+                                <div class="event-card-clickable swim-bg-white swim-txt-dblue">
+                                    <a href="{{ url_for('event', event_id=event._id) }}" class="card-link"><span class="sr-only">{{ event.name }}: Event Details</span></a>
+                                    <div class="event-image">
+                                        <img src="{{ loc.image_url }}" alt="{{ loc.name }}" onerror="this.onerror=null; this.src='https://swim-mon.herokuapp.com/static/images/sm-beach.jpg';">
+                                    </div>
+                                    <div class="event-card-text swim-txt-dblue center-align">
+                                        <h2 class="font-title center-align weight-600 uppercase">{{ event.name }}</h2>
+                                        <p class="font-body center-align weight-200 created-by"><em>Created by: {{ event.created_by }}</em></p>
+                                        <p class="font-body weight-700 uppercase"><i class="fa-solid fa-location-dot"></i>{{ loc.name }}</p>
+                                        <div class="event-when-row">
+                                            <p class="font-body weight-500 uppercase"><i class="fa-regular fa-calendar"></i>{{ event.date.strftime('%d/%m/%y') }}</p>
+                                            <p class="font-body weight-500 uppercase"><i class="fa-regular fa-clock"></i>{{ event.date.strftime('%-I:%M %p') }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="event-marker-row uppercase">
+                                        <p class="font-body weight-500 swim-txt-white event-marker swim-bg-{{event.who|lower}}">{{ event.who }}</p>
+                                        <p class="font-body weight-500 swim-txt-black event-marker swim-bg-{{event.challenge|lower}}">{{ event.challenge }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}   
+                                
+                        {% if session.user|lower == event.created_by|lower or session.user|lower == "admin"|lower %}
+                            <!-- Edit/Delete Event Buttons -->
+                            <div class="card-edit-div swim-bg-dblue">
+                                <!-- Edit Event Button -->
+                                <a href="{{ url_for('edit_event', event_id=event._id) }}" class="swim-btn-small btn-edit font-title weight-500 swim-btn-shadow">EDIT</a>
+                                <!-- Delete Event Modal Trigger -->
+                                <button data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title weight-500 swim-btn-shadow modal-trigger">DELETE</button>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Confirm Delete Modal -->
+                    <div id="{{ event._id }}" class="modal">
+                        <div class="modal-contents swim-bg-lgrey center-align">
+                            <div class="swim-txt-dblue">
+                                <h2 class="font-title weight-500 font-body">Are you sure you want to delete this event?</h2>
+                                <p class="font-title font-title">THIS ACTION CAN'T BE UNDONE</p>
+                            </div>
+                            <div class="modal-footer swim-bg-lgrey">
+                                <!-- Cancel Button -->
+                                <p class="modal-close swim-btn-small btn-close font-title weight-500 swim-btn-shadow" data-target="{{ event._id }}">CANCEL</p>
+                                <!-- Delete Event Button -->
+                                <a href="{{ url_for('delete_event', event_id=event._id) }}" data-target="{{ event._id }}" class="swim-btn-small btn-delete font-title weight-500 swim-btn-shadow">DELETE</a>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="btt-btn-div">
+                <button class="swim-btn-flexi btn-hpink font-title weight-500 swim-btn-shadow center-align" id="btt-btn">BACK TO TOP</button>
+            </div>  
+
+        </div>
+
+    <!-- CTA - Join - for non-logged in users -->
+    {% else %}
+        <div class="intro-div swim-bg-pblue swim-txt-dblue">
+            <h2 class="font-title weight-600">FANCY A SWIM AT {{location.name|upper}}?</h2>
+            <p class="font-body weight-500">Join our community to see wild swimming events!</p>
+            <!-- Join Button -->
+            <a href="{{ url_for('join')}}" class="swim-btn-large btn-hblue font-title weight-600 swim-btn-shadow">JOIN</a>
+        </div>
     {% endif %}
+
 </div>
     
 {% endblock %}

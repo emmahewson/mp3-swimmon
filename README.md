@@ -407,7 +407,7 @@ Database connection details are set up in an [env.py](https://pypi.org/project/e
 security reasons this is not uploaded to GitHub so that database and connection details are not visible to
 users. In production these are stored in Heroku.
 
-The API key for Google Maps is stored in the HTML code but I have restricted the key usage to only the development and the deployed versions of this site and if copied and used elsewhere it will not work.
+The API key for Google Maps has been restricted to only work on the development and the deployed versions of this site and if copied and used elsewhere it will not work.
 
 __Site Security__
 
@@ -781,7 +781,7 @@ _Sign Out_
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | events.html |
-| **Front End Functionality** | Search buttons filter the event cards using JavaScript. Search filters contained in an animated collapsible dropdown. Jinja used to dynamically set the colour of the Who/Challenge text background. Jinja filters convert the time & date to a user-friendly format that matches the format on the add event form. Confirmation modal triggered by delete buttons. Scroll to Top button to take user back to the top of the page. |
+| **Front End Functionality** | Search buttons filter the event cards using JavaScript. Search filters contained in an animated collapsible dropdown. Jinja used to dynamically set the colour of the Who/Challenge text background. Jinja filters convert the time & date to a user-friendly format that matches the format on the add event form. Confirmation modal triggered by delete buttons. Scroll to Top button to take user back to the top of the page. If no events returned from database or filters 'no results' message and link to 'add-event' show.|
 | **Back End Functionality** | Populates page with events including event & location details from database. Events filtered by future only & sorted by date. Location, who & challenge collections are used to populate the search filters. |
 | **Front End Security** | Navbar link only visible to users who are logged in. Edit / Delete Buttons only visible on user's own events (or all events if admin). Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | User must be logged in |
@@ -830,6 +830,7 @@ _Sign Out_
         - Edit button leads to edit-event page
         - Delete button brings up a modal to confirm the user definitely wants to delete event
             - modal uses Materialize's in-built animations
+    - If no results are returned from the database a 'no results' message containing a link to 'add-event' appears in the event cards container.
 
 
 <details><summary>Screenshots</summary>
@@ -895,7 +896,7 @@ _Caption_
 | **Visible To** | Logged In Users |
 | **Template** | event.html |
 | **Front End Functionality** | Header image has backup placeholder incase of failure to load. Jinja used to dynamically set the colour of the Who/Challenge text background. Location map uses Google Maps API and pulls the co-ordinates directly from the DOM content (rather than linking via a fetch function in the backend). Jinja Filters truncate the latitude & longitude values for display & converts the time & date to a user-friendly format that matches the format on the add event form. |
-| **Back End Functionality** | Populates page with event based on the event id provided. Pulls in location information from the locations collection using the location_id field on the event document. |
+| **Back End Functionality** | Populates page with event based on the event id provided. Pulls in location information from the locations collection using the location_id field on the event document. If event id is not found in database aborts and re-routes to 404 page. |
 | **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Edit / Delete Buttons only visible if event created by current user (or user is admin). Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | User must be logged in |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
@@ -1033,7 +1034,7 @@ _Caption_
 | **Visible To** | Logged In Users - own events only. Admin - all events. |
 | **Template** | edit-event.html |
 | **Front End Functionality** | Uses Materialize's Timepicker & Datepicker to give a user-friendly way of selecting a time & date and making sure they are in a consistent format. Datepicker is set to the exisiting event date (event-form.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
-| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Pre-fills form with event information from event object in database. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. Flash message confirms successful submission. |
+| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Pre-fills form with event information from event object in database.  If event id is not found in database aborts and re-routes to 404 page. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. Flash message confirms successful submission. |
 | **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (form.js). Additional validation popup messages on dropdown/select inputs added to Materialize template (event-form.js) |
 | **Back End Form Validation** | None |
 | **Front End Security** | No direct link to page in nav - all links to this page are visible to logged in users only. |
@@ -1095,7 +1096,7 @@ _Caption_
 |---|---|
 | **Visible To** | Logged In Users - own events only. Admin - all events. |
 | **Template** | None |
-| **Back End Functionality** | Removes event from database.|
+| **Back End Functionality** | Removes event from database. If event id is not found in database aborts and re-routes to 404 page. |
 | **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Delete buttons on other pages only visible for admin or on user's own events. Modal appears to confirm delete prior to deletion on page containing delete button. |
 | **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'events' page rather than 'delete-event' to redirect there post log-in. This adds a layer of protection when deleting events. |
@@ -1131,8 +1132,8 @@ _Caption_
 |---|---|
 | **Visible To** | Logged In Users |
 | **Template** | my-profile.html |
-| **Front End Functionality** | Jinja used to dynamically set the colour of the Who/Challenge text background. Jinja filters convert the time & date to a user-friendly format that matches the format on the add event form. Confirmation modal triggered by delete buttons. Scroll to Top button to take user back to the top of the page. |
-| **Back End Functionality** | Populates page with current user's details. Populates event cards with events filtered using the 'created_by' field of the event to show only events created by the current user using the `session['user']` value, pulls in location information for the event using the location_id field & connecting the locations collection. Events filtered by future only & sorted by date. |
+| **Front End Functionality** | Jinja used to dynamically set the colour of the Who/Challenge text background. Jinja filters convert the time & date to a user-friendly format that matches the format on the add event form. Confirmation modal triggered by delete buttons. Scroll to Top button to take user back to the top of the page. If no events returned from database 'no results' message and link to 'add-event' show.|
+| **Back End Functionality** | Populates page with current user's details. Populates event cards with events filtered using the 'created_by' field of the event to show only events created by the current user using the `session['user']` value, pulls in location information for the event using the location_id field & connecting the locations collection. Events filtered by future only & sorted by date. If username in session is not found in database aborts and reroutes to 404 page. |
 | **Front End Security** | Navbar link only visible to users who are logged in. Edit / Delete Buttons only visible on user's own events (or all events if admin) (Only user events should be visible but this adds another layer of security). Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | User must be logged in. Page is automatically populated with user's own data, user cannot visit another user's profile page |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' (session url not stored for logged-out users as this is default redirect after sign in) |
@@ -1159,6 +1160,7 @@ _Caption_
 #### **Event Cards & Back To Top Button**
 
 - Summary cards of events filtered by current user & present time onwards  & sorted chronologically
+- If no results are returned from the database a 'no results' message containing a link to 'add-event' appears in the event cards container.
 - User will be able to see edit/delete buttons on all cards as they are all their own events
     - However additional front end security is in place to limit these to the user events only as another layer of protection
 - For content & functionality of cards see [Event Cards](#event-cards)
@@ -1186,9 +1188,9 @@ _Caption_
 |---|---|
 | **Visible To** | All Users |
 | **Template** | location.html |
-| **Front End Functionality** | Header image has backup placeholder incase of failure to load. Jinja used to dynamically set the colour of the Who/Challenge text background on event cards. Location map uses Google Maps API and pulls the co-ordinates directly from the DOM content (rather than linking via a fetch function in the backend). Jinja Filters truncate the latitude & longitude values for display & converts the time & date on event cards to a user-friendly format that matches the format on the add event form. |
-| **Back End Functionality** | Populates page with location information based on the location id provided. Populates page with events at that location by filtering using location_id field on events. Events also filtered by future only & sorted by date. |
-| **Front End Security** | Location Edit / Delete Buttons only visible for admin. Events only visible for logged in users. Event Edit / Delete Buttons only visible on user's own events (or all events if admin). Confirmation modal prior to delete to avoid accidental deletion. |
+| **Front End Functionality** | Header image has backup placeholder incase of failure to load. Jinja used to dynamically set the colour of the Who/Challenge text background on event cards. Location map uses Google Maps API and pulls the co-ordinates directly from the DOM content (rather than linking via a fetch function in the backend). Jinja Filters truncate the latitude & longitude values for display & converts the time & date on event cards to a user-friendly format that matches the format on the add event form. If no events returned from database 'no results' message and link to 'add-event' show. |
+| **Back End Functionality** | Populates page with location information based on the location id provided. Populates page with events at that location by filtering using location_id field on events. Events also filtered by future only & sorted by date. If location id is not found in database aborts and re-routes to 404 page. |
+| **Front End Security** | Location Edit / Delete Buttons only visible for admin. Events only visible for logged in users, non-logged in users see a call to action to the 'JOIN' page instead. Event Edit / Delete Buttons only visible on user's own events (or all events if admin). Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | None |
 | **Routing - log in** | None |
 | **Routing - other** | Session url stored to redirect back here after editing location/event or deleting an event accessed via this page. |
@@ -1267,12 +1269,13 @@ _Caption_
 
 #### **Events Section**
 
-
+- Events section is only visible to logged in users. If a user is not logged in they see a call to action to encourage them to join & a button leading to the 'join' page.
 - Intro Section
     - Title and text explaining the purpose of the section and actions that the user can undertake
     - Add Event button (in branded event pink) to encourage users to add their own event
 - Summary cards of events filtered by matching location & present time onwards & sorted chronologically
 - Events Cards
+    - If no results are returned from the database a 'no results' message containing a link to 'add-event' appears in the event cards container.
     - If the user created the event or is an admin they will be able to see edit/delete buttons on relevant event cards
     - For content & functionality of cards see [Event Cards](#event-cards)
 - Back To Top Button
@@ -1334,6 +1337,7 @@ _Caption_
         - Delete button brings up a modal to confirm the user definitely wants to delete location
             - Modal warns that deleting a location also deletes all events at that location (connected using the location_id field on the event)
             - modal uses Materialize's in-built animations
+    - If no results are returned from the database a 'no results' message containing a link to 'add-location' appears in the location cards container.
 - Back To Top Button
     - For content & functionality of back to top button see [Back To Top Button](#back-to-top-button)
 
@@ -1371,7 +1375,7 @@ _Caption_
 | **Visible To** | Admin Only |
 | **Template** | edit-location.html |
 | **Front End Functionality** | Bespoke location picker used to populate Latitude & Longitude inputs, built using JavaScript & Google Maps API (map-picker.js). Map set to previously selected location (map-picker.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
-| **Back End Functionality** | Populates form with location data using object id. Submission: converts location name to lowercase to make searching easier, checks if new image uploaded & if so replaces it. Uploads image to Cloudinary & adds image url to location data. Updates location on database. |
+| **Back End Functionality** | Populates form with location data using object id. Submission: converts location name to lowercase to make searching easier, checks if new image uploaded & if so replaces it. Uploads image to Cloudinary & adds image url to location data. Updates location on database. If location id is not found in database aborts and re-routes to 404 page. |
 | **Front End Form Validation** | All fields required except image upload (to keep old image). Fields must match type and length (HTML validation). Latitude & Longitude populated using Map Picker (not directly editable to make sure they're in the correct format) with JavaScript & HTML validation to check selected location is in correct area by setting min/max latitude/longitude values. Uploaded image checks: under 5mb (JavaScript file-validation.js) and correct format (HTML validation). |
 | **Back End Form Validation** | Checks image is under 5MB & in accepted format - redirects to 413/415 page if not. |
 | **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
@@ -1449,7 +1453,7 @@ _Caption_
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | None |
-| **Back End Functionality** | Removes location from database & deletes all events at that location. |
+| **Back End Functionality** | Removes location from database & deletes all events at that location. If location id is not found in database aborts and re-routes to 404 page. |
 | **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
 | **Back End Security** | User must be logged in & admin. |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'manage-locations' page to redirect there post log-in. This adds a layer of protection when deleting locations. If user not admin re-routes to 'profile' and flash message shows. |
@@ -1967,7 +1971,7 @@ During device testing I discovered that the Materialize `<select>` input didn't 
 
 #### **15: No routing to 404 after event/location deletion when user tries to re-visit page**
 
-During testing I discovered that if a user were to try and revisit a page using the id of a deleted or non-existent event or location (e.g. by deleting the event from the 'event' page and then hitting the back button in the browser) rather than directing to a 404 page as I expected it would go to an empty event or location page. This also happened if a user entered their own id number, or tried to edit or delete an event or location using an ID of an event or location that didn't exist anymore. I decided that this was a bad user experience as it wouldn't be clear what had happened on the blank page and any Google Map would throw a console error as it would have no co-ordinates to use in the map.
+During testing I discovered that if a user were to try and revisit a page using the id of a deleted or non-existent event or location (e.g. by deleting the event from the 'event' page and then hitting the back button in the browser) rather than directing to a 404 page as I expected it would go to an empty event or location page. This also happened if a user entered their own id number, or tried to navigate directly to an event or location that no longer existed. I decided that this was a bad user experience as it wouldn't be clear what had happened on the blank page and any Google Map would throw a console error as it would have no co-ordinates to use in the map.
 
 I realised I had left out an important stage in the app routing which was to check if the database had produced a result and if not to re-direct the user to the 404 page. I added this in using a simple if statement checking whether the searched event, location or username was returning a result, and if not to abort to 404.
 

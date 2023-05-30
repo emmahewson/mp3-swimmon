@@ -182,7 +182,7 @@ def my_profile(username):
             {"username": session["user"]})["username"]
 
         # checks if a result was found if not aborts and routes to 404
-        if type(username) is not None:
+        if username is not None:
 
             # stores url in session to redirect after edit event
             session['url'] = url_for("my_profile", username=username)
