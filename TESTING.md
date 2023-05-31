@@ -949,3 +949,141 @@ __ __
 
 
 The only additional thing of note was that the console threw some warnings about passive event listeners from the materialize.min.js file. This was related to event listeners not being set to passive, but as it was referring to code that I had not written myself and being reluctant to change the Materialize code incase it caused other errors I didn't want to pursue this warning further, especially as the site didn't technically fail the console tests as it was only a warning and not an error.
+
+
+---
+
+## User Stories Testing
+
+The site was built from the outset with user stories at its core. The site was tested against each of the user stories, running through the steps a user would take to achieve their goal. The results can be found below.
+
+|  | **User type**                 | **User Story**                                                                                                                                         | **How is it achieved**                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.1  | As a user                     | I want to be able to find what I need immediately and for the navigation to be easy to follow & intuitive                                             | Nav menu displayed on all pages with relevant nav links. All nav links go to correct pages. All sign-in/out available in nav when appropriate. User is led through site in an intuitive way, with appropriate links where they might want them e.g. 'location' page on the 'event' page, 'add-event' on the 'events' page                                                                                                                        |
+| 1.2  | As a user                     | I want to be able to view the site on any device and for it to be fully responsive                                                                     | The site is fully responsive and tested on a range of devices. As well as layout changes there are additional changes e.g. maps where the zoom level changes based on screen size, a side nav on mobile, hover effects disabled where appropriate on non-hover devices. All modals, pop-ups and hover items work and are fully visible on mobile.                                                                                                 |
+| 1.3  | As a user                     | I want to be able to contact the site to suggest additional swim locations or ask questions                                                           | There is an email link in the footer which is clickable and opens the user's email client to contact the site. This is visible on all pages.                                                                                                                                                                                                                                                                                                        |
+| 1.4  | As a user                     | I want to be able to return to the main site without having to use the browser buttons if I end up on a non-existent page or the site throws an error | The error pages contain either a 'go home' button on the 404 & 500 pages which takes them to the home page or a 'go back' button on the 413 & 415 pages which takes them back to their completed form. Nav links are also visible on all error pages.                                                                                                                                                                                               |
+| 2.1  | As a user without an account: | I want to understand the purpose of the site immediately upon entering                                                                                 | The home page clearly states what & who the site is for on the home page in both the pink call to action box & in the short info section below.                                                                                                                                                                                                                                                                                                     |
+| 2.2  | As a user without an account: | I want to be able to view information about places to go wild swimming on Anglesey                                                                     | The home page contains a clickable map with markers for each swimming location which are clickable and bring up an info window with a summary and image of the location. The info windows are clickable and lead to the location page which has more information about the location.                                                                                                                                                                |
+| 2.3  | As a user without an account: | I want to be able to set up an account so that I can view and create events                                                                            | The home page contains a link visible to non-logged in users which leads to the 'join' page, they can also access this page via the nav bar and from the location page. They can fill in a form and set up an account which leads to the events page.                                                                                                                                                                                           |
+| 3.1  | As a user with an account:    | I want to be able to sign in to my account                                                                                                             | The home page has a link to the sign in page, there is also a link in the nav bar. From here the users can fill in their username and password and log in to the site.                                                                                                                                                                                                                                                                            |
+| 3.2  | As a user with an account:    | I want to be able to browse wild swimming events and find all the information I need to join one                                                       | The events page contains summary cards for all future events. These are in chronological order and have colour coded categories for challenge level and who-for (men, women, all). These cards are clickable to the event page where the user can see more information about the event and its location.                                                                                                                                          |
+| 3.3  | As a user with an account:    | I want to be able to search & filter wild swimming events to find one that suits me                                                                    | The event cards on the events page are filterable and will live update with every filter selected without the need to refresh the page. They can be filtered by multiple categories and multiple options within a category can be selected e.g. 2 locations at once.                                                                                                                                                                                |
+| 3.4  | As a user with an account:    | I want to be able to set up a new event                                                                                                                | There are multiple links to the 'add-event' page including on the home page, events page, profile page & location page as well as the nav. From here the user can fill in a form to add an event. The form is really user-friendly with a time & date picker and clear instructions on what to do. The user doesn't need to fill in information about the location as this is automatically populated when they select one of the site locations. |
+| 3.5  | As a user with an account:    | I want to be able to view, edit and delete the events I have set up                                                                                 | Once the user has created an event they can click on the event card to view the full information page, they can edit & delete it via the links on the event page, or on the event cards on the 'events', 'profile' or 'location' page.                                                                                                                                                                                                           |
+| 3.6  | As a user with an account:    | I want to be able to log out of my account easily                                                                                                      | "The nav bar contains a link for a user to sign-out, visible to users who are signed in.                                                                                                                                                                                                                                                                                                                                                           |
+| 4.1  | As an admin of the site:      | I want to be able to add, edit or delete swimming locations for members to choose between for their event                                           | The admin has access to the 'manage-locations' page where they'll find location cards for all the locations which are clickable and link to the location info page. The admin is able to edit & delete these from either the location page or from the manage-locations page.                                                                                                                                                                       |
+| 4.2  | As an admin of the site:      | I want to be able to edit or delete events created by other users for site management purposes                                                         | The admin can see edit & delete controls for all events from both the event cards and the event info page, the admin can edit & delete all events no matter who created them.                                                                                                                                                                                                                                                                     |
+
+
+### User Stories Testing Screen Recordings
+
+
+<details><summary>User Story 1.1</summary>
+
+<img src="readme-images/testing/us_1-1-1.gif">
+<img src="readme-images/testing/us_1-1-2.gif">
+
+
+</details>
+
+<details><summary>User Story 1.2</summary>
+
+<img src="readme-images/testing/us_1-2-1.gif">
+<img src="readme-images/testing/us_1-2-2.gif">
+<img src="readme-images/testing/us_1-2-3.gif">
+<img src="readme-images/testing/us_1-2-4.gif">
+<img src="readme-images/testing/us_1-2-5.gif">
+
+
+</details>
+
+<details><summary>User Story 1.3</summary>
+
+<img src="readme-images/testing/us_1-3.gif">
+
+</details>
+
+
+<details><summary>User Story 1.4</summary>
+
+<img src="readme-images/testing/us_1-4.gif">
+
+</details>
+
+
+<details><summary>User Story 2.1</summary>
+
+<img src="readme-images/testing/us_2-1.jpg">
+
+</details>
+
+
+<details><summary>User Story 2.2</summary>
+
+<img src="readme-images/testing/us_2-2.gif">
+
+</details>
+
+
+<details><summary>User Story 2.3</summary>
+
+<img src="readme-images/testing/us_2-3.gif">
+
+</details>
+
+
+<details><summary>User Story 3.1</summary>
+
+<img src="readme-images/testing/us_3-1.gif">
+
+</details>
+
+
+<details><summary>User Story 3.2</summary>
+
+<img src="readme-images/testing/us_3-2.gif">
+
+</details>
+
+
+<details><summary>User Story 3.3</summary>
+
+<img src="readme-images/testing/us_3-3.gif">
+
+</details>
+
+
+<details><summary>User Story 3.4</summary>
+
+<img src="readme-images/testing/us_3-4.gif">
+
+</details>
+
+
+<details><summary>User Story 3.5</summary>
+
+<img src="readme-images/testing/us_3-5.gif">
+
+</details>
+
+
+<details><summary>User Story 3.6</summary>
+
+<img src="readme-images/testing/us_3-6.gif">
+
+</details>
+
+
+<details><summary>User Story 4.1</summary>
+
+<img src="readme-images/testing/us_4-1.gif">
+
+</details>
+
+
+<details><summary>User Story 4.2</summary>
+
+<img src="readme-images/testing/us_4-2.gif">
+
+</details>
