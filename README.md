@@ -1780,10 +1780,13 @@ The whole site has been thoroughly tested as follows:
     - Full app testing for each user story
 
 
+---
+
 ### Test Results
 
 The full test results can be found in the [TESTING document](TESTING.md)
 
+---
 
 ### Bugs & Fixes
 
@@ -1794,8 +1797,6 @@ __All bugs were fixed apart from the following:__
 - [2: Popover (hover info box) on mobile not scrolling](#2-popover-hover-info-box-on-mobile-not-scrolling)
 - [13: Accessibility - No label for select dropdown menus on forms](#13-accessibility---no-label-for-select-dropdown-menus-on-forms)
 
-
----
 
 #### **1: Dropdown Search Bar `<a>` link not displaying properly**
 
@@ -1820,7 +1821,15 @@ I troubleshooted this issue for a long time, it appears to be related to the hov
 
 
 
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/ceda54b9-65da-4a61-a903-99c462ccb3bc
+
+
 _Working on Dev Tools' Mobile Mockup_
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/c0ab6ec1-7c72-44df-810f-b77aaef48680
 
 
 
@@ -1836,7 +1845,15 @@ I encountered a bug on the homepage map (with all the locations represented by m
 <details><summary>Screen Recordings</summary>
 
 
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/73a3ab53-293e-4a35-aaca-526b5b9687e8
+
+
 _Before_
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/3a72d1ce-f5d4-4c51-bdf2-eccf0acac483
 
 
 
@@ -1850,33 +1867,32 @@ _After_
 
 When testing the deployed site on a mobile device I discovered an issue with the location picker on the add/edit location form. Clicking on the input (which opens the location picker modal) also opened the mobile keyboard as it was detecting a 'number' input being clicked. This was not a good user experience as it obscured the map, caused a flashing cursor to appear over the map and would be confusing for a user. I initially disabled the mobile keyboard by making the inputs 'readonly' so that the click on the boxes only triggered the location picker modal and not the keyboard as the mobile device would not detect a event where the user would be expected to type anything.
 
+
+However I then discovered that by making the inputs readonly this disabled the 'required' attribute and it was possible for a user to submit a location with no co-ordinates. I found a workaround to this by removing the readonly attribute from the HTML and adding a clickable invisible div on top of the inputs that triggered the location-picker modal so a user on a mobile would be clicking on the new div, rather than the input, which would mean they keyboard wasn't triggered.
+
 <details><summary>Screen Grabs / Recordings</summary>
 
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/0f280d19-1e19-4dd3-b160-3d28a42b50b4
 
 
 _Keyboard popping & flashing cursor up on mobile_
 
 
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/62d79c26-3601-4e21-8d23-b7c654465e04
+  
+_After readonly attribute added to inputs - mobile_
 
-_After readonly attribute added to inputs_
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/e7e45d1d-164c-4307-a341-0458595772d1
+
+
+_After readonly attribute added to inputs - desktop_
 
 </details>
-
-However I then discovered that by making the inputs readonly this disabled the 'required' attribute and it was possible for a user to submit a location with no co-ordinates. I found a workaround to this by removing the readonly attribute from the HTML and adding a clickable invisible div on top of the inputs that triggered the location-picker modal so a user on a mobile would be clicking on the new div, rather than the input, which would mean they keyboard wasn't triggered.
 
 I later encountered a related bug affecting these inputs & the time/date inputs on the add-event form. [See bug 16](#16-possible-to-paste-data-in-to-inputs-populated-by-timedate-picker--map-picker).
 
-<details><summary>Screen Recordings</summary>
-
-
-
-_A submitted location with no co-ordinates_
-
-
-
-_The final working solution_
-
-</details>
 
 #### **5: Broken Dynamic Image Links**
 
@@ -1983,8 +1999,16 @@ I revisited my code and discovered that I had made a logical error when writing 
 
 
 
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/0a43837b-b82a-4e99-9686-2270e5a40596
+
+
 _Before_
 
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/b0b63ded-0c6a-43c6-9284-7d51d723daf2
 
 
 _After_
@@ -2000,8 +2024,16 @@ During testing I found that when opening the edit-location form, if the user cli
 
 
 
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/91520d87-828a-40ef-9293-997fb7b3dddc
+
+
 _Before_
 
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/a85c2d91-6fdc-4778-9e8d-c49aa4eb3854
 
 
 _After_
@@ -2030,8 +2062,16 @@ I decided the best way to tackle this problem was with some additional front end
 
 
 
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/e40b2cf0-1520-4f75-b40a-30d77853a058
+
+
 _Before_
 
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/a419aec3-e6af-4145-b537-abe163257cc1
 
 
 _After_
@@ -2092,8 +2132,16 @@ During device testing I discovered that the Materialize `<select>` input didn't 
 
 
 
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/d65eb98a-3c34-4678-a800-ce37f08eefea
+
+
 _Before_
 
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/598cdf6b-7dc3-45a0-8dbd-73482cc75bd5
 
 
 _After_
@@ -2216,12 +2264,24 @@ _Saving the co-ordinate values & closing the map picker_
 
 
 
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/2a2eb3d6-909f-4046-a168-7af3b5da2604
+
+
 _Form - before - pasting in text_
 
 
 
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/beda2135-a97a-4c9e-8296-c248731ed957
+
+
 _Event Form - after_
 
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/10228fcb-3a23-4cdf-92a7-8dd559d8fc59
 
 
 _Location Form - after_
