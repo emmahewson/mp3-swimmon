@@ -14,14 +14,11 @@ SWIMMÔN is a website for swimmers on The Isle of Anglesey / Ynys Môn to find a
   - [Structure Plane](#structure-plane)
   - [Skeleton Plane](#skeleton-plane)
   - [Surface Plane](#surface-plane)
-
-* [Features](#Features)
-  - [Current Features](#Current-Features)
-  - [Future Features](#future-features)
-
+- [Features](#Features)
 - [Technologies](#Technologies)
 - [Testing](#Testing)
-  - [Bugs]()
+  - [Test Results](#test-results)
+  - [Bugs](#bugs--fixes)
 - [Deployment](#Deployment)
 - [Credits](#Credits)
 
@@ -506,9 +503,9 @@ _This design is replicated across the error pages with just the text content cha
 </details>
 
 
-### Design
+#### Design
 
-#### Colour Scheme
+##### Colour Scheme
 
 ![Website Colour Scheme](readme-images/design/color-pallette-01.jpg)
 
@@ -524,14 +521,14 @@ There are also some secondary colours which represent specific functions and cat
 - edit / delete button colours which are consistent throughout the site and provide user's with clarity and conform to their expectations by using traditional green/red for edit/delete
 - category colours on event cards for challenge level / who-for. These help the user to scan the event cards and find the category they're looking for quickly and easily.
 
-#### Typography
+##### Typography
 
 The website uses 2 typefaces that I felt worked well together and complemented each other:
 - [Jost](https://fonts.google.com/specimen/Jost) for headings & the site logo
 - [Lato](https://fonts.google.com/specimen/Lato) for the main body text
 
 
-#### Graphics / Imagery
+##### Graphics / Imagery
 
 - The logo & Favicon were created in [Adobe Illustrator](https://www.adobe.com/uk/products/illustrator.html)
 
@@ -541,7 +538,7 @@ The website uses 2 typefaces that I felt worked well together and complemented e
 
 ---
 
-### Changes to Design
+##### Changes to Design
 
 During the development process there were a number of minor changes to the original designs:
 - Colour changes
@@ -1770,7 +1767,7 @@ The whole site has been thoroughly tested as follows:
     - HTML Validation: [W3C Markup Validation](https://validator.w3.org/nu/)
     - CSS Validation: [W3C CSS Validation](https://jigsaw.w3.org/css-validator/)
     - JavaScript Linting: [JS Hint](https://jshint.com/)
-    - Python Linting: [Python Tester](https://extendsclass.com/python-tester.html) & Code Anywhere's inbuilt Linting
+    - Python Linting: [pep8ci](https://pep8ci.herokuapp.com/) & Code Anywhere's inbuilt Linting
     - Accessibility: [Wave WebAIM](https://wave.webaim.org/)
     - Performance: [Google Chrome's Dev Tools](https://developer.chrome.com/docs/devtools/)
 - Feature Testing
@@ -1781,6 +1778,9 @@ The whole site has been thoroughly tested as follows:
     - Site tested across different devices
 - User Stories Testing
     - Full app testing for each user story
+
+
+### Test Results
 
 The full test results can be found in the [TESTING document](TESTING.md)
 
@@ -2202,7 +2202,7 @@ _Saving the co-ordinate values & closing the map picker_
 
 ## Deployment
 
-## Project Creation
+### Project Creation
 I used the [CI MongoDB Code Anywhere Full Template](https://github.com/Code-Institute-Org/ci-mongo-template) to create this project and used Code Anywhere as my IDE.
 
 From the CI Mongo template above the steps to create this project were:
@@ -2216,7 +2216,7 @@ From the CI Mongo template above the steps to create this project were:
 8. Click 'Create'
 
 
-## Deployment to Heroku
+### Deployment to Heroku
 I used Heroku to deploy this project.
 
 To deploy to Heroku:
@@ -2242,7 +2242,7 @@ To deploy to Heroku:
 8. Click deploy branch
 9. Once build is complete click on 'View' to launch the new app
 
-## Local Development
+### Local Development
 __NB: This project will not run locally with database connections unless hte user sets up an env.py file configuring the above environment variables as these are not included in the GitHub files for security reasons.__
 
 To Run Locally:

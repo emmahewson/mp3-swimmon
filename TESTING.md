@@ -23,8 +23,7 @@ The live Website can be found [here](https://swim-mon.herokuapp.com/).
     - [Responsiveness/Device Testing](#responsiveness--device-testing)
     - [Browser Compatibility](#browser-compatibility)
     - [Feature Testing Results](#feature-testing-results)
-- [User Stories Testing]()
-
+- [User Stories Testing](#user-stories-testing)
 
 
 ---
@@ -194,14 +193,14 @@ I ran the JavaScript code through [JSHint](https://jshint.com/). There were some
 
 ### Python Linting
 
-I ran the app.py code through [https://extendsclass.com/python-tester.html](https://extendsclass.com/python-tester.html) to check the Syntax. Code Anywhere also has a built in Python Linter which was used throughout the development process. All code passed the validation tests. For full results see the dropdowns below.
+I ran the app.py code through [https://pep8ci.herokuapp.com/](https://pep8ci.herokuapp.com/) to check the Syntax. Code Anywhere also has a built in Python Linter which was used throughout the development process. All code passed the validation tests. For full results see the dropdowns below.
 
 
 <details><summary>Python Results Table</summary>
 
 | **Feature**    | **Expected Outcome**       | **Test Performed**                                             | **Result**                 | **Pass / Fail** |
 |----------------|----------------------------|----------------------------------------------------------------|----------------------------|-----------------|
-| Python Linting | Code passes with no errors | Ran app.py through https://extendsclass.com/python-tester.html | Code passes with no errors | PASS            |
+| Python Linting | Code passes with no errors | Ran app.py through https://pep8ci.herokuapp.com/ | Code passes with no errors | PASS            |
 
 
 </details>
