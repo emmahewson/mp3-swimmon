@@ -976,13 +976,13 @@ The site was built from the outset with user stories at its core. The site was t
 | 4.2  | As an admin of the site:      | I want to be able to edit or delete events created by other users for site management purposes                                                         | The admin can see edit & delete controls for all events from both the event cards and the event info page, the admin can edit & delete all events no matter who created them.                                                                                                                                                                                                                                                                     |
 
 
-### User Stories Testing Screen Recordings - Links go to YouTube
-
-[User Story 1.1](https://www.youtube.com/watch?v=5ARb2vWKIC8)
+### User Stories Testing Screen Recordings / Images
 
 
 <details><summary>User Story 1.1</summary>
 
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/a8e4cf6b-979e-485e-b214-ce4acda8dadf
 
 
 </details>
@@ -991,6 +991,8 @@ The site was built from the outset with user stories at its core. The site was t
 <details><summary>User Story 1.2</summary>
 
 
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/d8c3cae2-5c83-469c-b6c7-1bcb9f558e14
+
 
 </details>
 
@@ -998,10 +1000,17 @@ The site was built from the outset with user stories at its core. The site was t
 
 
 
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/1c96fad4-d381-4c7b-ae16-04c942040e65
+
+
 </details>
 
 
 <details><summary>User Story 1.4</summary>
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/894b78d7-435b-4846-a2f6-24d7b0e1da0d
 
 
 
@@ -1019,10 +1028,18 @@ The site was built from the outset with user stories at its core. The site was t
 
 
 
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/6f012446-793d-4dc9-b88f-04e54fdc17da
+
+
+
 </details>
 
 
 <details><summary>User Story 2.3</summary>
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/247f4178-b2ac-469c-812c-cd593facbb2a
 
 
 
@@ -1033,10 +1050,18 @@ The site was built from the outset with user stories at its core. The site was t
 
 
 
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/474f3ff4-dc82-4e99-baf5-4a06577869c3
+
+
+
 </details>
 
 
 <details><summary>User Story 3.2</summary>
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/256046f1-230c-4e56-8fb2-493c580936ea
 
 
 
@@ -1047,10 +1072,18 @@ The site was built from the outset with user stories at its core. The site was t
 
 
 
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/b4654db5-fbb4-4dc9-9ebf-a4768436f6bc
+
+
+
 </details>
 
 
 <details><summary>User Story 3.4</summary>
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/dd75dbfb-7764-412f-849f-09935eaea3a8
 
 
 
@@ -1061,10 +1094,18 @@ The site was built from the outset with user stories at its core. The site was t
 
 
 
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/28cca522-6ec1-4de8-ba80-9e7135d5a048
+
+
+
 </details>
 
 
 <details><summary>User Story 3.6</summary>
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/c5346878-2de4-421f-84d7-dc5e1b2df7d9
 
 
 
@@ -1075,10 +1116,18 @@ The site was built from the outset with user stories at its core. The site was t
 
 
 
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/672984b0-7557-4057-b84d-bed69ec57cd2
+
+
+
 </details>
 
 
 <details><summary>User Story 4.2</summary>
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/f3519e4c-20b5-444d-af78-6b810f0588b7
 
 
 
