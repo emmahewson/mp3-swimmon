@@ -1801,7 +1801,7 @@ __All bugs were fixed apart from the following:__
 
 The 'reset all' button at the bottom of the events search-bar (within the dropdown menu) was not displaying properly and getting cut off by the div padding. This appeared to be caused by the way the dropdown menu worked, not recognising the `<a>`'s full height. I fixed this by changing the `<a>` to a `<p>` element and playing with the positioning slightly by setting it to relative and moving it up away from the bottom of the div, which solved the problem.
 
-<details><summary>Screenshots</summary>
+<details><summary>Screengrabs</summary>
 
 <img src="readme-images/bugs/bug1_before.jpg">
 <img src="readme-images/bugs/bug1_after.jpg">
@@ -1820,11 +1820,11 @@ I troubleshooted this issue for a long time, it appears to be related to the hov
 
 
 
-*Working on Dev Tools' Mobile Mockup*
+_Working on Dev Tools' Mobile Mockup_
 
 
 
-*Not working on a mobile*
+_Not working on a mobile_
 
 </details>
 
@@ -1836,11 +1836,11 @@ I encountered a bug on the homepage map (with all the locations represented by m
 <details><summary>Screen Recordings</summary>
 
 
-*Before*
+_Before_
 
 
 
-*After*
+_After_
 
 
 </details>
@@ -1852,11 +1852,13 @@ When testing the deployed site on a mobile device I discovered an issue with the
 
 <details><summary>Screen Grabs / Recordings</summary>
 
-<img src="">
-*Keyboard popping & flashing cursor up on mobile*
 
-<img src="">
-*After readonly attribute added to inputs*
+
+_Keyboard popping & flashing cursor up on mobile_
+
+
+
+_After readonly attribute added to inputs_
 
 </details>
 
@@ -1864,15 +1866,15 @@ However I then discovered that by making the inputs readonly this disabled the '
 
 I later encountered a related bug affecting these inputs & the time/date inputs on the add-event form. [See bug 16](#16-possible-to-paste-data-in-to-inputs-populated-by-timedate-picker--map-picker).
 
-<details><summary>Screen Grabs / Recordings</summary>
+<details><summary>Screen Recordings</summary>
 
 
 
-*A submitted location with no co-ordinates*
+_A submitted location with no co-ordinates_
 
 
 
-*The final working solution*
+_The final working solution_
 
 </details>
 
@@ -1886,15 +1888,15 @@ I did this by adding an 'onerror' attribute to the dynamic images in the HTML fi
 
 <img src="readme-images/bugs/bug5_error.jpg">
 
-*Error*
+_Error_
 
 <img src="readme-images/bugs/bug5_before.jpg">
 
-*Before*
+_Before_
 
 <img src="readme-images/bugs/bug5_after.jpg">
 
-*After*
+_After_
 
 </details>
 
@@ -1977,15 +1979,15 @@ I found a bug after I had initially created the search functionality on events.h
 
 I revisited my code and discovered that I had made a logical error when writing the calculate matching cards function. I had neglected to add a check that all of the categories' filters were actually producing results. I added an if statement to check that the number of categories with selected buttons matched the number of categories which produced 1 or more results, and only if they did would it check for matching results. This solved the bug
 
-<details><summary>Screen Grabs</summary>
+<details><summary>Screen Recordings</summary>
 
 
 
-*Before*
+_Before_
 
 
 
-*After*
+_After_
 
 
 </details>
@@ -1998,11 +2000,11 @@ During testing I found that when opening the edit-location form, if the user cli
 
 
 
-*Before*
+_Before_
 
 
 
-*After*
+_After_
 
 
 </details>
@@ -2014,7 +2016,7 @@ I initially set up all my JavaScript functions in a single script.js file which 
 <details><summary>Screen Grab</summary>
 
 <img src="readme-images/bugs/bug9_error.jpg">
-*Console Error on Home Page when JavaScript tries to call scrollToTop() function*
+_Console Error on Home Page when JavaScript tries to call scrollToTop() function_
 
 </details>
 
@@ -2028,11 +2030,11 @@ I decided the best way to tackle this problem was with some additional front end
 
 
 
-*Before*
+_Before_
 
 
 
-*After*
+_After_
 
 
 </details>
@@ -2043,13 +2045,13 @@ I came across an interesting bug during testing where if I was logged in as e.g.
 
 I felt that this was a security issue as it revealed another user's username, so I fixed it by adding `session.pop("url")` to the sign-out route, which removed any stored urls from the session on sign-out.
 
-<details><summary>Screen Recordings</summary>
-
-<img src="readme-images/bugs/bug11_after.jpg">
-*Before - user can submit an event in the past, the event doesn't appear on the events page*
+<details><summary>Screengrabs</summary>
 
 <img src="readme-images/bugs/bug11_before.jpg">
-*After - user can only submit the event when the date and time are in the future*
+_Before Username in URL doesn't match current user_
+
+<img src="readme-images/bugs/bug11_after.jpg">
+_After_
 
 </details>
 
@@ -2061,7 +2063,7 @@ When testing the site using Dev Tools' device toolbar and simulating a touchscre
 <details><summary>Screengrab</summary>
 
 <img src="readme-images/bugs/bug12.jpg">
-*Console Errors triggered by time-picker on touchscreen devices*
+Console Errors triggered by time-picker on touchscreen devices
 
 
 </details>
@@ -2075,7 +2077,7 @@ During validation in WAVE Web AIM I discovered that due to the way that Material
 <details><summary>Screengrab</summary>
 
 <img src="readme-images/bugs/bug13.jpg">
-*Code as rendered in dev tools - the `<select>` has the correct ID but an additional `<input>` has been created which is causing the error*
+Code as rendered in dev tools - the `<select>` has the correct ID but an additional `<input>` has been created which is causing the error
 
 
 </details>
@@ -2086,15 +2088,15 @@ During validation in WAVE Web AIM I discovered that due to the way that Material
 During device testing I discovered that the Materialize `<select>` input didn't work correctly on the iPhone. It would either not select the correct option or not select anything at all and trigger something else on the page. Through online research I found this was a consistent problem with Materialize on iPhone and was a known bug from IOS 13+. However Materialize had released a patch .js file that fixed the problem thankfully and I was able to add this in to the pages containing the `<select>` elements and it fixed the problem.
 
 
-<details><summary>Screengrabs</summary>
+<details><summary>Screen Recordings</summary>
 
 
 
-*Before*
+_Before_
 
 
 
-*After*
+_After_
 
 
 </details>
@@ -2109,19 +2111,19 @@ I realised I had left out an important stage in the app routing which was to che
 In addition to this I realised that it would be possible if there were no events or locations in the database for the pages showing the event or location cards to show nothing with no explanatory message about there being no events/locations. So I added a simple bit of JavaScript to display a message to the user if the database returned no results. On the 'events' page this was tied in with the search results so that the same message displayed if no results were shown after the filters were selected.
 
 
-<details><summary>Screengrab</summary>
+<details><summary>Screengrabs</summary>
 
 <img src="readme-images/bugs/bug15_1.jpg">
 
-*Empty Location Page*
+_Empty Location Page_
 
 <img src="readme-images/bugs/bug15_2.jpg">
 
-*New 'no results' message - Event cards*
+_New 'no results' message - Event cards_
 
 <img src="readme-images/bugs/bug15_3.jpg">
 
-*New 'no results' message - Location cards*
+_New 'no results' message - Location cards_
 
 
 </details>
@@ -2210,19 +2212,19 @@ _Saving the co-ordinate values & closing the map picker_
 </details>
 
 
-<details><summary>Screengrabs</summary>
+<details><summary>Screen Recordings</summary>
 
 
 
-*Form - before - pasting in text*
+_Form - before - pasting in text_
 
 
 
-*Event Form - after*
+_Event Form - after_
 
 
 
-*Location Form - after*
+_Location Form - after_
 
 
 </details>
