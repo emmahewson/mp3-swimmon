@@ -100,7 +100,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="file" accept=".jpg, .jpeg, .png, .heic" name="image_upload" id="image_upload" class="font-body weight-500">
+                <input type="file" name="image_upload" id="image_upload" class="font-body weight-500">
                 <p class="font-body" id="file-text-div"><span class="swim-txt-dblue weight-500" id="file-message"></span><span class="font-body weight-700" id="file-message-warning"></span></p>
             </div>
 
@@ -120,7 +120,7 @@
     <!-- Map Location Picker JavaScript -->
     <script src="{{ url_for('static', filename='js/map-picker.js') }}"></script>
     <!-- Image Upload Validation JavaScript -->
-    <script src="{{ url_for('static', filename='js/file-validation.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/file-validation.js') }}"></script> -->
     <!-- Google Maps API - Markers -->
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
     <!-- Google Maps API - Map -->
