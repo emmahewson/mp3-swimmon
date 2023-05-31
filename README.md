@@ -427,34 +427,134 @@ Parts of the site will require user log in to access and the site will implement
 
 #### Wireframes
 
-I created fully designed wireframes in [Figma](https://www.figma.com/). This allows me to make all major design decisions including colours, fonts, layout, spacing and the visual user experience before commencing coding.
+I created fully designed wireframes in [Figma](https://www.figma.com/). This allows me to make all major design decisions including colours, fonts, layout, spacing and the visual user experience before commencing coding. Below are my original designs, there have been some changes to these during the course of development which I will detail below.
 
 **Wireframes / Site Design**
 
-- [Home]()
-- [Join]()
-- [Sign In]()
-- [Profile]()
-- [Events]()
-- [Event Page]()
-- [Add Event]()
-- [Edit Event]()
-- [Location Page]()
-- [Manage Locations]()
-- [Add Location]()
-- [Edit Location]()
+<details><summary>HOME</summary>
+
+<img src="readme-images/design/wf_home.png">
+
+</details>
+
+<details><summary>JOIN</summary>
+
+<img src="readme-images/design/wf_join.png">
+
+</details>
+
+<details><summary>SIGN IN</summary>
+
+<img src="readme-images/design/wf_sign-in.png">
+
+</details>
+
+<details><summary>PROFILE</summary>
+
+<img src="readme-images/design/wf_profile.png">
+
+</details>
+
+<details><summary>EVENTS</summary>
+
+<img src="readme-images/design/wf_events.png">
+
+</details>
+
+<details><summary>EVENT</summary>
+
+<img src="readme-images/design/wf_event.png">
+
+</details>
+
+<details><summary>ADD/EDIT EVENT</summary>
+
+<img src="readme-images/design/wf_add-event.png">
+<img src="readme-images/design/wf_edit-event.png">
+
+_The edit-event tablet & mobile designs will be essentially the same as the add-event designs_
+
+</details>
+
+<details><summary>LOCATION</summary>
+
+<img src="readme-images/design/wf_location.png">
+
+</details>
+
+<details><summary>MANAGE LOCATIONS</summary>
+
+<img src="readme-images/design/wf_manage-locs.png">
+
+</details>
+
+<details><summary>ADD/EDIT LOCATION</summary>
+
+<img src="readme-images/design/wf_add-loc.png">
+<img src="readme-images/design/wf_edit-location.png">
+
+_The edit-location tablet & mobile designs will be essentially the same as the add-location designs_
+
+</details>
+
+<details><summary>ERROR PAGES</summary>
+
+<img src="readme-images/design/wf_error.png">
+
+_This design is replicated across the error pages with just the text content changing_
+
+</details>
+
 
 ### Design
 
 #### Colour Scheme
 
+![Website Colour Scheme](readme-images/design/color-pallette-01.jpg)
+
+The above colour scheme is based on the final site after changes were made during the development process and accessibility validation. See [changes to design](#changes-to-design) for more information.
+
+The primary site colour scheme is made up of mostly blue tones to reflect the sea-swimming theme, with a contrasting bright orange/pink. The colours come in a number of shades to create contrast and make the website easy to read and accessible. The colours are loosely used to represent different parts of the site:
+  - Pink - Events
+  - Mid-Blue - Locations
+  - Highlight-Blue - Sign in / Join
+  - Grey - site administration / profile
+
+There are also some secondary colours which represent specific functions and categories:
+- edit / delete button colours which are consistent throughout the site and provide user's with clarity and conform to their expectations by using traditional green/red for edit/delete
+- category colours on event cards for challenge level / who-for. These help the user to scan the event cards and find the category they're looking for quickly and easily.
+
 #### Typography
+
+The website uses 2 typefaces that I felt worked well together and complemented each other:
+- [Jost](https://fonts.google.com/specimen/Jost) for headings & the site logo
+- [Lato](https://fonts.google.com/specimen/Lato) for the main body text
+
+
+#### Graphics / Imagery
+
+- The logo & Favicon were created in (Adobe Illustrator)[https://www.adobe.com/uk/products/illustrator.html]
+
+- The home page image and the placeholder image were taken from Unsplash full credits in the [image credits](#images--text)
+
+- The error page cartoon graphic was taken from Freepik full credits in the [image credits](#images--text)
 
 ---
 
 ### Changes to Design
 
-DETAILS HERE
+During the development process there were a number of minor changes to the original designs:
+- Colour changes
+    - Some minor aesthetic changes during site development
+    - Significant changes to some of the pink/blue shades to increase contrast. This was based on the accessibility testing results
+- Some minor text/copy changes across the site - the wireframes contained placeholder text that I intended to improve upon.
+- Event Page: Added a link to the location page to help users to navigate to different areas of the site easily
+- Location Page: Included a 'call to action' JOIN button for users who weren't logged in to encourage users to join the site to see events
+- Add Location Form:
+    - Latitude/Longitude inputs: these were originally going to be text-based with an explanatory popover which helped users to find the co-ordinates on Google Maps and to paste them in. This was my back up option as I wasn't sure I would have time to add an interactive location-picker using a map, however I was able to build this and so the user no longer has to enter values themselves, they are populated using the map picker, providing a much better user experience. [See Add Location in Features](#add-location--edit-location)
+    - Image URL input: I had originally planned to have users find an image online and paste the URL in here. I wasn't sure how else to achieve this functionality but during the development I managed to implement a file upload system using Cloudinary, which provided a much better user experience and also limited the chance of missing or broken image links. [See Add Location in Features](#add-location--edit-location)
+    - The content of the popovers for both the above inputs also changed accordingly.
+- Events Page: I removed the popovers from the search filters. I felt that this section needed to be as uncluttered as possible to allow for a smooth search experience, also that the filters were fairly self-explanatory.
 
 ---
 
@@ -2183,6 +2283,11 @@ Details of any projects or online sources that I have learned from or adapted in
 - Porth Trecastell: [Holidays Anglesey](https://www.holidaysanglesey.co.uk/perch/resources/porth-trecastell-beach-1-corrected-w720pxh520px.jpg)
 - Porth Swtan: [Visit Anglesey](https://www.visitanglesey.co.uk/ImageGen.ashx?image=/media/445871/church-bay-1280-x-618.jpg&width=1280&height=618)
 - Cemaes Bay: [Clued In With Kids](https://www.cluedinwithkids.co.uk/wp-content/uploads/2019/05/AdobeStock_52856375.jpeg-1600.jpeg)
+
+
+### Graphics
+
+- Desert Island Cartoon [Image by brgfx on Freepik](https://www.freepik.com/free-vector/deserted-island-with-broken-boat-lying-beach-with-help-si_24093188.htm#from_view=detail_alsolike)
 
 ### Acknowledgements
 
