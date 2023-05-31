@@ -1803,8 +1803,8 @@ The 'reset all' button at the bottom of the events search-bar (within the dropdo
 
 <details><summary>Screenshots</summary>
 
-<img src="">
-<img src="">
+<img src="readme-images/bugs/bug1_before.jpg">
+<img src="readme-images/bugs/bug1_after.jpg">
 
 _Before & After_
 
@@ -1816,15 +1816,18 @@ When creating the info boxes on the form I that would appear on hover I set up a
 
 I troubleshooted this issue for a long time, it appears to be related to the hover/focus on mobile and how it translates to a touchscreen device. I tried using a 'touchstart' event rather than click - which fixed the scroll but would also not consistently bring up the infobox. I also tried refactor the code, adding `setTimeout()` to allow the box to appear first and attempting to scroll using an `<a>` with an href that pointed to the correct ID but all of these caused further issues or didn't solve the problem. I was unable to find a solution to this and the bug remains.
 
-<details><summary>Screenshots</summary>
+<details><summary>Screen Recordings</summary>
 
-<img src="">
+
+
 *Working on Dev Tools' Mobile Mockup*
 
-<img src="">
-*Before & After*
+
+
+*Not working on a mobile*
 
 </details>
+
 
 #### **3: Google Maps info windows - multiple windows opening at once**
 
@@ -1832,11 +1835,16 @@ I encountered a bug on the homepage map (with all the locations represented by m
 
 <details><summary>Screen Recordings</summary>
 
-<img src="">
-<img src="">
-*Before & After*
+
+*Before*
+
+
+
+*After*
+
 
 </details>
+
 
 #### **4: Location Picker Map - Mobile keyboard popup**
 
@@ -1858,9 +1866,12 @@ I later encountered a related bug affecting these inputs & the time/date inputs 
 
 <details><summary>Screen Grabs / Recordings</summary>
 
-<img src="">
+
+
 *A submitted location with no co-ordinates*
-<img src="">
+
+
+
 *The final working solution*
 
 </details>
@@ -1873,11 +1884,16 @@ I did this by adding an 'onerror' attribute to the dynamic images in the HTML fi
 
 <details><summary>Screen Grabs</summary>
 
-<img src="">
+<img src="readme-images/bugs/bug5_error.jpg">
+
 *Error*
-<img src="">
+
+<img src="readme-images/bugs/bug5_before.jpg">
+
 *Before*
-<img src="">
+
+<img src="readme-images/bugs/bug5_after.jpg">
+
 *After*
 
 </details>
@@ -1963,12 +1979,14 @@ I revisited my code and discovered that I had made a logical error when writing 
 
 <details><summary>Screen Grabs</summary>
 
-<img src="">
-*Error*
-<img src="">
+
+
 *Before*
-<img src="">
+
+
+
 *After*
+
 
 </details>
 
@@ -1978,10 +1996,14 @@ During testing I found that when opening the edit-location form, if the user cli
 
 <details><summary>Screen Recordings</summary>
 
-<img src="">
+
+
 *Before*
-<img src="">
+
+
+
 *After*
+
 
 </details>
 
@@ -1991,7 +2013,7 @@ I initially set up all my JavaScript functions in a single script.js file which 
 
 <details><summary>Screen Grab</summary>
 
-<img src="">
+<img src="readme-images/bugs/bug9_error.jpg">
 *Console Error on Home Page when JavaScript tries to call scrollToTop() function*
 
 </details>
@@ -2004,11 +2026,14 @@ I decided the best way to tackle this problem was with some additional front end
 
 <details><summary>Screen Recordings</summary>
 
-<img src="">
-*Before - user can submit an event in the past, the event doesn't appear on the events page*
 
-<img src="">
-*After - user can only submit the event when the date and time are in the future*
+
+*Before*
+
+
+
+*After*
+
 
 </details>
 
@@ -2020,10 +2045,10 @@ I felt that this was a security issue as it revealed another user's username, so
 
 <details><summary>Screen Recordings</summary>
 
-<img src="">
+<img src="readme-images/bugs/bug11_after.jpg">
 *Before - user can submit an event in the past, the event doesn't appear on the events page*
 
-<img src="">
+<img src="readme-images/bugs/bug11_before.jpg">
 *After - user can only submit the event when the date and time are in the future*
 
 </details>
@@ -2035,7 +2060,7 @@ When testing the site using Dev Tools' device toolbar and simulating a touchscre
 
 <details><summary>Screengrab</summary>
 
-<img src="">
+<img src="readme-images/bugs/bug12.jpg">
 *Console Errors triggered by time-picker on touchscreen devices*
 
 
@@ -2049,7 +2074,7 @@ During validation in WAVE Web AIM I discovered that due to the way that Material
 
 <details><summary>Screengrab</summary>
 
-<img src="">
+<img src="readme-images/bugs/bug13.jpg">
 *Code as rendered in dev tools - the `<select>` has the correct ID but an additional `<input>` has been created which is causing the error*
 
 
@@ -2063,11 +2088,11 @@ During device testing I discovered that the Materialize `<select>` input didn't 
 
 <details><summary>Screengrabs</summary>
 
-<img src="">
+
 
 *Before*
 
-<img src="">
+
 
 *After*
 
@@ -2086,15 +2111,15 @@ In addition to this I realised that it would be possible if there were no events
 
 <details><summary>Screengrab</summary>
 
-<img src="">
+<img src="readme-images/bugs/bug15_1.jpg">
 
 *Empty Location Page*
 
-<img src="">
+<img src="readme-images/bugs/bug15_2.jpg">
 
 *New 'no results' message - Event cards*
 
-<img src="">
+<img src="readme-images/bugs/bug15_3.jpg">
 
 *New 'no results' message - Location cards*
 
@@ -2187,9 +2212,17 @@ _Saving the co-ordinate values & closing the map picker_
 
 <details><summary>Screengrabs</summary>
 
-<img src="">
 
-*Empty Location Page*
+
+*Form - before - pasting in text*
+
+
+
+*Event Form - after*
+
+
+
+*Location Form - after*
 
 
 </details>
