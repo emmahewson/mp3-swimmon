@@ -976,114 +976,110 @@ The site was built from the outset with user stories at its core. The site was t
 | 4.2  | As an admin of the site:      | I want to be able to edit or delete events created by other users for site management purposes                                                         | The admin can see edit & delete controls for all events from both the event cards and the event info page, the admin can edit & delete all events no matter who created them.                                                                                                                                                                                                                                                                     |
 
 
-### User Stories Testing Screen Recordings
+### User Stories Testing Screen Recordings - Links go to YouTube
+
+[User Story 1.1](https://www.youtube.com/watch?v=5ARb2vWKIC8)
 
 
 <details><summary>User Story 1.1</summary>
 
-<img src="readme-images/testing/us_1-1-1.gif">
-<img src="readme-images/testing/us_1-1-2.gif">
 
 
 </details>
 
+
 <details><summary>User Story 1.2</summary>
 
-<img src="readme-images/testing/us_1-2-1.gif">
-<img src="readme-images/testing/us_1-2-2.gif">
-<img src="readme-images/testing/us_1-2-3.gif">
-<img src="readme-images/testing/us_1-2-4.gif">
-<img src="readme-images/testing/us_1-2-5.gif">
 
 
 </details>
 
 <details><summary>User Story 1.3</summary>
 
-<img src="readme-images/testing/us_1-3.gif">
+
 
 </details>
 
 
 <details><summary>User Story 1.4</summary>
 
-<img src="readme-images/testing/us_1-4.gif">
+
 
 </details>
 
 
 <details><summary>User Story 2.1</summary>
 
-<img src="readme-images/testing/us_2-1.jpg">
+
 
 </details>
 
 
 <details><summary>User Story 2.2</summary>
 
-<img src="readme-images/testing/us_2-2.gif">
+
 
 </details>
 
 
 <details><summary>User Story 2.3</summary>
 
-<img src="readme-images/testing/us_2-3.gif">
+
 
 </details>
 
 
 <details><summary>User Story 3.1</summary>
 
-<img src="readme-images/testing/us_3-1.gif">
+
 
 </details>
 
 
 <details><summary>User Story 3.2</summary>
 
-<img src="readme-images/testing/us_3-2.gif">
+
 
 </details>
 
 
 <details><summary>User Story 3.3</summary>
 
-<img src="readme-images/testing/us_3-3.gif">
+
 
 </details>
 
 
 <details><summary>User Story 3.4</summary>
 
-<img src="readme-images/testing/us_3-4.gif">
+
 
 </details>
 
 
 <details><summary>User Story 3.5</summary>
 
-<img src="readme-images/testing/us_3-5.gif">
+
 
 </details>
 
 
 <details><summary>User Story 3.6</summary>
 
-<img src="readme-images/testing/us_3-6.gif">
+
 
 </details>
 
 
 <details><summary>User Story 4.1</summary>
 
-<img src="readme-images/testing/us_4-1.gif">
+
 
 </details>
 
 
 <details><summary>User Story 4.2</summary>
 
-<img src="readme-images/testing/us_4-2.gif">
+
 
 </details>
