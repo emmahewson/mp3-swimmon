@@ -472,7 +472,7 @@ I created fully designed wireframes in [Figma](https://www.figma.com/). This all
 <img src="readme-images/design/wf_add-event.png">
 <img src="readme-images/design/wf_edit-event.png">
 
-_The edit-event tablet & mobile designs will be essentially the same as the add-event designs_
+_For edit-event tablet & mobile designs see add-event designs_
 
 </details>
 
@@ -493,7 +493,7 @@ _The edit-event tablet & mobile designs will be essentially the same as the add-
 <img src="readme-images/design/wf_add-loc.png">
 <img src="readme-images/design/wf_edit-location.png">
 
-_The edit-location tablet & mobile designs will be essentially the same as the add-location designs_
+_For edit-location tablet & mobile designs see add-location designs_
 
 </details>
 
