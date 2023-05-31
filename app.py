@@ -203,6 +203,7 @@ def my_profile(username):
                 locations=locations)
 
         # if no result found routes to 404 page
+        flash("User not found")
         return abort(404)
 
     # redirects to sign in if user isn't logged in
@@ -274,6 +275,7 @@ def event(event_id):
             )
 
         # if no result found routes to 404 page
+        flash("Event not found")
         return abort(404)
 
     # redirects to sign in if user isn't logged in
@@ -431,6 +433,7 @@ def edit_event(event_id):
             return redirect(url_for("my_profile", username=session["user"]))
 
         # if no result found routes to 404 page
+        flash("Event not found")
         return abort(404)
 
     # redirects to sign in if user isn't logged in
@@ -481,6 +484,7 @@ def delete_event(event_id):
             return redirect(url_for("my_profile", username=session["user"]))
 
         # if no result found routes to 404 page
+        flash("Event not found")
         return abort(404)
 
     # redirects to sign in if user isn't logged in
@@ -557,6 +561,7 @@ def location(location_id):
         )
 
     # if no result found routes to 404 page
+    flash("Location not found")
     return abort(404)
 
 
@@ -745,6 +750,7 @@ def edit_location(location_id):
                 return render_template("edit-location.html", location=location)
 
             # if no result found routes to 404 page
+            flash("Location not found")
             return abort(404)
 
         # if not user's event redirects to user profile page
@@ -788,6 +794,7 @@ def delete_location(location_id):
                 return redirect(url_for("manage_locations"))
 
             # if no result found routes to 404 page
+            flash("Location not found")
             return abort(404)
 
         # if not user's event redirects to user profile page

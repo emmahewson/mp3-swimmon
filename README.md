@@ -533,7 +533,7 @@ The website uses 2 typefaces that I felt worked well together and complemented e
 
 #### Graphics / Imagery
 
-- The logo & Favicon were created in (Adobe Illustrator)[https://www.adobe.com/uk/products/illustrator.html]
+- The logo & Favicon were created in [Adobe Illustrator](https://www.adobe.com/uk/products/illustrator.html)
 
 - The home page image and the placeholder image were taken from Unsplash full credits in the [image credits](#images--text)
 
@@ -996,7 +996,7 @@ _Caption_
 | **Visible To** | Logged In Users |
 | **Template** | event.html |
 | **Front End Functionality** | Header image has backup placeholder incase of failure to load. Jinja used to dynamically set the colour of the Who/Challenge text background. Location map uses Google Maps API and pulls the co-ordinates directly from the DOM content (rather than linking via a fetch function in the backend). Jinja Filters truncate the latitude & longitude values for display & converts the time & date to a user-friendly format that matches the format on the add event form. |
-| **Back End Functionality** | Populates page with event based on the event id provided. Pulls in location information from the locations collection using the location_id field on the event document. If event id is not found in database aborts and re-routes to 404 page. |
+| **Back End Functionality** | Populates page with event based on the event id provided. Pulls in location information from the locations collection using the location_id field on the event document. If event id is not found in database aborts and re-routes to 404 page with an 'event not found' flash message. |
 | **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Edit / Delete Buttons only visible if event created by current user (or user is admin). Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | User must be logged in |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
@@ -1134,7 +1134,7 @@ _Caption_
 | **Visible To** | Logged In Users - own events only. Admin - all events. |
 | **Template** | edit-event.html |
 | **Front End Functionality** | Uses Materialize's Timepicker & Datepicker to give a user-friendly way of selecting a time & date and making sure they are in a consistent format. Datepicker is set to the exisiting event date (event-form.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
-| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Pre-fills form with event information from event object in database.  If event id is not found in database aborts and re-routes to 404 page. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. Flash message confirms successful submission. |
+| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Pre-fills form with event information from event object in database.  If event id is not found in database aborts and re-routes to 404 page with an 'event not found' flash message. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. Flash message confirms successful submission. |
 | **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (form.js). Additional validation popup messages on dropdown/select inputs added to Materialize template (event-form.js) |
 | **Back End Form Validation** | None |
 | **Front End Security** | No direct link to page in nav - all links to this page are visible to logged in users only. |
@@ -1196,7 +1196,7 @@ _Caption_
 |---|---|
 | **Visible To** | Logged In Users - own events only. Admin - all events. |
 | **Template** | None |
-| **Back End Functionality** | Removes event from database. If event id is not found in database aborts and re-routes to 404 page. |
+| **Back End Functionality** | Removes event from database. If event id is not found in database aborts and re-routes to 404 page with an 'event not found' flash message. |
 | **Front End Security** |  No direct link to page in nav - all links to this page are visible to logged in users only. Delete buttons on other pages only visible for admin or on user's own events. Modal appears to confirm delete prior to deletion on page containing delete button. |
 | **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'events' page rather than 'delete-event' to redirect there post log-in. This adds a layer of protection when deleting events. If not user's event re-routes to 'profile' and flash message shows.|
@@ -1289,7 +1289,7 @@ _Caption_
 | **Visible To** | All Users |
 | **Template** | location.html |
 | **Front End Functionality** | Header image has backup placeholder incase of failure to load. Jinja used to dynamically set the colour of the Who/Challenge text background on event cards. Location map uses Google Maps API and pulls the co-ordinates directly from the DOM content (rather than linking via a fetch function in the backend). Jinja Filters truncate the latitude & longitude values for display & converts the time & date on event cards to a user-friendly format that matches the format on the add event form. If no events returned from database 'no results' message and link to 'add-event' show. |
-| **Back End Functionality** | Populates page with location information based on the location id provided. Populates page with events at that location by filtering using location_id field on events. Events also filtered by future only & sorted by date. If location id is not found in database aborts and re-routes to 404 page. |
+| **Back End Functionality** | Populates page with location information based on the location id provided. Populates page with events at that location by filtering using location_id field on events. Events also filtered by future only & sorted by date. If location id is not found in database aborts and re-routes to 404 page with a 'location not found' flash message. |
 | **Front End Security** | Location Edit / Delete Buttons only visible for admin. Events only visible for logged in users, non-logged in users see a call to action to the 'JOIN' page instead. Event Edit / Delete Buttons only visible on user's own events (or all events if admin). Confirmation modal prior to delete to avoid accidental deletion. |
 | **Back End Security** | None |
 | **Routing - log in** | None |
@@ -1475,7 +1475,7 @@ _Caption_
 | **Visible To** | Admin Only |
 | **Template** | edit-location.html |
 | **Front End Functionality** | Bespoke location picker used to populate Latitude & Longitude inputs, built using JavaScript & Google Maps API (map-picker.js). Map set to previously selected location (map-picker.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
-| **Back End Functionality** | Populates form with location data using object id. Submission: converts location name to lowercase to make searching easier, checks if new image uploaded & if so replaces it. Uploads image to Cloudinary & adds image url to location data. Updates location on database. If location id is not found in database aborts and re-routes to 404 page. |
+| **Back End Functionality** | Populates form with location data using object id. Submission: converts location name to lowercase to make searching easier, checks if new image uploaded & if so replaces it. Uploads image to Cloudinary & adds image url to location data. Updates location on database. If location id is not found in database aborts and re-routes to 404 page with a 'location not found' flash message. |
 | **Front End Form Validation** | All fields required except image upload (to keep old image). Fields must match type and length (HTML validation). Latitude & Longitude populated using Map Picker (not directly editable to make sure they're in the correct format) with JavaScript & HTML validation to check selected location is in correct area by setting min/max latitude/longitude values. Uploaded image checks: under 5mb (JavaScript file-validation.js) and correct format (HTML validation). |
 | **Back End Form Validation** | Checks image is under 5MB & in accepted format - redirects to 413/415 page if not. |
 | **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
@@ -1553,7 +1553,7 @@ _Caption_
 |---|---|
 | **Visible To** | Admin Only |
 | **Template** | None |
-| **Back End Functionality** | Removes location from database & deletes all events at that location. If location id is not found in database aborts and re-routes to 404 page. |
+| **Back End Functionality** | Removes location from database & deletes all events at that location. If location id is not found in database aborts and re-routes to 404 page with a 'location not found' flash message. |
 | **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
 | **Back End Security** | User must be logged in & admin. |
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'manage-locations' page to redirect there post log-in. This adds a layer of protection when deleting locations. If user not admin re-routes to 'profile' and flash message shows. |
