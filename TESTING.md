@@ -73,7 +73,7 @@ I ran the code for all the pages through the [W3C HTML Validator](https://valida
 
 <details><summary>HTML Validation Results Screenshot</summary>
 
-<img src="">
+<img src="readme-images/testing/val_html.jpg">
 
 _Due to the site having user authentication & log in as well as using Jinja templating to build the page I had to test the HTML using the validator's text-input. Therefore all the results images look identical. Above is a sample of what all the results looked like._
 
@@ -100,7 +100,7 @@ I ran the CSS code through the [W3C CSS Validator](https://jigsaw.w3.org/css-val
 
 <details><summary>CSS Validation Results Screenshot</summary>
 
-<img src="">
+<img src="readme-images/testing/val_css.jpg">
 
 </details>
 
@@ -134,7 +134,58 @@ I ran the JavaScript code through [JSHint](https://jshint.com/). There were some
 
 <details><summary>JavaScript Results Screenshots</summary>
 
+<details><summary>back.js</summary>
+<img src="readme-images/testing/val_js_back.jpg">
+</details>
 
+<details><summary>event-form.js</summary>
+<img src="readme-images/testing/val_js_event-form.jpg">
+</details>
+
+<details><summary>file-validation.js</summary>
+<img src="readme-images/testing/val_js_file-validation.jpg">
+</details>
+
+<details><summary>map-event.js</summary>
+<img src="readme-images/testing/val_js_map-event.jpg">
+</details>
+
+<details><summary>map-location.js</summary>
+<img src="readme-images/testing/val_js_map-location.jpg">
+</details>
+
+<details><summary>map-picker.js</summary>
+<img src="readme-images/testing/val_js_map-picker.jpg">
+</details>
+
+<details><summary>map.js</summary>
+<img src="readme-images/testing/val_js_map.jpg">
+</details>
+
+<details><summary>no-events.js</summary>
+<img src="readme-images/testing/val_js_no-events.jpg">
+</details>
+
+<details><summary>no-locations.js</summary>
+<img src="readme-images/testing/val_js_no-locations.jpg">
+</details>
+
+<details><summary>popover.js</summary>
+<img src="readme-images/testing/val_js_popover.jpg">
+</details>
+
+
+<details><summary>script.js</summary>
+<img src="readme-images/testing/val_js_script.jpg">
+</details>
+
+<details><summary>scroll-top.js</summary>
+<img src="readme-images/testing/val_js_scroll-top.jpg">
+</details>
+
+<details><summary>search.js</summary>
+<img src="readme-images/testing/val_js_search.jpg">
+</details>
 
 </details>
 
@@ -158,7 +209,7 @@ I ran the app.py code through [https://extendsclass.com/python-tester.html](http
 
 <details><summary>Python Results Screenshots</summary>
 
-<img src="">
+<img src="readme-images/testing/val_python.jpg">
 
 </details>
 
@@ -195,12 +246,63 @@ I ran the site through the [Wave Web Accessibility Evaulation Tool](https://wave
 
 <details><summary>Accessibility Results Screenshots</summary>
 
+
+<details><summary>HOME</summary>
+<img src="readme-images/testing/val_acc_home.jpg">
+</details>
+
+<details><summary>JOIN</summary>
+<img src="readme-images/testing/val_acc_join.jpg">
+</details>
+
+<details><summary>SIGN-IN</summary>
+<img src="readme-images/testing/val_acc_sign-in.jpg">
+</details>
+
+<details><summary>PROFILE</summary>
+<img src="readme-images/testing/val_acc_profile.jpg">
+</details>
+
+<details><summary>EVENTS</summary>
+<img src="readme-images/testing/val_acc_events.jpg">
+</details>
+
+<details><summary>EVENT</summary>
+<img src="readme-images/testing/val_acc_event.jpg">
+</details>
+
+<details><summary>ADD-EVENT</summary>
+<img src="readme-images/testing/val_acc_add-event.jpg">
+</details>
+
+<details><summary>EDIT-EVENT</summary>
+<img src="readme-images/testing/val_acc_edit-event.jpg">
+</details>
+
+<details><summary>LOCATION</summary>
+<img src="readme-images/testing/val_acc_location.jpg">
+</details>
+
+<details><summary>MANAGE LOCATIONS</summary>
+<img src="readme-images/testing/val_acc_manage-locations.jpg">
+</details>
+
+<details><summary>ADD-LOCATION</summary>
+<img src="readme-images/testing/val_acc_add-location.jpg">
+</details>
+
+<details><summary>EDIT-LOCATION</summary>
+<img src="readme-images/testing/val_acc_edit-location.jpg">
+</details>
+
+<details><summary>ERROR</summary>
+<img src="readme-images/testing/val_acc_error.jpg">
+</details>
+
 </details>
 
 
-
-
-<details><summary>Notes on Accessibility Results</summary>
+__Notes on Accessibility Results__
 
 There were a number of errors and warnings highlighted by the validation process. Many of these I was able to fix and the details of those are in the table. However a number of these were issues stemming from either Materialize or from Google Maps API which I have been unable to remedy as these are external resources. There were also a couple of recurring warnings which I was able to safely disregard.
 
@@ -226,9 +328,6 @@ On the forms containing dropdown menus Wave threw up an error about there not be
 __Datepicker Tab Index__
 
 The Materialize Datepicker has a tab index which threw a warning on Wave. However as this was a warning and not an error I decided to leave it as it was rather than trying to rebuild the whole Datepicker.
-
-</details>
-
 
 - - -
 
@@ -261,7 +360,53 @@ I ran the site through Google Chrome Dev Tools' Lighthouse to check on its perfo
 
 <details><summary>Lighthouse Results Screenshots</summary>
 
+<details><summary>HOME</summary>
+<img src="readme-images/testing/val_perf_home.jpg">
+</details>
 
+<details><summary>JOIN</summary>
+<img src="readme-images/testing/val_perf_join.jpg">
+</details>
+
+<details><summary>SIGN-IN</summary>
+<img src="readme-images/testing/val_perf_sign-in.jpg">
+</details>
+
+<details><summary>PROFILE</summary>
+<img src="readme-images/testing/val_perf_profile.jpg">
+</details>
+
+<details><summary>EVENTS</summary>
+<img src="readme-images/testing/val_perf_events.jpg">
+</details>
+
+<details><summary>EVENT</summary>
+<img src="readme-images/testing/val_perf_event.jpg">
+</details>
+
+<details><summary>ADD-EVENT</summary>
+<img src="readme-images/testing/val_perf_add-event.jpg">
+</details>
+
+<details><summary>EDIT-EVENT</summary>
+<img src="readme-images/testing/val_perf_edit-event.jpg">
+</details>
+
+<details><summary>LOCATION</summary>
+<img src="readme-images/testing/val_perf_location.jpg">
+</details>
+
+<details><summary>MANAGE LOCATIONS</summary>
+<img src="readme-images/testing/val_perf_manage-locations.jpg">
+</details>
+
+<details><summary>ADD-LOCATION</summary>
+<img src="readme-images/testing/val_perf_add-location.jpg">
+</details>
+
+<details><summary>EDIT-LOCATION</summary>
+<img src="readme-images/testing/val_perf_edit-location.jpg">
+</details>
 
 </details>
 
@@ -1019,7 +1164,7 @@ https://github.com/emmahewson/mp3-swimmon/assets/116887840/894b78d7-435b-4846-a2
 
 <details><summary>User Story 2.1</summary>
 
-
+<img src="readme-images/testing/us_2-1.jpg">
 
 </details>
 
