@@ -1113,7 +1113,7 @@ Create event functionality. By using the location dropdown & database collection
 <details><summary>Screen Recording Video</summary>
 
 
-https://github.com/emmahewson/mp3-swimmon/assets/116887840/26a87bf3-8edb-4f23-be3e-9e344097b955
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/a80eca03-9c64-41fa-af44-82bac5e87a17
 
 
 </details>
