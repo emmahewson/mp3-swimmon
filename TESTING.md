@@ -24,6 +24,7 @@ The live Website can be found [here](https://swim-mon.herokuapp.com/).
     - [Browser Compatibility](#browser-compatibility)
     - [Feature Testing Results](#feature-testing-results)
 - [User Stories Testing](#user-stories-testing)
+- [Bugs and Fixes](#bugs--fixes)
 
 
 ---

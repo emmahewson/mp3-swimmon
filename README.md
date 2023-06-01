@@ -768,7 +768,7 @@ This page allows users to easily set up an account and become a member of the si
 | **Back End Security** | None |
 | **Routing - log in** | Any page visible to logged in users only redirects here if user not logged in. On log in return user to the previous page they attempted to visit, or if none is stored in session to 'profile'. |
 
-### Page Features - Details & Description
+#### Page Features - Details & Description
 
 - A page for users to sign in to their account
 - Link to 'join' page for users who aren't yet registered
@@ -805,7 +805,7 @@ This page allows users to sign in to their account giving them access to full CR
 | **Routing - log in** | Redirects to 'sign-in' on log-out |
 
 
-### Page Features - Details & Description
+#### Page Features - Details & Description
 
 - Nav link only visible to logged in users
 - Logs user out & takes them to 'sign-in' page
@@ -841,7 +841,7 @@ This page allows users to easily sign out of their account once they are finishe
 | **Routing - other** | Session url stored to redirect back here after editing or deleting an event via this page. |
 
 
-### Page Features - Details & Description
+#### Page Features - Details & Description
 
 
 <details><summary>Intro Section</summary>
@@ -936,7 +936,7 @@ This page allows users to view events on summary cards, allowing them to scan th
 
 
 
-### Page Features - Details & Description
+#### Page Features - Details & Description
 
 <details><summary>Whole Page</summary>
 
@@ -1042,7 +1042,7 @@ This page allows the user to get more detailed information about an event, it al
 | **Routing - other** | None |
 
 
-### Page Features - Details & Description
+#### Page Features - Details & Description
 
 <details><summary>All Page Features</summary>
 
@@ -1064,7 +1064,7 @@ This page allows the user to get more detailed information about an event, it al
     - Format of time matches event information
     - Both inputs are not directly editable - keeps the data a consistent format
     - Users can only select from the current day onwards
-        - Additional bespoke JavaScript validation checks if a user selects today's date & a time in the past. If an event were submitted like this it would not display on the site as the events are filtered from now onwards, the user would have to create a new event as they wouldn't not be able to access the event to edit it. [See bug 10](TESTING.md/#10-possible-for-a-user-to-create-an-event-in-the-past-and-lose-access-to-it)
+        - Additional bespoke JavaScript validation checks if a user selects today's date & a time in the past. If an event were submitted like this it would not display on the site as the events are filtered from now onwards, the user would have to create a new event as they wouldn't not be able to access the event to edit it. [See bug 10 (opens TESTING.md).](TESTING.md/#10-possible-for-a-user-to-create-an-event-in-the-past-and-lose-access-to-it)
 - Flash Messages   
     - On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
 
@@ -1103,7 +1103,7 @@ Create event functionality. By using the location dropdown & database collection
 | **Routing - other** | Redirects to previous page after editing unless session url is this page (from login redirect). Defaults to 'events' page. |
 
 
-### Page Features - Details & Description
+#### Page Features - Details & Description
 
 <details><summary>All Page Features</summary>
 
@@ -1127,7 +1127,7 @@ Create event functionality. By using the location dropdown & database collection
     - Format of time matches event information
     - Both inputs are not directly editable - keeps the data a consistent format
     - Users can only select from the current day onwards
-        - Additional bespoke JavaScript validation checks if a user selects today's date & a time in the past. If an event were submitted like this it would not display on the site as the events are filtered from now onwards, the user would have to create a new event as they wouldn't not be able to access the event to edit it. [See bug 10 in TESTING.md](TESTING.md/#10-possible-for-a-user-to-create-an-event-in-the-past-and-lose-access-to-it)
+        - Additional bespoke JavaScript validation checks if a user selects today's date & a time in the past. If an event were submitted like this it would not display on the site as the events are filtered from now onwards, the user would have to create a new event as they wouldn't not be able to access the event to edit it. [See bug 10 (opens TESTING.md).](TESTING.md/#10-possible-for-a-user-to-create-an-event-in-the-past-and-lose-access-to-it)
 - Flash Messages   
     - On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
 
@@ -1201,7 +1201,7 @@ The delete event functionality allows user to quickly delete their events and re
 | **Routing - other** | Session url stored for logged in users to redirect back here after editing or deleting an event via this page. |
 
 
-### Page Features - Details & Description
+#### Page Features - Details & Description
 
 <details><summary>Intro Section</summary>
 
@@ -1253,7 +1253,7 @@ The profile page is the first place a user will see when they log in to the site
 | **Routing - other** | Session url stored to redirect back here after editing location/event or deleting an event accessed via this page. |
 
 
-### Page Features - Details & Description
+#### Page Features - Details & Description
 
 <details><summary>Whole Page</summary>
 
@@ -1346,7 +1346,7 @@ The location page provides all users with easy to read accessible information ab
 | **Routing - other** | Session url stored to redirect back here after editing or deleting a location via this page. |
 
 
-### Page Features - Details & Description
+#### Page Features - Details & Description
 
 <details><summary>Intro Section</summary>
 
@@ -1412,7 +1412,7 @@ The manage locations page gives the admin a single point from which they can vie
 | **Routing - other** | None |
 
 
-### Page Features - Details & Description
+#### Page Features - Details & Description
 
 <details><summary>All Page Features</summary>
 
@@ -1433,7 +1433,7 @@ The manage locations page gives the admin a single point from which they can vie
     - The map has the full screen option disabled as this hides the error message when selecting a location outside Anglesey and causes a bad user experience.
     - The map includes validation checks to stop the user selecting a location far outside of Anglesey by limiting the range of the lat/long values
         - If a user selects a location outside this range an custom error message appears.
-    - The lat/long inputs are not directly editable to avoid users adding invalid data. This uses a bespoke readonly style to allow the inputs to retain their 'required' attribute/validation [See bug ](TESTING.md/#4-location-picker-map---mobile-keyboard-popup)
+    - The lat/long inputs are not directly editable to avoid users adding invalid data. This uses a bespoke readonly style to allow the inputs to retain their 'required' attribute/validation [See bug 4 (opens TESTING.md).](TESTING.md/#4-location-picker-map---mobile-keyboard-popup)
     - The map has a save button to log the location to the form inputs
     - The map has a reset button to reset the map back to its original state
         - On the add-location form this would reset back to the centre of Anglesey
@@ -1486,7 +1486,7 @@ The add location form is a really intuitive user-friendly way for a site admin t
 | **Routing - other** | Redirects to previous page after editing unless session url is this page (from login redirect). Defaults to 'manage-locations' page. |
 
 
-### Page Features - Details & Description
+#### Page Features - Details & Description
 
 <details><summary>All Page Features</summary>
 
@@ -1511,7 +1511,7 @@ The add location form is a really intuitive user-friendly way for a site admin t
     - The map has the full screen option disabled as this hides the error message when selecting a location outside Anglesey and causes a bad user experience.
     - The map includes validation checks to stop the user selecting a location far outside of Anglesey by limiting the range of the lat/long values
         - If a user selects a location outside this range an custom error message appears.
-    - The lat/long inputs are not directly editable to avoid users adding invalid data. This uses a bespoke readonly style to allow the inputs to retain their 'required' attribute/validation [See bug ](TESTING.md/#4-location-picker-map---mobile-keyboard-popup)
+    - The lat/long inputs are not directly editable to avoid users adding invalid data. This uses a bespoke readonly style to allow the inputs to retain their 'required' attribute/validation [See bug 4 (opens TESTING.md).](TESTING.md/#4-location-picker-map---mobile-keyboard-popup)
     - The map has a save button to log the location to the form inputs
     - The map has a reset button to reset the map back to its original state
         - On the add-location form this would reset back to the centre of Anglesey
@@ -1631,7 +1631,7 @@ __500 ERROR PAGE__
 
 
 
-### Page Features - Details & Description
+#### Page Features - Details & Description
 
 <details><summary>All Page Features</summary>
 
