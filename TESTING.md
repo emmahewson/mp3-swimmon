@@ -1276,3 +1276,508 @@ https://github.com/emmahewson/mp3-swimmon/assets/116887840/f3519e4c-20b5-444d-af
 
 
 </details>
+
+
+---
+
+
+## Bugs & Fixes
+
+During development and testing I encountered the a number of bugs, all the details of these can be found below.
+
+__All bugs were fixed apart from the following:__
+
+- [2: Popover (hover info box) on mobile not scrolling](#2-popover-hover-info-box-on-mobile-not-scrolling)
+- [13: Accessibility - No label for select dropdown menus on forms](#13-accessibility---no-label-for-select-dropdown-menus-on-forms)
+
+
+#### **1: Dropdown Search Bar `<a>` link not displaying properly**
+
+The 'reset all' button at the bottom of the events search-bar (within the dropdown menu) was not displaying properly and getting cut off by the div padding. This appeared to be caused by the way the dropdown menu worked, not recognising the `<a>`'s full height. I fixed this by changing the `<a>` to a `<p>` element and playing with the positioning slightly by setting it to relative and moving it up away from the bottom of the div, which solved the problem.
+
+<details><summary>Screengrabs</summary>
+
+<img src="readme-images/bugs/bug1_before.jpg">
+<img src="readme-images/bugs/bug1_after.jpg">
+
+_Before & After_
+
+</details>
+
+#### **2: Popover (hover info box) on mobile not scrolling**
+
+When creating the info boxes on the form I that would appear on hover I set up a `scrollIntoView()` function on clicking the '?' circle for smaller screens to make sure that the popover was visible. This worked fine on both the development and deployed site (including in Dev Tool's mobile mockups) but during testing on an iPhone SE 2020 I found that on one of the elements the scroll didn't work on any of the installed browsers on the first click, but did on the 2nd. However it worked perfectly on other identical popover trigger elements.
+
+I troubleshooted this issue for a long time, it appears to be related to the hover/focus on mobile and how it translates to a touchscreen device. I tried using a 'touchstart' event rather than click - which fixed the scroll but would also not consistently bring up the infobox. I also tried refactor the code, adding `setTimeout()` to allow the box to appear first and attempting to scroll using an `<a>` with an href that pointed to the correct ID but all of these caused further issues or didn't solve the problem. I was unable to find a solution to this and the bug remains.
+
+<details><summary>Screen Recordings</summary>
+
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/ceda54b9-65da-4a61-a903-99c462ccb3bc
+
+
+_Working on Dev Tools' Mobile Mockup_
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/c0ab6ec1-7c72-44df-810f-b77aaef48680
+
+
+
+_Not working on a mobile_
+
+</details>
+
+
+#### **3: Google Maps info windows - multiple windows opening at once**
+
+I encountered a bug on the homepage map (with all the locations represented by markers and associated info windows on click). I found that after clicking on the first marker, any clicks on subsequent markers would result in multiple info windows being open at once, unless the user specifically closed the windows by clicking on the cross on outside the info window. I felt this was a bad user experience as it required more user clicks. I solved this with a simple & neat solution I found [here](https://www.aspsnippets.com/Articles/Google-Maps-API-V3-Open-Show-only-one-InfoWindow-at-a-time-and-close-other-InfoWindow.aspx). By declaring the infoWindow element outside of the For Loop and then populating it inside the for loop it meant that only 1 info window existed (originally I had declared it within the for loop so each marker had its own Info-Window.) With only 1 info window element it meant that it was impossible for more than 1 to be open at a time.
+
+<details><summary>Screen Recordings</summary>
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/73a3ab53-293e-4a35-aaca-526b5b9687e8
+
+
+_Before_
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/3a72d1ce-f5d4-4c51-bdf2-eccf0acac483
+
+
+
+_After_
+
+
+</details>
+
+
+#### **4: Location Picker Map - Mobile keyboard popup**
+
+When testing the deployed site on a mobile device I discovered an issue with the location picker on the add/edit location form. Clicking on the input (which opens the location picker modal) also opened the mobile keyboard as it was detecting a 'number' input being clicked. This was not a good user experience as it obscured the map, caused a flashing cursor to appear over the map and would be confusing for a user. I initially disabled the mobile keyboard by making the inputs 'readonly' so that the click on the boxes only triggered the location picker modal and not the keyboard as the mobile device would not detect a event where the user would be expected to type anything.
+
+
+However I then discovered that by making the inputs readonly this disabled the 'required' attribute and it was possible for a user to submit a location with no co-ordinates. I found a workaround to this by removing the readonly attribute from the HTML and adding a clickable invisible div on top of the inputs that triggered the location-picker modal so a user on a mobile would be clicking on the new div, rather than the input, which would mean they keyboard wasn't triggered.
+
+<details><summary>Screen Grabs / Recordings</summary>
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/0f280d19-1e19-4dd3-b160-3d28a42b50b4
+
+
+_Keyboard popping & flashing cursor up on mobile_
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/62d79c26-3601-4e21-8d23-b7c654465e04
+  
+_After readonly attribute added to inputs - mobile_
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/e7e45d1d-164c-4307-a341-0458595772d1
+
+
+_After readonly attribute added to inputs - desktop_
+
+</details>
+
+I later encountered a related bug affecting these inputs & the time/date inputs on the add-event form. [See bug 16](#16-possible-to-paste-data-in-to-inputs-populated-by-timedate-picker--map-picker).
+
+
+#### **5: Broken Dynamic Image Links**
+
+In my original plan for the site I had admins inputting a text-based url for the location image. Whilst I amended this ([see bug 6](#6-image-url---not-reliable-with-missing-images)) I also wanted to provide a better user experience by providing a fall-back image that loaded if an image was missing or failed to load. Even after moving across to the user-upload to Cloudinary system (where missing images should be less likely) I kept the placeholder image incase there was a breakdown between the site and Cloudinary.
+
+I did this by adding an 'onerror' attribute to the dynamic images in the HTML files which supplied a URL to a local image with a SwimMon logo. I found I was unable to use the normal method of loading using url_for `{{ url_for('static', filename='js/scroll-top.js') }}` as it didn't recognise the url this way. My workaround was to link directly to the hosted image on the deployed site, thereby covering a failure to connect to the Cloudinary media store. Whilst linking to this image this way would presumably not be best practice it worked for the purposes and scope of this project to improve the user experience and look of the site which was my main aim. This was based on a technique from [Daily Dev Tips](https://dev.to/dailydevtips1/html-fallback-images-on-error-1aka).
+
+<details><summary>Screen Grabs</summary>
+
+<img src="readme-images/bugs/bug5_error.jpg">
+
+_Error_
+
+<img src="readme-images/bugs/bug5_before.jpg">
+
+_Before_
+
+<img src="readme-images/bugs/bug5_after.jpg">
+
+_After_
+
+</details>
+
+#### **6: Image URL - poor user experience and missing images**
+
+Originally when I built the add / edit locations forms I decided that the best solution was to have the user input an text-based image url for the image. I felt that having a file upload was beyond my current skill set and pushing at the edges of the scope of this project. However I found that the images I was loading in to the site caused console errors when they failed to load, which I wasn't happy with and this was something that was happening too much to ignore. I also felt that asking an admin to source and upload a suitable quality image was a poor user experience and left too much space for things to go wrong and errors to occur. I made the decision to include a file upload input field by using Cloudinary's media storage and basic file upload functionality. This meant that all the location image files were stored somewhere safe that I had control of and so wouldn't be removed or changed without me knowing.
+
+The Cloudinary process is as follows:
+
+- a user uploads an image to my Cloudinary cloud-based storage
+- Cloudinary then returns a url as a text string which is sent to MongoDB, and the image is accessed in exactly the same way as before
+
+<details><summary>Code Extract: handling the add_location form submission</summary>
+
+```
+    if request.method == "POST":
+
+        image = request.files['location_image']
+        image_upload = cloudinary.uploader.upload(image)
+
+        location = {
+            "name": request.form.get("location_name").lower(),
+            "lat": request.form.get("latitude"),
+            "long": request.form.get("longitude"),
+            "description": request.form.get("location_description"),
+            "facilities": request.form.get("location_facilities"),
+            "parking": request.form.get("location_parking"),
+            "image_url": image_upload["secure_url"]
+        }
+
+        mongo.db.locations.insert_one(location)
+        flash("Location Successfully Added")
+        return redirect(url_for("manage_locations"))
+
+```
+
+</details>
+
+As part of this I also had to change the @app route for edit_location as I couldn't find a way to pre-populate the location image input with the previously selected image, this meant that a user had to re-upload the old image or not be able to submit the form, which was a very bad user experience. I overcame this issue by removing the 'required' attribute from the input, with explanatory text in a popover element to tell the user to ignore the field if they didn't want to update the image. I then added some code in the app route to check if the user had uploaded a new file, if so the new image url would replace the old, if not the old image url would be used.
+
+<details><summary>Code Extract: handling the form population & submission in edit_location</summary>
+
+```
+    location = mongo.db.locations.find_one(
+        {"_id": ObjectId(location_id)})
+
+    if request.method == "POST":
+        image = request.files['location_image']
+        old_image = location["image_url"]
+
+        if image:
+            image_upload = cloudinary.uploader.upload(image)
+            updated_image_url = image_upload["secure_url"]
+        else:
+            updated_image_url = old_image
+
+        submit = {
+                "name": request.form.get("location_name").lower(),
+                "lat": request.form.get("latitude"),
+                "long": request.form.get("longitude"),
+                "description": request.form.get("location_description"),
+                "facilities": request.form.get("location_facilities"),
+                "parking": request.form.get("location_parking"),
+                "image_url": updated_image_url
+            }
+
+        mongo.db.locations.update_one(
+            {"_id": ObjectId(location_id)}, {"$set": submit})
+        flash("Location Successfully Updated")
+        return redirect(url_for("manage_locations"))
+```
+
+</details>
+
+Should there be an error connecting to the Cloudinary media store for some reason the site could feasibly throw up missing image errors. However I feel that in switching away from using external urls to the user-upload Cloudinary process and by adding a fall-back image ([see bug 5](#5-broken-dynamic-image-links)) I have made the site as robust as possible within the scope of the project.
+
+#### **7: Search producing incorrect results when 3 categories chosen**
+
+I found a bug after I had initially created the search functionality on events.html using JavaScript in search.js. I found that, when selecting a filter in 3 categories and the 3rd filter was one with no matching events, that rather than showing me no results as expected, it showed me events that matched the other 2 categories' filters. So for example in the screen recording below, the 'location' filter I selected produced results, then the 'who-for' filter I selected also produced results that matched the first filter, but the 'challenge' filter I selected didn't produce any results (in this case there were no events at all with a challenge level of 'fun'). This should have meant no results appeared in the box, but in fact the results from the first 2 selected filters remained.
+
+I revisited my code and discovered that I had made a logical error when writing the calculate matching cards function. I had neglected to add a check that all of the categories' filters were actually producing results. I added an if statement to check that the number of categories with selected buttons matched the number of categories which produced 1 or more results, and only if they did would it check for matching results. This solved the bug
+
+<details><summary>Screen Recordings</summary>
+
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/0a43837b-b82a-4e99-9686-2270e5a40596
+
+
+_Before_
+
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/b0b63ded-0c6a-43c6-9284-7d51d723daf2
+
+
+_After_
+
+
+</details>
+
+#### **8: Map Location Picker - inputs emptied on edit location form if user doesn't drag marker**
+
+During testing I found that when opening the edit-location form, if the user clicked on the already populated lat/long input boxes to open the location picker map, then pressed 'save' without dragging the marker anywhere, it would remove the values from the input boxes. This was due to the value of the lat/lng being set based on the position set on the 'dragend' event listener. In order to fix this bug I declared values of these lat/lng variables based on the current map location (which was taken from the values in the form input boxes) prior to the dragend event listener (which could be over-written by any dragend events that happen afterwards). I also added an if statement around this part of the code to stop them being set if the marker was in its opening position in the centre of Anglesey, so that it only saves if the location has previously been set.
+
+<details><summary>Screen Recordings</summary>
+
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/91520d87-828a-40ef-9293-997fb7b3dddc
+
+
+_Before_
+
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/a85c2d91-6fdc-4778-9e8d-c49aa4eb3854
+
+
+_After_
+
+
+</details>
+
+#### **9: Scroll to Top JS function - console error**
+
+I initially set up all my JavaScript functions in a single script.js file which was linked via the base.html template. However I soon discovered that if a page was loaded that didn't include the elements referenced in the JS file that the console would throw an error. E.g. the `scrollToTop()` function was used on the events page but the element that it linked to didn't exist on the home page. I fixed this by splitting up any JavaScript functions that were causing these errors in to separate files with the relevant functions for each page and linking them via a `{% block scripts %}` at the bottom of their associated page.
+
+<details><summary>Screen Grab</summary>
+
+<img src="readme-images/bugs/bug9_error.jpg">
+_Console Error on Home Page when JavaScript tries to call scrollToTop() function_
+
+</details>
+
+#### **10: Possible for a user to create an event in the past and lose access to it**
+
+When creating or editing an event I had set the datepicker to only allow users to select from the today onwards. This functionality worked correctly, however I discovered that it would be technically possible to select today on the datepicker but then a time in the past on the timepicker. This provided a bad user experience because a user would find that their event didn't appear anywhere on the site as the events have been filtered to only show future events, this would mean they wouldn't be able to go in and edit their event to rectify the problem and would have to start from scratch.
+
+I decided the best way to tackle this problem was with some additional front end validation on the form. I added some JavaScript code which converted the date & time strings to a date-time string that JavaScript could understand, then checked if this inputted date was earlier than the current time and date and if so a warning message would appear and the form's submit button would be disabled. This required a couple of workarounds to make sure the validation styling matched the materialize styling I had used on the rest of the form, but by utilizing Materialize's valid & invalid classes within my own functions I was able to make sure that the boxes matched the other validation styling on the site.
+
+<details><summary>Screen Recordings</summary>
+
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/e40b2cf0-1520-4f75-b40a-30d77853a058
+
+
+_Before_
+
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/a419aec3-e6af-4145-b537-abe163257cc1
+
+
+_After_
+
+
+</details>
+
+#### **11: Previous username showing on URL on profile**
+
+I came across an interesting bug during testing where if I was logged in as e.g. 'user1' and on the user's profile page when I signed out, then I signed back in as a different user e.g. 'user2' that the profile would display the correct information for user2 but the url would still contain the user name 'user1'. Working through step by step using print statements I isolated the problem to the `session["url"]` which I was passing in to the session cookie on the profile page to make sure that they were redirected back there once they had finished editing any events they had accessed via the profile page. When combined with the redirect I had included after sign-in that took users back to the page they were trying to access when signed out, this meant this `session["url"]` from the profile page was being used to create the url, though the page was being populated with the correct user.
+
+I felt that this was a security issue as it revealed another user's username, so I fixed it by adding `session.pop("url")` to the sign-out route, which removed any stored urls from the session on sign-out.
+
+<details><summary>Screengrabs</summary>
+
+<img src="readme-images/bugs/bug11_before.jpg">
+_Before Username in URL doesn't match current user_
+
+<img src="readme-images/bugs/bug11_after.jpg">
+_After_
+
+</details>
+
+#### **12: Timepicker console errors on touchscreen devices**
+
+When testing the site using Dev Tools' device toolbar and simulating a touchscreen device Materialize's Timepicker on the add-event form threw up multiple errors about a passive event listener being unable to preventDefault. Upon investigation it appeared to relate to the Materialize JavaScript code which I was connecting to using a CDN. Despite the timepicker working correctly I wanted to try and get rid of the error so I downloaded the Materialize files and hosted them locally rather than via a CDN, this meant I was able to edit Materialize's code by removing the preventDefault command in the offending function. I fully tested the Timepicker with the amended code and it had no impact on its functionality and so the bug & error code were fixed.
+
+
+<details><summary>Screengrab</summary>
+
+<img src="readme-images/bugs/bug12.jpg">
+Console Errors triggered by time-picker on touchscreen devices
+
+
+</details>
+
+
+#### **13: Accessibility - No label for select dropdown menus on forms**
+
+During validation in WAVE Web AIM I discovered that due to the way that Materialize creates its dropdown select inputs that the label to go with the input was no longer labelling the input, this was because Materialize uses JavaScript to build a new text input to replace the select input which doesn't have the correct ID. There was no way to solve this problem without completely rebuilding the dropdown form input and due to time restraints this wasn't possible. This is unfortunate as it reduces the accessibility of the form and I would think about building my own next time to avoid this.
+
+
+<details><summary>Screengrab</summary>
+
+<img src="readme-images/bugs/bug13.jpg">
+Code as rendered in dev tools - the `<select>` has the correct ID but an additional `<input>` has been created which is causing the error
+
+
+</details>
+
+
+#### **14: Materialize Select Dropdown on iPhone**
+
+During device testing I discovered that the Materialize `<select>` input didn't work correctly on the iPhone. It would either not select the correct option or not select anything at all and trigger something else on the page. Through online research I found this was a consistent problem with Materialize on iPhone and was a known bug from IOS 13+. However Materialize had released a patch .js file that fixed the problem thankfully and I was able to add this in to the pages containing the `<select>` elements and it fixed the problem.
+
+
+<details><summary>Screen Recordings</summary>
+
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/d65eb98a-3c34-4678-a800-ce37f08eefea
+
+
+_Before_
+
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/598cdf6b-7dc3-45a0-8dbd-73482cc75bd5
+
+
+_After_
+
+
+</details>
+
+
+#### **15: No routing to 404 after event/location deletion when user tries to re-visit page**
+
+During testing I discovered that if a user were to try and revisit a page using the id of a deleted or non-existent event or location (e.g. by deleting the event from the 'event' page and then hitting the back button in the browser) rather than directing to a 404 page as I expected it would go to an empty event or location page. This also happened if a user entered their own id number, or tried to navigate directly to an event or location that no longer existed. I decided that this was a bad user experience as it wouldn't be clear what had happened on the blank page and any Google Map would throw a console error as it would have no co-ordinates to use in the map.
+
+I realised I had left out an important stage in the app routing which was to check if the database had produced a result and if not to re-direct the user to the 404 page. I added this in using a simple if statement checking whether the searched event, location or username was returning a result, and if not to abort to 404.
+
+In addition to this I realised that it would be possible if there were no events or locations in the database for the pages showing the event or location cards to show nothing with no explanatory message about there being no events/locations. So I added a simple bit of JavaScript to display a message to the user if the database returned no results. On the 'events' page this was tied in with the search results so that the same message displayed if no results were shown after the filters were selected.
+
+
+<details><summary>Screengrabs</summary>
+
+<img src="readme-images/bugs/bug15_1.jpg">
+
+_Empty Location Page_
+
+<img src="readme-images/bugs/bug15_2.jpg">
+
+_New 'no results' message - Event cards_
+
+<img src="readme-images/bugs/bug15_3.jpg">
+
+_New 'no results' message - Location cards_
+
+
+</details>
+
+
+#### **16: Possible to paste data in to inputs populated by time/date picker & map-picker**
+
+During feature testing I discovered that it was possible to paste text in to the latitude & longitude inputs on the add/edit location form as well as the time & date picker inputs on the add/edit event form. This was a problem as both sets of data had to be in a very specific format in order to function in the website. I had previously overcome a related [bug on the map-picker](#4-location-picker-map---mobile-keyboard-popup) and attempted to make the inputs readonly then, (which would solve this problem), but discovered that it stopped the 'required' attribute working and the form could be submitted without these inputs being filled in.
+
+I came up with a solution to allow a user to click or tab to the input but then use JavaScript on the clickEvent to make the input temporarily readonly, whilst the modal (map, time or date picker) was open, which meant it could still be populated using JavaScript but the user could not paste data in to it during that time. When the modal closed the readonly attribute was removed which meant that the inputs could be clicked or focused on again to change the values, and the form could not be submitted with empty inputs.
+
+The implementation of this varied slightly between the 2 forms as the triggers functioned differently, on the time & date pickers the code was being controlled by Materialize which was moving the focus around, but it lacked a trigger to open the pickers on tab, which meant it was possible to paste in text in that way. The solution to this was to add an event listener for 'focus' to add a 'readonly' attribute, and another for 'blur' which removed it, so that as the user selected the input, whether through click or tab, it was made readonly, and this was reversed when the user clicked or tabbed to another input.
+
+<details><summary>Time & Date Picker Bug Fix - Code Snippet</summary>
+
+```
+    // stops user pasting text in to input when focused
+    let inputs = [dateInput, timeInput]
+    for (let input of inputs) {
+        input.addEventListener('focus', function(){
+            this.setAttribute("readonly", "readonly");
+        });
+        input.addEventListener('blur', function(){
+            this.removeAttribute("readonly");
+        });
+    }
+```
+</details>
+
+The code in the map picker was slightly more complex as the 2 boxes worked in tandem and I had added functionality to trigger the picker with the tab key, as well as with the clickable div added as a fix to [bug 4](#4-location-picker-map---mobile-keyboard-popup) but the same principle applied, at the point the user clicks or tabs to an input or clickable div (triggering the map picker) the inputs are made readonly, which is reversed when they either close the map picker or select a location.
+
+<details><summary>Map Picker Bug Fix - Code Snippets</summary>
+
+_Triggering the map picker_
+```
+// Open Location Picker when user clicks on latitude / longitude input fields or div overlay (bug fix - readonly)
+let boxes = [latBox, lngBox];
+boxes.push(...overlayBoxes);
+for (let box of boxes) {
+    // opens the modal on user click & makes input readonly (bug 16 fix)
+    box.addEventListener('click', function(){
+        modal.classList.remove("hidden");
+        latBox.setAttribute("readonly", "readonly");
+        lngBox.setAttribute("readonly", "readonly");
+    });
+    // opens the modal on focus (for use of 'tab' key) & makes input readonly (bug 16 fix)
+    box.addEventListener('focus', function(){
+        modal.classList.remove("hidden");
+        latBox.setAttribute("readonly", "readonly");
+        lngBox.setAttribute("readonly", "readonly");
+    });
+}
+```
+
+_Closing the map picker without saving_
+```
+// Close location picker box (cross icon) & removes readonly attribute
+document.getElementById("lp-close").addEventListener('click', function(){
+    modal.classList.add("hidden");
+    latBox.removeAttribute("readonly");
+    lngBox.removeAttribute("readonly");
+});
+
+// Close location picker box (click outside box) & removes readonly attribute
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.classList.add("hidden");
+        latBox.removeAttribute("readonly");
+        lngBox.removeAttribute("readonly");
+    }
+};
+```
+
+_Saving the co-ordinate values & closing the map picker_
+```
+// Save button: closes box and fills form inputs with marker location & removes readonly attribute
+    let saveBtn = document.getElementById("lp-save");
+    saveBtn.addEventListener('click', function(){
+        latBox.value = chosenLat;
+        lngBox.value = chosenLng;
+        modal.classList.add("hidden");
+        latBox.removeAttribute("readonly");
+        lngBox.removeAttribute("readonly");
+    });
+```
+</details>
+
+
+<details><summary>Screen Recordings</summary>
+
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/2a2eb3d6-909f-4046-a168-7af3b5da2604
+
+
+_Form - before - pasting in text_
+
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/beda2135-a97a-4c9e-8296-c248731ed957
+
+
+_Event Form - after_
+
+
+
+
+https://github.com/emmahewson/mp3-swimmon/assets/116887840/10228fcb-3a23-4cdf-92a7-8dd559d8fc59
+
+
+_Location Form - after_
+
+
+</details>
