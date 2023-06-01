@@ -2,7 +2,7 @@
 
 SWIMMÔN is a website for swimmers on The Isle of Anglesey / Ynys Môn to find and set up wild swimming meet ups around the island. It also provides information about places to go wild swimming around the island. The live Website can be found [here](https://swim-mon.herokuapp.com/).
 
-![Mockup]()
+![Mockup](readme-images/mp3_mockup.jpg)
 
 ---
 
@@ -560,6 +560,7 @@ Details of all features on the finished site, expanding on the broader features 
 
 ### All Pages
 
+![Whole Site Mockup](readme-images/mp3_mockup.jpg)
 
 #### All Pages - Features - Details & Description
 
@@ -621,7 +622,7 @@ Details of all features on the finished site, expanding on the broader features 
 
 ### Home Page
 
-![Home Page - Mock Up]()
+![Home Page](readme-images/features/feat_home.jpeg)
 
 
 <details><summary>Video</summary>
@@ -704,7 +705,7 @@ This page is an introduction to the site, clearly telling the user what the site
 
 ### Join
 
-![Join - Mock Up]()
+![Join](readme-images/features/feat_join.jpeg)
 
 
 <details><summary>Video</summary>
@@ -746,7 +747,7 @@ This page allows users to easily set up an account and become a member of the si
 
 ### Sign In 
 
-![Sign In - Mock Up]()
+![Sign In](readme-images/features/feat_signin.jpeg)
 
 
 <details><summary>Video</summary>
@@ -785,9 +786,6 @@ This page allows users to sign in to their account giving them access to full CR
 
 ### Sign Out
 
-![Sign Out - Mock Up]()
-
-
 <details><summary>Video</summary>
 
 </details>
@@ -819,7 +817,8 @@ This page allows users to easily sign out of their account once they are finishe
 
 ### Events
 
-![Events - Mock Up]()
+![Events](readme-images/features/feat_events.jpeg)
+
 
 
 <details><summary>Video</summary>
@@ -914,7 +913,7 @@ This page allows users to view events on summary cards, allowing them to scan th
 
 ### Event Page
 
-![Event Page - Mock Up]()
+![Event Page](readme-images/features/feat_event.jpeg)
 
 <details><summary>Video</summary>
 
@@ -1019,7 +1018,7 @@ This page allows the user to get more detailed information about an event, it al
 
 ### Add Event
 
-![Add Event - Mock Up]()
+![Add Event](readme-images/features/feat_add-event.jpeg)
 
 <details><summary>Video</summary>
 
@@ -1080,7 +1079,7 @@ Create event functionality. By using the location dropdown & database collection
 
 ### Edit Event
 
-![Edit Event - Mock Up]()
+![Edit Event](readme-images/features/feat_edit-event.jpeg)
 
 <details><summary>Video</summary>
 
@@ -1143,8 +1142,6 @@ The user can make changes to their events quickly and easily. The form is popula
 
 ### Delete Event
 
-![Delete Event - Mock Up]()
-
 <details><summary>Video</summary>
 
 </details>
@@ -1180,7 +1177,7 @@ The delete event functionality allows user to quickly delete their events and re
 
 ### Profile Page
 
-![Profile Page - Mock Up]()
+![Profile Page](readme-images/features/feat_profile.jpeg)
 
 <details><summary>Video</summary>
 
@@ -1232,7 +1229,7 @@ The profile page is the first place a user will see when they log in to the site
 
 ### Location Page
 
-![Location Page - Mock Up]()
+![Location Page](readme-images/features/feat_location.jpeg)
 
 <details><summary>Video</summary>
 
@@ -1326,7 +1323,7 @@ The location page provides all users with easy to read accessible information ab
 
 ### Manage Locations
 
-![Manage Locations - Mock Up]()
+![Manage Locations](readme-images/features/feat_manage-locs.jpeg)
 
 <details><summary>Video</summary>
 
@@ -1389,7 +1386,7 @@ The manage locations page gives the admin a single point from which they can vie
 
 ### Add Location
 
-![Add Location - Mock Up]()
+![Add Location](readme-images/features/feat_add-loc.jpeg)
 
 <details><summary>Video</summary>
 
@@ -1463,7 +1460,7 @@ The add location form is a really intuitive user-friendly way for a site admin t
 
 ### Edit Location
 
-![Add Location - Mock Up]()
+![Add Location](readme-images/features/feat_edit-loc.jpeg)
 
 <details><summary>Video</summary>
 
@@ -1543,8 +1540,6 @@ Building on the value to user of the [Add Location](#add-location) form, the edi
 
 ### Delete Location
 
-![Delete Location - Mock Up]()
-
 <details><summary>Video</summary>
 
 </details>
@@ -1584,7 +1579,7 @@ The delete location functionality allows the user to quickly and easily delete a
 
 ### Error Pages
 
-![Error Pages - Mock Up]()
+![Error Pages](readme-images/features/feat_error.jpg)
 
 <details><summary>Video</summary>
 
@@ -1736,7 +1731,7 @@ I would like to expand the site in the future with the following features:
 - [Heroku](https://dashboard.heroku.com/apps)
   - Used to deploy the live site
 - [Figma](https://www.figma.com/)
-  - Used to develop the wireframes in to a full mockup including colours, fonts, proportions etc
+  - Used to develop the wireframes in to a full site design including colours, fonts, proportions etc
 - [Materialize](https://getbootstrap.com/)
   - Used to help with the responsiveness of the site in much of the structural layout
   - Used date and time picker for the add event form
@@ -1748,6 +1743,8 @@ I would like to expand the site in the future with the following features:
   - Used to create the site logo
 - [Adobe Photoshop](https://www.adobe.com/uk/products/photoshop.html)
   - Used to crop, adjust and resize the photos to optimise them for the site
+- [Image Resizer](https://imageresizer.com/)
+  - Used to crop, resize & convert images 
 - [Tiny PNG](https://tinypng.com/)
   - Used to further optimise the images for the site and reduce file size
 - [ezGIF](https://ezgif.com/)
