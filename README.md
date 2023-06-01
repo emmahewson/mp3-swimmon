@@ -559,15 +559,19 @@ During the development process there were a number of minor changes to the origi
 
 Details of all features on the finished site, expanding on the broader features listed above, including content, functionality & security.
 
-### All Sections/Pages
+### All Pages
 
 
-#### **Layout**
+#### All Pages - Features - Details & Description
+
+<details><summary>Layout</summary>
 
 - The site has a max-width of 1750px. This helps to maintain the quality of the hero image on the home page on wider-screen devices. The area around this max-width is set to a branded blue to maintain the site's brand colours.
 
+</details>
 
-#### **General Responsiveness**
+
+<details><summary>General Responsiveness</summary>
 
 - The site is fully responsive across all pages to help all features appear correctly and look their best on all devices. This includes:
   - Changes to font size
@@ -576,14 +580,14 @@ Details of all features on the finished site, expanding on the broader features 
   - Changes to the height of div's/sections
   - Layout changes
 - Details of more specific changes can be found in the feature sections below.
+</details>
 
-
-#### **Favicon**
+<details><summary>Favicon</summary>
 
 - The site has a Favicon using an S to represent SWIMMON. This helped to build the brand and continue the site design in the user's browser tab.
+</details>
 
-
-#### **Navbar**
+<details><summary>Navbar</summary>
 
 - Based around Materialize's inbuilt navbar
 - Includes a clickable logo of the name of the site which takes the user back to the home page
@@ -592,18 +596,18 @@ Details of all features on the finished site, expanding on the broader features 
   - These vary based on whether a user is logged in or not, or whether they are an admin (who have access to more areas of the site)
   - All the account-specific functionality is stored in a dropdown menu to help keep the navbar uncluttered
 - The navbar is fully responsive, on smaller screens the navbar is shorter and the menu items are replaced with a burger menu and a side-nav
+</details>
 
-
-#### **Site Main Buttons**
+<details><summary>Site Main Buttons</summary>
 
 - The site utilizes a repeating button design for major navigation or form submission functionality. In general the button colours are themed according to their purpose (along with the associated page explanatory header sections):
   - Pink - Events
   - Mid-Blue - Locations
   - Highlight-Blue - Sign in / Join
 - Other secondary buttons are used across the site too - details in the features sections below
+</details>
 
-
-#### **Footer**
+<details><summary>Footer</summary>
 
 - Appears on all pages
 - Contains a clickable link to a 'contact us' email address
@@ -612,6 +616,7 @@ Details of all features on the finished site, expanding on the broader features 
 - The footer social icons have aria labels to make them accessible
 - The footer social icons have a hover effect with a smooth colour transition
 - The footer is responsive, the layout adjusts on different sized devices
+</details>
 
 ---
 
@@ -625,7 +630,7 @@ Details of all features on the finished site, expanding on the broader features 
 </details>
 
 
-__Functionality, Validation, Security & Routing__
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -638,7 +643,7 @@ __Functionality, Validation, Security & Routing__
 | **Routing** | None |
 
 
-__Page Features - Details & Description__
+#### Page Features - Details & Description
 
 <details><summary>Hero</summary>
 
@@ -691,23 +696,24 @@ __Page Features - Details & Description__
 </details>
 
 
-__Value to User__
+#### Value to User
 
 This page is an introduction to the site, clearly telling the user what the site is for and what they can expect to find. They can find information and links to sea swimming locations. It also sign-posts the user to either joining or signing in if they are not yet logged in, or to see events or add an event if they are logged in.
 
 
 ---
 
-### Join / Sign In / Sign Out
+### Join
 
-![Join / Sign In / Sign Out - Mock Up]()
+![Join - Mock Up]()
 
 
-#### **Join & Sign-In Pages**
+<details><summary>Video</summary>
 
-<details><summary>Functionality, Validation, Security & Routing</summary>
+</details>
 
-<details><summary>JOIN</summary>
+
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -722,10 +728,34 @@ This page is an introduction to the site, clearly telling the user what the site
 | **Routing - log in** | Redirects to 'events' on log-in |
 
 
+#### Page Features - Details & Description
+
+- A page for users to set up an account
+- Link to 'sign-in' page for users who are already registered
+- Brief intro text to explain to a user what the purpose of the page is and what they need to do
+- Intro text box & submit buttons are in the site's branded 'highlight blue' - used across the account-related pages
+- Forms are fully responsive on all devices
+- Flash messages welcome the user on successful submission, styled using custom CSS
+    
+#### Value to User
+
+This page allows users to easily set up an account and become a member of the site, giving them access to full CRUD functionality for events.
+
+
+---
+
+
+### Sign In 
+
+![Sign In - Mock Up]()
+
+
+<details><summary>Video</summary>
+
 </details>
 
 
-<details><summary>SIGN IN</summary>
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -739,38 +769,32 @@ This page is an introduction to the site, clearly telling the user what the site
 | **Back End Security** | None |
 | **Routing - log in** | Any page visible to logged in users only redirects here if user not logged in. On log in return user to the previous page they attempted to visit, or if none is stored in session to 'profile'. |
 
-</details>
+### Page Features - Details & Description
 
-</details>
-
+- A page for users to sign in to their account
+- Link to 'join' page for users who aren't yet registered
 - Brief intro text to explain to a user what the purpose of the page is and what they need to do
 - Intro text box & submit buttons are in the site's branded 'highlight blue' - used across the account-related pages
 - Forms are fully responsive on all devices
 - Flash messages welcome the user on successful sign-in / join submission, styled using custom CSS
-- Join Page
-    - A page for users to set up an account
-    - Link to 'sign-in' page for users who are already registered
-- Sign In Page
-    - A page for users to sign in to their account
-    - Link to 'join' page for users who aren't yet registered
+
+#### Value to User
+
+This page allows users to sign in to their account giving them access to full CRUD functionality for events.
+
+---
+
+### Sign Out
+
+![Sign Out - Mock Up]()
 
 
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Join_
-
-<img src="">
-
-_Sign-In_
+<details><summary>Video</summary>
 
 </details>
 
 
-#### **Sign-Out**
-
-<details><summary>Functionality, Validation, Security & Routing</summary>
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -781,20 +805,16 @@ _Sign-In_
 | **Back End Security** | User must be logged in |
 | **Routing - log in** | Redirects to 'sign-in' on log-out |
 
-</details>
+
+### Page Features - Details & Description
 
 - Nav link only visible to logged in users
 - Logs user out & takes them to 'sign-in' page
 - Flash messages appears confirming successful sign out, styled using custom CSS
 
+#### Value to User
 
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Sign Out_
-
-</details>
+This page allows users to easily sign out of their account once they are finished on the site, protecting their information and the events they have set up.
 
 ---
 
@@ -802,7 +822,13 @@ _Sign Out_
 
 ![Events - Mock Up]()
 
-<details><summary>Functionality, Validation, Security & Routing</summary>
+
+<details><summary>Video</summary>
+
+</details>
+
+
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -815,24 +841,19 @@ _Sign Out_
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
 | **Routing - other** | Session url stored to redirect back here after editing or deleting an event via this page. |
 
-</details>
 
-#### **Intro Section**
+### Page Features - Details & Description
+
+
+<details><summary>Intro Section</summary>
 
 - Title and text explaining the purpose of the page and that event cards are clickable
 - Add Event button (in branded event pink) to encourage users to add their own event
 
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-<img src="">
-
-
 </details>
 
 
-#### **Event Cards**
+<details><summary>Event Cards</summary>
 
 - Summary cards of all events happening in future (filtered by present time onwards)
     - Card container is fully responsive, cards stack vertically on smaller screens
@@ -858,18 +879,10 @@ _Sign Out_
         - Delete button brings up a modal to confirm the user definitely wants to delete event
             - modal uses Materialize's in-built animations
     - If no results are returned from the database a 'no results' message containing a link to 'add-event' appears in the event cards container.
-
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
 </details>
 
 
-#### **Event Filters**
+<details><summary>Event Filters</summary>
 
 - Filter buttons to narrow down events based on categorised selections
 - Contained within a collapsible dropdown to take up less space in the site - this is particularly important on smaller screens. Uses JavaScript.
@@ -884,31 +897,19 @@ _Caption_
     - When selections are made within multiple categories results must match a selection from each active category to appear
     - When a user deselects all the buttons all the event cards reappear
     - The 'reset all' button deselects all the buttons & reveals all the event cards 
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
 </details>
 
-
-#### **Back To Top Button**
+<details><summary>Back To Top Button</summary>
 
 - Button at the bottom of all the event cards to take user back to the top of the page
 - This is particularly useful on smaller screens where event cards are stacked vertically
 - The button triggers a smooth scroll to improve the user experience and avoid jarring motion
 
-
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
 </details>
+
+#### Value to User
+
+This page allows users to view events on summary cards, allowing them to scan through and find what they need easily with the help of the colour-coded categories and a clear legible design. The search filters allow users to filter the events quickly and easily, responding immediately to a user's filter selection without the need to refresh the page. A user can also easily edit or delete their own events, or create a new one via the page buttons/links.
 
 ---
 
@@ -916,7 +917,12 @@ _Caption_
 
 ![Event Page - Mock Up]()
 
-<details><summary>Functionality, Validation, Security & Routing</summary>
+<details><summary>Video</summary>
+
+</details>
+
+
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -929,16 +935,19 @@ _Caption_
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
 | **Routing - other** | Session url stored to redirect back here after editing an event via this page. |
 
-</details>
 
 
-#### **Whole Page**
+### Page Features - Details & Description
+
+<details><summary>Whole Page</summary>
 
 - Event information is contained within a div with a max-width of 1200px
     - This helps to mitigate issues with image quality as the image is selected and uploaded by the site admin when creating a location.
 
+</details>
 
-#### **Event Page - Location Image**
+
+<details><summary>Event Page - Location Image</summary>
 
 - A header image of the event's location
 - Fully responsive, resizes on smaller screens
@@ -946,17 +955,10 @@ _Caption_
     - These images are stored on Cloudinary to minimise the possible disruption of sourcing an image from an external URL that the site owners don't have control of
     - If the image fails to load for any reason a placeholder image will appear containing the SWIMMON logo
 
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
 </details>
 
 
-#### **Event Information**
+<details><summary>Event Information</summary>
 
 - Page displays information pulled from events and locations collections in database:
     - Event name
@@ -969,16 +971,10 @@ _Caption_
 - Who & Challenge categories have coloured backgrounds which change based on their content to make them easy to visually scan & find what a user is looking for
     - This is set dynamically using Jinja to add a bespoke class name in the HTML file
 
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
 </details>
 
 
-#### **Location Information**
+<details><summary>Location Information</summary>
 
 - Page displays information pulled from the locations collection in database (from the location whose ID matches the event's location_id)
     - Location name
@@ -1000,18 +996,10 @@ _Caption_
         - Google Places
         - Zoom buttons
         - Touchscreen zoom & scroll
-
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
 </details>
 
 
-#### **Edit/Delete Buttons**
+<details><summary>Edit/Delete Buttons</summary>
 
 - If the user created the event or is an admin they will also see edit & delete buttons for CRUD functionality
     - These are secured in the front end using Jinja to make sure they're only visible to the authorised people
@@ -1019,25 +1007,27 @@ _Caption_
     - Delete button brings up a modal to confirm the user definitely wants to delete event
         - modal uses Materialize's in-built animations
 
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
 </details>
+
+
+#### Value to User
+
+This page allows the user to get more detailed information about an event, it also gives more detailed information about the location with a link to the locations' page to allow them to navigate easily and find other events at that location.
+
 
 ---
 
-### Add Event / Edit Event
 
-![Add/Edit Event - Mock Up]()
+### Add Event
 
-<details><summary>Functionality, Validation, Security & Routing</summary>
+![Add Event - Mock Up]()
+
+<details><summary>Video</summary>
+
+</details>
 
 
-<details><summary>ADD EVENT</summary>
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -1052,31 +1042,16 @@ _Caption_
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. |
 | **Routing - other** | None |
 
-</details>
 
-<details><summary>EDIT EVENT</summary>
+### Page Features - Details & Description
 
-| Attribute | Details |
-|---|---|
-| **Visible To** | Logged In Users - own events only. Admin - all events. |
-| **Template** | edit-event.html |
-| **Front End Functionality** | Uses Materialize's Timepicker & Datepicker to give a user-friendly way of selecting a time & date and making sure they are in a consistent format. Datepicker is set to the exisiting event date (event-form.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
-| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Pre-fills form with event information from event object in database.  If event id is not found in database aborts and re-routes to 404 page with an 'event not found' flash message. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. Flash message confirms successful submission. |
-| **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (form.js). Additional validation popup messages on dropdown/select inputs added to Materialize template (event-form.js) |
-| **Back End Form Validation** | None |
-| **Front End Security** | No direct link to page in nav - all links to this page are visible to logged in users only. |
-| **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. Id for session url is taken from page url. If not user's event re-routes to 'profile' and flash message shows. |
-| **Routing - other** | Redirects to previous page after editing unless session url is this page (from login redirect). Defaults to 'events' page. |
-
-</details>
-
-</details>
+<details><summary>All Page Features</summary>
 
 - Intro Text
     - Brief intro text to explain to a user what the purpose of the page is and what they need to do
     - Intro text box & Submit buttons are in the site's branded 'highlight pink' - used across the event-related pages
 - Forms are fully responsive on all devices
+- The top input has an autofocus attribute so the user can begin typing without selecting it.
 - Popovers 
     - Popover info circles with hover/click effect to give a user more information about some of the inputs
     - Location - popover contains link to site email address for user to suggest a new location to site admins
@@ -1093,31 +1068,90 @@ _Caption_
         - Additional bespoke JavaScript validation checks if a user selects today's date & a time in the past. If an event were submitted like this it would not display on the site as the events are filtered from now onwards, the user would have to create a new event as they wouldn't not be able to access the event to edit it. [See bug 10](#10-possible-for-a-user-to-create-an-event-in-the-past-and-lose-access-to-it)
 - Flash Messages   
     - On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
-- Add Event Specific Features
-    - The top input has an autofocus attribute so the user can begin typing without selecting it. (I have not included this on the edit event form as the user may not want to access all of the inputs in order)
-- Edit Event Specific Features
-    - Form is populated with the existing event information
-    - Additional JavaScript code added to make the date picker show the previously selected date 
-- Full validation information is available in the Functionality, Validation, Security & Routing table in the dropdown above
-
-
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
 
 </details>
 
 
+#### Value to User
+
+Create event functionality. By using the location dropdown & database collection to automatically populate the event with location information it allows users to select a location without having to fill in all the location information too, which makes adding an event quicker and more user-friendly. The date and time pickers provide a really nice user experience and the challenge/who categories help the user to easily provide more information for their event. The pop-up box also provides additional, user-friendly, information.
+
 ---
+
+
+### Edit Event
+
+![Edit Event - Mock Up]()
+
+<details><summary>Video</summary>
+
+</details>
+
+
+#### Functionality, Validation, Security & Routing
+
+| Attribute | Details |
+|---|---|
+| **Visible To** | Logged In Users - own events only. Admin - all events. |
+| **Template** | edit-event.html |
+| **Front End Functionality** | Uses Materialize's Timepicker & Datepicker to give a user-friendly way of selecting a time & date and making sure they are in a consistent format. Datepicker is set to the exisiting event date (event-form.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
+| **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Pre-fills form with event information from event object in database.  If event id is not found in database aborts and re-routes to 404 page with an 'event not found' flash message. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. Flash message confirms successful submission. |
+| **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (form.js). Additional validation popup messages on dropdown/select inputs added to Materialize template (event-form.js) |
+| **Back End Form Validation** | None |
+| **Front End Security** | No direct link to page in nav - all links to this page are visible to logged in users only. |
+| **Back End Security** | User must be logged in & event must be user's own (or user is admin) |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url to redirect here post log-in. Id for session url is taken from page url. If not user's event re-routes to 'profile' and flash message shows. |
+| **Routing - other** | Redirects to previous page after editing unless session url is this page (from login redirect). Defaults to 'events' page. |
+
+
+### Page Features - Details & Description
+
+<details><summary>All Page Features</summary>
+
+- Form is populated with the existing event information
+- Intro Text
+    - Brief intro text to explain to a user what the purpose of the page is and what they need to do
+    - Intro text box & Submit buttons are in the site's branded 'highlight pink' - used across the event-related pages
+- Forms are fully responsive on all devices
+- The top input doesn't have autofocus like the add-event form as the user may not want to access all of the inputs in order on the edit form.
+- Popovers 
+    - Popover info circles with hover/click effect to give a user more information about some of the inputs
+    - Location - popover contains link to site email address for user to suggest a new location to site admins
+    - Who For - gives information about the categories
+    - Challenge Level - gives more detail about what the different categories mean
+- Dropdown Select Inputs
+    - Locations, Who-For's & Challenge-Levels are populated from the relevant collections in the database
+- Date/Time Pickers
+    - Additional JavaScript code added to make the date picker show the previously selected date
+    - The date & time are selected using Materializes built in date & time pickers
+    - Colours match site's branding
+    - Format of time matches event information
+    - Both inputs are not directly editable - keeps the data a consistent format
+    - Users can only select from the current day onwards
+        - Additional bespoke JavaScript validation checks if a user selects today's date & a time in the past. If an event were submitted like this it would not display on the site as the events are filtered from now onwards, the user would have to create a new event as they wouldn't not be able to access the event to edit it. [See bug 10](#10-possible-for-a-user-to-create-an-event-in-the-past-and-lose-access-to-it)
+- Flash Messages   
+    - On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
+
+</details>
+
+
+#### Value to User
+
+The user can make changes to their events quickly and easily. The form is populated automatically so the user doesn't have to re-enter information. The form is really user friendly and quick to complete [see add-event](#add-event) for additional value of the event forms.
+
+---
+
 
 ### Delete Event
 
 ![Delete Event - Mock Up]()
 
-<details><summary>Functionality, Validation, Security & Routing</summary>
+<details><summary>Video</summary>
+
+</details>
+
+
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -1129,8 +1163,8 @@ _Caption_
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'events' page rather than 'delete-event' to redirect there post log-in. This adds a layer of protection when deleting events. If not user's event re-routes to 'profile' and flash message shows.|
 | **Routing - other** | Redirects to previous page after deleting unless session url is for the deleted 'event' page.  Defaults to 'events' page. |
 
-</details>
 
+### Features - Details & Description
 
 - Delete event buttons only visible to event creator & admin
 - Additional back-end security to prevent others deleting events
@@ -1138,22 +1172,23 @@ _Caption_
 - Flash messages confirms successful event deletion
 
 
-<details><summary>Screenshots</summary>
+#### Value to User
 
-<img src="">
-
-_Caption_
-
-</details>
-
+The delete event functionality allows user to quickly delete their events and remove them from the site. The pop-up modal on the preceding page gives a level of protection should a user accidentally click delete and checks they're sure they want to proceed. 
 
 ---
+
 
 ### Profile Page
 
 ![Profile Page - Mock Up]()
 
-<details><summary>Functionality, Validation, Security & Routing</summary>
+<details><summary>Video</summary>
+
+</details>
+
+
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -1166,50 +1201,46 @@ _Caption_
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' (session url not stored for logged-out users as this is default redirect after sign in) |
 | **Routing - other** | Session url stored for logged in users to redirect back here after editing or deleting an event via this page. |
 
-</details>
 
+### Page Features - Details & Description
 
-#### **Intro Section**
+<details><summary>Intro Section</summary>
 
 - Title and text explaining the purpose of the page and actions that the user can undertake
 - Add Event button (in branded event pink) to encourage users to add their own event
 
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-<img src="">
-
-
 </details>
 
-
-#### **Event Cards & Back To Top Button**
+<details><summary>Event Cards & Back To Top Button</summary>
 
 - Summary cards of events filtered by current user & present time onwards  & sorted chronologically
 - If no results are returned from the database a 'no results' message containing a link to 'add-event' appears in the event cards container.
 - User will be able to see edit/delete buttons on all cards as they are all their own events
     - However additional front end security is in place to limit these to the user events only as another layer of protection
-- For content & functionality of cards see [Event Cards](#event-cards)
-- For content & functionality of back to top button see [Back To Top Button](#back-to-top-button)
-
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
+- For content & functionality of cards see [Events](#events)
+- For content & functionality of back to top button see [Events](#events)
 
 </details>
 
 
+#### Value to User
+
+The profile page is the first place a user will see when they log in to the site (if they haven't tried to access a page whilst logged out - in which case they will be re-directed there). This page lets them see all their own events in one place to quickly and easily view, edit or delete them.
+
+
 ---
+
 
 ### Location Page
 
 ![Location Page - Mock Up]()
 
-<details><summary>Functionality, Validation, Security & Routing</summary>
+<details><summary>Video</summary>
+
+</details>
+
+
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -1223,37 +1254,29 @@ _Caption_
 | **Routing - other** | Session url stored to redirect back here after editing location/event or deleting an event accessed via this page. |
 
 
+### Page Features - Details & Description
 
-</details>
-
-#### **Whole Page**
+<details><summary>Whole Page</summary>
 
 - Location information & event cards are contained within a div with a max-width of 1200px
     - This helps to mitigate issues with image quality as the header image is selected and uploaded by the site admin when creating a location.
 
+</details>
 
-#### **Location Information**
+<details><summary>Location Information</summary>
 
 - Page displays information pulled from the locations collection in database filtered by the relevant location's 'id'
     - Location name
     - A header image of the location
-        - For full information see [Event - Header Image](#event-page---location-image)
+        - For full feature information on images see [Event Page](#event-page)
     - Latitude & Longitude (truncated using Jinja filters in the HTML file)
     - Location description
     - Parking information
     - Facilities information
 
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
 </details>
 
-
-#### **Edit/Delete Buttons**
+<details><summary>Edit/Delete Buttons</summary>
 
 - If the user is an admin they will see edit & delete buttons for CRUD functionality
     - These are secured in the front end using Jinja to make sure they're only visible to the authorised people
@@ -1261,17 +1284,9 @@ _Caption_
     - Delete button brings up a modal to confirm the user definitely wants to delete location
         - modal uses Materialize's in-built animations
 
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
 </details>
 
-
-#### **Location Map**
+<details><summary>Location Map</summary>
 
 - Map of the location shown by a marker set using the latitude & longitude
     - Map is created using Google Maps API
@@ -1285,16 +1300,9 @@ _Caption_
         - Zoom buttons
         - Touchscreen zoom & scroll
 
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
 </details>
 
-
-#### **Events Section**
+<details><summary>Events Section</summary>
 
 - Events section is only visible to logged in users. If a user is not logged in they see a call to action to encourage them to join & a button leading to the 'join' page.
 - Intro Section
@@ -1304,11 +1312,16 @@ _Caption_
 - Events Cards
     - If no results are returned from the database a 'no results' message containing a link to 'add-event' appears in the event cards container.
     - If the user created the event or is an admin they will be able to see edit/delete buttons on relevant event cards
-    - For content & functionality of cards see [Event Cards](#event-cards)
+    - For content & functionality of cards see [Events](#events)
 - Back To Top Button
-    - For content & functionality of back to top button see [Back To Top Button](#back-to-top-button)
+    - For content & functionality of back to top button see [Events](#events)
+
+</details>
 
 
+#### Value to User
+
+The location page provides all users with easy to read accessible information about the a swimming location on Anglesey. Users who are not logged in can view the information and are encouraged to join making it easy for them to navigate to setting up an account. Users who are logged in can also see events specific to that location, giving them really tailored event information based on their chosen location. Users can also link to the event pages, add an event or edit/delete their own events, making the site easy and intuitive to navigate.
 
 ---
 
@@ -1316,7 +1329,12 @@ _Caption_
 
 ![Manage Locations - Mock Up]()
 
-<details><summary>Functionality, Validation, Security & Routing</summary>
+<details><summary>Video</summary>
+
+</details>
+
+
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -1328,25 +1346,17 @@ _Caption_
 | **Routing - log in** | If user not logged in re-routes to 'sign-in', flash message shows & site stores session url to redirect here post log-in. If user not admin re-routes to 'profile' and flash message shows. |
 | **Routing - other** | Session url stored to redirect back here after editing or deleting a location via this page. |
 
-</details>
 
+### Page Features - Details & Description
 
-#### **Intro Section**
+<details><summary>Intro Section</summary>
 
 - Title and text explaining the purpose of the page and actions that the user can undertake
 - Add Location button (in branded location mid-blue) - this is the only place that an admin can add a new location
 
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
 </details>
 
-
-#### **Location Cards**
+<details><summary>Location Cards</summary>
 
 - Summary cards of all locations
     - Card container is fully responsive, cards stack vertically on smaller screens
@@ -1366,18 +1376,28 @@ _Caption_
             - modal uses Materialize's in-built animations
     - If no results are returned from the database a 'no results' message containing a link to 'add-location' appears in the event cards container.
 - Back To Top Button
-    - For content & functionality of back to top button see [Back To Top Button](#back-to-top-button)
+    - For content & functionality of back to top button see [Events](#events)
+
+</details>
+
+#### Value to User
+
+The manage locations page gives the admin a single point from which they can view, edit or delete locations when doing site administration. The summary cards condense the information and make it easy to see how many and which locations are on the site.
 
 
 ---
 
-### Add Location / Edit Location
+
+### Add Location
 
 ![Add Location - Mock Up]()
 
-<details><summary>Functionality, Validation, Security & Routing</summary>
+<details><summary>Video</summary>
 
-<details><summary>ADD LOCATION</summary>
+</details>
+
+
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -1392,33 +1412,16 @@ _Caption_
 | **Routing - log in** | If user not logged in re-routes to 'sign-in', flash message shows & site stores session url to redirect here post log-in. If user not admin re-routes to 'profile' and flash message shows. |
 | **Routing - other** | None |
 
-</details>
 
+### Page Features - Details & Description
 
-<details><summary>EDIT LOCATION</summary>
-
-| Attribute | Details |
-|---|---|
-| **Visible To** | Admin Only |
-| **Template** | edit-location.html |
-| **Front End Functionality** | Bespoke location picker used to populate Latitude & Longitude inputs, built using JavaScript & Google Maps API (map-picker.js). Map set to previously selected location (map-picker.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
-| **Back End Functionality** | Populates form with location data using object id. Submission: converts location name to lowercase to make searching easier, checks if new image uploaded & if so replaces it. Uploads image to Cloudinary & adds image url to location data. Updates location on database. If location id is not found in database aborts and re-routes to 404 page with a 'location not found' flash message. |
-| **Front End Form Validation** | All fields required except image upload (to keep old image). Fields must match type and length (HTML validation). Latitude & Longitude populated using Map Picker (not directly editable to make sure they're in the correct format) with JavaScript & HTML validation to check selected location is in correct area by setting min/max latitude/longitude values. Uploaded image checks: under 5mb (JavaScript file-validation.js) and correct format (HTML validation). |
-| **Back End Form Validation** | Checks image is under 5MB & in accepted format - redirects to 413/415 page if not. |
-| **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
-| **Back End Security** | User must be logged in and admin. |
-| **Routing - log in** | If user not logged in re-routes to 'sign-in', flash message shows & site stores session url to redirect here post log-in. Id for session url is taken from page url. If user not admin re-routes to 'profile' and flash message shows. |
-| **Routing - other** | Redirects to previous page after editing unless session url is this page (from login redirect). Defaults to 'manage-locations' page. |
-
-</details>
-
-
-</details>
+<details><summary>All Page Features</summary>
 
 - Intro Text
     - Brief intro text to explain to a user what the purpose of the page is and what they need to do
     - Intro text box & Submit buttons are in the site's branded 'mid blue' - used across the location-related pages
 - Forms are fully responsive on all devices
+- The top input has an autofocus attribute so the user can begin typing without selecting it
 - Popover
     - Popover info circles with hover/click effect to give a user more information about the image url input
     - Tells user the best practice for selecting a photo
@@ -1448,33 +1451,107 @@ _Caption_
     - At this stage there are no checks on image dimensions or quality and so nothing to stop a user uploading a low quality or inappropriate image. This is something I would like to address in the future.
 - Flash Message
     - On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
-- Add Location Specific Features
-    - The top input has an autofocus attribute so the user can begin typing without selecting it (I have not included this on the edit location form as the user may not want to access all of the inputs in order)
-- Edit Location Specific Features
-    - Form is populated with the existing location information
-    - Additional JavaScript code added to make the location picker map show the previously selected location when opened
-    - The location image on this form is not 'required.' This allows the user to retain the old image by not uploading a new one. The popover contains additional information to explain this to the user
-- Full information is available in the Functionality, Validation, Security & Routing table in the dropdown above
 
 
+</details>
 
-<details><summary>Screenshots</summary>
+#### Value to User
 
-<img src="">
+The add location form is a really intuitive user-friendly way for a site admin to add a new location. The features such as the bespoke location-picker and the image upload have made it a quick & easy form to fill in, avoiding sourcing image URLs and location co-ordinate values which could be tricky and time-consuming. There is clear and user-friendly validation on the form, making it easy for a site admin to know when they need to adjust their inputted information. The pop-up box also provides additional, user-friendly, information.
 
-_Caption_
+---
+
+
+### Edit Location
+
+![Add Location - Mock Up]()
+
+<details><summary>Video</summary>
 
 </details>
 
 
+#### Functionality, Validation, Security & Routing
+
+| Attribute | Details |
+|---|---|
+| **Visible To** | Admin Only |
+| **Template** | edit-location.html |
+| **Front End Functionality** | Bespoke location picker used to populate Latitude & Longitude inputs, built using JavaScript & Google Maps API (map-picker.js). Map set to previously selected location (map-picker.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
+| **Back End Functionality** | Populates form with location data using object id. Submission: converts location name to lowercase to make searching easier, checks if new image uploaded & if so replaces it. Uploads image to Cloudinary & adds image url to location data. Updates location on database. If location id is not found in database aborts and re-routes to 404 page with a 'location not found' flash message. |
+| **Front End Form Validation** | All fields required except image upload (to keep old image). Fields must match type and length (HTML validation). Latitude & Longitude populated using Map Picker (not directly editable to make sure they're in the correct format) with JavaScript & HTML validation to check selected location is in correct area by setting min/max latitude/longitude values. Uploaded image checks: under 5mb (JavaScript file-validation.js) and correct format (HTML validation). |
+| **Back End Form Validation** | Checks image is under 5MB & in accepted format - redirects to 413/415 page if not. |
+| **Front End Security** | No direct link to page in nav - all links to this page are visible to admin only. |
+| **Back End Security** | User must be logged in and admin. |
+| **Routing - log in** | If user not logged in re-routes to 'sign-in', flash message shows & site stores session url to redirect here post log-in. Id for session url is taken from page url. If user not admin re-routes to 'profile' and flash message shows. |
+| **Routing - other** | Redirects to previous page after editing unless session url is this page (from login redirect). Defaults to 'manage-locations' page. |
+
+
+### Page Features - Details & Description
+
+<details><summary>All Page Features</summary>
+
+
+- Intro Text
+    - Brief intro text to explain to a user what the purpose of the page is and what they need to do
+    - Intro text box & Submit buttons are in the site's branded 'mid blue' - used across the location-related pages
+- Forms are fully responsive on all devices
+- Form is populated with the existing location information
+- Location picker map show the previously selected location when opened
+- The location image on this form is not 'required.' This allows the user to retain the old image by not uploading a new one. The popover contains additional information to explain this to the user
+- The top input is not 'focused' on the edit form - this is because a user may not automatically want to edit the first input.
+- Popover
+    - Popover info circles with hover/click effect to give a user more information about the image url input
+    - Tells user the best practice for selecting a photo
+    - This is in addition to the validation
+- Lat/Long
+    - Latitude & Longitude inputs trigger a location picker popup window where the user can drag a marker to their chosen location
+    - This is designed to offer the best user experience possible & to gather the lat/long values in a readable, valid format.
+    - The map is centered on Anglesey (unless the user has previously selected a location)
+    - The zoom level changes depending on screen size to help make the whole of the island visible when the map appears
+    - The map has the full screen option disabled as this hides the error message when selecting a location outside Anglesey and causes a bad user experience.
+    - The map includes validation checks to stop the user selecting a location far outside of Anglesey by limiting the range of the lat/long values
+        - If a user selects a location outside this range an custom error message appears.
+    - The lat/long inputs are not directly editable to avoid users adding invalid data. This uses a bespoke readonly style to allow the inputs to retain their 'required' attribute/validation [See bug ](#4-location-picker-map---mobile-keyboard-popup)
+    - The map has a save button to log the location to the form inputs
+    - The map has a reset button to reset the map back to its original state
+        - On the add-location form this would reset back to the centre of Anglesey
+        - On the edit-location form this would reset back to the location's existing co-ordinates
+    - The map is closed by either selecting 'save' or clicking outside the map box
+- Image Upload
+    - Allows the user to upload an image for the location
+    - This uses Cloudinary to store the photo and provide a URL to the image
+    - This avoids using external images from sources that the site admin has no control of, minimising broken images and missing content
+    - Front & Back end validation is in place for the image upload
+        - JavaScript validation to disable the submit button & show an error message if a user tries to upload a file larger than 5MB
+        - HTML validation on the accepted file types
+        - Back end validation also checks that the file is under 5MB (if not - aborts and reroutes to a [413 page](#error-pages)) and is of the correct type (if not - aborts and reroutes to a [415 page](#error-pages)). This is in place in case the front end validation is bypassed and to protect against large or malicious files being uploaded, giving additional protection to the site.
+    - At this stage there are no checks on image dimensions or quality and so nothing to stop a user uploading a low quality or inappropriate image. This is something I would like to address in the future.
+- Flash Message
+    - On submission a flash message displays telling the user their submission has been successful. Flash messages are styled using custom CSS
+
+
+
+</details>
+
+
+#### Value to User
+
+Building on the value to user of the [Add Location](#add-location) form, the edit location form is prefilled so a user doesn't need to re-input information. The image upload function is no longer required so a user can leave the previous image and there is a friendly pop-up box to explain this, creating a great user-experience.
 
 ---
+
 
 ### Delete Location
 
 ![Delete Location - Mock Up]()
 
-<details><summary>Functionality, Validation, Security & Routing</summary>
+<details><summary>Video</summary>
+
+</details>
+
+
+#### Functionality, Validation, Security & Routing
 
 | Attribute | Details |
 |---|---|
@@ -1486,8 +1563,8 @@ _Caption_
 | **Routing - log in** | If user not logged in re-routes to 'sign-in' & stores session url for 'manage-locations' page to redirect there post log-in. This adds a layer of protection when deleting locations. If user not admin re-routes to 'profile' and flash message shows. |
 | **Routing - other** | Redirects to manage-locations page. |
 
-</details>
 
+### Features - Details & Description
 
 - Delete location buttons only visible to admin
 - Additional back-end security to prevent others deleting locations
@@ -1499,24 +1576,25 @@ _Caption_
 - Flash messages confirms successful event deletion
 
 
-<details><summary>Screenshots</summary>
+#### Value to User
 
-<img src="">
-
-_Caption_
-
-</details>
-
+The delete location functionality allows the user to quickly and easily delete a location. There is built in functionality that removes all events at that location meaning the user doesn't have to remove those manually. The preceding page shows the user a modal checking that they want to proceed with the deletion and warning them that all associated events will also be deleted, to avoid them accidentally deleting a location.
 
 ---
+
 
 ### Error Pages
 
 ![Error Pages - Mock Up]()
 
-<details><summary>Functionality, Validation, Security & Routing</summary>
+<details><summary>Video</summary>
 
-<details><summary>404</summary>
+</details>
+
+
+#### Functionality, Validation, Security & Routing
+
+__404 ERROR PAGE__
 
 | Attribute | Details |
 |---|---|
@@ -1524,9 +1602,8 @@ _Caption_
 | **Template** | 404.html |
 | **Routing - other** | Redirects here when user enters a non-existent page |
 
-</details>
 
-<details><summary>413</summary>
+__413 ERROR PAGE__
 
 | Attribute | Details |
 |---|---|
@@ -1534,9 +1611,8 @@ _Caption_
 | **Template** | 413.html |
 | **Routing** | Redirects here if user uploads an image larger than 5MB (if they have bypassed frontend validation) |
 
-</details>
 
-<details><summary>415</summary>
+__415 ERROR PAGE__
 
 | Attribute | Details |
 |---|---|
@@ -1544,9 +1620,8 @@ _Caption_
 | **Template** | 415.html |
 | **Routing - other** | Redirects here if user uploads a file in the wrong format (if they have bypassed frontend validation) |
 
-</details>
 
-<details><summary>500</summary>
+__500 ERROR PAGE__
 
 | Attribute | Details |
 |---|---|
@@ -1554,10 +1629,12 @@ _Caption_
 | **Template** | 500.html |
 | **Routing - other** | Redirects here if there is a server error |
 
-</details>
 
-</details>
 
+
+### Page Features - Details & Description
+
+<details><summary>All Page Features</summary>
 
 - The Error pages handle any errors that occur in a user friendly way by directing the user to a custom error page
 - All pages contain the site navbar and footer
@@ -1579,6 +1656,23 @@ _Caption_
     - if there is a server error
     - button navigates to home page
 
+</details>
+
+#### Value to User
+
+The error pages take the user to a branded, friendly page that tells them that something has gone wrong. It means they feel like they are still within the site, encouraging them to return to another part of the site rather than go elsewhere. There is a convenient button to take users back to where they were or to the homepage, making the navigation intuitive and user-friendly.
+
+---
+
+<details><summary>Functionality, Validation, Security & Routing</summary>
+
+
+
+</details>
+
+
+
+
 
 <details><summary>Screenshots</summary>
 
@@ -1599,6 +1693,8 @@ I would like to expand the site in the future with the following features:
 **Comments / Chat on Event page:** functionality for users to be able to discuss the event in a comments or chat section on the Event page, where they could ask questions, make plans etc.
 
 **Expand Personal Profile:** users can add more information about themselves on their profile, which could include 'home swim-spot' with their closest beach (and tailored event suggestions based on this), a list of events they are marked as 'going' to, and a profile photo or avatar.
+
+**Improve log in functionality:** add a password reset for users who've forgotten theirs, and gather user email addresses in order to implement this. Improve security with security questions or authentication.
 
 **Recurring Events:** The ability to make an event 'recurring' for users who hold regular swim meetings (e.g. every week), saving them time creating new events.
 
