@@ -35,25 +35,25 @@ SWIMMÔN is a website for swimmers on The Isle of Anglesey / Ynys Môn to find a
 
 #### User stories
 
-- As a user:
-  - I want to be able to find what I need immediately and for the navigation to be easy to follow & intuitive
-  - I want to be able to view the site on any device and for it to be fully responsive
-  - I want to be able to contact the site to suggest additional swim locations or ask questions
-  - I want to be able to return to the main site without having to use the browser buttons if I end up on a non-existent page or the site throws an error
-- As a user without an account:
-  - I want to understand the purpose of the site immediately upon entering
-  - I want to be able to view information about places to go wild swimming on Anglesey
-  - I want to be able to set up an account so that I can view and create events
-- As a user with an account:
-  - I want to be able to sign in to my account
-  - I want to be able to browse wild swimming events and find all the information I need to join one
-  - I want to be able to search & filter wild swimming events to find one that suits me
-  - I want to be able to set up a new event
-  - I want to be able to view, edit and delete the events I have set up
-  - I want to be able to log out of my account easily
-- As an admin of the site:
-  - I want to be able to add, edit or delete swimming locations for members to choose between for their event
-  - I want to be able to edit or delete events created by other users for site management purposes
+1. As a user:
+  - 1.1: I want to be able to find what I need immediately and for the navigation to be easy to follow & intuitive
+  - 1.2: I want to be able to view the site on any device and for it to be fully responsive
+  - 1.3: I want to be able to contact the site to suggest additional swim locations or ask questions
+  - 1.4: I want to be able to return to the main site without having to use the browser buttons if I end up on a non-existent page or the site throws an error
+2. As a user without an account:
+  - 2.1: I want to understand the purpose of the site immediately upon entering
+  - 2.2: I want to be able to view information about places to go wild swimming on Anglesey
+  - 2.3: I want to be able to set up an account so that I can view and create events
+3. As a user with an account:
+  - 3.1: I want to be able to sign in to my account
+  - 3.2: I want to be able to browse wild swimming events and find all the information I need to join one
+  - 3.3: I want to be able to search & filter wild swimming events to find one that suits me
+  - 3.4: I want to be able to set up a new event
+  - 3.5: I want to be able to view, edit and delete the events I have set up
+  - 3.6: I want to be able to log out of my account easily
+4. As an admin of the site:
+  - 4.1: I want to be able to add, edit or delete swimming locations for members to choose between for their event
+  - 4.2: I want to be able to edit or delete events created by other users for site management purposes
 
 ---
 
@@ -561,27 +561,13 @@ Details of all features on the finished site, expanding on the broader features 
 
 ### All Sections/Pages
 
+
 #### **Layout**
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Max-Width of site_
-
-</details>
 
 - The site has a max-width of 1750px. This helps to maintain the quality of the hero image on the home page on wider-screen devices. The area around this max-width is set to a branded blue to maintain the site's brand colours.
 
+
 #### **General Responsiveness**
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Caption_
-
-</details>
 
 - The site is fully responsive across all pages to help all features appear correctly and look their best on all devices. This includes:
   - Changes to font size
@@ -591,39 +577,13 @@ _Caption_
   - Layout changes
 - Details of more specific changes can be found in the feature sections below.
 
+
 #### **Favicon**
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Favicon_
-
-</details>
 
 - The site has a Favicon using an S to represent SWIMMON. This helped to build the brand and continue the site design in the user's browser tab.
 
+
 #### **Navbar**
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Responsive navbar_
-
-<img src="">
-
-_Hover effect_
-
-<img src="">
-
-_Dropdown Menu_
-
-<img src="">
-
-_Navbar changes based on log-in status_
-
-</details>
 
 - Based around Materialize's inbuilt navbar
 - Includes a clickable logo of the name of the site which takes the user back to the home page
@@ -633,17 +593,8 @@ _Navbar changes based on log-in status_
   - All the account-specific functionality is stored in a dropdown menu to help keep the navbar uncluttered
 - The navbar is fully responsive, on smaller screens the navbar is shorter and the menu items are replaced with a burger menu and a side-nav
 
+
 #### **Site Main Buttons**
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-<img src="">
-<img src="">
-
-_Button Colour Variety with Hover Effects_
-
-</details>
 
 - The site utilizes a repeating button design for major navigation or form submission functionality. In general the button colours are themed according to their purpose (along with the associated page explanatory header sections):
   - Pink - Events
@@ -651,15 +602,8 @@ _Button Colour Variety with Hover Effects_
   - Highlight-Blue - Sign in / Join
 - Other secondary buttons are used across the site too - details in the features sections below
 
+
 #### **Footer**
-
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Responsive Footer_
-
-</details>
 
 - Appears on all pages
 - Contains a clickable link to a 'contact us' email address
@@ -676,7 +620,12 @@ _Responsive Footer_
 ![Home Page - Mock Up]()
 
 
-<details><summary>Functionality, Validation, Security & Routing</summary>
+<details><summary>Video</summary>
+
+</details>
+
+
+__Functionality, Validation, Security & Routing__
 
 | Attribute | Details |
 |---|---|
@@ -689,47 +638,28 @@ _Responsive Footer_
 | **Routing** | None |
 
 
-</details>
+__Page Features - Details & Description__
 
-#### **Hero**
+<details><summary>Hero</summary>
 
 - A large, powerful hero image to grab people's attention and create a strong sense of what the site is for
 - A bright pink text box with compelling text building allowing users to immediately know what the purpose of the site is
 - Fully responsive
   - There are 3 versions of the image selected based on screen size to improve the site's performance and load speed
 
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Responsive Hero Section_
-
 </details>
 
-#### **'WHAT IS SWIMMÔN?' Section**
+<details><summary>'WHAT IS SWIMMÔN?' Section</summary>
 
 - Explanatory Text helping to clearly explain the purpose of the site and what the site can offer a user.
 - The content of this section varies depending on whether a user is logged in - offering different paths through the site to either
   1. encourage a non-logged in user to sign up (primary) or log in (secondary) to enjoy the site's features
   2. encourage a logged in user to go to the events page (primary) or add an event (secondary)
 
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Responsiveness_
-
-<img src="">
-
-_Not-Logged-In Contents_
-
-<img src="">
-
-_Logged-In Contents_
-
 </details>
 
-#### **Locations Map - Multiple Location Markers**
+
+<details><summary>Locations Map - Multiple Location Markers</summary>
 
 - Includes explanatory text on a colour themed background (mid-blue for locations)
 - Google Maps API containing clickable markers of all locations from the locations collection
@@ -758,13 +688,13 @@ _Logged-In Contents_
     - the map container size reduces on smaller devices to avoid users getting stuck on the map and not being able to scroll past
   - If something goes wrong and the map fails to load Google has a built in error message to handle the problem in a user-friendly way
 
-<details><summary>Screenshots</summary>
-
-<img src="">
-
-_Locations Map Functionality_
-
 </details>
+
+
+__Value to User__
+
+This page is an introduction to the site, clearly telling the user what the site is for and what they can expect to find. They can find information and links to sea swimming locations. It also sign-posts the user to either joining or signing in if they are not yet logged in, or to see events or add an event if they are logged in.
+
 
 ---
 
