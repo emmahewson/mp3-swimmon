@@ -4,7 +4,6 @@ $(document).ready(function(){
     noLocations();
 });
 
-
 function noLocations() {
     // creates an array of the event cards
     let cardResults = Array.from(document.getElementsByClassName('location-card'));

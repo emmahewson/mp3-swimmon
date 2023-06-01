@@ -1,4 +1,8 @@
-// Location Picker - for generating Latitude & Longitude values for Add/Edit Location Forms
+/**
+ * Location Picker
+ * For generating Latitude & Longitude values for Add/Edit Location Forms
+ */
+
 // Declare variables for input boxes & triggers
 let latBox = document.getElementById("latitude");
 let lngBox = document.getElementById("longitude");
@@ -49,10 +53,10 @@ function initMap() {
     };
 
     // sets start position on map
-    // if data in boxes is valid sets map to that position, else centre of Anglesey
     let startPosition = {};
     let latInput = Number(latBox.value);
     let lngInput = Number(lngBox.value);
+    // if data in boxes is valid sets map to that position, else centre of Anglesey
     if (typeof latInput == 'number' &&
         latInput >= 53.1 &&
         latInput <= 53.5 &&

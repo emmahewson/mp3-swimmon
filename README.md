@@ -547,8 +547,8 @@ During the development process there were a number of minor changes to the origi
 - Event Page: Added a link to the location page to help users to navigate to different areas of the site easily
 - Location Page: Included a 'call to action' JOIN button for users who weren't logged in to encourage users to join the site to see events
 - Add Location Form:
-    - Latitude/Longitude inputs: these were originally going to be text-based with an explanatory popover which helped users to find the co-ordinates on Google Maps and to paste them in. This was my back up option as I wasn't sure I would have time to add an interactive location-picker using a map, however I was able to build this and so the user no longer has to enter values themselves, they are populated using the map picker, providing a much better user experience. [See Add Location in Features](#add-location--edit-location)
-    - Image URL input: I had originally planned to have users find an image online and paste the URL in here. I wasn't sure how else to achieve this functionality but during the development I managed to implement a file upload system using Cloudinary, which provided a much better user experience and also limited the chance of missing or broken image links. [See Add Location in Features](#add-location--edit-location)
+    - Latitude/Longitude inputs: these were originally going to be text-based with an explanatory popover which helped users to find the co-ordinates on Google Maps and to paste them in. This was my back up option as I wasn't sure I would have time to add an interactive location-picker using a map, however I was able to build this and so the user no longer has to enter values themselves, they are populated using the map picker, providing a much better user experience. [See Add Location in Features](#add-location)
+    - Image URL input: I had originally planned to have users find an image online and paste the URL in here. I wasn't sure how else to achieve this functionality but during the development I managed to implement a file upload system using Cloudinary, which provided a much better user experience and also limited the chance of missing or broken image links. [See Add Location in Features](#add-location)
     - The content of the popovers for both the above inputs also changed accordingly.
 - Events Page: I removed the popovers from the search filters. I felt that this section needed to be as uncluttered as possible to allow for a smooth search experience, also that the filters were fairly self-explanatory.
 
@@ -1125,7 +1125,7 @@ https://github.com/emmahewson/mp3-swimmon/assets/116887840/26a87bf3-8edb-4f23-be
 |---|---|
 | **Visible To** | Logged In Users - own events only. Admin - all events. |
 | **Template** | edit-event.html |
-| **Front End Functionality** | Uses Materialize's Timepicker & Datepicker to give a user-friendly way of selecting a time & date and making sure they are in a consistent format. Datepicker is set to the exisiting event date (event-form.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
+| **Front End Functionality** | Uses Materialize's Timepicker & Datepicker to give a user-friendly way of selecting a time & date and making sure they are in a consistent format. Datepicker is set to the existing event date (event-form.js). Hover/click effect popovers created ith JavaScript give more information to users filling in the form. |
 | **Back End Functionality** | Populates form with locations, whos & challenge-levels from relevant collections for user selection. Pre-fills form with event information from event object in database.  If event id is not found in database aborts and re-routes to 404 page with an 'event not found' flash message. Submission: combines time & date values from pickers & converts date & time to UTC format, adds location id to event to connect it to the locations collection, gets created_by value from `session['user']`, populates 'who' & 'challenge' fields with string values taken from dropdowns, updates event on database. Flash message confirms successful submission. |
 | **Front End Form Validation** | All fields required. Fields must match type and length (HTML validation). Location, Who-For & Challenge Level - dropdown lists (not directly editable). Date & Time populated using pickers (not directly editable). Event must not be in the past (form.js). Additional validation popup messages on dropdown/select inputs added to Materialize template (event-form.js) |
 | **Back End Form Validation** | None |
@@ -1642,7 +1642,7 @@ The delete location functionality allows the user to quickly and easily delete a
 
 ![Error Pages](readme-images/features/feat_error.jpeg)
 
-<details><summary>Screen Recording Videoss</summary>
+<details><summary>Screen Recording Videos</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/094a18eb-0330-4b62-9aab-adfe39940e04
@@ -1820,7 +1820,7 @@ I would like to expand the site in the future with the following features:
   - Used to deploy the live site
 - [Figma](https://www.figma.com/)
   - Used to develop the wireframes in to a full site design including colours, fonts, proportions etc
-- [Materialize](https://getbootstrap.com/)
+- [Materialize](https://materializecss.com/)
   - Used to help with the responsiveness of the site in much of the structural layout
   - Used date and time picker for the add event form
 - [Google Fonts](https://fonts.google.com/)
@@ -1949,7 +1949,7 @@ Details of any projects or online sources that I have learned from or adapted in
 - [https://github.com/Dogfalo/materialize - Issue](https://github.com/Dogfalo/materialize/issues/5974): Date input format conversion
 - [https://www.tutorialspoint.com - Article](https://www.tutorialspoint.com/converting-12-hour-format-time-to-24-hour-format-in-javascript): Converting AM/PM time string to 24hr string
 - [https://www.geeksforgeeks.org - Article](https://www.geeksforgeeks.org/validation-of-file-size-while-uploading-using-javascript-jquery/): Front end validation on image upload
-- [https://www.aspsnippets.com - Article](https://www.aspsnippets.com/Articles/Google-Maps-API-V3-Open-Show-only-one-InfoWindow-at-a-time-and-close-other-InfoWindow.aspx): Bug 3 Solution [multiple Info-Windows on map](#3-google-maps-info-windows---multiple-windows-opening-at-once)
+- [https://www.aspsnippets.com - Article](https://www.aspsnippets.com/Articles/Google-Maps-API-V3-Open-Show-only-one-InfoWindow-at-a-time-and-close-other-InfoWindow.aspx): Bug 3 Solution [multiple Info-Windows on map](TESTING.md/#3-google-maps-info-windows---multiple-windows-opening-at-once)
 - [https://codepen.io - Sample Code](https://codepen.io/chocochip/pen/zYxMgRG): Popover Info Boxes
 
 ### Images & Text

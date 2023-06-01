@@ -1,5 +1,8 @@
-// handles front end validation on image upload on location forms
-// adapted from https://www.geeksforgeeks.org/validation-of-file-size-while-uploading-using-javascript-jquery/
+/**
+ * Handles front end validation on image upload on location forms
+ * adapted from https://www.geeksforgeeks.org/validation-of-file-size-while-uploading-using-javascript-jquery/
+ */
+
 $(document).ready(function(){
 
     // checks for an image being uploaded
@@ -8,8 +11,10 @@ $(document).ready(function(){
         // check if an image was uploaded
         if (this.files.length == 0) {
 
-            // if no image uploaded (user pressed 'cancel') resets warnings & enables submit button
-            // this allows the user to still submit without uploading on the edit-location form & keep previous image
+            /**
+             * if no image uploaded (user pressed 'cancel') resets warnings & enables submit button
+             * this allows the user to still submit without uploading on the edit-location form & keep previous image
+             */
             $("#file-message-warning").text("");
             $("#file-message").text("");
             $('#location-submit').attr("disabled", false);
@@ -17,6 +22,7 @@ $(document).ready(function(){
         } else {
 
             // if an image was submitted
+            
             // gets image size
             const size = (this.files[0].size / 1024 / 1024).toFixed(2);
 

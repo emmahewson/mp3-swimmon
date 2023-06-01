@@ -20,10 +20,13 @@ function initMap() {
         }
     };
 
-    // Fetch request connects GoogleMaps API with the MongoDB database
-    // Creates a JSON file with the collection
-    // Adapted from https://github.com/isntlee/Sagacity/blob/master/templates/home.html
-    // Credit Lee Martina
+    /**
+     * Fetch request connects GoogleMaps API with the MongoDB database
+     * Creates a JSON file with the collection
+     * Creates a JSON file with the collection
+     * Adapted from https://github.com/isntlee/Sagacity/blob/master/templates/home.html
+     * Credit Lee Martina
+     */
     fetch('/fetch')
         .then(response => response.json())
         .then(data => { 

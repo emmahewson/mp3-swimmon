@@ -4,9 +4,11 @@ $(document).ready(function(){
     // form dropdown (select)
     $('select').formSelect();
 
-    // handles validation on dropdown (select) inputs
-    // gives user a message if dropdown item not selected
-    // credit to: https://github.com/Dogfalo/materialize/issues/1861 
+    /**
+     * handles validation on dropdown (select) inputs
+     * gives user a message if dropdown item not selected
+     * credit to: https://github.com/Dogfalo/materialize/issues/1861
+     */
     $("select[required]").css({
         display: 'inline',
         position: 'absolute',
@@ -40,8 +42,10 @@ $(document).ready(function(){
 
     // checks if input already contains date
     if (dateInput.value.length != 0) {
-        // if so grabs that date, splits & reformats to Y,M,D
-        // adapted from https://github.com/Dogfalo/materialize/issues/5974
+        /**
+         * if so grabs that date, splits & reformats to Y,M,D
+         * adapted from https://github.com/Dogfalo/materialize/issues/5974
+         */
         let oldDate = dateInput.value.split("/");
 
         // pre-loads the datepicker with the previously selected date (for edit event form)
@@ -64,13 +68,17 @@ $(document).ready(function(){
         showClearBtn: true
     });
 
-    // Time & Date Validation
-    // Checks that event is in the future
+    /**
+     * Time & Date Validation
+     * Checks that event is in the future
+     */
     dateInput.addEventListener('change', checkDateTime);
     timeInput.addEventListener('change', checkDateTime);
 
-    // Runs validation on event time/date
-    // Stops event in the past being submitted
+    /**
+     * Runs validation on event time/date
+     * Stops event in the past being submitted
+     */
     function checkDateTime() {
 
         // checks date & time have both been inputted
@@ -82,8 +90,10 @@ $(document).ready(function(){
             // gets the inputted time value
             let timeStr = timeInput.value;
 
-            // converts AM/PM time to 24hr
-            // credit: https://www.tutorialspoint.com/converting-12-hour-format-time-to-24-hour-format-in-javascript
+            /**
+             * converts AM/PM time to 24hr
+             * credit: https://www.tutorialspoint.com/converting-12-hour-format-time-to-24-hour-format-in-javascript
+             */
             const convertTime = timeStr => {
                 const [time, modifier] = timeStr.split(' ');
                 let [hours, minutes] = time.split(':');

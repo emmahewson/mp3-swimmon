@@ -52,9 +52,13 @@ function nothingReturned() {
     }
 }
 
-// Handles all filtering of events based on user selecting filter buttons in different categories
-// User can filter by multiple selections within a category e.g. women-only & all-welcome & see both results at once
-// When multiple categories are filtered, e.g. location & challenge, events must match at least 1 selected filter in each category
+/**
+ * Handles all filtering of events based on user selecting filter buttons in different categories
+ * User can filter by multiple selections within a category
+ * e.g. women-only & all-welcome & see both results at once
+ * When multiple categories are filtered, e.g. location & challenge,
+ * events must match at least 1 selected filter in each category
+ */
 function searchEvents() {
 
     // create array from search buttons
@@ -118,8 +122,11 @@ function searchEvents() {
         if (activeCategoryBtns.length == 0) {
             showAllCards();
 
-        // if filters in only 1 category are selected - reveals results
-        // allows user to filter by multiple selections within a category (e.g. show results for multiple locations at once)
+        /**
+         * if filters in only 1 category are selected - reveals results
+         * allows user to filter by multiple selections within a category
+         * (e.g. show results for multiple locations at once)
+         */
         } else if (activeCategoryBtns.length == 1){
 
             // reveals the matching events for the filtered card array that contains results
@@ -142,15 +149,19 @@ function searchEvents() {
             // array to contain the matching results to reveal
             let matches = [];
 
-        // checks how many arrays contained results & matches them against the eventCards array
-            // checks if all of the selected categories have produced results (if not there will be no matches) - Bug 7 fix
+            /**
+             * checks how many arrays contained results & matches them against the eventCards array
+             * checks if all of the selected categories have produced results (if not there will be no matches) - Bug 7 fix
+             */
             if (activeCategoryBtns.length === categoriesWithResults.length) {
 
                 // if filters in 2 categories selected & both produce results
                 if (categoriesWithResults.length == 2) {
 
-                    // loops through all events from original eventCards array
-                    // if event appears in both selected categories' results - pushes it to 'matches' array
+                    /**
+                     * loops through all events from original eventCards array
+                     * if event appears in both selected categories' results - pushes it to 'matches' array
+                     */ 
                     for (let card of eventCards) {
                         if (categoriesWithResults[0].includes(card) && categoriesWithResults[1].includes(card)) {
                             matches.push(card);
@@ -160,8 +171,10 @@ function searchEvents() {
                 // if filters in 3 categories selected & all produce results
                 } else if (categoriesWithResults.length == 3) {
 
-                    // loops through all events from original eventCards array
-                    // if event appears in all selected categories' results - pushes it to 'matches' array
+                    /** 
+                     * loops through all events from original eventCards array
+                     * if event appears in all selected categories' results - pushes it to 'matches' array
+                     */
                     for (let card of eventCards) {
                         if (categoriesWithResults[0].includes(card) && categoriesWithResults[1].includes(card) && categoriesWithResults[2].includes(card)) {
                             matches.push(card);

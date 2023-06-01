@@ -1,6 +1,6 @@
 # SWIMMÔN Wild Swimming Events Website - Testing
 
-![Mockup]()
+![Mockup](readme-images/mp3_mockup.jpg)
 
 This is the testing documentation for my web application: SWIMMÔN Wild Swimming Events Website. [Full README available here](README.md) 
 
@@ -218,7 +218,7 @@ I ran the app.py code through [https://pep8ci.herokuapp.com/](https://pep8ci.her
 
 ### Accessibility
 
-I ran the site through the [Wave Web Accessibility Evaulation Tool](https://wave.webaim.org/). There were some minor errors & warnings which I was unable to rectify which are detailed in the notes below. Based on the research done in to these errors, and the fact that they are mostly due to errors on the part of the validator or external code over which I have no control I have accepted them and marked the tests as passed for the purposes and scope of this project. For full results see the dropdowns below.
+I ran the site through the [Wave Web Accessibility Evaluation Tool](https://wave.webaim.org/). There were some minor errors & warnings which I was unable to rectify which are detailed in the notes below. Based on the research done in to these errors, and the fact that they are mostly due to errors on the part of the validator or external code over which I have no control I have accepted them and marked the tests as passed for the purposes and scope of this project. For full results see the dropdowns below.
 
 
 <details><summary>Accessibility Results Table</summary>
@@ -316,7 +316,7 @@ __Google Map Errors/Warnings__
 
 Google Maps threw up a number of errors and warnings in the accessibility checks. These were:
 - Error - Image map area missing alternative text:
-    - I researched what was causing this and it is a consistent error on Google Maps that has no known fix that wouldn't in fact make the map less accessible. Because of this I have left the site as it is and the accessibility flagged error remains. More information here: https://stackoverflow.com/questions/59326196/google-map-missing-alt-of-image-causing-lower-accessibility
+    - I researched what was causing this and it is a consistent error on Google Maps that has no known fix that wouldn't in fact make the map less accessible. Because of this I have left the site as it is and the accessibility flagged error remains. More information [here.](https://stackoverflow.com/questions/59326196/google-map-missing-alt-of-image-causing-lower-accessibility)
 - Warnings - various, including orphaned form label, very small text, redundant title text, layout table
     - I am unable to make any changes to counteract these warnings as they all relate to Google Maps' own styling and layout and as they are only warnings and not errors I have left the map as it is.
 
@@ -1784,6 +1784,6 @@ _Location Form - after_
 
 ---
 
-[Go to Top](#swimmôn-wild-swimming-events-website)
+[Go to Top](#swimmôn-wild-swimming-events-website---testing)
 
 ---

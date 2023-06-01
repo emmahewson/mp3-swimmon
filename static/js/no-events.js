@@ -4,7 +4,6 @@ $(document).ready(function(){
     noEvents();
 });
 
-
 function noEvents() {
     // creates an array of the event cards
     let cardResults = Array.from(document.getElementsByClassName('event-card'));

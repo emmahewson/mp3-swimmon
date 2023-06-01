@@ -1,6 +1,8 @@
-// Bug Fix - Materialize 'Select' input not displaying correctly on IOS 13+
-// Materialize's own patch to fix the problem
-// From: https://github.com/Dogfalo/materialize/blob/v1-dev/js/select.js
+/**
+ * Bug Fix - Materialize 'Select' input not displaying correctly on IOS 13+
+ * Materialize's own patch to fix the problem
+ * From: https://github.com/Dogfalo/materialize/blob/v1-dev/js/select.js
+ */
 
 (function($) {
   'use strict';
