@@ -625,7 +625,7 @@ Details of all features on the finished site, expanding on the broader features 
 ![Home Page](readme-images/features/feat_home.jpeg)
 
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/aafcd7fd-af9c-4f13-8349-2d232017c17b
@@ -713,7 +713,7 @@ This page is an introduction to the site, clearly telling the user what the site
 ![Join](readme-images/features/feat_join.jpeg)
 
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/0e49e4ef-0d69-4924-bac8-a515bf573d77
@@ -759,7 +759,7 @@ This page allows users to easily set up an account and become a member of the si
 ![Sign In](readme-images/features/feat_signin.jpeg)
 
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/dbc9f3b7-5e22-4063-a169-29dfad9cdac2
@@ -799,7 +799,7 @@ This page allows users to sign in to their account giving them access to full CR
 
 ### Sign Out
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/505bdd59-ebf4-4c79-a810-78fb13c993b2
@@ -838,7 +838,7 @@ This page allows users to easily sign out of their account once they are finishe
 
 
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/5467cfdc-e9f9-4314-9282-42c7ec173fd6
@@ -936,7 +936,7 @@ This page allows users to view events on summary cards, allowing them to scan th
 
 ![Event Page](readme-images/features/feat_event.jpeg)
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/d57cebed-c534-490e-aa92-69d928b9c86c
@@ -1045,7 +1045,7 @@ This page allows the user to get more detailed information about an event, it al
 
 ![Add Event](readme-images/features/feat_add-event.jpeg)
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/97a7b6af-790b-468d-9ea0-437ade45d856
@@ -1110,7 +1110,7 @@ Create event functionality. By using the location dropdown & database collection
 
 ![Edit Event](readme-images/features/feat_edit-event.jpeg)
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/26a87bf3-8edb-4f23-be3e-9e344097b955
@@ -1175,7 +1175,7 @@ The user can make changes to their events quickly and easily. The form is popula
 
 ### Delete Event
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/53143504-2b54-46f2-ac0c-ac97af5ae67a
@@ -1216,7 +1216,7 @@ The delete event functionality allows user to quickly delete their events and re
 
 ![Profile Page](readme-images/features/feat_profile.jpeg)
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/ded26bd7-34c6-4eb0-ae63-23ba3bca85b7
@@ -1272,7 +1272,7 @@ The profile page is the first place a user will see when they log in to the site
 
 ![Location Page](readme-images/features/feat_location.jpeg)
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/4ae1f6be-5628-4de0-a583-fc308120a189
@@ -1370,7 +1370,7 @@ The location page provides all users with easy to read accessible information ab
 
 ![Manage Locations](readme-images/features/feat_manage-locs.jpeg)
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/bc773019-5ca3-4351-a2b5-1d8a75676d48
@@ -1437,7 +1437,7 @@ The manage locations page gives the admin a single point from which they can vie
 
 ![Add Location](readme-images/features/feat_add-loc.jpeg)
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/ccce8947-07b4-4f92-9cbd-716d49d350b2
@@ -1515,7 +1515,7 @@ The add location form is a really intuitive user-friendly way for a site admin t
 
 ![Add Location](readme-images/features/feat_edit-loc.jpeg)
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/9784abc3-5b39-4fe5-a12a-bf4dd1299d1c
@@ -1597,7 +1597,7 @@ Building on the value to user of the [Add Location](#add-location) form, the edi
 
 ### Delete Location
 
-<details><summary>Video</summary>
+<details><summary>Screen Recording Video</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/510fc807-da9f-4254-8680-6c8fdba829c5
@@ -1640,9 +1640,9 @@ The delete location functionality allows the user to quickly and easily delete a
 
 ### Error Pages
 
-![Error Pages](readme-images/features/feat_error.jpg)
+![Error Pages](readme-images/features/feat_error.jpeg)
 
-<details><summary>Videos</summary>
+<details><summary>Screen Recording Videoss</summary>
 
 
 https://github.com/emmahewson/mp3-swimmon/assets/116887840/094a18eb-0330-4b62-9aab-adfe39940e04
