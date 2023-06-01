@@ -416,6 +416,8 @@ Parts of the site will require user log in to access and the site will implement
 - Locations can only be added, edited & deleted by an admin
 - A user can only see their own profile page, not anyone else's
 - Users' passwords will be hashed and not readable in the database to protect user privacy
+- Signed in users cannot visit 'join' or 'sign-in' pages.
+- Signed out users cannot 'sign-out'.
 
 ---
 
@@ -734,7 +736,7 @@ https://github.com/emmahewson/mp3-swimmon/assets/116887840/0e49e4ef-0d69-4924-ba
 | **Back End Form Validation** | Username must not already exist and passwords must match |
 | **Front End Security** | Navbar link only visible to logged-out users |
 | **Back End Security** | User password is hashed using Werkzeug's 'generate_password_hash' to protect user data |
-| **Routing - log in** | Redirects to 'events' on log-in |
+| **Routing - log in** | If a user is already logged in, redirects to 'my-profile' with a flash message. Redirects to 'events' on submission. |
 
 
 #### Page Features - Details & Description
@@ -780,7 +782,7 @@ https://github.com/emmahewson/mp3-swimmon/assets/116887840/dbc9f3b7-5e22-4063-a1
 | **Back End Form Validation** | Password & username must exist & be correct - uses Werkzeug's 'check_password_hash' to protect user data |
 | **Front End Security** | Navbar link only visible to logged-out users|
 | **Back End Security** | None |
-| **Routing - log in** | Any page visible to logged in users only redirects here if user not logged in. On log in return user to the previous page they attempted to visit, or if none is stored in session to 'profile'. |
+| **Routing - log in** | If a user is already logged in, redirects to 'my-profile' with a flash message. Any page visible to logged in users only redirects here if user not logged in. On log in returns user to the previous page they attempted to visit, or if none is stored in session to 'profile'. |
 
 #### Page Features - Details & Description
 
@@ -789,7 +791,7 @@ https://github.com/emmahewson/mp3-swimmon/assets/116887840/dbc9f3b7-5e22-4063-a1
 - Brief intro text to explain to a user what the purpose of the page is and what they need to do
 - Intro text box & submit buttons are in the site's branded 'highlight blue' - used across the account-related pages
 - Forms are fully responsive on all devices
-- Flash messages welcome the user on successful sign-in / join submission, styled using custom CSS
+- Flash messages welcome the user on successful submission, styled using custom CSS
 
 #### Value to User
 
@@ -817,7 +819,7 @@ https://github.com/emmahewson/mp3-swimmon/assets/116887840/505bdd59-ebf4-4c79-a8
 | **Back End Functionality** | Removes user & any stored url from session cookie. Confirmation flash message on sign out. |
 | **Front End Security** | Navbar link only visible to users who are logged in |
 | **Back End Security** | User must be logged in |
-| **Routing - log in** | Redirects to 'sign-in' on log-out |
+| **Routing - log in** | If a user isn't signed in & attempts to sign-out, flash message & redirects to 'sign-in'. Redirects to 'sign-in' on sign-out. |
 
 
 #### Page Features - Details & Description

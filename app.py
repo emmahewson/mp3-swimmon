@@ -58,97 +58,116 @@ def fetch():
 @app.route("/join", methods=["GET", "POST"])
 def join():
     '''
+    Checks if a user is already logged in,
+    if so redirects to user profile.
     Renders the join / register page template
     Allows users to set up an account
     Checks if username already exists
     '''
 
-    # Handles 'POST' method (form submission)
-    if request.method == "POST":
-        # check if username already exists
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+    # Checks if a user is already logged in
+    if "user" not in session:
 
-        if existing_user:
-            flash("Username already exists")
-            return redirect(url_for("join"))
+        # Handles 'POST' method (form submission)
+        if request.method == "POST":
+            # check if username already exists
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()})
 
-        # checks if the passwords match
-        password_one = request.form.get("password")
-        password_two = request.form.get("password-confirm")
+            if existing_user:
+                flash("Username already exists")
+                return redirect(url_for("join"))
 
-        if password_one != password_two:
-            flash("Passwords don't match - try again")
-            return redirect(url_for("join"))
+            # checks if the passwords match
+            password_one = request.form.get("password")
+            password_two = request.form.get("password-confirm")
 
-        elif password_one == password_two:
-            new_user = {
-                "username": request.form.get("username").lower(),
-                "password": generate_password_hash(
-                    request.form.get("password"))
-            }
-            mongo.db.users.insert_one(new_user)
+            if password_one != password_two:
+                flash("Passwords don't match - try again")
+                return redirect(url_for("join"))
 
-            # put the new user in to 'session' cookie
-            session["user"] = request.form.get("username").lower()
-            flash("Registration Successful")
-            return redirect(url_for("events"))
+            elif password_one == password_two:
+                new_user = {
+                    "username": request.form.get("username").lower(),
+                    "password": generate_password_hash(
+                        request.form.get("password"))
+                }
+                mongo.db.users.insert_one(new_user)
 
-    # Handles 'GET' method (page load)
-    return render_template("join.html")
+                # put the new user in to 'session' cookie
+                session["user"] = request.form.get("username").lower()
+                flash("Registration Successful")
+                return redirect(url_for("events"))
+
+        # Handles 'GET' method (page load)
+        return render_template("join.html")
+
+    # if user is already logged in routes to 'profile'
+    flash("You're already signed in!")
+    return redirect(url_for("my_profile", username=session["user"]))
 
 
 @app.route("/sign-in", methods=["GET", "POST"])
 def sign_in():
     '''
+    Checks if a user is already logged in,
+    if so redirects to user profile.
     Renders the sign in page template
     Allows registered users to sign in to their account
     Adds user to session cookie
-    Redirects to user profile
+    Redirects to user profile on submission.
     '''
 
-    # Handles 'POST' method (form submission)
-    if request.method == "POST":
-        # check if username exists
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+    # Checks if a user is already logged in
+    if "user" not in session:
 
-        if existing_user:
-            # ensure hashed password matches user input
-            if check_password_hash(
-                existing_user["password"], request.form.get(
-                    "password")):
-                session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(request.form.get("username")))
+        # Handles 'POST' method (form submission)
+        if request.method == "POST":
+            # check if username exists
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()})
 
-                # redirects user to previous page if stored in session
-                if 'url' in session:
-                    return redirect(session['url'])
-                return redirect(
-                    url_for("my_profile", username=session["user"]))
+            if existing_user:
+                # ensure hashed password matches user input
+                if check_password_hash(
+                    existing_user["password"], request.form.get(
+                        "password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome, {}".format(request.form.get("username")))
 
-            # invalid password match
+                    # redirects user to previous page if stored in session
+                    if 'url' in session:
+                        return redirect(session['url'])
+                    return redirect(
+                        url_for("my_profile", username=session["user"]))
+
+                # invalid password match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("sign_in"))
+
+            # if username doesn't exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("sign_in"))
 
-        # if username doesn't exist
-        flash("Incorrect Username and/or Password")
-        return redirect(url_for("sign_in"))
+        # Handles 'GET' method (page load)
+        return render_template("sign-in.html")
 
-    # Handles 'GET' method (page load)
-    return render_template("sign-in.html")
+    # if user is already logged in routes to 'profile'
+    flash("You're already signed in!")
+    return redirect(url_for("my_profile", username=session["user"]))
 
 
 @app.route("/sign-out")
 def sign_out():
     '''
+    Checks if user is signed in,
+    if not redirects them to the sign-in page.
     Signs user out of their account
     Removes logged in user from session cookie
     Redirects to sign-in page
-    Checks if user is logged in to avoid errors
     '''
 
-    # checks if user is signed in (avoids errors)
+    # checks if user is signed in
     if "user" in session:
 
         # remove user from session cookies
